@@ -44,4 +44,4 @@ function db(sql, params, cb) {
     )
 }
 
-modules.export = db
+module.exports = db
