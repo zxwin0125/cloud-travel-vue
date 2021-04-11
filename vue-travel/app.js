@@ -10,6 +10,10 @@ app.get("/",(req, res) =>{
     res.send('Hello World')
 })
 
+const users = require("./routes/api/users") // 导入路由模块
+app.use("/api/users",users) // 使用routes
+
+
 
 // 端口号
 const port = process.env.PORT || 3000;
