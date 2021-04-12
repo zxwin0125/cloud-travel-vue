@@ -21,8 +21,8 @@ router.get('/getUsers', (req, res) => {
 
 // route   POST 请求 api/users/register  返回的请求为 json 数据
 router.post('/register', (req, res) => {
-    // userController.getAllUsers(req, res)
-    console.log(res.body);
+    registerController.registerUsers(req, res)
+    // console.log(res.body);
 })
 
 
