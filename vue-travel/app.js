@@ -4,6 +4,12 @@
 const express = require('express')
 // 实例化 App
 const app = express();
+// 引入body-parser
+const bodyParser = require("body-parser")
+// 使用body-parser中间件
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 
 // 设置路由
 app.get("/",(req, res) =>{
