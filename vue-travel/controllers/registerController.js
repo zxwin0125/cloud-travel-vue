@@ -4,7 +4,7 @@ const registerDAL = require('../model/registerDAL')
 const registerController = {
     // 用户注册
     registerUsers: (req, res) => {
-        // console.log(req.body);
+        console.log(req.body);
         // 1. 接收传入的数据
         let user = {
             user_name: req.body.name,
