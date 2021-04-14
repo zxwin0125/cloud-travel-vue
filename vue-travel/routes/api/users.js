@@ -8,7 +8,8 @@ const userController = require('../../controllers/userController')
 // register
 const registerController = require('../../controllers/registerController')
 
-
+// login
+const loginController = require('../../controllers/loginController')
 
 
 
@@ -25,5 +26,9 @@ router.post('/register', (req, res) => {
     registerController.registerUsers(req, res)
 })
 
+// route   POST 请求 api/users/login  返回的请求为 json 数据
+router.post('/login', (req, res) => {
+    loginController.loginUsers(req, res);
+});
 
 module.exports = router;

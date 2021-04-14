@@ -1,12 +1,22 @@
 // register 逻辑控制层
 const registerDAL = require('../model/registerDAL')
-// 引入加密依赖
+// 引入 bcrypt 加密依赖
 const bcrypt = require('bcrypt')
+// 引入 gravatar 头像插件
+const gravatar = require('gravatar')
 
 const registerController = {
     // 用户注册
     registerUsers: (req, res) => {
         console.log(req.body);
+
+        // 头像
+        const avatar = gravatar.url(req.body.email, {
+            s: '200',
+            r: 'pg',
+            d: 'mm'
+        });
+
         // 1. 接收传入的数据
         let user = {
             user_name: req.body.name,
@@ -32,14 +42,20 @@ const registerController = {
                         if (err) throw err; // 如果有错误，抛出
 
                         user.user_password = hash
-                        
+
                         registerDAL.registerUsers(user, (err, results) => {
-                            if(results.affectedRows == 1) {
+                            if (results.affectedRows == 1) {
                                 console.log('ok')
-                                res.json({code:200,data:1})                                            
-                            }else{
+                                res.json({
+                                    code: 200,
+                                    data: 1
+                                })
+                            } else {
                                 console.log('err');
-                                res.json({code:500,data:0})
+                                res.json({
+                                    code: 500,
+                                    data: 0
+                                })
                             }
                         })
                     })
