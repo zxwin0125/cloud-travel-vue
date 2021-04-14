@@ -1,5 +1,7 @@
 // register 逻辑控制层
 const registerDAL = require('../model/registerDAL')
+// 引入加密依赖
+const bcrypt = require('bcrypt')
 
 const registerController = {
     // 用户注册
@@ -22,7 +24,27 @@ const registerController = {
                     data: err.data,
                 })
             } else {
-                console.log('111');
+                // 加盐加密
+                bcrypt.genSalt(10, (err, salt) => {
+                    // hash  对密码进行加密
+                    bcrypt.hash(user.user_password, salt, (err, hash) => {
+                        // hash是加密后的字符串
+                        if (err) throw err; // 如果有错误，抛出
+
+                        user.user_password = hash
+                        
+                        registerDAL.registerUsers(user, (err, results) => {
+                            if(results.affectedRows == 1) {
+                                console.log('ok')
+                                res.json({code:200,data:1})                                            
+                            }else{
+                                console.log('err');
+                                res.json({code:500,data:0})
+                            }
+                        })
+                    })
+
+                })
             }
         })
     }
