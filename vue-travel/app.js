@@ -1,20 +1,22 @@
 // 项目入口文件
-
 // 引入 Express
 const express = require('express')
 // 实例化 App
 const app = express();
-// 引入body-parser
+// 引入 passport
+const passport = require('passport')
+// 引入 body-parser
 const bodyParser = require("body-parser")
+
 // 使用body-parser中间件
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// passport 初始化
+app.use(passport.initialize())
 
-// 设置路由
-app.get("/",(req, res) =>{
-    res.send('Hello World')
-})
+require("./config/passport")(passport)
+
 
 const users = require("./routes/api/users") // 导入路由模块
 app.use("/api/users",users) // 使用routes

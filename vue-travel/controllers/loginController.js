@@ -1,12 +1,15 @@
 // login 逻辑控制层
 const loginDAL = require('../model/loginDAL')
+// 引入 bcrypt 加密依赖
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 const loginController = {
     // 检查登陆用户名和密码是否存在
     loginUsers: (req, res) => {
         const user = {
-            user_name: req.body.user_name,
-            user_password: req.body.user_password
+            user_name: req.body.name,
+            user_password: req.body.password
         }
 
         if (user.user_password.trim() == '') { // 密码为空
@@ -71,11 +74,11 @@ const loginController = {
                                     avatar: results[0].avatar,
                                 }
 
-                                jwt.sign(rule, { expiresIn: 3600 }, (err, token) => {
+                                jwt.sign(rule, 'privateKey', { expiresIn: 3600 }, (err, token) => {
                                     if (err) throw err
                                     res.json({
                                         success: true,
-                                        token: 'Bearer' + token
+                                        token: 'Bearer ' + token
                                     })
                                 })
                             } else {

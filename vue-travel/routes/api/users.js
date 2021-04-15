@@ -1,6 +1,8 @@
 // users 登录注册路由
 const express = require('express')
 const router = express.Router()
+// 引入 passport
+const passport = require('passport')
 
 // getUsers
 const userController = require('../../controllers/userController')
@@ -30,5 +32,13 @@ router.post('/register', (req, res) => {
 router.post('/login', (req, res) => {
     loginController.loginUsers(req, res);
 });
+
+router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
+    res.json({
+        id: req.user.id,
+        name: req.user.name,
+        phone: req.user.phone,
+      });
+})
 
 module.exports = router;
