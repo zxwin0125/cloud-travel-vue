@@ -6,10 +6,10 @@ const loginDAL = {
     loginUsers: (user, cb) => {
         const sql = 'select 1 from user_info where user_name=? and user_password=?'
         dao(sql, [user.user_name, user.user_password], (err, results) => {
-            if(err){
+            if (err) {
                 console.log('登录失败', err.message)
-            }else{
-                cb(null,results)  
+            } else {
+                cb(null, results)
             }
         })
     },
@@ -18,10 +18,10 @@ const loginDAL = {
     checkPwd: (user, cb) => {
         const sql = 'select 1 from user_info where user_name = ?'
         dao(sql, [user.user_name], (err, results) => {
-            if(err){
-                console.log('查无此人',err.message)
-            }else{
-                cb(null,results)
+            if (err) {
+                console.log('查无此人', err.message)
+            } else {
+                cb(null, results)
             }
         })
     }
