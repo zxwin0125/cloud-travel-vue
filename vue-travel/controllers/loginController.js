@@ -33,33 +33,56 @@ const loginController = {
                             data: 0
                         })
                     } else {
-                        bcrypt.compare(user.user_password, results[0].user_password, (err, result1) => {
-                            if (result1) {
-                                // res.json({code:200,msg:'密码正确', data:1})
-                                // 验证密码正确后
-                                // 创建token并返回
-                                jwt.sign({
-                                        user_id: results[0].user_id,
-                                        user_name: results[0].user_name,
-                                        user_phone: results[0].user_phone,
-                                        user_headPic: results[0].user_headPic_url
-                                    },
-                                    'privateKey', {
-                                        expiresIn: 3600 * 3600
-                                    },
-                                    (err, token) => {
-                                        // console.log(results[0].user_id);
-                                        res.json({
-                                            code: 200,
-                                            msg: '登陆成功',
-                                            data: 'Bearer ' + token,
-                                            user_id: results[0].user_id,
-                                            user_name: results[0].user_name,
-                                            user_headPic: results[0].user_headPic_url
-                                        });
+                        // 密码匹配
+                        // bcrypt.compare(user.user_password, results[0].user_password, (err, result1) => {
+                        //     if (result1) {
+                        //         // res.json({code:200,msg:'密码正确', data:1})
+                        //         // 验证密码正确后
+                        //         // 创建token并返回
+                        //         jwt.sign({
+                        //                 user_id: results[0].user_id,
+                        //                 user_name: results[0].user_name,
+                        //                 user_phone: results[0].user_phone,
+                        //                 user_headPic: results[0].user_headPic_url
+                        //             },
+                        //             'privateKey', {
+                        //                 expiresIn: 3600 * 3600
+                        //             },
+                        //             (err, token) => {
+                        //                 // console.log(results[0].user_id);
+                        //                 res.json({
+                        //                     code: 200,
+                        //                     msg: '登陆成功',
+                        //                     data: 'Bearer ' + token,
+                        //                     user_id: results[0].user_id,
+                        //                     user_name: results[0].user_name,
+                        //                     user_headPic: results[0].user_headPic_url
+                        //                 });
+                        //             })
+                        //     }
+                        // })
+
+                        // 密码匹配
+                        bcrypt.compare(user.user_password, results[0].user_password).then(isMatch => {
+                            if (isMatch) {
+                                const rule = {
+                                    user_id: results[0].id,
+                                    user_name: results[0].user_name,
+                                    avatar: results[0].avatar,
+                                }
+
+                                jwt.sign(rule, { expiresIn: 3600 }, (err, token) => {
+                                    if (err) throw err
+                                    res.json({
+                                        success: true,
+                                        token: 'Bearer' + token
                                     })
+                                })
+                            } else {
+                                return res.status(400).json('密码错误!')
                             }
                         })
+
                     }
                 }
             })
