@@ -6,6 +6,9 @@
     <!-- 优势介绍 -->
     <HomeAdv />
 
+    <!-- 热门景点 -->
+    <HomeSpots :SpotsData="Spots" />
+
 
 
 
@@ -19,6 +22,7 @@
 
   // 导入子组件
   import HomeAdv from "../Home/components/HomeAdv"
+  import HomeSpots from "../Home/components/HomeSpots/HomeSpots"
 
   export default {
     name: 'Home',
@@ -28,23 +32,33 @@
 
 
       // 子组件
-      HomeAdv
+      HomeAdv,
+      HomeSpots,
     },
     data() {
       return {
-        // 图片地址数组
-        imgs: [
+        imgs: [ // 轮播图片地址
           require('assets/img/Swiper/swiper01.png'),
           require('assets/img/Swiper/swiper02.png'),
           require('assets/img/Swiper/swiper03.png'),
           require('assets/img/Swiper/swiper04.png'),
           require('assets/img/Swiper/swiper05.png')
         ],
-        imgHeight: "600px"
+        imgHeight: "600px", // 轮播图高度
+        Spots: [], // 热门景点数据
       }
     },
     computed: {
       
+    },
+    create() {
+      // 初始化方法
+      this.initData()
+    },
+    methods: {
+      initData() {
+        
+      }
     }
   }
 </script>
