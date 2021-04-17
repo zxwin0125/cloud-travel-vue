@@ -1,5 +1,5 @@
 <template>
-    <section id="nav">
+    <section class="nav">
         <el-menu :default-active="$route.path" class="el-menu-demo" mode="horizontal" text-color="#909399"
             active-text-color="#409EFF" @select="handleSelect">
             <!-- 首页 -->
@@ -103,7 +103,7 @@
     }
 </script>
 
-<style lang = "scss" scoped>
+<style lang="scss" scoped>
     .el-menu-item {
         color: #909399;
         line-height: 60px;
