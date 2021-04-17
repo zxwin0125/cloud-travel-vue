@@ -19,8 +19,9 @@ require("./config/passport")(passport)
 
 
 const users = require("./routes/api/users") // 导入路由模块
+const index = require("./routes/api/index") 
 app.use("/api/users",users) // 使用routes
-
+app.use("/api/index",users)
 
 
 // 端口号
