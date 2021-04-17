@@ -57,7 +57,7 @@
     },
     methods: {
       initData() {
-        
+        this.$axios.get('')
       }
     }
   }
