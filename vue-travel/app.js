@@ -1,15 +1,23 @@
 // 项目入口文件
 // 引入 Express
 const express = require('express')
-// 实例化 App
-const app = express();
+
 // 引入 passport
 const passport = require('passport')
 // 引入 body-parser
 const bodyParser = require("body-parser")
 
+
+
+// 实例化 App
+const app = express();
+
+
+
 // 使用body-parser中间件
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 app.use(bodyParser.json());
 
 // passport 初始化
@@ -17,18 +25,29 @@ app.use(passport.initialize())
 
 require("./config/passport")(passport)
 
-
+// 路由
 const users = require("./routes/api/users") // 导入路由模块
-const index = require("./routes/api/index") 
-app.use("/api/users",users) // 使用routes
-app.use("/api/index",index)
+const index = require("./routes/api/index")
+app.use("/api/users", users) // 使用routes
+app.use("/api/index", index)
+
+
+// 处理跨域
+//设置跨域访问
+app.all('*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+    res.header("X-Powered-By",' 3.2.1')
+    res.header("Content-Type", "application/json;charset=utf-8");
+    next();
+});
 
 
 // 端口号
 const port = process.env.PORT || 3000;
 
 // 监听本地服务器
-app.listen(port,()=>{
+app.listen(port, () => {
     console.log(`Server running on port ${port}`)
 })
-
