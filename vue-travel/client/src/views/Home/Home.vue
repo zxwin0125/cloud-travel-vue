@@ -49,22 +49,34 @@ export default {
   computed: {},
   created() {
     // 初始化方法
-    this.initData();
+    // this.initData();
   },
   mounted() {
     //当页面渲染完成时调用方法获取数据
-    // this.getTour();
+    this.getTour();
     // this.getBlog();
     // this.getPack();
   },
   methods: {
-    initData() {
-      this.$axios.get("http://localhost:3000/api/index/getTour")
-          .then(res => {
-            console.log('1212',res);
-            this.Spots = res
-          })
-    },
+    // 异步调用 getIndex 接口
+    // 获取首页数据
+    async getTour() {
+      // 捕获异常
+      try { 
+        // 等待异步方法执行完成
+        const result = await getTour();
+        console.log('首页数据',result);
+      } catch (err) {
+        console.log('err',err);
+      }
+    }
+    // initData() {
+    //   this.$axios.get("http://localhost:3000/api/index/getTour")
+    //       .then(res => {
+    //         console.log('1212',res);
+    //         this.Spots = res
+    //       })
+    // },
   },
 };
 </script>
