@@ -33,12 +33,14 @@ router.post('/login', (req, res) => {
     loginController.loginUsers(req, res);
 });
 
-router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
+router.get('/current', passport.authenticate('jwt', {
+    session: false
+}), (req, res) => {
     res.json({
         id: req.user.id,
         name: req.user.name,
         phone: req.user.phone,
-      });
+    });
 })
 
 module.exports = router;

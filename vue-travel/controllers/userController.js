@@ -2,10 +2,10 @@
 const userDAL = require('../model/userDAL')
 
 const userController = {
-    getAllUsers: function(req, res) {
+    getAllUsers: (req, res) => {
         let user_id = req.query.user_id
         console.log(user_id)
-        userDAL.getAllUsers(user_id, function(err, results){
+        userDAL.getAllUsers(user_id, (err, results) => {
             if (err) {
                 res.json({code: 500, message: '数据查询错误'})
             } else {
