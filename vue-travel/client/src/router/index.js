@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
+// 引入路由
 import Home from '../views/Home/Home.vue'
 
 Vue.use(VueRouter)
