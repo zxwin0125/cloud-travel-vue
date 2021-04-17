@@ -13,6 +13,9 @@
     name: "App",
     components: {
       Nav
+    },
+    create() {
+      
     }
   }
 </script>
