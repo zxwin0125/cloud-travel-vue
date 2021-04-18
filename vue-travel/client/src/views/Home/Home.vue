@@ -7,7 +7,7 @@
     <HomeAdv />
 
     <!-- 热门景点 -->
-    <HomeTour :SpotsData="Spots" />
+    <HomeTour :tourData="Tourlist" />
   </section>
 </template>
 
@@ -67,6 +67,7 @@ export default {
         // 等待异步方法执行完成
         const result = await getTour();
         console.log('首页 Tour 数据',result.data.data);
+        this.Tourlist = result.data.data
       } catch (err) {
         console.log('err',err);
       }
@@ -78,6 +79,7 @@ export default {
         // 等待异步方法执行完成
         const result = await getBlog();
         console.log('首页 Blog 数据',result.data.data);
+        this.Bloglist = result.data.data
       } catch (err) {
         console.log('err',err);
       }
@@ -89,6 +91,7 @@ export default {
         // 等待异步方法执行完成
         const result = await getPack();
         console.log('首页 Pack 数据',result.data.data);
+        this.Packlist = result.data.data
       } catch (err) {
         console.log('err',err);
       }

@@ -2,7 +2,7 @@
   <section class="homeTour">
     <el-container>
       <el-row>
-        <el-col :span="16" class="spots_head">
+        <el-col :span="16" class="tour_head">
           <h2>
             热门景点·
             <span style="font-size: 25px">Tourism</span>
@@ -11,84 +11,87 @@
         </el-col>
       </el-row>
       <el-row :span="24">
-        <!-- <SpotsItem v-for="item in SpotsData" :key="item.index_infoID" :SpotsItemData="item" /> -->
+        <!-- <tourItem
+          v-for="item in tourData"
+          :key="item.index_infoID"
+          :tourItemData="item"
+        /> -->
       </el-row>
     </el-container>
   </section>
 </template>
     
 <script>
-// <!-- import SpotsItem from '../HomeSpots/ChildSpots/SpotsItem' -->
-export default {
-  name: "homeTour",
-  components: {
-    // <!-- SpotsItem -->
-  },
-  props: {
-    SpotsData: {
-      type: Array,
+  // import tourItem from "components/tourItem";
+  export default {
+    name: "homeTour",
+    components: {
+      // tourItem,
     },
-  },
-  data() {
-    return {};
-  },
-};
+    props: {
+      tourData: {
+        type: Array,
+      },
+    },
+    data() {
+      return {};
+    },
+  };
 </script>
     
-    <style lang="scss" scoped>
-.homeSpots {
+<style lang="scss" scoped>
+.homeTour {
   background-color: #f4f4f4;
   padding: 2em 0;
   clear: both;
+
+  .el-container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: 36px;
+    margin-left: 36px;
+    display: flex;
+    flex-direction: column;
+
+    .el-row {
+      margin-right: -15px;
+      margin-left: -15px;
+
+      .el-col {
+        position: relative;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+
+        .tour_head {
+          margin-left: 195px;
+          text-align: center;
+
+          h2 {
+            font-size: 40px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            color: #000;
+          }
+
+          p {
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.5;
+            color: #828282;
+          }
+        }
+      }
+    }
+  }
 }
 
-.el-container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: 36px;
-  margin-left: 36px;
-  display: flex;
-  flex-direction: column;
-}
-
-.el-row {
-  margin-right: -15px;
-  margin-left: -15px;
-}
-
-.el-col {
-  position: relative;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-.spots_head {
-  margin-left: 195px;
-  text-align: center;
-}
-
-.spots_head h2 {
-  font-size: 40px;
-  font-weight: 600;
-  /* // margin-top: 20px; */
-  margin-bottom: 20px;
-  line-height: 1.5;
-  color: #000;
-}
-
-.spots_head p {
-  margin-bottom: 20px;
-  font-size: 18px;
-  line-height: 1.5;
-  color: #828282;
-}
-
-.spots_item {
+.tour_item {
   margin-bottom: 30px;
 }
 
-.spots_item > a {
+.tour_item > a {
   display: block;
   color: #000;
   position: relative;
@@ -97,12 +100,12 @@ export default {
   transition: 0.5s;
 }
 
-.spots_item > a img {
+.tour_item > a img {
   position: relative;
   transition: 0.5s;
 }
 
-.spots_item > a h3 {
+.tour_item > a h3 {
   z-index: 12;
   position: absolute;
   right: 20px;

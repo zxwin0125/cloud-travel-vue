@@ -1,9 +1,9 @@
 <template>
-    <section id="spots_item">
-        <el-col :span="8" class="spots_item">
+    <section class="tourItem">
+        <el-col :span="8" class="tour_item">
             <router-link to="/destination">
                 <img :src="imgs" alt="">
-                <h3>{{SpotsItemData.index_tourTitle}}</h3>
+                <h3>{{tourItemData.index_tourTitle}}</h3>
             </router-link>
         </el-col>
     </section>
@@ -12,15 +12,15 @@
 <script>
 
     export default {
-        name: "SpotsItem",
+        name: "tourItem",
         props: {
-            SpotsItemData: {
+            tourItemData: {
                 type: Object,
             }
         },
         data() {
             return {
-                imgs: require("@/assets/img/Home/spots/" + this.SpotsItemData.index_tourImg + ".jpg"),
+                imgs: require("@/assets/img/Home/tour/" + this.tourItemData.index_tourImg + ".jpg"),
                 
             }
         }
@@ -35,11 +35,11 @@
         padding-left: 15px;
     }
 
-    .spots_item {
+    .tour_item {
         margin-bottom: 30px;
     }
 
-    .spots_item>a {
+    .tour_item>a {
         display: block;
         color: #000;
         position: relative;
@@ -48,14 +48,14 @@
         transition: 0.5s;
     }
 
-    .spots_item>a img {
+    .tour_item>a img {
         position: relative;
         transition: 0.5s;
         width: 100%;
         height: 100%;
     }
 
-    .spots_item>a h3 {
+    .tour_item>a h3 {
         z-index: 12;
         position: absolute;
         right: 20px;
