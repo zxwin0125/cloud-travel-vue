@@ -1,6 +1,8 @@
 // 项目入口文件
 // 引入 Express
 const express = require('express')
+// 引入 cors 模块
+const cors = require('cors')
 
 // 引入 passport
 const passport = require('passport')
@@ -11,6 +13,9 @@ const bodyParser = require("body-parser")
 
 // 实例化 App
 const app = express();
+
+// 使用 cors 模块解决跨域问题
+app.use(cors());
 
 
 
@@ -32,16 +37,9 @@ app.use("/api/users", users) // 使用routes
 app.use("/api/index", index)
 
 
-// 处理跨域
-//设置跨域访问
-app.all('*', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-    res.header("X-Powered-By",' 3.2.1')
-    res.header("Content-Type", "application/json;charset=utf-8");
-    next();
-});
+
+
+
 
 
 // 端口号
@@ -51,3 +49,5 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server running on port ${port}`)
 })
+
+module.exports = app;
