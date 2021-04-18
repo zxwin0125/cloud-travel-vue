@@ -8,6 +8,10 @@
 
     <!-- 热门景点 -->
     <HomeTour :tourData="Tourlist" />
+
+    <!-- 我们的服务开始 -->
+    <HomeServer />
+
   </section>
 </template>
 
@@ -21,6 +25,7 @@ import Swiper from "components/Swiper";
 // 导入子组件
 import HomeAdv from "../Home/components/HomeAdv";
 import HomeTour from "../Home/components/HomeTour/HomeTour";
+import HomeServer from "../Home/components/HomeServer"
 
 export default {
   name: "Home",
@@ -31,6 +36,7 @@ export default {
     // 子组件
     HomeAdv,
     HomeTour,
+    HomeServer
   },
   data() {
     return {
