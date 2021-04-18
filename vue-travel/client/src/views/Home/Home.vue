@@ -7,7 +7,7 @@
     <HomeAdv />
 
     <!-- 热门景点 -->
-    <HomeSpots :SpotsData="Spots" />
+    <HomeTour :SpotsData="Spots" />
   </section>
 </template>
 
@@ -20,7 +20,7 @@ import Swiper from "components/Swiper";
 
 // 导入子组件
 import HomeAdv from "../Home/components/HomeAdv";
-import HomeSpots from "../Home/components/HomeSpots/HomeSpots";
+import HomeTour from "../Home/components/HomeTour/HomeTour";
 
 export default {
   name: "Home",
@@ -30,7 +30,7 @@ export default {
 
     // 子组件
     HomeAdv,
-    HomeSpots,
+    HomeTour,
   },
   data() {
     return {
@@ -43,7 +43,9 @@ export default {
         require("assets/img/Swiper/swiper05.png"),
       ],
       imgHeight: "600px", // 轮播图高度
-      Spots: [], // 热门景点数据
+      Tourlist: [], // 热门景点数据
+      Bloglist: [], // 精选游记数据
+      Packlist: [], // 购票服务数据
     };
   },
   computed: {},
@@ -53,8 +55,8 @@ export default {
   mounted() {
     //当页面渲染完成时调用方法获取数据
     this.getTourData();
-    // this.getBlog();
-    // this.getPack();
+    this.getBlogData();
+    this.getPackData();
   },
   methods: {
     // 异步调用 getIndex 接口
@@ -64,11 +66,33 @@ export default {
       try { 
         // 等待异步方法执行完成
         const result = await getTour();
-        console.log('首页 Tour 数据',result);
+        console.log('首页 Tour 数据',result.data.data);
       } catch (err) {
         console.log('err',err);
       }
-    }
+    },
+
+    async getBlogData() {
+      // 捕获异常
+      try { 
+        // 等待异步方法执行完成
+        const result = await getBlog();
+        console.log('首页 Blog 数据',result.data.data);
+      } catch (err) {
+        console.log('err',err);
+      }
+    },
+
+    async getPackData() {
+      // 捕获异常
+      try { 
+        // 等待异步方法执行完成
+        const result = await getPack();
+        console.log('首页 Pack 数据',result.data.data);
+      } catch (err) {
+        console.log('err',err);
+      }
+    },
   },
 };
 </script>

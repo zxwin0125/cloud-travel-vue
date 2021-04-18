@@ -1,5 +1,5 @@
 <template>
-  <section class="homeSpots">
+  <section class="homeTour">
     <el-container>
       <el-row>
         <el-col :span="16" class="spots_head">
@@ -20,7 +20,7 @@
 <script>
 // <!-- import SpotsItem from '../HomeSpots/ChildSpots/SpotsItem' -->
 export default {
-  name: "HomeSpots",
+  name: "homeTour",
   components: {
     // <!-- SpotsItem -->
   },
