@@ -10,7 +10,6 @@
 </template>
 
 <script>
-
     export default {
         name: "tourItem",
         props: {
@@ -20,8 +19,7 @@
         },
         data() {
             return {
-                imgs: require("@/assets/img/Home/tour/" + this.tourItemData.index_tourImg + ".jpg"),
-                
+                imgs: require("@/assets/img/Home/tour/" + this.tourItemData.tour_img + ".jpg"),
             }
         }
     }
