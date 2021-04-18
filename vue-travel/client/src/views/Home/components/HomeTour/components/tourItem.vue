@@ -3,7 +3,7 @@
         <el-col :span="8" class="tour_item">
             <router-link to="/destination">
                 <img :src="imgs" alt="">
-                <h3>{{tourItemData.index_tourTitle}}</h3>
+                <h3>{{tourItemData.tour_title}}</h3>
             </router-link>
         </el-col>
     </section>
