@@ -10,8 +10,10 @@
     <HomeTour :tourData="Tourlist" />
 
     <!-- 我们的服务开始 -->
-    <!-- <HomeServer /> -->
+    <HomeServer />
 
+    <!-- 热门游记开始 -->
+    <HomeBlog :BlogData="Bloglist" />
   </section>
 </template>
 
@@ -25,7 +27,8 @@ import Swiper from "components/Swiper";
 // 导入子组件
 import HomeAdv from "../Home/components/HomeAdv";
 import HomeTour from "../Home/components/HomeTour/HomeTour";
-// import HomeServer from "../Home/components/HomeServer"
+import HomeServer from "../Home/components/HomeServer";
+import HomeBlog from "../Home/components/HomeBlog/HomeBlog";
 
 export default {
   name: "Home",
@@ -36,7 +39,8 @@ export default {
     // 子组件
     HomeAdv,
     HomeTour,
-    // HomeServer
+    HomeServer,
+    HomeBlog,
   },
   data() {
     return {
@@ -55,9 +59,7 @@ export default {
     };
   },
   computed: {},
-  created() {
-
-  },
+  created() {},
   mounted() {
     //当页面渲染完成时调用方法获取数据
     this.getTourData();
@@ -69,41 +71,41 @@ export default {
     // 获取首页数据
     async getTourData() {
       // 捕获异常
-      try { 
+      try {
         // 等待异步方法执行完成
         const result = await getTour();
-        console.log('首页 Tour 数据',result.data.data);
-        this.Tourlist = result.data.data
+        console.log("首页 Tour 数据", result.data.data);
+        this.Tourlist = result.data.data;
       } catch (err) {
-        console.log('err',err);
+        console.log("err", err);
       }
     },
 
     async getBlogData() {
       // 捕获异常
-      try { 
+      try {
         // 等待异步方法执行完成
         const result = await getBlog();
-        console.log('首页 Blog 数据',result.data.data);
-        this.Bloglist = result.data.data
+        console.log("首页 Blog 数据", result.data.data);
+        this.Bloglist = result.data.data;
       } catch (err) {
-        console.log('err',err);
+        console.log("err", err);
       }
     },
 
     async getPackData() {
       // 捕获异常
-      try { 
+      try {
         // 等待异步方法执行完成
         const result = await getPack();
-        console.log('首页 Pack 数据',result.data.data);
-        this.Packlist = result.data.data
+        console.log("首页 Pack 数据", result.data.data);
+        this.Packlist = result.data.data;
       } catch (err) {
-        console.log('err',err);
+        console.log("err", err);
       }
     },
   },
 };
 </script>
-<style>
+<style lang="scss" scoped>
 </style>
