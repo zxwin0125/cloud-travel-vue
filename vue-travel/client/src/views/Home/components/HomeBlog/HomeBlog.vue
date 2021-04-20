@@ -50,6 +50,7 @@ export default {
 </script>
     
 <style lang="scss" scoped>
+
 .homeBlog {
   background: transparent no-repeat center center fixed;
   overflow: hidden;
