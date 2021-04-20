@@ -14,6 +14,9 @@
 
     <!-- 热门游记开始 -->
     <HomeBlog :BlogData="Bloglist" />
+
+    <!-- 购票服务 -->
+    <HomeTicket :TicketData="Packlist" />
   </section>
 </template>
 
@@ -29,6 +32,7 @@ import HomeAdv from "../Home/components/HomeAdv";
 import HomeTour from "../Home/components/HomeTour/HomeTour";
 import HomeServer from "../Home/components/HomeServer";
 import HomeBlog from "../Home/components/HomeBlog/HomeBlog";
+import HomeTicket from "../Home/components/HomeTicket/HomeTicket"
 
 export default {
   name: "Home",
@@ -41,6 +45,7 @@ export default {
     HomeTour,
     HomeServer,
     HomeBlog,
+    HomeTicket,
   },
   data() {
     return {
