@@ -10,7 +10,7 @@
           <p>旅行，自由。没有繁琐的计划，没有沉重的负担，只有最纯粹的态度。</p>
         </el-col>
       </el-row>
-      <el-row :span="24">
+      <el-row :span="24" class="tour_contain">
         <tourItem
           v-for="item in tourData"
           :key="item.index_infoID"
@@ -56,7 +56,7 @@ export default {
     .el-row {
       margin-right: -15px;
       margin-left: -15px;
-
+      
       .el-col {
         position: relative;
         min-height: 1px;
@@ -87,38 +87,5 @@ export default {
   }
 }
 
-// .tour_item {
-//   margin-bottom: 30px;
-// }
-
-// .tour_item > a {
-//   display: block;
-//   color: #000;
-//   position: relative;
-//   bottom: 0;
-//   overflow: hidden;
-//   transition: 0.5s;
-// }
-
-// .tour_item > a img {
-//   position: relative;
-//   transition: 0.5s;
-// }
-
-// .tour_item > a h3 {
-//   z-index: 12;
-//   position: absolute;
-//   right: 20px;
-//   left: 20px;
-//   bottom: 50px;
-//   color: #fff;
-//   margin: 0;
-//   padding: 0;
-//   opacity: 1;
-//   font-size: 18px;
-//   font-weight: 300;
-//   visibility: visible;
-//   transition: 0.3s;
-// }
 </style>
     
