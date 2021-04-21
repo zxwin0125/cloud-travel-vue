@@ -41,7 +41,7 @@ const userController = {
         }
 
         // 2. 判断用户名与电话是否已存在
-        registerDAL.validateUsers(user, (err, results) => {
+        userDAL.validateUsers(user, (err, results) => {
             if (err) {
                 res.json({
                     code: err.code,
@@ -58,7 +58,7 @@ const userController = {
 
                         user.user_password = hash
 
-                        registerDAL.registerUsers(user, (err, results) => {
+                        userDAL.registerUsers(user, (err, results) => {
                             if (results.affectedRows == 1) {
                                 console.log('ok')
                                 res.json({
@@ -95,7 +95,7 @@ const userController = {
             })
         } else {
             // 检查密码是否一致
-            loginDAL.checkPwd(user, (err, results) => {
+            userDAL.checkPwd(user, (err, results) => {
                 if (err) {
                     res.json({
                         code: 500,
