@@ -17,6 +17,9 @@
 
     <!-- 购票服务 -->
     <HomeTicket :TicketData="Packlist" />
+
+    <!-- 联系我们开始 -->
+    <HomeConnect />
   </section>
 </template>
 
@@ -32,7 +35,8 @@ import HomeAdv from "../Home/components/HomeAdv";
 import HomeTour from "../Home/components/HomeTour/HomeTour";
 import HomeServer from "../Home/components/HomeServer";
 import HomeBlog from "../Home/components/HomeBlog/HomeBlog";
-import HomeTicket from "../Home/components/HomeTicket/HomeTicket"
+import HomeTicket from "../Home/components/HomeTicket/HomeTicket";
+import HomeConnect from "../Home/components/HomeConnect";
 
 export default {
   name: "Home",
@@ -46,6 +50,7 @@ export default {
     HomeServer,
     HomeBlog,
     HomeTicket,
+    HomeConnect,
   },
   data() {
     return {
