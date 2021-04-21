@@ -36,78 +36,83 @@ export default {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+
   .el-container {
     padding-right: 15px;
     padding-left: 15px;
     margin-right: 40px;
     margin-left: 40px;
-    .el-row {
+
+    .ding {
       width: 100%;
-      margin-right: -15px;
-      margin-left: -15px;
+      margin: 10px -15px 0px;
       display: flex;
       flex-direction: row;
-      .ding {
-        margin-top: 20px;
-        .ding01 {
-          border-radius: 5px;
-          background: rgba(0, 0, 0, 0.5);
-          .el-col {
-            position: relative;
-            min-height: 1px;
-            padding-right: 15px;
-            padding-left: 15px;
+
+      .ding01 {
+        border-radius: 5px;
+        background: rgba(0, 0, 0, 0.5);
+
+        .el-col {
+          position: relative;
+          min-height: 1px;
+          padding-right: 15px;
+          padding-left: 15px;
+        }
+
+        .connectHeading {
+          margin-left: 0px;
+          margin-bottom: 2em;
+
+          img {
+            width: 100%;
+            border-radius: 5px;
           }
-          .connectHeading {
-            margin-left: 0px;
-            margin-bottom: 2em;
-            img {
-              width: 100%;
-              border-radius: 5px;
-            }
-            h3 {
-              color: #fff;
-              font-size: 24px;
-              margin-top: 20px;
-              margin-bottom: 10px;
-              font-family: inherit;
-              font-weight: 500;
-              line-height: 1.1;
-            }
-            p {
-              font-size: 18px;
-              line-height: 1.5;
-              color: rgba(255, 255, 255, 0.5);
-              margin-bottom: 20px;
-            }
-            .btn {
-              font-family: 微软雅黑;
-              font-size: 16px;
-              font-weight: 400;
-              margin-right: 4px;
-              margin-bottom: 4px;
-              padding: 7px 5px;
-              border: none !important;
-              border-radius: 5px;
-              background: cadetblue;
-              color: #fff;
-              display: block;
-              text-align: center;
-              width: 90px;
-            }
+
+          h3 {
+            color: #fff;
+            font-size: 24px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-family: inherit;
+            font-weight: 500;
+            line-height: 1.1;
+          }
+
+          p {
+            font-size: 18px;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 20px;
+          }
+
+          .btn {
+            font-family: 微软雅黑;
+            font-size: 16px;
+            font-weight: 400;
+            margin-right: 4px;
+            margin-bottom: 4px;
+            padding: 7px 5px;
+            border: none !important;
+            border-radius: 5px;
+            background: cadetblue;
+            color: #fff;
+            display: block;
+            text-align: center;
+            width: 90px;
           }
         }
       }
     }
+
+    div:nth-child(2) {
+      margin-top: 25px;
+    }
+
+    div:last-child {
+      margin-top: 25px !important;
+    }
   }
 }
-
-// .ding div:nth-child(2) {
-//   margin-top: 25px;
-// }
-
-// .ding div:last-child {
-//   margin-top: 25px !important;
-// }
 </style>
     
