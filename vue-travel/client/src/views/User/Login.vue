@@ -12,20 +12,21 @@
               status-icon
             >
               <h2 class="form-signin-heading">快来登陆吧!</h2>
-              <el-form-item prop="username">
+              <el-form-item prop="user_name">
                 <el-input
                   type="text"
                   placeholder="用户名"
-                  v-model="ruleForm.username"
+                  v-model="ruleForm.user_name"
                   autocomplete="off"
                 ></el-input>
               </el-form-item>
-              <el-form-item prop="pass">
+              <el-form-item prop="user_password">
                 <el-input
-                  type="password"
+                  type="user_password"
                   placeholder="密码"
-                  v-model="ruleForm.pass"
+                  v-model="ruleForm.user_password"
                   autocomplete="off"
+                  show-password
                 ></el-input>
               </el-form-item>
               <el-form-item>
@@ -55,35 +56,34 @@ export default {
   name: "Login",
   components: {},
   data() {
-    // 校验用户名
-    var checkUserName = (rule, value, callback) => {
-      if (!value) {
-        return callback(new Error("用户名不能为空!"));
-      }
-    };
-
-    // 校验密码
-    var checkPass = (rule, value, callback) => {
-      if (!value) {
-        callback(new Error("密码不能为空!"));
-      } else {
-        if (this.ruleForm.checkPass !== "") {
-          this.$refs.ruleForm.validateField("checkPass");
-        }
-        callback();
-      }
-    };
-
     return {
       // 表单信息
       ruleForm: {
-        username: "",
-        pass: "",
+        user_name: "",
+        user_password: "",
       },
 
       rules: {
-        username: [{ validator: checkUserName, trigger: "blur" }],
-        pass: [{ validator: checkPass, trigger: "blur" }],
+        user_name: [
+          {
+            required: true,
+            message: "用户名不能为空!",
+            trigger: "blur",
+          },
+        ],
+        user_password: [
+          {
+            required: true,
+            message: "密码不能为空!",
+            trigger: "blur",
+          },
+          {
+            min: 6,
+            max: 30,
+            message: "长度在 6 到 30 个字符",
+            trigger: "blur",
+          },
+        ],
       },
     };
   },
@@ -102,33 +102,35 @@ export default {
 
       event.preventDefault();
       // 调用登陆接口
-      login(this.ruleForm.username, this.ruleForm.pass).then((res) => {
-        console.log(res.data);
-        // 拿到 token，存储到本地
-        localStorage.setItem("token", res.data.data);
-        localStorage.setItem("userid", res.data.id);
-        localStorage.setItem("username", res.data.username);
-        localStorage.setItem("userImg", res.data.user_headPic);
-        //保存登录用户的信息到Vuex的store
-        this.$store.state.userInfo = {
-          userid: res.data.id,
-          username: res.data.username,
-          userImg: res.data.user_headPic,
-        };
-        // console.log(res.data)
-        if (res.data.code == 200) {
-          // 登录成功，跳转到个人中心
-          this.$message({
-            message: "恭喜你，登陆成功",
-            type: "success",
-          });
+      login(this.ruleForm.user_name, this.ruleForm.user_password).then(
+        (res) => {
+          console.log(res.data);
+          // 拿到 token，存储到本地
+          localStorage.setItem("token", res.data.data);
+          localStorage.setItem("userid", res.data.id);
+          localStorage.setItem("user_name", res.data.user_name);
+          localStorage.setItem("userImg", res.data.user_headPic);
+          //保存登录用户的信息到Vuex的store
+          this.$store.state.userInfo = {
+            userid: res.data.id,
+            user_name: res.data.user_name,
+            userImg: res.data.user_headPic,
+          };
+          // console.log(res.data)
+          if (res.data.code == 200) {
+            // 登录成功，跳转到个人中心
+            this.$message({
+              message: "恭喜你，登陆成功",
+              type: "success",
+            });
 
-          // 跳转页面, 根据业务需要
-          this.$router.push({ path: "/" });
-        } else {
-          this.$message.error("登陆失败");
+            // 跳转页面, 根据业务需要
+            this.$router.push({ path: "/" });
+          } else {
+            this.$message.error("登陆失败");
+          }
         }
-      });
+      );
     },
   },
 };
