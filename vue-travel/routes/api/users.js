@@ -8,10 +8,10 @@ const passport = require('passport')
 const userController = require('../../controllers/userController')
 
 // register
-const registerController = require('../../controllers/registerController')
+// const registerController = require('../../controllers/registerController')
 
 // login
-const loginController = require('../../controllers/loginController')
+// const loginController = require('../../controllers/loginController')
 
 
 
@@ -24,23 +24,22 @@ router.get('/getUsers', (req, res) => {
 
 // route   POST 请求 api/users/register  返回的请求为 json 数据
 router.post('/register', (req, res) => {
-    // console.log(req.body);
-    registerController.registerUsers(req, res)
+    userController.registerUsers(req, res)
 })
 
 // route   POST 请求 api/users/login  返回的请求为 json 数据
 router.post('/login', (req, res) => {
-    loginController.loginUsers(req, res);
+    userController.loginUsers(req, res);
 });
 
-router.get('/current', passport.authenticate('jwt', {
-    session: false
-}), (req, res) => {
-    res.json({
-        id: req.user.id,
-        name: req.user.name,
-        phone: req.user.phone,
-    });
-})
+// router.get('/current', passport.authenticate('jwt', {
+//     session: false
+// }), (req, res) => {
+//     res.json({
+//         id: req.user.id,
+//         name: req.user.name,
+//         phone: req.user.phone,
+//     });
+// })
 
 module.exports = router;

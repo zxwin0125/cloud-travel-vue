@@ -87,13 +87,15 @@ export default {
       },
     };
   },
-
+  computed: {},
+  created() {},
+  mounted() {},
   methods: {
     // 登陆方法
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert("submit!");
+          let result = login()
         } else {
           console.log("error submit!!");
           return false;
