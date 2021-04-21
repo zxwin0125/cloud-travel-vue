@@ -1,5 +1,5 @@
 <template>
-    <section class="nav">
+    <section class="nav" v-show="$route.meta.isturn">
         <el-menu :default-active="$route.path" class="el-menu-demo" mode="horizontal" text-color="#909399"
             active-text-color="#409EFF" @select="handleSelect">
             <!-- 首页 -->

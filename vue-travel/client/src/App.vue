@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- 导航栏 -->
-    <Nav></Nav>
+    <Nav />
     <!-- 视图 -->
     <router-view />
   </div>
