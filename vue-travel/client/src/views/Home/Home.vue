@@ -20,6 +20,9 @@
 
     <!-- 联系我们开始 -->
     <HomeConnect />
+
+    <!-- 底部开始 -->
+    <Footer />
   </section>
 </template>
 
@@ -37,6 +40,7 @@ import HomeServer from "../Home/components/HomeServer";
 import HomeBlog from "../Home/components/HomeBlog/HomeBlog";
 import HomeTicket from "../Home/components/HomeTicket/HomeTicket";
 import HomeConnect from "../Home/components/HomeConnect";
+import Footer from "@/components/Footer"
 
 export default {
   name: "Home",
@@ -51,6 +55,7 @@ export default {
     HomeBlog,
     HomeTicket,
     HomeConnect,
+    Footer
   },
   data() {
     return {
@@ -62,7 +67,7 @@ export default {
         require("assets/img/Swiper/swiper04.png"),
         require("assets/img/Swiper/swiper05.png"),
       ],
-      imgHeight: "600px", // 轮播图高度
+      imgHeight: "500px", // 轮播图高度
       Tourlist: [], // 热门景点数据
       Bloglist: [], // 精选游记数据
       Packlist: [], // 购票服务数据
