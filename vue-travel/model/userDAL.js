@@ -52,10 +52,10 @@ const userDAL = {
 
     // 检查密码与数据库是否一致
     checkPwd: (user, cb) => {
-        const sql = 'select user_password from user_info where user_name = ?'
+        const sql = 'select user_id, user_name, user_password, user_phone, user_headPic_url from user_info where user_name = ?'
         dao(sql, [user.user_name], (err, results) => {
             if (err) {
-                console.log('查无此人', err.message)
+                console.log('密码错误', err.message)
             } else {
                 cb(null, results)
             }
