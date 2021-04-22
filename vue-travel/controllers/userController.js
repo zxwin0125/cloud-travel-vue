@@ -15,6 +15,7 @@ const userController = {
             user_name: req.body.user_name,
             user_password: req.body.user_password
         }
+
         // 检查登陆用户名和密码是否存在
         userDAL.loginUsers(user, (err, results) => {
             if (err) {
@@ -23,11 +24,17 @@ const userController = {
                     msg: '用户名或密码不存在',
                     data: 0
                 })
+            } else if(results == false) {
+                res.json({
+                    code: 500,
+                    msg: '用户名或密码不存在',
+                    data: 0
+                })
             } else {
-                if (!user.user_password) { // 密码为空
+                if (user.user_password == '') { // 密码为空
                     res.json({
                         code: 500,
-                        msg: '密码错误',
+                        msg: '密码不能为空',
                         data: 0
                     })
                 } else {

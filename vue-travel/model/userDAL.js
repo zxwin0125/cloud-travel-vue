@@ -40,10 +40,10 @@ const userDAL = {
 
     // 检查登陆用户名和密码是否存在
     loginUsers: (user, cb) => {
-        const sql = 'select 1 from user_info where user_name=? and user_password=?'
-        dao(sql, [user.user_name, user.user_password], (err, results) => {
+        const sql = 'select user_id, user_name, user_password, user_phone, user_headPic_url from user_info where user_name=?'
+        dao(sql, [user.user_name], (err, results) => {
             if (err) {
-                console.log('登录失败', err.message)
+                console.log('loginUsers - 系统错误', err.message)
             } else {
                 cb(null, results)
             }
@@ -55,7 +55,7 @@ const userDAL = {
         const sql = 'select user_id, user_name, user_password, user_phone, user_headPic_url from user_info where user_name = ?'
         dao(sql, [user.user_name], (err, results) => {
             if (err) {
-                console.log('密码错误', err.message)
+                console.log('checkPwd - 系统错误', err.message)
             } else {
                 cb(null, results)
             }
