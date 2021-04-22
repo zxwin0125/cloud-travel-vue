@@ -20,20 +20,20 @@ const userController = {
         userDAL.loginUsers(user, (err, results) => {
             if (err) {
                 res.json({
-                    code: 500,
+                    code: '500',
                     msg: 'loginUsers -- 系统错误',
                     data: 0
                 })
             } else if(results == false) {
                 res.json({
-                    code: 500,
+                    code: '401',
                     msg: '用户名不存在',
                     data: 0
                 })
             } else {
                 if (user.user_password == '') { // 密码是否为空
                     res.json({
-                        code: 500,
+                        code: '402',
                         msg: '密码不能为空',
                         data: 0
                     })
@@ -42,7 +42,7 @@ const userController = {
                     userDAL.checkPwd(user, (err, results) => {
                         if (err) {
                             res.json({
-                                code: 500,
+                                code: '500',
                                 msg: 'checkPwd -- 系统错误',
                                 data: 0
                             })
@@ -51,7 +51,7 @@ const userController = {
                             // 检验密码正确性
                             if (!results[0]) {
                                 res.json({
-                                    code: 500,
+                                    code: '500',
                                     msg: 'checkPwd -- 系统错误',
                                     data: 0
                                 })
@@ -105,8 +105,10 @@ const userController = {
                                         //     })
                                         // })
                                     } else {
-                                        return res.status(400).json({
-                                            password: '密码错误'
+                                        res.json({
+                                            code: '403',
+                                            msg: '密码错误',
+                                            data: 0
                                         })
                                     }
                                 })
@@ -127,12 +129,12 @@ const userController = {
         userDAL.getAllUsers(user_id, (err, results) => {
             if (err) {
                 res.json({
-                    code: 500,
+                    code: '501',
                     message: '数据查询错误'
                 })
             } else {
                 res.json({
-                    code: 200,
+                    code: '201',
                     message: '用户数据',
                     data: results
                 })
@@ -179,12 +181,12 @@ const userController = {
                         userDAL.registerUsers(user, (err, results) => {
                             if (results.affectedRows == 1) {
                                 res.json({
-                                    code: 200,
+                                    code: '200',
                                     data: 1
                                 })
                             } else {
                                 res.json({
-                                    code: 500,
+                                    code: '500',
                                     data: 0
                                 })
                             }

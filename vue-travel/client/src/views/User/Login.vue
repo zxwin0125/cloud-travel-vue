@@ -95,51 +95,59 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          login().then(res => {
+          login(this.ruleForm.user_name, this.ruleForm.user_password).then(res => {
+            console.log('login',res.data);
+            // 1. 错误情况
+            switch (res.data.code) {
+              case '401': this.$message.error("抱歉，用户名不存在！"); break;
+              case '402': this.$message.error("抱歉，密码不能为空！"); break;
+              case '403': this.$message.error("抱歉，密码错误！"); break;
+              case '500': this.$message.error("抱歉，系统错误！"); break; 
+            }
+            
             // 登录成功
-            const { token } = res.data;
-            localStorage.setItem("eleToken", token);
+            // const { token } = res.data;
+            // localStorage.setItem("eleToken", token);
 
             // 解析token
-            const decode = jwt_decode(token);
+            // const decode = jwt_decode(token);
           })
         } else {
-          console.log("error submit!!");
           return false;
         }
       });
 
       event.preventDefault();
       // 调用登陆接口
-      login(this.ruleForm.user_name, this.ruleForm.user_password).then(
-        (res) => {
-          console.log(res.data);
-          // 拿到 token，存储到本地
-          localStorage.setItem("token", res.data.data);
-          localStorage.setItem("userid", res.data.id);
-          localStorage.setItem("user_name", res.data.user_name);
-          localStorage.setItem("userImg", res.data.user_headPic);
-          //保存登录用户的信息到Vuex的store
-          this.$store.state.userInfo = {
-            userid: res.data.id,
-            user_name: res.data.user_name,
-            userImg: res.data.user_headPic,
-          };
-          // console.log(res.data)
-          if (res.data.code == 200) {
-            // 登录成功，跳转到个人中心
-            this.$message({
-              message: "恭喜你，登陆成功",
-              type: "success",
-            });
+      // login(this.ruleForm.user_name, this.ruleForm.user_password).then(
+      //   (res) => {
+      //     console.log(res.data);
+      //     // 拿到 token，存储到本地
+      //     localStorage.setItem("token", res.data.data);
+      //     localStorage.setItem("userid", res.data.id);
+      //     localStorage.setItem("user_name", res.data.user_name);
+      //     localStorage.setItem("userImg", res.data.user_headPic);
+      //     //保存登录用户的信息到Vuex的store
+      //     this.$store.state.userInfo = {
+      //       userid: res.data.id,
+      //       user_name: res.data.user_name,
+      //       userImg: res.data.user_headPic,
+      //     };
+      //     // console.log(res.data)
+      //     if (res.data.code == 200) {
+      //       // 登录成功，跳转到个人中心
+      //       this.$message({
+      //         message: "恭喜你，登陆成功",
+      //         type: "success",
+      //       });
 
-            // 跳转页面, 根据业务需要
-            this.$router.push({ path: "/" });
-          } else {
-            this.$message.error("登陆失败");
-          }
-        }
-      );
+      //       // 跳转页面, 根据业务需要
+      //       this.$router.push({ path: "/" });
+      //     } else {
+      //       this.$message.error("登陆失败");
+      //     }
+      //   }
+      // );
     },
   },
 };
