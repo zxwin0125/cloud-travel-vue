@@ -38,7 +38,7 @@ const userDAL = {
         })
     },
 
-    // 检查登陆用户名和密码是否存在
+    // 检查登陆用户名是否存在
     loginUsers: (user, cb) => {
         const sql = 'select user_id, user_name, user_password, user_phone, user_headPic_url from user_info where user_name=?'
         dao(sql, [user.user_name], (err, results) => {

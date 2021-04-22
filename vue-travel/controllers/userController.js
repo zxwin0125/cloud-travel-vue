@@ -16,22 +16,22 @@ const userController = {
             user_password: req.body.user_password
         }
 
-        // 检查登陆用户名和密码是否存在
+        // 检查登陆用户名是否存在
         userDAL.loginUsers(user, (err, results) => {
             if (err) {
                 res.json({
                     code: 500,
-                    msg: '用户名或密码不存在',
+                    msg: 'loginUsers -- 系统错误',
                     data: 0
                 })
             } else if(results == false) {
                 res.json({
                     code: 500,
-                    msg: '用户名或密码不存在',
+                    msg: '用户名不存在',
                     data: 0
                 })
             } else {
-                if (user.user_password == '') { // 密码为空
+                if (user.user_password == '') { // 密码是否为空
                     res.json({
                         code: 500,
                         msg: '密码不能为空',
@@ -43,15 +43,16 @@ const userController = {
                         if (err) {
                             res.json({
                                 code: 500,
-                                msg: '密码错误',
+                                msg: 'checkPwd -- 系统错误',
                                 data: 0
                             })
                         } else {
+                            console.log('12',results);
                             // 检验密码正确性
                             if (!results[0]) {
                                 res.json({
                                     code: 500,
-                                    msg: '密码错误',
+                                    msg: 'checkPwd -- 系统错误',
                                     data: 0
                                 })
                             } else {
@@ -105,7 +106,7 @@ const userController = {
                                         // })
                                     } else {
                                         return res.status(400).json({
-                                            password: '密码错误!'
+                                            password: '密码错误'
                                         })
                                     }
                                 })
