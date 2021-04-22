@@ -11,7 +11,6 @@ const userController = {
     // 用户数据
     getAllUsers: (req, res) => {
         let user_id = req.query.user_id
-        console.log(user_id)
         userDAL.getAllUsers(user_id, (err, results) => {
             if (err) {
                 res.json({code: 500, message: '数据查询错误'})
@@ -23,7 +22,6 @@ const userController = {
 
     // 用户注册
     registerUsers: (req, res) => {
-        console.log(req.body);
 
         // 头像
         const avatar = gravatar.url(req.body.email, {
@@ -60,13 +58,11 @@ const userController = {
 
                         userDAL.registerUsers(user, (err, results) => {
                             if (results.affectedRows == 1) {
-                                console.log('ok')
                                 res.json({
                                     code: 200,
                                     data: 1
                                 })
                             } else {
-                                console.log('err');
                                 res.json({
                                     code: 500,
                                     data: 0
@@ -83,11 +79,11 @@ const userController = {
     // 用户登录，检查登陆用户名和密码是否存在
     loginUsers: (req, res) => {
         const user = {
-            user_name: req.body.name,
-            user_password: req.body.password
+            user_name: req.body.user_name,
+            user_password: req.body.user_password
         }
 
-        if (user.user_password.trim() == '') { // 密码为空
+        if (!user.user_password) { // 密码为空
             res.json({
                 code: 500,
                 msg: '查无此人',

@@ -95,7 +95,10 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          let result = login()
+          login().then(res => {
+            // 登录成功
+            const { token } = res.data
+          })
         } else {
           console.log("error submit!!");
           return false;
