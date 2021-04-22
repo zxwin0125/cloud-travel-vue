@@ -7,6 +7,7 @@ const gravatar = require('gravatar')
 // 引入 json-web-token
 const jwt = require('jsonwebtoken')
 
+
 const userController = {
     // 用户数据
     getAllUsers: (req, res) => {
@@ -140,9 +141,9 @@ const userController = {
                         bcrypt.compare(user.user_password, results[0].user_password).then(isMatch => {
                             if (isMatch) {
                                 const rule = {
-                                    user_id: results[0].id,
+                                    user_id: results[0].user_id,
                                     user_name: results[0].user_name,
-                                    avatar: results[0].avatar,
+                                    avatar: results[0].user_headPic_url,
                                 }
 
                                 jwt.sign(rule, 'privateKey', { expiresIn: 3600 }, (err, token) => {

@@ -97,7 +97,11 @@ export default {
         if (valid) {
           login().then(res => {
             // 登录成功
-            const { token } = res.data
+            const { token } = res.data;
+            localStorage.setItem("eleToken", token);
+
+            // 解析token
+            const decode = jwt_decode(token);
           })
         } else {
           console.log("error submit!!");
