@@ -28,9 +28,11 @@ router.post('/login', (req, res) => {
 router.get('/current', passport.authenticate('jwt', {
     session: false
 }), (req, res) => {
-    res.json(
-        req.jwt_payload
-    );
+    res.json({
+        user_id: req.user.user_id,
+        user_name: req.user.user_name,
+        user_headPic_url: req.user.avatar
+    });
 })
 
 module.exports = router;

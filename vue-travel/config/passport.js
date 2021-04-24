@@ -12,7 +12,6 @@ opts.secretOrKey = 'privateKey'
 function myPassport(passport) {
     passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
         //jwt_payload保存的是token生成时的对象
-        console.log('qqqq', jwt_payload)
         //连接数据库，查看当前token中包含的唯一属性是否存在
         userDAL.getAllUsers(jwt_payload.user_id, (err, results) => {
             if (err) {
@@ -26,6 +25,16 @@ function myPassport(passport) {
                 }
             }
         })
+
+        // userDAL.getAllUsers(jwt_payload.user_id)
+        // .then(user => {
+        //   if(user){
+        //     return done(null,user);
+        //   }
+
+        //   return done(null,false);
+        // })
+        // .catch(err => console.log(err));
 
     }));
 }
