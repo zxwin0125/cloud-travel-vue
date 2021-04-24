@@ -88,22 +88,21 @@ const userController = {
                                 // 密码匹配
                                 bcrypt.compare(user.user_password, results[0].user_password).then(isMatch => {
                                     if (isMatch) {
-                                        res.json({
-                                            msg: 'success'
-                                        })
-                                        // const rule = {
-                                        //     user_id: results[0].user_id,
-                                        //     user_name: results[0].user_name,
-                                        //     avatar: results[0].user_headPic_url,
-                                        // }
+                                        // jwt.sign('规则','加密名字','过期时间','箭头函数')
+                                        const rule = {
+                                            user_id: results[0].user_id,
+                                            user_name: results[0].user_name,
+                                            avatar: results[0].user_headPic_url,
+                                        }
 
-                                        // jwt.sign(rule, 'privateKey', { expiresIn: 3600 }, (err, token) => {
-                                        //     if (err) throw err
-                                        //     res.json({
-                                        //         success: true,
-                                        //         token: 'Bearer ' + token
-                                        //     })
-                                        // })
+                                        jwt.sign(rule, 'privateKey', { expiresIn: 3600 }, (err, token) => {
+                                            if (err) throw err
+                                            res.json({
+                                                success: true,
+                                                token: 'Bearer ' + token
+                                            })
+                                        })
+                                        res.json({msg:'success'})
                                     } else {
                                         res.json({
                                             code: '403',

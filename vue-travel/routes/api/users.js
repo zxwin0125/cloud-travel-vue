@@ -7,11 +7,6 @@ const passport = require('passport')
 // getUsers
 const userController = require('../../controllers/userController')
 
-// register
-// const registerController = require('../../controllers/registerController')
-
-// login
-// const loginController = require('../../controllers/loginController')
 
 
 
