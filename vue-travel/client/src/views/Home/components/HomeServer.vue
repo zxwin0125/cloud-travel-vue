@@ -31,19 +31,20 @@
           </ul>
         </el-col>
         <el-col :span="10" class="servicePic">
-          <router-link tag="a" :to="{ path: 'Destination' }">
+          <div>
             <img
               src="@/assets/img/Home/service/ac.jpg"
               alt=""
               title="跳转到热门景点"
-          /></router-link>
+            />
+          </div>
         </el-col>
       </el-row>
     </el-container>
   </section>
 </template>
     
-    <script>
+<script>
 export default {
   name: "HomeServer",
 };

@@ -34,16 +34,16 @@ app.use(passport.initialize())
 require("./config/passport")(passport)
 
 // 配置session、cookie
-app.configure(function() {
-    app.use(cookie());
-    app.use(session({
-        name: 'final',
-        secret: '1234567',
-        cookie: {maxAge: 10000}, // 过期时间 毫秒为单位
-        resave: true, // 每次触发后保存时间
-        rolling: true // 最后一次触发后计时
-    }))
-})
+// app.configure(function() {
+//     app.use(cookie());
+//     app.use(session({
+//         name: 'final',
+//         secret: '1234567',
+//         cookie: {maxAge: 10000}, // 过期时间 毫秒为单位
+//         resave: true, // 每次触发后保存时间
+//         rolling: true // 最后一次触发后计时
+//     }))
+// })
 
 // 路由
 const users = require("./routes/api/users") // 导入路由模块

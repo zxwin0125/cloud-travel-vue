@@ -30,7 +30,9 @@
                 ></el-input>
               </el-form-item>
               <el-form-item>
-                <el-checkbox size="small" v-model="checked">记住密码</el-checkbox>
+                <el-checkbox size="small" v-model="checked"
+                  >记住密码</el-checkbox
+                >
                 <div class="goRegister">去注册</div>
               </el-form-item>
               <el-form-item>
@@ -84,59 +86,67 @@ export default {
             trigger: "blur",
           },
         ],
-        checked: false,
       },
+      checked: false,
     };
   },
   computed: {},
   created() {},
   mounted() {
     // 页面加载调用获取 cookie 值
-    this.getCookie()
+    this.getCookie();
   },
   methods: {
     // 登陆方法
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          // 判断复选框是否被勾选，勾选则调用配置cookie方法
-          if (this.checked) {
-            // 传入账号名，密码，保存天数3个参数
-            this.setCookie(this.ruleForm.user_name, this.ruleForm.user_password, 7);
-          } else {
-            // 清空 Cookie
-            this.clearCookie()
-          }
+          // // 判断复选框是否被勾选，勾选则调用配置cookie方法
+          // if (this.checked) {
+          //   // 传入账号名，密码，保存天数3个参数
+          //   this.setCookie(
+          //     this.ruleForm.user_name,
+          //     this.ruleForm.user_password,
+          //     7
+          //   );
+          // } else {
+          //   // 清空 Cookie
+          //   this.clearCookie();
+          // }
 
+          login(this.ruleForm.user_name, this.ruleForm.user_password).then(
+            (res) => {
+              console.log("login", res.data);
+              // 1. 错误情况
+              switch (res.data.code) {
+                case "401":
+                  this.$message.error("抱歉，用户名不存在！");
+                  break;
+                case "402":
+                  this.$message.error("抱歉，密码不能为空！");
+                  break;
+                case "403":
+                  this.$message.error("抱歉，密码错误！");
+                  break;
+                case "500":
+                  this.$message.error("抱歉，系统错误！");
+                  break;
+              }
 
+              // 登录成功
+              // const { token } = res.data;
+              // localStorage.setItem("eleToken", token);
 
-
-
-
-
-          login(this.ruleForm.user_name, this.ruleForm.user_password).then(res => {
-            console.log('login',res.data);
-            // 1. 错误情况
-            switch (res.data.code) {
-              case '401': this.$message.error("抱歉，用户名不存在！"); break;
-              case '402': this.$message.error("抱歉，密码不能为空！"); break;
-              case '403': this.$message.error("抱歉，密码错误！"); break;
-              case '500': this.$message.error("抱歉，系统错误！"); break; 
+              // 解析token
+              // const decode = jwt_decode(token);
             }
-            
-            // 登录成功
-            // const { token } = res.data;
-            // localStorage.setItem("eleToken", token);
-
-            // 解析token
-            // const decode = jwt_decode(token);
-          })
+          );
         } else {
           return false;
         }
       });
 
-      event.preventDefault();
+      // event.preventDefault();
       // 调用登陆接口
       // login(this.ruleForm.user_name, this.ruleForm.user_password).then(
       //   (res) => {
@@ -174,31 +184,41 @@ export default {
       const exdate = new Date(); // 获取时间
       exdate.setTime(exdate.getTime() + 24 * 60 * 60 * 1000 * exdays); // 保存的天数
       // 字符串拼接 cookie
-      window.document.cookie = "user_name" + "=" + user_name + ";path=/;expires=" + exdate.toGMTString();
-      window.document.cookie = "user_password" + "=" + user_password + ";path=/;expires=" + exdate.toGMTString();
+      window.document.cookie =
+        "user_name" +
+        "=" +
+        user_name +
+        ";path=/;expires=" +
+        exdate.toGMTString();
+      window.document.cookie =
+        "user_password" +
+        "=" +
+        user_password +
+        ";path=/;expires=" +
+        exdate.toGMTString();
     },
 
     // 读取 cookie
     getCookie() {
       if (document.cookie.length > 0) {
-        const arr = document.cookie.split(';') // 这里显示的格式需要切割一下
+        const arr = document.cookie.split(";"); // 这里显示的格式需要切割一下
         for (var i = 0; i < arr.length; i++) {
-          var arr2 = arr[i].split('='); // 再次切割
+          var arr2 = arr[i].split("="); // 再次切割
           // 判断查找相对应的值
-          if (arr2[0] == 'user_name') {
+          if (arr2[0] == "user_name") {
             this.ruleForm.user_name = arr2[1]; //保存到保存数据的地方
-          } else if (arr2[0] == 'user_password') {
+          } else if (arr2[0] == "user_password") {
             this.ruleForm.user_password = arr2[1];
           }
         }
-        this.checked = true
+        this.checked = true;
       }
     },
 
     // 清除 cookie
     clearCookie() {
-      this.setCookie("","",-1); // 修改2值都为空，天数为负1天就好了
-    }
+      this.setCookie("", "", -1); // 修改2值都为空，天数为负1天就好了
+    },
   },
 };
 </script>

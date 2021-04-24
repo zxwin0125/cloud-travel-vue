@@ -27,7 +27,7 @@
                 云商城
             </el-menu-item>
             <!-- 云数据 -->
-            <el-menu-item index="/dataView" @click="toDataView">
+            <el-menu-item index="/dataVisualization" @click="toDataVisualization">
                 云数据
             </el-menu-item>
             <!-- 个人中心 -->
@@ -84,8 +84,8 @@
                 this.$router.push('/ticket')
             },
             // 数据可视化
-            toDataView() {
-                this.$router.push('/dataView')
+            toDataVisualization() {
+                this.$router.push('/dataVisualization')
             },
             // 个人中心
             toUser() {

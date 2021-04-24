@@ -1,7 +1,7 @@
 <template>
-  <div class="dataVisualization">
+  <section class="dataVisualization">
 
-  </div>
+  </section>
 </template>
 
 <script>
