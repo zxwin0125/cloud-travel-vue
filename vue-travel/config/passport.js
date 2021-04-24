@@ -25,17 +25,6 @@ function myPassport(passport) {
                 }
             }
         })
-
-        // userDAL.getAllUsers(jwt_payload.user_id)
-        // .then(user => {
-        //   if(user){
-        //     return done(null,user);
-        //   }
-
-        //   return done(null,false);
-        // })
-        // .catch(err => console.log(err));
-
     }));
 }
 

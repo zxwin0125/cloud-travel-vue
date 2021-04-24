@@ -9,6 +9,11 @@ const passport = require('passport')
 // 引入 body-parser
 const bodyParser = require("body-parser")
 
+// 配置session、cookie进行记住密码
+const session = require('express-session')
+const cookie = require('cookie-parser')
+
+
 
 
 // 实例化 App
@@ -16,8 +21,6 @@ const app = express();
 
 // 使用 cors 模块解决跨域问题
 app.use(cors());
-
-
 
 // 使用body-parser中间件
 app.use(bodyParser.urlencoded({
@@ -29,6 +32,18 @@ app.use(bodyParser.json());
 app.use(passport.initialize())
 // 代码抽离
 require("./config/passport")(passport)
+
+// 配置session、cookie
+app.configure(function() {
+    app.use(cookie());
+    app.use(session({
+        name: 'final',
+        secret: '1234567',
+        cookie: {maxAge: 10000}, // 过期时间 毫秒为单位
+        resave: true, // 每次触发后保存时间
+        rolling: true // 最后一次触发后计时
+    }))
+})
 
 // 路由
 const users = require("./routes/api/users") // 导入路由模块

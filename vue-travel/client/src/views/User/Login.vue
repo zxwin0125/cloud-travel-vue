@@ -30,7 +30,7 @@
                 ></el-input>
               </el-form-item>
               <el-form-item>
-                <el-checkbox size="small">记住我</el-checkbox>
+                <el-checkbox size="small" v-model="checked">记住密码</el-checkbox>
                 <div class="goRegister">去注册</div>
               </el-form-item>
               <el-form-item>
@@ -84,12 +84,16 @@ export default {
             trigger: "blur",
           },
         ],
+        checked: false,
       },
     };
   },
   computed: {},
   created() {},
-  mounted() {},
+  mounted() {
+    // 页面加载调用获取 cookie 值
+    this.getCookie()
+  },
   methods: {
     // 登陆方法
     submitForm(formName) {
@@ -149,6 +153,14 @@ export default {
       //   }
       // );
     },
+
+    // 设置 cookie
+    setCookie(user_name, user_password, exdays) {
+      const exdate = new Date(); // 获取时间
+      exdate.setTime(exdate.getTime() + 24 * 60 * 60 * 1000 * exdays); // 保存的天数
+      // 字符串拼接 cookie
+      window.document.cookie = ""
+    }
   },
 };
 </script>
