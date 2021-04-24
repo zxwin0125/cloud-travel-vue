@@ -10,7 +10,7 @@
 
 <script>
 import DataViewTitle from './components/DataViewTitle'
-import DataViewList from '../DataView/components/DataViewList'
+import DataViewList from './components/DataViewList'
 export default {
   name: 'DataVisualization',
   components: {
