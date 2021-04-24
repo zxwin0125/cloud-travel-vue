@@ -7,11 +7,6 @@ const passport = require('passport')
 // getUsers
 const userController = require('../../controllers/userController')
 
-
-
-
-
-
 // route   GET 请求 api/users/getUsers  返回的请求为 json 数据
 router.get('/getUsers', (req, res) => {
     userController.getAllUsers(req, res)
@@ -27,14 +22,15 @@ router.post('/login', (req, res) => {
     userController.loginUsers(req, res);
 });
 
-// router.get('/current', passport.authenticate('jwt', {
-//     session: false
-// }), (req, res) => {
-//     res.json({
-//         id: req.user.id,
-//         name: req.user.name,
-//         phone: req.user.phone,
-//     });
-// })
+// @route  GET api/users/current
+// @desc   return current user
+// @access Private
+router.get('/current', passport.authenticate('jwt', {
+    session: false
+}), (req, res) => {
+    res.json(
+        req.jwt_payload
+    );
+})
 
 module.exports = router;

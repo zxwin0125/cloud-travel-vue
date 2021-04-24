@@ -4,7 +4,7 @@ const express = require('express')
 // 引入 cors 模块
 const cors = require('cors')
 
-// 引入 passport
+// 引入 passport 验证token
 const passport = require('passport')
 // 引入 body-parser
 const bodyParser = require("body-parser")
@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 
 // passport 初始化
 app.use(passport.initialize())
-
+// 代码抽离
 require("./config/passport")(passport)
 
 // 路由
