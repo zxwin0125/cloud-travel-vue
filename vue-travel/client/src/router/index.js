@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 
 // 引入路由
 import Home from '../views/Home/Home.vue'
-// import DataVisualization from '../views/DataVisualization/DataVisualization.vue'
+import DataVisualization from '../views/DataVisualization/DataVisualization.vue'
 import Login from '../views/User/Login.vue'
 
 Vue.use(VueRouter)
@@ -16,14 +16,17 @@ const routes = [{
       isturn: true
     }
   },
-  // {
-  //   path: '/dataVisualization',
-  //   name: 'DataVisualization',
-  //   components: DataVisualization,
-  //   meta: {
-  //     isturn: true
-  //   }
-  // },
+  {
+    path: '/dataVisualization',
+    name: 'DataVisualization',
+    components: {
+      default: DataVisualization,
+      'header': null
+    },
+    meta: {
+      isturn: true
+    }
+  },
   {
     path: '/login',
     name: 'Login',
