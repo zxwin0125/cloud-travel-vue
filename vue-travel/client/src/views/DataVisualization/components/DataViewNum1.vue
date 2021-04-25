@@ -10,7 +10,7 @@
     </section>
 </template>
 <script>
-    import DataCard1 from '../../DataView/components/DataChild/DataCard1'
+    import DataCard1 from './DataChild/DataCard1'
     import DataCard2 from '../../DataView/components/DataChild/DataCard2'
     import DataCard3 from '../../DataView/components/DataChild/DataCard3'
     export default {
