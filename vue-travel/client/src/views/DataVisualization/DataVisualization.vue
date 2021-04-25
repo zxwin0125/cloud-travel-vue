@@ -5,17 +5,25 @@
 
     <!-- 列表 -->
     <DataViewList />
+
+    <!-- 数据第一部分 -->
+    <DataViewNum1 />
+
+    <!-- 底部 -->
+    <Footer />
   </section>
 </template>
 
 <script>
 import DataViewTitle from './components/DataViewTitle'
 import DataViewList from './components/DataViewList'
+import Footer from '../../components/Footer'
 export default {
   name: 'DataVisualization',
   components: {
     DataViewTitle,
     DataViewList,
+    Footer
   }
 }
 </script>
