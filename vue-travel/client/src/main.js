@@ -3,12 +3,13 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios from 'axios'
-import echarts from 'echarts'
+import * as echarts from 'echarts';
 
 // 使用 axios、echarts
 Vue.prototype.$axios = axios
 Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
+
 
 
 
