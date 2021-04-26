@@ -19,7 +19,6 @@
 </template>
 
 <script>
-import echarts from "echarts";
 export default {
   name: "DataCard5",
   methods: {
@@ -198,34 +197,31 @@ export default {
   position: relative;
   padding-right: 15px;
   padding-left: 15px;
-}
-
-.card {
-  margin-bottom: 30px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  width: 100%;
-  background-color: #fff;
-  background-clip: border-box;
-  border: 0 solid #e9ecef;
-  border-radius: 0.25rem;
-  box-shadow: 0 3px 9px 0 rgba(169, 184, 200, 0.15);
-}
-
-.card-body {
-  flex: 1 1 auto;
-  padding: 25px;
-}
-
-.card .card-title {
-  position: relative;
-  font-weight: 500;
-  margin-bottom: 10px;
-  color: #212529;
-  font-size: 18px;
-  margin-top: 10px;
-  line-height: 1.1;
+  .card {
+    margin-bottom: 30px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    width: 100%;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid #e9ecef;
+    border-radius: 0.25rem;
+    box-shadow: 0 3px 9px 0 rgba(169, 184, 200, 0.15);
+    .card-body {
+      flex: 1 1 auto;
+      padding: 25px;
+      .card-title {
+        position: relative;
+        font-weight: 500;
+        margin-bottom: 10px;
+        color: #212529;
+        font-size: 18px;
+        margin-top: 10px;
+        line-height: 1.1;
+      }
+    }
+  }
 }
 </style>
