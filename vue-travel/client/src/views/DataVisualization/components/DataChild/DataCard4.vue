@@ -13,8 +13,7 @@
 </template>
 
 <script>
-    // import '../../../../../../node_modules/echarts/map/js/china.js';
-    import '../../../../../node_modules/echarts/dist/echarts.js.map';
+    import '../../../../../node_modules/echarts/map/js/china.js';
     export default {
         name: "DataCard4",
         methods: {
