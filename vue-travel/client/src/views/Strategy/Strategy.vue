@@ -1,13 +1,10 @@
 <template>
   <div class="strategy">
-    <!-- 导航栏开始 -->
-    <Nav />
-    <!-- 导航栏结束 -->
     <!-- 轮播图 -->
     <Swiper :imgs="imgs" />
     <el-row>
       <!-- 攻略导航 -->
-      <StrategyNav />
+      <!-- <StrategyNav /> -->
     </el-row>
     <!-- 发布攻略按钮1 md以下 -->
     <StrategyPuba />
@@ -113,19 +110,15 @@
   </div>
 </template>
 <script>
-  import Nav from "../../components/Nav";
   import Swiper from "../../components/Swiper";
-  import Footer from "../../components/Footer";
-  import StrategyNav from "../Strategy/components/StrategyNav";
-  import StrategyPuba from "../Strategy/components/StrategyPuba";
+  // import StrategyNav from "../Strategy/components/StrategyNav";
+  // import StrategyPuba from "../Strategy/components/StrategyPuba";
   export default {
     name: "Strategy",
     components: {
-      Nav,
       Swiper,
-      Footer,
-      StrategyNav,
-      StrategyPuba,
+      // StrategyNav,
+      // StrategyPuba,
     },
     data() {
       return {
@@ -227,7 +220,7 @@
 
 <style scoped>
   .strategy {
-    background-image: url(../../assets/str_bg.jpg);
+    background-image: url(../../assets/img/Strategy/str_bg.jpg);
     background-size: auto;
   }
 
@@ -477,7 +470,7 @@
   }
 
   .strategy {
-    background-image: url(../../assets/str_bg.jpg);
+    background-image: url(../../assets/img/Strategy/str_bg.jpg);
     background-size: auto;
   }
 
