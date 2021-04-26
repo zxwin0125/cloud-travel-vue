@@ -1,4 +1,4 @@
-// users 数据层
+// 首页 index 数据层
 const dao = require('../config/dao')
 
 const indexDAL = {
