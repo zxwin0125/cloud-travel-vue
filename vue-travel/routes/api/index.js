@@ -1,4 +1,4 @@
-// users 登录注册路由
+// index 首页路由
 const express = require('express')
 const router = express.Router()
 

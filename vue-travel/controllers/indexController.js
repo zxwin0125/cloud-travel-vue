@@ -1,4 +1,4 @@
-// users 逻辑控制层
+// 首页 index 逻辑控制层
 const indexDAL = require('../model/indexDAL')
 
 const indexController = {
