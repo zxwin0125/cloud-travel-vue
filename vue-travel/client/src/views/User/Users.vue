@@ -1,22 +1,17 @@
 <template>
-  <div id="users">
-    <Nav />
-    <!-- 头像 姓名 -->
+  <div class="users">
     <Usertop />
-    <Footer />
+    
   </div>
 </template>
 
 <script>
-  import Nav from '../../components/Nav'
-  import Footer from '../../components/Footer'
+  
   import Usertop from "../Person/components/Usertop";
   import { getUser } from "@/api/getData.js"
   export default {
     name: 'Users',
     components: {
-      Nav,
-      Footer,
       Usertop
     },
     data() {

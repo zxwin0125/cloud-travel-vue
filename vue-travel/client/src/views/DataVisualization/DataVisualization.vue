@@ -12,8 +12,6 @@
     <!-- 数据第二部分 -->
     <DataViewNum2 />
 
-    <!-- 底部 -->
-    <Footer />
   </section>
 </template>
 
@@ -22,7 +20,7 @@ import DataViewTitle from './components/DataViewTitle'
 import DataViewList from './components/DataViewList'
 import DataViewNum1 from './components/DataViewNum1'
 import DataViewNum2 from './components/DataViewNum2'
-import Footer from '../../components/Footer'
+
 export default {
   name: 'DataVisualization',
   components: {
@@ -30,7 +28,6 @@ export default {
     DataViewList,
     DataViewNum1,
     DataViewNum2,
-    Footer
   }
 }
 </script>

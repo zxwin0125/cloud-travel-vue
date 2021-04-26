@@ -20,9 +20,6 @@
 
     <!-- 联系我们开始 -->
     <HomeConnect />
-
-    <!-- 底部开始 -->
-    <Footer />
   </section>
 </template>
 
@@ -40,7 +37,6 @@ import HomeServer from "../Home/components/HomeServer";
 import HomeBlog from "../Home/components/HomeBlog/HomeBlog";
 import HomeTicket from "../Home/components/HomeTicket/HomeTicket";
 import HomeConnect from "../Home/components/HomeConnect";
-import Footer from "@/components/Footer"
 
 export default {
   name: "Home",
@@ -55,7 +51,6 @@ export default {
     HomeBlog,
     HomeTicket,
     HomeConnect,
-    Footer
   },
   data() {
     return {
