@@ -1,73 +1,107 @@
 <template>
   <div class="users">
-    <div class="mSliderBox">
-      <div class="mSlider tc_ac_tr">
-        <div class="mSlider_con" style="position: relative; width: 1920px">
-          <ul class="clearfix slider_ul">
-            <li>
-              <img
-                src="//pic5.40017.cn/03/000/94/a6/rB5oQFv3pB6AYt9-AAGqaOtgIQE918.jpg"
-                alt="0元门票限量抢"
-              />
-            </li>
-          </ul>
-        </div>
-      </div>
+    <div class="users-bg">
+      <img
+        src="https://pic5.40017.cn/03/000/94/a6/rB5oQFv3pB6AYt9-AAGqaOtgIQE918.jpg"
+        alt=""
+      />
+    </div>
+
+    <div class="users-info">
+      <!-- 头像 -->
+      <el-upload
+        class="avatar-uploader"
+        action="https://jsonplaceholder.typicode.com/posts/"
+        :show-file-list="false"
+        :on-success="handleAvatarSuccess"
+        :before-upload="beforeAvatarUpload"
+      >
+        <img v-if="imageUrl" :src="imageUrl" class="avatar" />
+        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+      </el-upload>
+      <p></p>
     </div>
   </div>
 </template>
 
 <script>
-// import Usertop from "../Person/components/Usertop";
-import { getUser } from "@/api/getData.js";
 export default {
   name: "Users",
-  components: {
-    // Usertop
-  },
+  components: {},
   data() {
     return {
-      // 个人信息
-      userInfo: [],
+      imageUrl: "",
     };
   },
-  // 定义方法
-  methods: {},
-  created() {},
-  mounted() {
-    //当页面渲染完成时调用方法获取数据
+  methods: {
+    handleAvatarSuccess(res, file) {
+      this.imageUrl = URL.createObjectURL(file.raw);
+    },
+    beforeAvatarUpload(file) {
+      const isJPG = file.type === "image/jpeg";
+      const isLt2M = file.size / 1024 / 1024 < 2;
+
+      if (!isJPG) {
+        this.$message.error("上传头像图片只能是 JPG 格式!");
+      }
+      if (!isLt2M) {
+        this.$message.error("上传头像图片大小不能超过 2MB!");
+      }
+      return isJPG && isLt2M;
+    },
   },
+  created() {},
+  mounted() {},
 };
 </script>
 <style lang="scss" scoped>
 .users {
-  .mSliderBox {
+  position: relative;
+  width: 100%;
+  .users-bg {
+    height: 350px;
+    margin-left: -200px;
     overflow: hidden;
-    width: 100%;
-    position: relative;
-    .mSlider {
-      position: relative;
-      height: 407px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .users-info {
+    position: absolute;
+    top: 25px;
+    left: 70px;
+    width: 280px;
+    padding: 10px 20px 20px 20px;
+    bottom: -420px;
+    background: #fff;
+    z-index: 1;
+    height: 357px;
+    opacity: 0.95;
+    .avatar-uploader {
+      width: 120px;
+      height: 120px;
       margin: 0 auto;
-      margin-bottom: 40px;
-      width: 1190px;
-      overflow: visible !important;
-      .mSlider_con {
-        height: 407px;
-        width: auto;
-        margin-left: -960px;
-        left: 50%;
-        .slider_ul {
-          height: 407px;
-          li {
-            float: left;
-            overflow: hidden;
-            height: 407px;
-            position: absolute;
-            left: 0;
-            top: 0;
-          }
-        }
+      border: 1px dashed #d9d9d9;
+      border-radius: 50%;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      &:hover {
+        border-color: #409eff;
+      }
+      .avatar {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .avatar-uploader-icon {
+        font-size: 28px;
+        color: #8c939d;
+        width: 120px;
+        height: 120px;
+        line-height: 120px;
+        text-align: center;
       }
     }
   }
