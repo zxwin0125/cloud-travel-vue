@@ -4,7 +4,7 @@
     <Swiper :imgs="imgs" />
     <el-row>
       <!-- 攻略导航 -->
-      <!-- <StrategyNav /> -->
+      <StrategyNav />
     </el-row>
     <!-- 发布攻略按钮1 md以下 -->
     <StrategyPuba />
@@ -111,14 +111,14 @@
 </template>
 <script>
   import Swiper from "../../components/Swiper";
-  // import StrategyNav from "../Strategy/components/StrategyNav";
-  // import StrategyPuba from "../Strategy/components/StrategyPuba";
+  import StrategyNav from "../Strategy/components/StrategyNav";
+  import StrategyPuba from "../Strategy/components/StrategyPuba";
   export default {
     name: "Strategy",
     components: {
       Swiper,
-      // StrategyNav,
-      // StrategyPuba,
+      StrategyNav,
+      StrategyPuba,
     },
     data() {
       return {
