@@ -9,6 +9,9 @@
     <!-- 数据第一部分 -->
     <DataViewNum1 />
 
+    <!-- 数据第二部分 -->
+    <DataViewNum2 />
+
     <!-- 底部 -->
     <Footer />
   </section>
@@ -18,6 +21,7 @@
 import DataViewTitle from './components/DataViewTitle'
 import DataViewList from './components/DataViewList'
 import DataViewNum1 from './components/DataViewNum1'
+import DataViewNum2 from './components/DataViewNum2'
 import Footer from '../../components/Footer'
 export default {
   name: 'DataVisualization',
@@ -25,6 +29,7 @@ export default {
     DataViewTitle,
     DataViewList,
     DataViewNum1,
+    DataViewNum2,
     Footer
   }
 }
