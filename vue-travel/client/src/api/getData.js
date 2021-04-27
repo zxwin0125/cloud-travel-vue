@@ -32,6 +32,6 @@ export const getCode = ( mobile ) => axios.get("/api/users/getValidCode", {
 })
 
 // 获取用户数据
-export const getUserInfo = () => axios.post("/api/users/getUserInfo", {
+export const getUserInfo = ( user_id ) => axios.post("/api/users/getUserInfo", {
     user_id
 })
