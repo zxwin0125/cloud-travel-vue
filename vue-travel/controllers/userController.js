@@ -104,12 +104,12 @@ const userController = {
         }
 
         // 2.1 判断用户名与电话是否已存在
-        userDAL.validateUsers(user, (err, res) => {
-            if (err) {
+        userDAL.validateUsers(user, (err, results) => {
+            if (results.length) {
                 res.json({
-                    code: err.code,
+                    code: '404',
                     message: '用户名或手机号已存在',
-                    data: err.data,
+                    data: 0,
                 })
             } else {
                 // 加盐加密
@@ -120,10 +120,11 @@ const userController = {
                         if (err) throw err; // 如果有错误，抛出
 
                         user.user_password = hash
-                        
+
                         // 2.2 用户注册
                         userDAL.registerUsers(user, (err, results) => {
                             if (results.affectedRows == 1) {
+                                console.log('9876',results);
                                 res.json({
                                     code: '200',
                                     data: 1
