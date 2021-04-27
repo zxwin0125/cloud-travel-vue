@@ -9,14 +9,14 @@ const jwt = require('jsonwebtoken')
 
 
 const userController = {
-    // 用户登录
+    // 1. 用户登录
     loginUsers: (req, res) => {
         const user = {
             user_name: req.body.user_name,
             user_password: req.body.user_password
         }
 
-        // 检查登陆用户名是否存在
+        // 1.1 检查登陆用户名是否存在
         userDAL.loginUsers(user, (err, results) => {
             if (err) {
                 res.json({
@@ -38,7 +38,7 @@ const userController = {
                         data: 0
                     })
                 } else {
-                    // 检查密码是否一致
+                    // 1.2 检查密码是否一致
                     userDAL.checkPwd(user, (err, results) => {
                         if (err) {
                             res.json({
@@ -94,7 +94,7 @@ const userController = {
 
     },
 
-    // 用户注册
+    // 2. 用户注册
     registerUsers: (req, res) => {
         // 1. 接收传入的数据
         const user = {
@@ -102,14 +102,13 @@ const userController = {
             user_password: req.body.user_password,
             user_phone: req.body.user_phone,
         }
-        console.log('123', user);
 
-        // 2. 判断用户名与电话是否已存在
-        userDAL.validateUsers(user, (err, results) => {
+        // 2.1 判断用户名与电话是否已存在
+        userDAL.validateUsers(user, (err, res) => {
             if (err) {
                 res.json({
                     code: err.code,
-                    message: err.message,
+                    message: '用户名或手机号已存在',
                     data: err.data,
                 })
             } else {
@@ -121,7 +120,8 @@ const userController = {
                         if (err) throw err; // 如果有错误，抛出
 
                         user.user_password = hash
-
+                        
+                        // 2.2 用户注册
                         userDAL.registerUsers(user, (err, results) => {
                             if (results.affectedRows == 1) {
                                 res.json({
