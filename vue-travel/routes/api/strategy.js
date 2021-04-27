@@ -7,6 +7,7 @@ const strategyController = require('../../controllers/strategyController')
 
 /* 设置 strategy 路由 */
 router.get('/main', (req, res) => {
+    console.log('222');
     // 攻略主列表
     strategyController.mainStrategy(req, res)
 });

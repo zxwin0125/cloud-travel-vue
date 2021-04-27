@@ -4,7 +4,7 @@ const dao = require('../config/dao')
 const strategyDAL = {
     // 攻略主列表
     mainStrategy: (cb) => {
-        var sql = `select strategy_id,strategy_title,
+        const sql = `select strategy_id,strategy_title,
                    strategy_date,strategy_content,strategy_img,
                    strategy_view,strategy_like,user_id,user_name,
                    strategy_path from strategy_info`

@@ -7,6 +7,10 @@ export const getTour = () => axios.get("/api/index/getTour")
 export const getBlog = () => axios.get("/api/index/getBlog")
 export const getPack = () => axios.get("/api/index/getPack")
 
+// 攻略数据
+export const getMainStrategy = () => axios.get("/api/strategy/main")
+export const getHotStrategy = () => axios.get("/api/strategy/hot")
+
 // 登陆接口
 export const login = (user_name,user_password) => axios.post("/api/users/login", {
     user_name,
