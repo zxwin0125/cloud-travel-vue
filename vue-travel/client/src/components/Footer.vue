@@ -1,5 +1,5 @@
 <template>
-  <section class="footer">
+  <section class="footer" v-show="$route.meta.isturn">
     <el-container>
       <el-row :span="24">
         <el-col :span="6">

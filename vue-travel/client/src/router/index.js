@@ -7,6 +7,7 @@ import Strategy from '../views/Strategy/Strategy.vue'
 import DataVisualization from '../views/DataVisualization/DataVisualization.vue'
 import Users from '../views/User/Users.vue'
 import Login from '../views/User/Login.vue'
+import Register from '../views/User/Register.vue'
 
 Vue.use(VueRouter)
 
@@ -56,6 +57,14 @@ const routes = [{
     name: 'Login',
     components: {
       default: Login,
+      'header': null
+    }
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    components: {
+      default: Register,
       'header': null
     }
   },
