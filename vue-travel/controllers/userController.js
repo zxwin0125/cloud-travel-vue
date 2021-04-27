@@ -47,7 +47,6 @@ const userController = {
                                 data: 0
                             })
                         } else {
-                            console.log('12', results);
                             // 检验密码正确性
                             if (!results[0]) {
                                 res.json({
@@ -109,7 +108,7 @@ const userController = {
                 res.json({
                     code: '404',
                     message: '用户名或手机号已存在',
-                    data: 0,
+                    data: results,
                 })
             } else {
                 // 加盐加密
@@ -127,12 +126,14 @@ const userController = {
                                 console.log('9876',results);
                                 res.json({
                                     code: '200',
-                                    data: 1
+                                    message: '注册成功',
+                                    data: results
                                 })
                             } else {
                                 res.json({
                                     code: '500',
-                                    data: 0
+                                    message: '注册失败',
+                                    data: results
                                 })
                             }
                         })

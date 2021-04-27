@@ -36,7 +36,7 @@ const userDAL = {
             if (err) {
                 console.log('validateUsers - 系统错误', err.message)
             } else {
-                cb(null, res)
+                cb(null, results)
             }
         })
     },
@@ -46,9 +46,9 @@ const userDAL = {
         const sql = `insert into user_info(user_name, user_password, user_phone, user_enable) values (?,?,?,?)`
         dao(sql, [user.user_name, user.user_password, user.user_phone, 1], (err, results) => {
             if (err) {
-                console.log('注册失败', err.message)
+                console.log('registerUsers - 系统错误', err.message)
             } else {
-                cb(null, res)
+                cb(null, results)
             }
         })
     },
