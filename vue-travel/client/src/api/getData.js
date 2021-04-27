@@ -18,15 +18,20 @@ export const login = ( user_name, user_password ) => axios.post("/api/users/logi
 })
 
 // 注册接口
-export const register = ( user_name, user_password, user_phone ) => axios.post('/api/users/register',{
+export const register = ( user_name, user_password, user_phone ) => axios.post("/api/users/register", {
     user_name,
     user_password,
     user_phone
 })
 
 // 读取验证码信息接口
-export const getCode = ( mobile ) => axios.get("/api/users/getValidCode",{
+export const getCode = ( mobile ) => axios.get("/api/users/getValidCode", {
     params: {
         "mobile": mobile
     }
+})
+
+// 获取用户数据
+export const getUserInfo = () => axios.post("/api/users/getUserInfo", {
+    user_id
 })

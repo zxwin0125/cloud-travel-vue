@@ -4,7 +4,7 @@ const router = express.Router()
 // 引入 passport
 const passport = require('passport')
 
-// getUsers
+// users
 const userController = require('../../controllers/userController')
 
 // route   POST 请求 api/users/login  返回的请求为 json 数据
@@ -24,8 +24,10 @@ router.get('/getValidCode', (req, res) => {
 
 
 // route   GET 请求 api/users/getUsers  返回的请求为 json 数据
-router.get('/getUsers', (req, res) => {
-    userController.getAllUsers(req, res)
+router.get('/getUserInfo', passport.authenticate('jwt', {
+    session: false
+}), (req, res) => {
+    userController.getUserInfo(req, res)
 })
 
 

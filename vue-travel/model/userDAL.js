@@ -53,12 +53,14 @@ const userDAL = {
         })
     },
 
-    // 用户数据
-    getAllUsers: (user_id,cb) => {
-        let sql = 'select user_id, user_name, user_headPic_url from user_info where user_id=?'
+    // 3.1 用户数据
+    getUserInfo: (user_id,cb) => {
+        const sql = `select user_id, user_name, user_password, user_phone, 
+                     user_headPic_url, user_answer, user_card, user_enable,
+                     user_com from user_info where user_id=?`
         dao(sql,[user_id], ( err, results ) => {
             if(err){
-                cb(err,null)
+                console.log('getUserInfo - 系统错误', err.message)
             }else{
                 cb(null,results)
             }

@@ -123,7 +123,6 @@ const userController = {
                         // 2.2 用户注册
                         userDAL.registerUsers(user, (err, results) => {
                             if (results.affectedRows == 1) {
-                                console.log('9876',results);
                                 res.json({
                                     code: '200',
                                     message: '注册成功',
@@ -144,19 +143,19 @@ const userController = {
         })
     },
 
-    // 用户数据
-    getAllUsers: (req, res) => {
-        let user_id = req.query.user_id
-        userDAL.getAllUsers(user_id, (err, results) => {
+    // 3. 获取用户数据
+    getUserInfo: (req, res) => {
+        const user_id = req.query.user_id
+        userDAL.getUserInfo(user_id, (err, results) => {
             if (err) {
                 res.json({
-                    code: '501',
-                    message: '数据查询错误'
+                    code: '405',
+                    message: 'getUserInfo - 系统错误'
                 })
             } else {
                 res.json({
-                    code: '201',
-                    message: '用户数据',
+                    code: '200',
+                    message: '获取用户数据',
                     data: results
                 })
             }
