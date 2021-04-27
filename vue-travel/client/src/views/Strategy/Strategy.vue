@@ -14,7 +14,7 @@
 </template>
 <script>
 // 导入接口API
-import { getMainStrategy } from "@/api/getData.js";
+import { getMainStrategy, getHotStrategy } from "@/api/getData.js";
 
 import Swiper from "../../components/Swiper";
 // import StrategyNav from "../Strategy/components/StrategyNav";
@@ -87,17 +87,16 @@ export default {
       }
     },
 
-    getHotData() {
-      // alert('999')
+    async getHotData() {
       // 捕获异常
-      // try {
-      //   // 等待异步方法执行完成
-      //   const result = await getMainStrategy();
-      //   console.log("攻略 Main 数据", result.data.data);
-      //   // this.Tourlist = result.data.data;
-      // } catch (err) {
-      //   console.log("err", err);
-      // }
+      try {
+        // 等待异步方法执行完成
+        const result = await getHotStrategy();
+        console.log("攻略 Hot 数据", result);
+        // this.Tourlist = result.data.data;
+      } catch (err) {
+        console.log("err", err);
+      }
     },
 
 

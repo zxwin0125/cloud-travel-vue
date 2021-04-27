@@ -8,7 +8,6 @@ const strategyDAL = require('../model/strategyDAL')
 const strategyController = {
     // 攻略主列表
     mainStrategy: (req, res) => {
-        console.log('1111');
         strategyDAL.mainStrategy((err, results) => {
             if (err) {
                 console.log('数据库错误');

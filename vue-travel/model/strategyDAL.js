@@ -19,8 +19,7 @@ const strategyDAL = {
     // 热门攻略列表
     hotStrategy: (cb) => {
         // 升序排列查询前三条
-        var sql = 'select strategy_id,strategy_title,strategy_content,strategy_img,strategy_view  from strategy_info order by strategy_view desc limit 3;'
-        // var sql = 'select * from hotstrategy_info'
+        const sql = 'select strategy_id,strategy_title,strategy_content,strategy_img,strategy_view  from strategy_info order by strategy_view desc limit 3;'
         dao(sql, [], function (err, results) {
             if (err) {
                 console.log('失败', err.message)

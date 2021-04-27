@@ -12,6 +12,7 @@ router.get('/main', (req, res) => {
 });
 
 router.get('/hot', (req, res) => {
+    console.log('000');
     // 热门攻略列表
     strategyController.hotStrategy(req, res)
 });
