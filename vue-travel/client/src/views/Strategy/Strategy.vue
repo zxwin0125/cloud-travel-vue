@@ -4,10 +4,10 @@
     <Swiper :imgs="imgs" />
     <el-row>
       <!-- 攻略导航 -->
-      <!-- <StrategyNav /> -->
+      <StrategyNav />
     </el-row>
     <!-- 发布攻略按钮1 md以下 -->
-    <!-- <StrategyPuba /> -->
+    <StrategyPuba />
     <!-- 攻略首页内容 -->
 
   </div>
@@ -17,14 +17,14 @@
 import { getMainStrategy, getHotStrategy } from "@/api/getData.js";
 
 import Swiper from "../../components/Swiper";
-// import StrategyNav from "../Strategy/components/StrategyNav";
-// import StrategyPuba from "../Strategy/components/StrategyPuba";
+import StrategyNav from "../Strategy/components/StrategyNav";
+import StrategyPuba from "../Strategy/components/StrategyPuba";
 export default {
   name: "Strategy",
   components: {
     Swiper,
-    // StrategyNav,
-    // StrategyPuba,
+    StrategyNav,
+    StrategyPuba,
   },
   data() {
     return {
@@ -81,7 +81,7 @@ export default {
         // 等待异步方法执行完成
         const result = await getMainStrategy();
         console.log("攻略 Main 数据", result);
-        // this.Tourlist = result.data.data;
+        this.arts = result.data.data;
       } catch (err) {
         console.log("err12", err);
       }
