@@ -25,6 +25,8 @@
 </template>
 
 <script>
+// 导入接口API
+import { getUserInfo } from "@/api/getData.js";
 export default {
   name: "Users",
   components: {},

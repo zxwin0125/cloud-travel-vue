@@ -145,6 +145,7 @@ const userController = {
 
     // 3. 获取用户数据
     getUserInfo: (req, res) => {
+        console.log('111',req.body);
         const user_id = req.query.user_id
         userDAL.getUserInfo(user_id, (err, results) => {
             if (err) {
