@@ -12,7 +12,14 @@ export const getMainStrategy = () => axios.get("/api/strategy/main")
 export const getHotStrategy = () => axios.get("/api/strategy/hot")
 
 // 登陆接口
-export const login = (user_name,user_password) => axios.post("/api/users/login", {
+export const login = ( user_name, user_password ) => axios.post("/api/users/login", {
     user_name,
     user_password
+})
+
+// 注册接口
+export const register = ( user_name, user_password, user_phone ) => axios.post('/api/users/register',{
+    user_name,
+    user_password,
+    user_phone
 })

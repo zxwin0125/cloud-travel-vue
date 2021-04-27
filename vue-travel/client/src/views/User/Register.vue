@@ -1,5 +1,5 @@
 <template>
-  <div id="register">
+  <div class="register">
     <el-container>
       <el-main>
         <el-row>
@@ -186,7 +186,7 @@
 <style lang="scss" scoped>
   #register {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-image: url(../../assets/img/User/Personal01.webp);
     background-position: center center;
     background-repeat: no-repeat;
