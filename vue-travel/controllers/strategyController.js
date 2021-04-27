@@ -1,8 +1,8 @@
 // 攻略 strategy 逻辑控制层
 const strategyDAL = require('../model/strategyDAL')
 
-const formidable = require('formidable')
-const path = require('path')
+// const formidable = require('formidable')
+// const path = require('path')
 
 
 const strategyController = {

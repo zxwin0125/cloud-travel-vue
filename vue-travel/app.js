@@ -48,8 +48,10 @@ require("./config/passport")(passport)
 // 路由
 const users = require("./routes/api/users") // 导入路由模块
 const index = require("./routes/api/index")
+const strategy = require("./routes/api/strategy")
 app.use("/api/users", users) // 使用routes
 app.use("/api/index", index)
+app.use("/api/strategy", strategy)
 
 
 
