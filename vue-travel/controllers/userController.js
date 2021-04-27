@@ -24,7 +24,7 @@ const userController = {
                     msg: 'loginUsers -- 系统错误',
                     data: 0
                 })
-            } else if(results == false) {
+            } else if (results == false) {
                 res.json({
                     code: '401',
                     msg: '用户名不存在',
@@ -47,7 +47,7 @@ const userController = {
                                 data: 0
                             })
                         } else {
-                            console.log('12',results);
+                            console.log('12', results);
                             // 检验密码正确性
                             if (!results[0]) {
                                 res.json({
@@ -66,7 +66,9 @@ const userController = {
                                             avatar: results[0].user_headPic_url,
                                         }
 
-                                        jwt.sign(rule, 'privateKey', { expiresIn: 3600 }, (err, token) => {
+                                        jwt.sign(rule, 'privateKey', {
+                                            expiresIn: 3600
+                                        }, (err, token) => {
                                             if (err) throw err
                                             res.json({
                                                 success: true,
@@ -92,42 +94,15 @@ const userController = {
 
     },
 
-    // 用户数据
-    getAllUsers: (req, res) => {
-        let user_id = req.query.user_id
-        userDAL.getAllUsers(user_id, (err, results) => {
-            if (err) {
-                res.json({
-                    code: '501',
-                    message: '数据查询错误'
-                })
-            } else {
-                res.json({
-                    code: '201',
-                    message: '用户数据',
-                    data: results
-                })
-            }
-        })
-    },
-
     // 用户注册
     registerUsers: (req, res) => {
-
-        // 头像
-        const avatar = gravatar.url(req.body.email, {
-            s: '200',
-            r: 'pg',
-            d: 'mm'
-        });
-
         // 1. 接收传入的数据
-        let user = {
-            user_name: req.body.name,
-            user_password: req.body.password,
-            user_phone: req.body.phone,
-            user_avatar: avatar
+        const user = {
+            user_name: req.body.user_name,
+            user_password: req.body.user_password,
+            user_phone: req.body.user_phone,
         }
+        console.log('123', user);
 
         // 2. 判断用户名与电话是否已存在
         userDAL.validateUsers(user, (err, results) => {
@@ -166,6 +141,27 @@ const userController = {
             }
         })
     },
+
+    // 用户数据
+    getAllUsers: (req, res) => {
+        let user_id = req.query.user_id
+        userDAL.getAllUsers(user_id, (err, results) => {
+            if (err) {
+                res.json({
+                    code: '501',
+                    message: '数据查询错误'
+                })
+            } else {
+                res.json({
+                    code: '201',
+                    message: '用户数据',
+                    data: results
+                })
+            }
+        })
+    },
+
+
 
 
 

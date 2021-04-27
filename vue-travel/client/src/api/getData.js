@@ -23,3 +23,10 @@ export const register = ( user_name, user_password, user_phone ) => axios.post('
     user_password,
     user_phone
 })
+
+// 读取验证码信息接口
+export const getCode = ( mobile ) => axios.get("/api/users/getValidCode",{
+    params: {
+        "mobile": mobile
+    }
+})
