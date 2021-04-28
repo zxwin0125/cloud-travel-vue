@@ -24,7 +24,9 @@ router.get('/getValidCode', (req, res) => {
 
 
 // route   GET 请求 api/users/getUserInfo  返回的请求为 json 数据
-router.post('/getUserInfo', (req, res) => {
+router.post('/getUserInfo', passport.authenticate('jwt', {
+    session: false
+}), (req, res) => {
     userController.getUserInfo(req, res)
 })
 

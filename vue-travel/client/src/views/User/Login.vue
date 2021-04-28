@@ -54,6 +54,8 @@
 <script>
 //登录接口
 import { login } from "@/api/getData.js";
+// 引入 jwt-decode 解析 token
+import jwt_decode from "jwt-decode";
 export default {
   name: "Login",
   components: {},
@@ -97,23 +99,36 @@ export default {
     this.getCookie();
   },
   methods: {
+    // 读取 cookie
+    getCookie() {
+      if (document.cookie.length > 0) {
+        var arr = document.cookie.split(";"); // 这里显示的格式需要切割一下
+        for (var i = 0; i < arr.length; i++) {
+          var arr2 = arr[i].split("="); // 再次切割
+          // 判断查找相对应的值
+          if (arr2[0] == "user_name") {
+            this.ruleForm.user_name = arr2[1]; //保存到保存数据的地方
+          } else if (arr2[0] == "user_password") {
+            this.ruleForm.user_password = arr2[1];
+          } else if (arr2[0] == "checked") {
+            this.checked = Boolean(arr2[1]);
+          }
+        }
+      }
+    },
+
     // 登陆方法
     submitForm(formName) {
+      /**
+       * 当用户执行登录操作的时候，先看看用户名密码对不对
+         若不对，就提示登录错误
+         若对，就再看一下用户有没有勾选记住密码
+         若没勾选，就及时清空cookie，回到最初始状态
+         若勾选了，就把用户名和密码存到cookie中并设置7天有效期，以供使用
+       */
       this.$refs[formName].validate((valid) => {
+        // 表单自定义校验
         if (valid) {
-          // // 判断复选框是否被勾选，勾选则调用配置cookie方法
-          // if (this.checked) {
-          //   // 传入账号名，密码，保存天数3个参数
-          //   this.setCookie(
-          //     this.ruleForm.user_name,
-          //     this.ruleForm.user_password,
-          //     7
-          //   );
-          // } else {
-          //   // 清空 Cookie
-          //   this.clearCookie();
-          // }
-
           login(this.ruleForm.user_name, this.ruleForm.user_password).then(
             (res) => {
               console.log("login", res.data);
@@ -133,50 +148,36 @@ export default {
                   break;
               }
 
-              // 登录成功
-              // const { token } = res.data;
-              // localStorage.setItem("eleToken", token);
+              if (res.data.code == "200") {
+                // 登录成功
+                // 若复选框被勾选了，就调用设置cookie方法，把当前的用户名和密码和过期时间存到cookie中
+                if (this.checked) {
+                  // 传入账号名，密码，保存天数3个参数
+                  this.setCookie(
+                    this.ruleForm.user_name,
+                    this.ruleForm.user_password,
+                    7
+                  );
+                } else {
+                  // 清空 Cookie
+                  this.clearCookie();
+                }
 
-              // 解析token
-              // const decode = jwt_decode(token);
+                // 存储 token
+                const { token } = res.data.token;
+                localStorage.setItem("eleToken", token);
+
+                // 解析 token
+                const decode = jwt_decode(token);
+                console.log('111',decode);
+                this.$router.push("/");
+              }
             }
           );
         } else {
           return false;
         }
       });
-
-      // event.preventDefault();
-      // 调用登陆接口
-      // login(this.ruleForm.user_name, this.ruleForm.user_password).then(
-      //   (res) => {
-      //     console.log(res.data);
-      //     // 拿到 token，存储到本地
-      //     localStorage.setItem("token", res.data.data);
-      //     localStorage.setItem("userid", res.data.id);
-      //     localStorage.setItem("user_name", res.data.user_name);
-      //     localStorage.setItem("userImg", res.data.user_headPic);
-      //     //保存登录用户的信息到Vuex的store
-      //     this.$store.state.userInfo = {
-      //       userid: res.data.id,
-      //       user_name: res.data.user_name,
-      //       userImg: res.data.user_headPic,
-      //     };
-      //     // console.log(res.data)
-      //     if (res.data.code == 200) {
-      //       // 登录成功，跳转到个人中心
-      //       this.$message({
-      //         message: "恭喜你，登陆成功",
-      //         type: "success",
-      //       });
-
-      //       // 跳转页面, 根据业务需要
-      //       this.$router.push({ path: "/" });
-      //     } else {
-      //       this.$message.error("登陆失败");
-      //     }
-      //   }
-      // );
     },
 
     // 设置 cookie
@@ -196,23 +197,12 @@ export default {
         user_password +
         ";path=/;expires=" +
         exdate.toGMTString();
-    },
-
-    // 读取 cookie
-    getCookie() {
-      if (document.cookie.length > 0) {
-        const arr = document.cookie.split(";"); // 这里显示的格式需要切割一下
-        for (var i = 0; i < arr.length; i++) {
-          var arr2 = arr[i].split("="); // 再次切割
-          // 判断查找相对应的值
-          if (arr2[0] == "user_name") {
-            this.ruleForm.user_name = arr2[1]; //保存到保存数据的地方
-          } else if (arr2[0] == "user_password") {
-            this.ruleForm.user_password = arr2[1];
-          }
-        }
-        this.checked = true;
-      }
+      window.document.cookie =
+        "checked" +
+        "=" +
+        this.checked +
+        ";path=/;expires=" +
+        exdate.toGMTString();
     },
 
     // 清除 cookie
