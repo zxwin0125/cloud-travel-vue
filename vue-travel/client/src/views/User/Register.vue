@@ -118,7 +118,7 @@ export default {
     };
 
     // 校验手机号
-    const check_user_phone= (rule, value, callback) => {
+    const check_user_phone = (rule, value, callback) => {
       if (!value) {
         callback(new Error("手机号不能为空!"));
       } else {
@@ -150,7 +150,9 @@ export default {
       rules: {
         user_name: [{ validator: check_user_name, trigger: "blur" }],
         user_password: [{ validator: check_user_password, trigger: "blur" }],
-        user_check_password: [{ validator: confirm_user_password, trigger: "blur" }],
+        user_check_password: [
+          { validator: confirm_user_password, trigger: "blur" },
+        ],
         user_phone: [{ validator: check_user_phone, trigger: "blur" }],
         user_code: [{ validator: check_user_code, trigger: "blur" }],
       },
@@ -173,41 +175,33 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert("submit!");
-        } else {
-          console.log("error submit!!!");
-          return false;
-        }
-      });
-
-      // preventDefault 方法
-      // 取消事件的默认动作（阻止冒泡）
-      event.preventDefault();
-      // 调用注册接口
-      register(
-        this.ruleForm.user_name,
-        this.ruleForm.pass,
-        this.ruleForm.phone
-      ).then((res) => {
-        console.log("register", res);
-        if (res.data.data == 0) {
-          // 注册失败
-          this.$message.error("用户名或手机号已存在!");
-        } else {
-          // 注册成功，跳转到登陆
-          this.$message({
-            message: "恭喜你，注册成功!",
-            type: "success",
+          // 调用注册接口
+          register(
+            this.ruleForm.user_name,
+            this.ruleForm.user_password,
+            this.ruleForm.user_phone
+          ).then((res) => {
+            console.log("register", res);
+            if (res.data.code == '404') {
+              // 注册失败
+              this.$message.error("用户名或手机号已存在!");
+            } else if (res.data.code == '200') {
+              // 注册成功，跳转到登陆
+              this.$message.success("登录成功！");
+              this.$router.push({ path: "/login" });
+            }
           });
-          this.$router.push({ path: "/login" });
+        } else {
+          this.$message.error("登录失败！");
+          return false;
         }
       });
     },
 
     // 去登录
     toLogin() {
-      this.$router.push('/login')
-    }
+      this.$router.push("/login");
+    },
   },
 };
 </script>
