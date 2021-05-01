@@ -22,7 +22,7 @@
               </el-form-item>
               <el-form-item prop="user_password">
                 <el-input
-                  type="user_password"
+                  type="password"
                   placeholder="密码"
                   v-model="ruleForm.user_password"
                   autocomplete="off"
@@ -33,7 +33,7 @@
                 <el-checkbox size="small" v-model="checked"
                   >记住密码</el-checkbox
                 >
-                <div class="goRegister">去注册</div>
+                <div class="goRegister" @click="toRegister">去注册</div>
               </el-form-item>
               <el-form-item>
                 <el-button
@@ -230,6 +230,11 @@ export default {
     clearCookie() {
       this.setCookie("", "", -1); // 修改2值都为空，天数为负1天就好了
     },
+
+    // 去注册
+    toRegister() {
+      this.$router.push('/register')
+    }
   },
 };
 </script>

@@ -12,44 +12,44 @@
               status-icon
             >
               <h2 class="form-title">快来注册账号吧!</h2>
-              <el-form-item prop="username">
+              <el-form-item prop="user_name">
                 <el-input
                   type="text"
                   placeholder="用户名"
-                  v-model="ruleForm.username"
+                  v-model="ruleForm.user_name"
                   autocomplete="off"
                 ></el-input>
               </el-form-item>
-              <el-form-item prop="pass">
+              <el-form-item prop="user_password">
                 <el-input
                   type="password"
                   placeholder="密码"
-                  v-model="ruleForm.pass"
+                  v-model="ruleForm.user_password"
                   autocomplete="off"
                 ></el-input>
               </el-form-item>
-              <el-form-item prop="checkpass">
+              <el-form-item prop="user_check_password">
                 <el-input
                   type="password"
                   placeholder="确认密码"
-                  v-model="ruleForm.checkpass"
+                  v-model="ruleForm.user_check_password"
                   autocomplete="off"
                 ></el-input>
               </el-form-item>
-              <el-form-item prop="phone">
+              <el-form-item prop="user_phone">
                 <el-input
                   type="tel"
                   placeholder="手机号"
-                  v-model="ruleForm.phone"
+                  v-model="ruleForm.user_phone"
                   autocomplete="off"
                 ></el-input>
               </el-form-item>
-              <el-form-item prop="code">
+              <el-form-item prop="user_code">
                 <el-input
                   type="text"
                   placeholder="验证码"
                   class="codeInput"
-                  v-model="ruleForm.code"
+                  v-model="ruleForm.user_code"
                   autocomplete="off"
                 >
                 </el-input>
@@ -69,9 +69,7 @@
                   >立即注册
                 </el-button>
               </el-form-item>
-              <router-link to="/login" class="gologin"
-                >已有账号？立即登陆</router-link
-              >
+              <div class="gologin" @click="toLogin">已有账号？立即登陆</div>
             </el-form>
           </el-col>
         </el-row>
@@ -90,29 +88,29 @@ export default {
   components: {},
   data() {
     // 校验用户名
-    var checkUserName = (rule, value, callback) => {
+    const check_user_name = (rule, value, callback) => {
       if (!value) {
         return callback(new Error("用户名不能为空!"));
       }
     };
 
     // 校验密码
-    var checkPass = (rule, value, callback) => {
+    const check_user_password = (rule, value, callback) => {
       if (!value) {
         callback(new Error("密码不能为空!"));
       } else {
-        if (this.ruleForm.checkPass !== "") {
-          this.$refs.ruleForm.validateField("checkPass");
+        if (this.ruleForm.user_check_password !== "") {
+          this.$refs.ruleForm.validateField("user_check_password");
         }
         callback();
       }
     };
 
     // 校验确认密码
-    var checkPass2 = (rule, value, callback) => {
+    const confirm_user_password = (rule, value, callback) => {
       if (!value) {
         callback(new Error("请确认密码!"));
-      } else if (value !== this.ruleForm.pass) {
+      } else if (value !== this.ruleForm.user_password) {
         callback(new Error("两次输入密码不一致!"));
       } else {
         callback();
@@ -120,7 +118,7 @@ export default {
     };
 
     // 校验手机号
-    var checkPhone = (rule, value, callback) => {
+    const check_user_phone= (rule, value, callback) => {
       if (!value) {
         callback(new Error("手机号不能为空!"));
       } else {
@@ -134,7 +132,7 @@ export default {
     };
 
     // 校验验证码
-    var checkCode = (rule, value, callback) => {
+    const check_user_code = (rule, value, callback) => {
       if (!value) {
         callback(new Error("验证码不能为空!"));
       }
@@ -143,18 +141,18 @@ export default {
     return {
       // 表单信息
       ruleForm: {
-        username: "",
-        pass: "",
-        checkpass: "",
-        phone: "",
-        code: "",
+        user_name: "",
+        user_password: "",
+        user_check_password: "",
+        user_phone: "",
+        user_code: "",
       },
       rules: {
-        username: [{ validator: checkUserName, trigger: "blur" }],
-        pass: [{ validator: checkPass, trigger: "blur" }],
-        checkpass: [{ validator: checkPass2, trigger: "blur" }],
-        phone: [{ validator: checkPhone, trigger: "blur" }],
-        code: [{ validator: checkCode, trigger: "blur" }],
+        user_name: [{ validator: check_user_name, trigger: "blur" }],
+        user_password: [{ validator: check_user_password, trigger: "blur" }],
+        user_check_password: [{ validator: confirm_user_password, trigger: "blur" }],
+        user_phone: [{ validator: check_user_phone, trigger: "blur" }],
+        user_code: [{ validator: check_user_code, trigger: "blur" }],
       },
     };
   },
@@ -185,7 +183,7 @@ export default {
       event.preventDefault();
       // 调用注册接口
       register(
-        this.ruleForm.username,
+        this.ruleForm.user_name,
         this.ruleForm.pass,
         this.ruleForm.phone
       ).then((res) => {
@@ -203,6 +201,11 @@ export default {
         }
       });
     },
+
+    // 去登录
+    toLogin() {
+      this.$router.push('/login')
+    }
   },
 };
 </script>
