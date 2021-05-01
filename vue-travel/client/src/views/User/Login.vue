@@ -103,17 +103,17 @@ export default {
     getCookie() {
       if (document.cookie.length > 0) {
         var arr = document.cookie.split(";"); // 这里显示的格式需要切割一下
-        for (var i = 0; i < arr.length; i++) {
-          var arr2 = arr[i].split("="); // 再次切割
-          // 判断查找相对应的值
-          if (arr2[0] == "user_name") {
-            this.ruleForm.user_name = arr2[1]; //保存到保存数据的地方
-          } else if (arr2[0] == "user_password") {
+        arr.map((item) => {
+          var arr2 = item.split("="); // 再次切割
+          var arr3 = arr2[0].trim(); // 去除前后空格
+          if (arr3 == "user_name") {
+            this.ruleForm.user_name = arr2[1]; // 保存到保存数据的地方
+          } else if (arr3 == "user_password") {
             this.ruleForm.user_password = arr2[1];
-          } else if (arr2[0] == "checked") {
+          } else if (arr3 == "checked") {
             this.checked = Boolean(arr2[1]);
           }
-        }
+        });
       }
     },
 
@@ -132,23 +132,9 @@ export default {
           login(this.ruleForm.user_name, this.ruleForm.user_password).then(
             (res) => {
               console.log("login", res.data);
-              // 1. 错误情况
-              switch (res.data.code) {
-                case "401":
-                  this.$message.error("抱歉，用户名不存在！");
-                  break;
-                case "402":
-                  this.$message.error("抱歉，密码不能为空！");
-                  break;
-                case "403":
-                  this.$message.error("抱歉，密码错误！");
-                  break;
-                case "500":
-                  this.$message.error("抱歉，系统错误！");
-                  break;
-              }
 
               if (res.data.code == "200") {
+                this.$message.success("登录成功！");
                 // 登录成功
                 // 若复选框被勾选了，就调用设置cookie方法，把当前的用户名和密码和过期时间存到cookie中
                 if (this.checked) {
@@ -164,13 +150,39 @@ export default {
                 }
 
                 // 存储 token
-                const { token } = res.data.token;
+                const token = res.data.token;
                 localStorage.setItem("eleToken", token);
 
                 // 解析 token
-                const decode = jwt_decode(token);
-                console.log('111',decode);
+                const decode = token;
+
+                // 存储数据
+                // this.$store.dispatch(
+                //   "setIsAutnenticated",
+                //   !this.isEmpty(decode)
+                // );
+                // this.$store.dispatch("setUser", decode);
+
                 this.$router.push("/");
+              } else {
+                // 1. 错误情况
+                switch (res.data.code) {
+                  case "401":
+                    this.$message.error("抱歉，用户名不存在！");
+                    break;
+                  case "402":
+                    this.$message.error("抱歉，密码不能为空！");
+                    break;
+                  case "403":
+                    this.$message.error("抱歉，密码错误！");
+                    break;
+                  case "500":
+                    this.$message.error("抱歉，系统错误！");
+                    break;
+                  default:
+                    this.$message.error("登录失败！");
+                }
+                
               }
             }
           );
@@ -178,6 +190,15 @@ export default {
           return false;
         }
       });
+    },
+
+    isEmpty(value) {
+      return (
+        value === undefined ||
+        value === null ||
+        (typeof value === "object" && Object.keys(value).length === 0) ||
+        (typeof value === "string" && value.trim().length === 0)
+      );
     },
 
     // 设置 cookie

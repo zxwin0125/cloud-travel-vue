@@ -9,7 +9,6 @@ const indexController = require('../../controllers/indexController')
 
 // route   GET 请求 api/index/getTour  返回的请求为 json 数据
 router.get('/getTour', (req, res) => {
-    console.log('8989');
     indexController.getTour(req, res)
 })
 
