@@ -19,7 +19,7 @@ router.post('/register', (req, res) => {
 
 // route   GET 请求 api/users/getValidCode  返回的请求为 json 数据
 router.get('/getValidCode', (req, res) => {
-    userController.getAllUsers(req, res)
+    userController.getUserCode(req, res)
 })
 
 

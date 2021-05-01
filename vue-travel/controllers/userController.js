@@ -6,6 +6,8 @@ const bcrypt = require('bcrypt')
 const gravatar = require('gravatar')
 // 引入 json-web-token
 const jwt = require('jsonwebtoken')
+// 引入 http 模块
+const https = require('http')
 
 
 const userController = {
@@ -164,6 +166,43 @@ const userController = {
         })
     },
 
+    // 4. 获取验证码
+    getUserCode: (req, res) => {
+        const user_phone = req.query.user_phone
+        const user_code = '0000' + Math.ceil(10000 * Math.random())
+        user_code = code.slice(code.length - 4)
+        // 随机的4位数作为验证码
+        console.log('验证码', code);
+        const url = `http://106.ihuyi.com/webservice/sms.php?
+                     method=Submit&account=C31954387&
+                     password=a9a16f85da4919e23b6d7a4eb077d353
+                     &mobile=${mobile}&content=您的验证码是：${code}。请不要把验证码泄露给其他人。`
+        console.log('验证码url:', url)
+        https.get(url, (response) => {
+            const fullcontent = ''
+            response.on('data', (content) => {
+                fullcontent += content
+            })
+            response.on('end', () => {
+                console.log('fullcontent:', fullcontent)
+                const reg = /<code>(\d)<\/code>/gi
+                const sendResult = reg.exec(fullcontent)[1]
+                if (sendResult == 2) {
+                    res.json({
+                        code: '200',
+                        msg: '验证码发送成功',
+                        data: code
+                    })
+                } else {
+                    res.json({
+                        code: '500',
+                        msg: '验证码发送失败'
+                    })
+                }
+            })
+        })
+
+    }
 
 
 

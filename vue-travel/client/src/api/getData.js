@@ -25,9 +25,9 @@ export const register = ( user_name, user_password, user_phone ) => axios.post("
 })
 
 // 读取验证码信息接口
-export const getCode = ( mobile ) => axios.get("/api/users/getValidCode", {
+export const getCode = ( user_phone ) => axios.get("/api/users/getValidCode", {
     params: {
-        "mobile": mobile
+        "user_phone": user_phone
     }
 })
 

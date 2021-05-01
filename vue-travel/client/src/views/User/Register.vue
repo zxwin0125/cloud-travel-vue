@@ -57,7 +57,7 @@
                   type="success"
                   size="small"
                   class="codeBtn"
-                  @click="getCode()"
+                  @click="getUserCode()"
                   >获取验证码</el-button
                 >
               </el-form-item>
@@ -156,10 +156,12 @@ export default {
       },
     };
   },
+  created() {},
+  mounted() {},
   methods: {
-    // 获取验证码方法
-    getCode() {
-      getCode(this.ruleForm.phone).then((res) => {
+    // 1. 获取验证码方法
+    getUserCode() {
+      getCode(this.ruleForm.user_phone).then((res) => {
         if (res.data.data !== this.ruleForm.code) {
           // 验证码不正确
           this.$message.error("验证码不正确!");
