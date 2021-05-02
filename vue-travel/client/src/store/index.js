@@ -34,6 +34,20 @@ const mutations = {
   }
 }
 
+const actions = {
+  setIsAutnenticated: ({ commit }, isAutnenticated) => {
+    commit(types.SET_IS_AUTNENTIATED, isAutnenticated)
+  },
+  setUserInfo: ({ commit }, user_info) => {
+    commit(types.SET_USER_INFO, user_info)
+  },
+  clearCurrentState: ({ commit }) => {
+    commit(types.SET_IS_AUTNENTIATED, false)
+    commit(types.SET_USER_INFO, null)
+  }
+}
+
+
 
 
 export default new Vuex.Store({
