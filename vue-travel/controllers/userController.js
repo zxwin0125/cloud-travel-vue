@@ -147,26 +147,7 @@ const userController = {
         })
     },
 
-    // 3. 获取用户数据
-    getUserInfo: (req, res) => {
-        const user_id = req.query.user_id
-        userDAL.getUserInfo(user_id, (err, results) => {
-            if (err) {
-                res.json({
-                    code: '405',
-                    message: 'getUserInfo - 系统错误'
-                })
-            } else {
-                res.json({
-                    code: '200',
-                    message: '获取用户数据',
-                    data: results
-                })
-            }
-        })
-    },
-
-    // 4. 获取验证码
+    // 3. 获取验证码
     getUserCode: (req, res) => {
         const user_phone = req.query.user_phone
         let user_code = '0000' + Math.ceil(10000 * Math.random())
@@ -202,7 +183,28 @@ const userController = {
             })
         })
 
-    }
+    },
+
+    // 4. 获取用户数据
+    getUserInfo: (req, res) => {
+        const user_id = req.query.user_id
+        userDAL.getUserInfo(user_id, (err, results) => {
+            if (err) {
+                res.json({
+                    code: '405',
+                    message: 'getUserInfo - 系统错误'
+                })
+            } else {
+                res.json({
+                    code: '200',
+                    message: '获取用户数据',
+                    data: results
+                })
+            }
+        })
+    },
+
+    
 
 
 

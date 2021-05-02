@@ -135,6 +135,8 @@ export default {
     const check_user_code = (rule, value, callback) => {
       if (!value) {
         callback(new Error("验证码不能为空!"));
+      } else if (this.user_code !== value) {
+        this.$message.error("验证码不正确!");
       }
     };
 
@@ -156,6 +158,7 @@ export default {
         user_phone: [{ validator: check_user_phone, trigger: "blur" }],
         user_code: [{ validator: check_user_code, trigger: "blur" }],
       },
+      userCode: ''
     };
   },
   created() {},
@@ -164,10 +167,16 @@ export default {
     // 1. 获取验证码方法
     getUserCode() {
       getCode(this.ruleForm.user_phone).then((res) => {
-        if (res.data.data !== this.ruleForm.code) {
-          // 验证码不正确
-          this.$message.error("验证码不正确!");
+        if (res.data.code == '200') {
+          this.$message.success("发送验证码成功!");
+          this.user_code = res.data.data
+        } else {
+          this.$message.error("发送验证码失败!");
         }
+        // if (res.data.data !== this.ruleForm.user_code) {
+        //   // 验证码不正确
+          
+        // }
       });
     },
 
@@ -188,7 +197,7 @@ export default {
             } else if (res.data.code == '200') {
               // 注册成功，跳转到登陆
               this.$message.success("登录成功！");
-              this.$router.push({ path: "/login" });
+              this.$router.push("/login");
             }
           });
         } else {
