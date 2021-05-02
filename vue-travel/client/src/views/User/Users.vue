@@ -35,6 +35,11 @@ export default {
       imageUrl: "",
     };
   },
+  computed: {
+    getToken() {
+      return this.$store.state.token;
+    }
+  },
   created() {
     this.getUserData()
   },
@@ -46,7 +51,7 @@ export default {
       // 捕获异常
       try {
         // 等待异步方法执行完成
-        const result = await getUserInfo();
+        const result = await getUserInfo(this.token);
         console.log("获取用户数据", result);
         // this.Tourlist = result.data.data;
       } catch (err) {

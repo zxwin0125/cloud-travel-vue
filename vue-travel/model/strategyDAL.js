@@ -10,7 +10,7 @@ const strategyDAL = {
                    strategy_path from strategy_info`
         dao(sql, [], function (err, results) {
             if (err) {
-                console.log('失败', err.message)
+                console.log('攻略主列表失败', err.message)
             } else {
                 cb(null, results)
             }
@@ -22,7 +22,7 @@ const strategyDAL = {
         const sql = 'select strategy_id,strategy_title,strategy_content,strategy_img,strategy_view  from strategy_info order by strategy_view desc limit 3;'
         dao(sql, [], function (err, results) {
             if (err) {
-                console.log('失败', err.message)
+                console.log('攻略热门列表失败', err.message)
             } else {
                 cb(null, results)
             }

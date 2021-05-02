@@ -36,12 +36,10 @@ export default {
   methods: {
     change1() {
       this.yearData = [200, 300, 300, 900, 1500, 1200, 600];
-      console.log(this.yearData);
     },
 
     change2() {
       this.yearData = [300, 400, 350, 800, 1800, 1400, 700];
-      console.log(this.yearData);
     },
     myEcharts() {
       // 基于准备好的dom，初始化echarts实例

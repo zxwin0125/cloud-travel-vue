@@ -83,7 +83,7 @@ export default {
         console.log("攻略 Main 数据", result);
         this.arts = result.data.data;
       } catch (err) {
-        console.log("err12", err);
+        console.log("err", err);
       }
     },
 

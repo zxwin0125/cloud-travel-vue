@@ -40,7 +40,6 @@ export default {
   },
   methods: {
     getData: function () {
-      // console.log("HomeBlog",this.BlogData)
     },
   },
   mounted() {
