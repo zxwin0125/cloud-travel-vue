@@ -1,6 +1,6 @@
 <template>
   <div class="destination">
-    <h2>目的地</h2>
+    <router-view></router-view>
     <!-- <Destinationtop /> -->
     <!-- 热门目的地 -->
     <!-- <Destinationveiw /> -->

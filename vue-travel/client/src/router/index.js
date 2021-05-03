@@ -5,8 +5,9 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home/Home.vue'
 import Destination from '../views/Destination/Destination.vue'
 import des_lj from '../views/Destination/components/des_lj.vue'
-import des_lj from '../views/Destination/components/des_lj.vue'
-import des_lj from '../views/Destination/components/des_lj.vue'
+import des_km from '../views/Destination/components/des_km.vue'
+import des_xgll from '../views/Destination/components/des_xgll.vue'
+import des_xsbn from '../views/Destination/components/des_xsbn.vue'
 import Strategy from '../views/Strategy/Strategy.vue'
 import Community from '../views/Community/Community.vue'
 import Tickets from '../views/Tickets/Tickets.vue'
@@ -34,24 +35,36 @@ const routes = [{
     },
     children: [
       {
-        path: '/lj',
+        path: '/destination/lj',
         name: 'des_lj',
-        component: des_lj
+        component: des_lj,
+        meta: {
+          isturn: true
+        }
       },
       {
-        path: '/km',
+        path: '/destination/km',
         name: 'des_km',
-        component: des_km
+        component: des_km,
+        meta: {
+          isturn: true
+        }
       },
       {
-        path: '/xgll',
+        path: '/destination/xgll',
         name: 'des_xgll',
-        component: des_xgll
+        component: des_xgll,
+        meta: {
+          isturn: true
+        }
       },
       {
-        path: '/xsbn',
+        path: '/destination/xsbn',
         name: 'des_xsbn',
-        component: des_xsbn
+        component: des_xsbn,
+        meta: {
+          isturn: true
+        }
       }
     ],
     meta: {
