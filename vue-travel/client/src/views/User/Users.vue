@@ -36,33 +36,14 @@ export default {
     };
   },
   computed: {
-    getUserInfo() {
-      return this.$store.state.user_info;
-    },
-    user() {
+    userInfo() {
       return this.$store.getters.user_info
     }
   },
   created() {
-    this.getUserData()
   },
   mounted() {},
   methods: {
-    // 异步调用 getUserInfo 接口
-    // 获取用户数据
-    async getUserData() {
-      // 捕获异常
-      try {
-        // 等待异步方法执行完成
-        const result = await getUserInfo(this.token);
-        console.log("获取用户数据", result);
-        // this.Tourlist = result.data.data;
-      } catch (err) {
-        console.log("err", err);
-      }
-    },
-
-
     handleAvatarSuccess(res, file) {
       this.imageUrl = URL.createObjectURL(file.raw);
     },
