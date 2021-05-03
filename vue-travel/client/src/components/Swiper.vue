@@ -1,6 +1,6 @@
 <template>
     <section id="swiper">
-        <el-carousel trigger="click" :height="height">
+        <el-carousel trigger="click" :width="width" :height="height">
             <el-carousel-item v-for="item in imgs" :key="item">
                 <img :src="item" alt="">
             </el-carousel-item>
@@ -16,6 +16,9 @@
             imgs: {
                 type: Array,
                 required: true
+            },
+            width: {
+                type: String,
             },
             height: {
                 type: String,
