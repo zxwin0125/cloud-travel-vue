@@ -64,7 +64,9 @@ const userController = {
                                         const rule = {
                                             user_id: results[0].user_id,
                                             user_name: results[0].user_name,
-                                            avatar: results[0].user_headPic_url,
+                                            user_password: results[0].user_password,
+                                            user_phone: results[0].user_phone,
+                                            user_headPic_url: results[0].user_headPic_url,
                                         }
 
                                         jwt.sign(rule, 'privateKey', {

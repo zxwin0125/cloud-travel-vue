@@ -154,7 +154,9 @@ export default {
                 localStorage.setItem("eleToken", token);
 
                 // 解析 token
-                const decode = token;
+                const decode = jwt_decode(token);
+
+                console.log('decode', decode);
 
                 // 存储数据
                 this.$store.dispatch(

@@ -41,7 +41,7 @@ router.get('/current', passport.authenticate('jwt', {
     res.json({
         user_id: req.user.user_id,
         user_name: req.user.user_name,
-        user_headPic_url: req.user.avatar
+        user_headPic_url: req.user.user_headPic_url
     });
 })
 

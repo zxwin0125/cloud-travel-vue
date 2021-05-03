@@ -41,6 +41,7 @@ export default {
     }
   },
   created() {
+    console.log(this.$store.state);
     this.getUserData()
   },
   mounted() {},
