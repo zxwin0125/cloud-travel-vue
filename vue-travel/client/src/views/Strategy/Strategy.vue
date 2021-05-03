@@ -1,12 +1,17 @@
 <template>
   <section class="strategy">
     <div class="gonglve-nav" data-cs-t="攻略导航">
-      <div class="nav-item" data-cs-p="海外冬季目的地精选" @mouseenter="showSelect" @mouseout="hideSelect">
+      <div
+        class="nav-item"
+        data-cs-p="海外冬季目的地精选"
+        @mouseenter="showSelect"
+        @mouseleave="hideSelect"
+      >
         <div class="nav-title">
           <h3>海外冬季目的地精选</h3>
           <b class="gn-arrow"></b>
         </div>
-        <div class="nav-panel rank-panel" @mouseenter="showSelect" v-if="isShowSelect">
+        <div class="nav-panel rank-panel" v-if="isShowSelect">
           <ol>
             <li class="top3">
               <em class="rank-num">1</em
@@ -123,12 +128,17 @@
           ></span> -->
         </div>
       </div>
-      <!-- <div class="nav-item" data-cs-p="国内冬季目的地推荐">
+      <div
+        class="nav-item"
+        data-cs-p="国内冬季目的地推荐"
+        @mouseenter="showRecommend"
+        @mouseleave="hideRecommend"
+      >
         <div class="nav-title">
           <h3>国内冬季目的地推荐</h3>
           <b class="gn-arrow"></b>
         </div>
-        <div class="nav-panel rank-panel">
+        <div class="nav-panel rank-panel" v-if="isShowRecommend">
           <ol>
             <li class="top3">
               <em class="rank-num">1</em
@@ -244,13 +254,18 @@
             ></a
           ></span>
         </div>
-      </div> -->
-      <!-- <div class="nav-item" data-cs-p="奔向海岛">
+      </div>
+      <div
+        class="nav-item"
+        data-cs-p="奔向海岛"
+        @mouseenter="showIsland"
+        @mouseleave="hideIsland"
+      >
         <div class="nav-title">
           <h3>奔向海岛</h3>
           <b class="gn-arrow"></b>
         </div>
-        <div class="nav-panel rank-panel">
+        <div class="nav-panel rank-panel" v-if="isShowIsland">
           <ol>
             <li class="top3">
               <em class="rank-num">1</em
@@ -366,8 +381,8 @@
             ></a
           ></span>
         </div>
-      </div> -->
-      <!-- <div class="nav-item" data-cs-p="主题推荐">
+      </div>
+      <div class="nav-item" data-cs-p="主题推荐">
         <div class="nav-title">
           <h3>主题推荐</h3>
           <b class="gn-arrow"></b>
@@ -722,7 +737,7 @@
             </dd>
           </dl>
         </div>
-      </div> -->
+      </div>
     </div>
     <!-- <Swiper :imgs="imgs" /> -->
 
@@ -773,7 +788,9 @@ export default {
 
       allPage: 4,
 
-      isShowSelect: false
+      isShowSelect: false,
+      isShowRecommend: false,
+      isShowIsland: false,
     };
   },
   computed: {
@@ -801,6 +818,18 @@ export default {
     },
     hideSelect() {
       this.isShowSelect = false;
+    },
+    showRecommend() {
+      this.isShowRecommend = true;
+    },
+    hideRecommend() {
+      this.isShowRecommend = false;
+    },
+    showIsland() {
+      this.isShowIsland = true;
+    },
+    hideIsland() {
+      this.isShowIsland = false;
     },
     // 异步调用 strategy 接口
     // 获取 main 数据
@@ -886,64 +915,79 @@ export default {
 }
 
 .gonglve-nav .nav-title .gn-arrow {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 6px;
+  height: 10px;
+  background: url(../../assets/img/icon/new-gl-icon6@2x.png) no-repeat -20px -40px;
+  overflow: hidden;
+}
+
+.gonglve-nav .nav-title .gn-arrow {
   background-image: url(../../assets/img/icon/new-gl-icon6@2x.png);
   background-size: 60px auto;
 }
 
 .gonglve-nav .nav-panel {
-    position: absolute;
-    left: 258px;
-    top: -1px;
-    width: 350px;
-    height: 338px;
-    border: 1px solid #ddd;
-    background-color: #fff;
-    /* display: none; */
-    box-shadow: 0 3px 2px rgb(0 0 0 / 10%);
+  position: absolute;
+  left: 258px;
+  top: -1px;
+  width: 350px;
+  height: 338px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  /* display: none; */
+  box-shadow: 0 3px 2px rgb(0 0 0 / 10%);
 }
 
 .gonglve-nav .rank-panel ol {
-    position: absolute;
-    z-index: 2;
-    padding: 15px 10px;
-    width: 260px;
-    line-height: 30px;
+  position: absolute;
+  z-index: 2;
+  padding: 15px 10px;
+  width: 260px;
+  line-height: 30px;
 }
 
 .gonglve-nav .rank-panel li {
-    height: 30px;
-    overflow: hidden;
+  height: 30px;
+  overflow: hidden;
 }
 
-.gonglve-nav .rank-panel .top3 .rank-num, .gonglve-nav .rank-panel .top3 strong a {
-    color: #ffa800;
+.gonglve-nav .rank-panel .top3 .rank-num,
+.gonglve-nav .rank-panel .top3 strong a {
+  color: #ffa800;
 }
 
 .gonglve-nav .rank-panel .rank-num {
-    float: left;
-    width: 30px;
-    font-size: 20px;
-    font-family: Letter Gothic Std, Verdana, Geneva, sans-serif;
-    text-align: right;
-    color: #aaa;
-    font-weight: bold;
+  float: left;
+  width: 30px;
+  font-size: 20px;
+  font-family: Letter Gothic Std, Verdana, Geneva, sans-serif;
+  text-align: right;
+  color: #aaa;
+  font-weight: bold;
 }
 
 .gonglve-nav .rank-panel strong {
-    padding: 0 15px;
-    font-size: 14px;
-    font-weight: normal;
-    color: #666;
+  padding: 0 15px;
+  font-size: 14px;
+  font-weight: normal;
+  color: #666;
+}
+
+.gonglve-nav .nav-panel a {
+  color: #999;
 }
 
 .gonglve-nav .nav-banner {
-    position: absolute;
-    _top: 1px;
-    z-index: 1;
-    width: 506px;
-    height: 345px;
-    background-repeat: no-repeat;
-    background-position: right bottom;
-    /* display: none; */
+  position: absolute;
+  _top: 1px;
+  z-index: 1;
+  width: 506px;
+  height: 345px;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  /* display: none; */
 }
 </style>
