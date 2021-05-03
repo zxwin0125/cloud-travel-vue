@@ -13,7 +13,7 @@
       <el-row :span="24" class="tour_contain">
         <tourItem
           v-for="item in tourData"
-          :key="item.index_infoID"
+          :key="item.tour_id"
           :tourItemData="item"
         />
       </el-row>

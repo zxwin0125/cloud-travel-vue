@@ -1,5 +1,5 @@
 <template>
-  <section class="tourItem">
+  <section class="tourItem" @click='toTourDetail'>
     <el-col :span="8" class="tour_item">
       <div class="tour_img">
         <img :src="imgs" alt="" />
@@ -24,6 +24,14 @@ export default {
         ".jpg"),
     };
   },
+  created() {},
+  mounted() {},
+  methods: {
+    toTourDetail() {
+      alert(999) // FIXME:
+      console.log('111',this.tourItemData); // FIXME:
+    }
+  }
 };
 </script>
 

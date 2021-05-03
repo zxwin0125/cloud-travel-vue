@@ -10,5 +10,5 @@
     </el-breadcrumb>
   </el-col>
 </template>
-<style  scoped>
+<style scoped>
 </style>

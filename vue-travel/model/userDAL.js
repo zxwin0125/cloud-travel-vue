@@ -55,7 +55,6 @@ const userDAL = {
 
     // 3.1 用户数据
     getUserInfo: (user_id, cb) => {
-        console.log('222',user_id);
         const sql = `select user_name, user_password, user_phone, 
                      user_headPic_url, user_answer, user_card, user_enable,
                      user_comments from user_info where user_id=?`
