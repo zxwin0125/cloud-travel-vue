@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 // 引入路由
 import Home from '../views/Home/Home.vue'
 import Strategy from '../views/Strategy/Strategy.vue'
+import Tickets from '../views/Tickets/Tickets.vue'
 import DataVisualization from '../views/DataVisualization/DataVisualization.vue'
 import Users from '../views/User/Users.vue'
 import Login from '../views/User/Login.vue'
@@ -24,6 +25,17 @@ const routes = [{
     name: 'Strategy',
     components: {
       default: Strategy,
+      'header': null
+    },
+    meta: {
+      isturn: true
+    }
+  },
+  {
+    path: '/tickets',
+    name: 'Tickets',
+    components: {
+      default: Tickets,
       'header': null
     },
     meta: {

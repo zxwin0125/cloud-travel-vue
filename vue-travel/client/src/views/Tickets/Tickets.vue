@@ -1,40 +1,38 @@
 <template>
   <div class="tickets">
-    <!-- 轮播图 -->
     <Swiper :imgs="imgs" />
-    <!-- 轮播图 -->
-
+    <h2>购票</h2>
     <!--文本导航开始  -->
-    <TicketsTitle />
+    <!-- <TicketsTitle /> -->
     <!-- 文本导航结束 -->
 
     <!-- 热门景区推荐开始 -->
-    <TicketsMain />
+    <!-- <TicketsMain /> -->
     <!-- 热门景区推荐结束 -->
     
     <!--文本导航开始  -->
-    <TicketsTitle />
+    <!-- <TicketsTitle /> -->
     <!-- 文本导航结束 -->
 
     <!-- 票单页面开始 -->
-    <TicketsTickets :ticketList="ticketList" />
+    <!-- <TicketsTickets :ticketList="ticketList" /> -->
   </div>
 </template>
 
 <script>
 import Swiper from "../../components/Swiper";
-import TicketsTitle from "../Tickets/components/TicketsTitle";
-import TicketsMain from "../Tickets/components/TicketsMain";
-import TicketsTickets from "../Tickets/components/TicketsTickets";
+// import TicketsTitle from "../Tickets/components/TicketsTitle";
+// import TicketsMain from "../Tickets/components/TicketsMain";
+// import TicketsTickets from "../Tickets/components/TicketsTickets";
 // import { getTicket } from "@/api/getData.js";
 
 export default {
   name: "Tickets",
   components: {
     Swiper,
-    TicketsTitle,
-    TicketsMain,
-    TicketsTickets,
+    // TicketsTitle,
+    // TicketsMain,
+    // TicketsTickets,
   },
   
   data() {
@@ -52,33 +50,23 @@ export default {
     };
   },
   created() {
-    this.$axios.get('/api/tickets').then(res => {
-        console.log(res)
-      })
+  },
+  mounted(){
+    //当页面渲染完成时调用方法获取数据
+    this.ticketInfo()
   },
   // 定义方法
   methods: {
     //获取门票信息
     async ticketInfo(){
         try{
-            this.$axios.get('/api/tickets')
-            .then(res => {
-              console.log(res)
-              this.ticketList.push(res.data.data)
-            })
-            
-            // if (result.data.code == 0) {
-            //     this.videoList = result.data.data;
-            // }
+
         }catch(error){
             console.log(error)
         }
     }
   },
-  mounted(){
-    //当页面渲染完成时调用方法获取数据
-    this.ticketInfo()
-  }
+  
 };
 </script>
 

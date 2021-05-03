@@ -23,7 +23,7 @@
                 云社区
             </el-menu-item>
             <!-- 云商城 -->
-            <el-menu-item index="/ticket" @click="toTicket">
+            <el-menu-item index="/tickets" @click="toTickets">
                 云商城
             </el-menu-item>
             <!-- 云数据 -->
@@ -80,8 +80,8 @@
                 this.$router.push('/community')
             },
             // 商城
-            toTicket() {
-                this.$router.push('/ticket')
+            toTickets() {
+                this.$router.push('/tickets')
             },
             // 数据可视化
             toDataVisualization() {
