@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 // 引入路由
 import Home from '../views/Home/Home.vue'
+import Destination from '../views/Destination/Destination.vue'
 import Strategy from '../views/Strategy/Strategy.vue'
 import Community from '../views/Community/Community.vue'
 import Tickets from '../views/Tickets/Tickets.vue'
@@ -17,6 +18,39 @@ const routes = [{
     path: '/',
     name: 'Home',
     component: Home,
+    meta: {
+      isturn: true
+    }
+  },
+  {
+    path: '/destination',
+    name: 'Destination',
+    components: {
+      default: Destination,
+      'header': null
+    },
+    children: [
+      {
+        path: '/lj',
+        name: 'des_lj',
+        component: des_lj
+      },
+      {
+        path: '/km',
+        name: 'des_km',
+        component: des_km
+      },
+      {
+        path: '/xgll',
+        name: 'des_xgll',
+        component: des_xgll
+      },
+      {
+        path: '/xsbn',
+        name: 'des_xsbn',
+        component: des_xsbn
+      }
+    ],
     meta: {
       isturn: true
     }

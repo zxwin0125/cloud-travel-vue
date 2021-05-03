@@ -7,12 +7,12 @@
                 首页
             </el-menu-item>
             <!-- 目的地 -->
-            <el-submenu index="/destination" @click="toDestination">
+            <el-submenu index="/destination">
                 <template slot="title">目的地</template>
-                <el-menu-item index="/destination/lj" @click="toDestination">丽江</el-menu-item>
-                <el-menu-item index="/destination/km" @click="toDestination">昆明</el-menu-item>
-                <el-menu-item index="/destination/xgll" @click="toDestination">香格里拉</el-menu-item>
-                <el-menu-item index="/destination/xsbn" @click="toDestination">西双版纳</el-menu-item>
+                <el-menu-item index="/destination/lj" @click="toDes_lj">丽江</el-menu-item>
+                <el-menu-item index="/destination/km" @click="toDes_km">昆明</el-menu-item>
+                <el-menu-item index="/destination/xgll" @click="toDes_xgll">香格里拉</el-menu-item>
+                <el-menu-item index="/destination/xsbn" @click="toDes_xsbn">西双版纳</el-menu-item>
             </el-submenu>
             <!-- 云攻略 -->
             <el-menu-item index="/strategy" @click="toStrategy">
@@ -68,8 +68,17 @@
                 this.$router.push('/')
             },
             // 目的地
-            toDestination() {
-                this.$router.push('/destination')
+            toDes_lj() {
+                this.$router.push('/destination/lj')
+            },
+            toDes_km() {
+                this.$router.push('/destination/km')
+            },
+            toDes_xgll() {
+                this.$router.push('/destination/xgll')
+            },
+            toDes_xsbn() {
+                this.$router.push('/destination/xsbn')
             },
             // 攻略
             toStrategy() {
