@@ -2400,4 +2400,53 @@ export default {
   padding-bottom: 30px;
   display: none;
 }
+
+.gonglve_wrap {
+    margin-top: 15px;
+    padding-bottom: 20px;
+}
+
+.cont-main {
+    float: right;
+    width: 790px;
+    margin-bottom: 20px;
+}
+
+.cont-main .hd {
+    height: 50px;
+    border-bottom: 1px solid #eee;
+    line-height: 48px;
+}
+
+.cont-main .hd h3 {
+    float: left;
+    font-weight: normal;
+    font-size: 20px;
+    color: #333;
+}
+
+.feed-item {
+    padding: 20px 0;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.feed-item a {
+    display: block;
+}
+
+.feed-item .stat {
+    float: right;
+    padding: 0 15px;
+    line-height: 30px;
+    border: 1px solid #ff9d00;
+    border-radius: 15px;
+    font-size: 14px;
+    background-color: #fff;
+    color: #666;
+}
+
+.feed-item .stat .num {
+    color: #ff9d00;
+}
 </style>
