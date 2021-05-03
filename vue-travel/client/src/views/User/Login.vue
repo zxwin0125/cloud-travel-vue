@@ -157,11 +157,11 @@ export default {
                 const decode = token;
 
                 // 存储数据
-                // this.$store.dispatch(
-                //   "setIsAutnenticated",
-                //   !this.isEmpty(decode)
-                // );
-                // this.$store.dispatch("setUser", decode);
+                this.$store.dispatch(
+                  "setIsAutnenticated",
+                  !this.isEmpty(decode)
+                );
+                this.$store.dispatch("setUserInfo", decode);
 
                 this.$router.push("/");
               } else {
