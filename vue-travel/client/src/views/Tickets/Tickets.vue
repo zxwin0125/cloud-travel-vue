@@ -1,9 +1,5 @@
 <template>
-  <div id="tickets">
-    <!-- 导航栏开始 -->
-    <Nav />
-    <!-- 导航栏结束 -->
-
+  <div class="tickets">
     <!-- 轮播图 -->
     <Swiper :imgs="imgs" />
     <!-- 轮播图 -->
@@ -22,31 +18,23 @@
 
     <!-- 票单页面开始 -->
     <TicketsTickets :ticketList="ticketList" />
-
-    <!-- 底部开始 -->
-    <Footer />
-    <!-- 底部结束 -->
   </div>
 </template>
 
 <script>
-import Nav from "../../components/Nav";
 import Swiper from "../../components/Swiper";
 import TicketsTitle from "../Tickets/components/TicketsTitle";
 import TicketsMain from "../Tickets/components/TicketsMain";
 import TicketsTickets from "../Tickets/components/TicketsTickets";
-import Footer from "../../components/Footer";
 // import { getTicket } from "@/api/getData.js";
 
 export default {
   name: "Tickets",
   components: {
-    Nav,
     Swiper,
     TicketsTitle,
     TicketsMain,
     TicketsTickets,
-    Footer,
   },
   
   data() {
@@ -63,11 +51,11 @@ export default {
       ticketList: []
     };
   },
-  // created() {
-  //   this.$axios.get('/api/tickets').then(res => {
-  //       console.log(res)
-  //     })
-  // },
+  created() {
+    this.$axios.get('/api/tickets').then(res => {
+        console.log(res)
+      })
+  },
   // 定义方法
   methods: {
     //获取门票信息
