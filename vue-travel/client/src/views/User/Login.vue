@@ -163,6 +163,7 @@ export default {
                   "setIsAutnenticated",
                   !this.isEmpty(decode)
                 );
+
                 this.$store.dispatch("setUserInfo", decode);
 
                 this.$router.push("/");

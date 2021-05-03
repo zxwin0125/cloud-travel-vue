@@ -36,12 +36,14 @@ export default {
     };
   },
   computed: {
-    getToken() {
-      return this.$store.state.token;
+    getUserInfo() {
+      return this.$store.state.user_info;
+    },
+    user() {
+      return this.$store.getters.user_info
     }
   },
   created() {
-    console.log(this.$store.state);
     this.getUserData()
   },
   mounted() {},
