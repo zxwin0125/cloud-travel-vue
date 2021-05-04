@@ -24,10 +24,10 @@ export default {
   methods: {
     myEcharts() {
       // 基于准备好的dom，初始化echarts实例
-      var myChart = this.$echarts.init(document.getElementById("campaign-v5"));
+      const myChart = this.$echarts.init(document.getElementById("campaign-v5"));
 
       // 2. 指定配置和数据
-      var data = [
+      const data = [
         [
           [28604, 77, 17096869, "Australia", 1990],
           [31163, 77.4, 27662440, "Canada", 1990],
@@ -72,7 +72,7 @@ export default {
         ],
       ];
 
-      var option = {
+      const option = {
         legend: {
           right: 10,
           data: ["1990", "2015"],

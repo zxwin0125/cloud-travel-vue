@@ -26,10 +26,10 @@ export default {
   methods: {
     myEcharts() {
       // 基于准备好的dom，初始化echarts实例
-      var myChart = this.$echarts.init(document.getElementById("campaign-v3"));
+      const myChart = this.$echarts.init(document.getElementById("campaign-v3"));
 
       // (1)准备数据
-      var data = {
+      const data = {
         year: [
           [24, 40, 101, 134, 90, 230, 210, 230, 120, 230, 210, 120],
           [40, 64, 191, 324, 290, 330, 310, 213, 180, 200, 180, 79],
@@ -37,7 +37,7 @@ export default {
       };
 
       // 2. 指定配置和数据
-      var option = {
+      const option = {
         color: ["#0184d5", "#00d887"],
         tooltip: {
           // 通过坐标轴来触发

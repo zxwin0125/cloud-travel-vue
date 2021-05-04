@@ -43,10 +43,10 @@ export default {
     },
     myEcharts() {
       // 基于准备好的dom，初始化echarts实例
-      var myChart = this.$echarts.init(document.getElementById("campaign-v2"));
+      const myChart = this.$echarts.init(document.getElementById("campaign-v2"));
 
       // 2. 指定配置项和数据
-      var option = {
+      const option = {
         color: ["#ed5a65"],
         tooltip: {
           trigger: "axis",
