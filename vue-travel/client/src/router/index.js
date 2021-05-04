@@ -3,15 +3,21 @@ import VueRouter from 'vue-router'
 
 // 引入路由
 import Home from '../views/Home/Home.vue'
+
 import Destination from '../views/Destination/Destination.vue'
 import des_lj from '../views/Destination/components/des_lj.vue'
 import des_km from '../views/Destination/components/des_km.vue'
 import des_xgll from '../views/Destination/components/des_xgll.vue'
 import des_xsbn from '../views/Destination/components/des_xsbn.vue'
+
 import Strategy from '../views/Strategy/Strategy.vue'
+
 import Community from '../views/Community/Community.vue'
+
 import Tickets from '../views/Tickets/Tickets.vue'
+
 import DataVisualization from '../views/DataVisualization/DataVisualization.vue'
+
 import Users from '../views/User/Users.vue'
 import Login from '../views/User/Login.vue'
 import Register from '../views/User/Register.vue'
@@ -148,6 +154,17 @@ const routes = [{
   }
 
 ]
+
+// 添加路由守卫
+router.beforeEach((to, from, next) => {
+  const isLogin = localStorage.eleToken ? true : false;
+  if (to.path == "/users" || to.path == "/tickets") {
+    next()
+  } else {
+    isLogin ? next() : next("/login")
+  }
+})
+
 
 const router = new VueRouter({
   mode: 'history',
