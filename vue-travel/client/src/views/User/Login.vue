@@ -166,7 +166,7 @@ export default {
 
                 this.$store.dispatch("setUserInfo", decode);
 
-                this.$router.push("/");
+                this.$router.push("/").catch(err => {});
               } else {
                 // 1. 错误情况
                 switch (res.data.code) {
@@ -236,7 +236,7 @@ export default {
 
     // 去注册
     toRegister() {
-      this.$router.push('/register')
+      this.$router.push('/register').catch(err => {})
     }
   },
 };

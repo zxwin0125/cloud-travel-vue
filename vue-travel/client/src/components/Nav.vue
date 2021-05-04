@@ -65,48 +65,48 @@
             // 跳转路由
             // 首页
             toHome() {
-                this.$router.push('/')
+                this.$router.push('/').catch(err => {})
             },
             // 目的地
             toDes_lj() {
-                this.$router.push('/destination/lj')
+                this.$router.push('/destination/lj').catch(err => {})
             },
             toDes_km() {
-                this.$router.push('/destination/km')
+                this.$router.push('/destination/km').catch(err => {})
             },
             toDes_xgll() {
-                this.$router.push('/destination/xgll')
+                this.$router.push('/destination/xgll').catch(err => {})
             },
             toDes_xsbn() {
-                this.$router.push('/destination/xsbn')
+                this.$router.push('/destination/xsbn').catch(err => {})
             },
             // 攻略
             toStrategy() {
-                this.$router.push('/strategy')
+                this.$router.push('/strategy').catch(err => {})
             },
             // 社区
             toCommunity() {
-                this.$router.push('/community')
+                this.$router.push('/community').catch(err => {})
             },
             // 商城
             toTickets() {
-                this.$router.push('/tickets')
+                this.$router.push('/tickets').catch(err => {})
             },
             // 数据可视化
             toDataVisualization() {
-                this.$router.push('/dataVisualization')
+                this.$router.push('/dataVisualization').catch(err => {})
             },
             // 个人中心
             toUser() {
-                this.$router.push('/users')
+                this.$router.push('/users').catch(err => {})
             },
             // 登陆
             toLogin() {
-                this.$router.push('/login')
+                this.$router.push('/login').catch(err => {})
             },
             // 注册
             toRegister() {
-                this.$router.push('/register')
+                this.$router.push('/register').catch(err => {})
             }
         }
     }

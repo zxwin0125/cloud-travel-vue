@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     toTicket() {
-      this.$router.push("/ticket");
+      this.$router.push("/ticket").catch(err => {});
     },
   },
 };

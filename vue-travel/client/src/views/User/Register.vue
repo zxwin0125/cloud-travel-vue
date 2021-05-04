@@ -197,7 +197,7 @@ export default {
             } else if (res.data.code == '200') {
               // 注册成功，跳转到登陆
               this.$message.success("登录成功！");
-              this.$router.push("/login");
+              this.$router.push("/login").catch(err => {});
             }
           });
         } else {
@@ -209,7 +209,7 @@ export default {
 
     // 去登录
     toLogin() {
-      this.$router.push("/login");
+      this.$router.push("/login").catch(err => {});
     },
   },
 };

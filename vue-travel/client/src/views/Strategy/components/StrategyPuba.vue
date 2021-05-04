@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     publishStr() {
-      this.$router.push("/strategy_add");
+      this.$router.push("/strategy_add").catch(err => {});
     },
   },
 };

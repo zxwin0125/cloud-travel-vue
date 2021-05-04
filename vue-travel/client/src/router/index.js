@@ -107,7 +107,8 @@ const routes = [{
       'header': null
     },
     meta: {
-      isturn: true
+      isturn: true, // 表示这个路由需要导航和底部
+      isLogin: true // 表示进入这个路由需要登录
     }
   },
   {
@@ -129,7 +130,8 @@ const routes = [{
       'header': null
     },
     meta: {
-      isturn: true
+      isturn: true,
+      isLogin: true
     }
   },
   {
@@ -150,21 +152,10 @@ const routes = [{
   },
   {
     path: '*',
-    redirect: '/home'
+    redirect: '/'
   }
 
 ]
-
-// 添加路由守卫
-router.beforeEach((to, from, next) => {
-  const isLogin = localStorage.eleToken ? true : false;
-  if (to.path == "/users" || to.path == "/tickets") {
-    next()
-  } else {
-    isLogin ? next() : next("/login")
-  }
-})
-
 
 const router = new VueRouter({
   mode: 'history',
