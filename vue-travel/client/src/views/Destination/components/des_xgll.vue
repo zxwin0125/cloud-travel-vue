@@ -6,7 +6,7 @@
     <!-- 图片风景分割线 -->
     <Destinationdev />
     <!-- 丽江风情 -->
-    <Destinationplace />
+    <Destinationplace :placeInfo="xgll_Info" />
   </div>
 </template>
 
@@ -28,7 +28,7 @@ export default {
   },
   data() {
     return {
-      km_Info: {},
+      xgll_Info: [],
     };
   },
   create() {},

@@ -6,7 +6,7 @@
     <!-- 图片风景分割线 -->
     <Destinationdev />
     <!-- 丽江风情 -->
-    <Destinationplace :xsbnInfo="xsbn_Info"/>
+    <Destinationplace :placeInfo="xsbn_Info"/>
   </div>
 </template>
 

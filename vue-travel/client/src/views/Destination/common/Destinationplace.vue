@@ -3,61 +3,45 @@
   <div id="destinationplace">
     <div class="placelist">
       <section class="container">
-        <router-link to="/Destination/Destination_des">
-          <div class="view">
-            <div class="all" v-for="item in xsbnInfo" :key="item.des_xsbn_id">
-              <a href="#">
-                <div class="tupian">
-                    {{item.des_xsbn_img}}
-                  <!-- <img
-                    :src="imgs"
-                    alt=""
-                    class="rounded"
-                  /> -->
-                </div>
-                <h4>{{ item.des_xsbn_title }}</h4>
-                <span>评分：{{ item.des_xsbn_score }}</span>
-                <p>{{ item.des_xsbn_content }}...</p>
-              </a>
-            </div>
-          </div>
-        </router-link>
+        <div class="view">
+          <placeItem
+            v-for="(item, index) in placeInfo"
+            :key="index"
+            :placeItemData="item"
+          ></placeItem>
+        </div>
       </section>
     </div>
   </div>
 </template>
   
-  <script>
+<script>
+import placeItem from "../common/child/placeItem";
 export default {
   name: "Destinationplace",
   props: {
-    xsbnInfo: {
-        type: Array,
-        default: []
+    placeInfo: {
+      type: Array,
+      default: [],
     }
+  },
+  components: {
+    placeItem,
   },
   data() {
     return {
-    //   imgs: require(`@/assets/img/Destination/desPlace/ + ${this.xsbnInfo[0].des_xsbn_img} +.jpg`),
     };
   },
-  computed: {      
-  },
+  computed: {},
   watch: {
-      xsbnInfo() {
-          console.log('909',this.xsbnInfo);
-          this.xsbnInfo.map((item) => {
-              console.log('000',item.des_xsbn_img);
-          })
-      }
   },
   created() {
-    console.log("111", this.xsbnInfo.length);
+
   },
 };
 </script>
   
-  <style scoped>
+<style scoped>
 .view {
   width: 100%;
   height: 100%;
