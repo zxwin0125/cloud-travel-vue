@@ -24,7 +24,7 @@
       </div>
 
       <div class="slide">
-        <Swiper :imgs="imgs" />
+        <Swiper :imgs="imgs" :width="imgWidth" :height="imgHeight"/>
       </div>
     </section>
     <section class="strategy_bottom">
@@ -1244,7 +1244,7 @@ export default {
         require("../../assets/img/Swiper/swiper04.png"),
         require("../../assets/img/Swiper/swiper05.png"),
       ],
-      imgWidth: "700px",
+      imgWidth: "960px",
       imgHeight: "340px",
 
       // 图片父容器高度
@@ -1345,7 +1345,8 @@ export default {
 .strategy_top {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
+  margin-top: 15px;
 }
 
 .mdd_nav {
@@ -1353,7 +1354,7 @@ export default {
 }
 
 .slide {
-  width: 700px;
+  width: 960px;
   height: 340px;
 }
 
