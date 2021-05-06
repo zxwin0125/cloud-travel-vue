@@ -506,8 +506,8 @@
                     </ul>
                   </div>
               </div>
-              
-              
+              <StrategyDetailItem v-for="item in strategyList" :key="item.strategy_id"/>
+  
               <div class="hr"></div>
             </div>
             <div
@@ -540,10 +540,11 @@ import navSelect from "../Strategy/components/navSelect"
 import navRecommend from "../Strategy/components/navRecommend"
 import navIsland from "../Strategy/components/navIsland"
 import navTheme from "../Strategy/components/navTheme"
-// import navSelect from "../Strategy/components/navSelect"
-// import navSelect from "../Strategy/components/navSelect"
+
 import Swiper from "../../components/Swiper";
-import StrategyNav from "./components/StrategyNav";
+
+import StrategyDetailItem from "../Strategy/common/StrategyDetailItem"
+// import StrategyNav from "./components/StrategyNav";
 // import StrategyPuba from "../Strategy/components/StrategyPuba";
 export default {
   name: "Strategy",
@@ -553,11 +554,12 @@ export default {
     navIsland,
     navTheme,
     Swiper,
-    StrategyNav,
+    StrategyDetailItem
+    // StrategyNav,
   },
   data() {
     return {
-      arts: [],
+      strategyList: [],
       currentPage: 1,
       hots: [],
       // 图片地址数组
@@ -613,7 +615,8 @@ export default {
         // 等待异步方法执行完成
         const result = await getMainStrategy();
         console.log("攻略 Main 数据", result);
-        this.arts = result.data.data;
+        this.strategyList = result.data.data;
+        console.log('12',this.strategyList);
       } catch (err) {
         console.log("err", err);
       }
