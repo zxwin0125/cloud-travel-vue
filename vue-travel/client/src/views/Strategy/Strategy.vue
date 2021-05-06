@@ -506,7 +506,9 @@
                     </ul>
                   </div>
               </div>
-              <StrategyDetailItem v-for="item in strategyList" :key="item.strategy_id"/>
+              <StrategyDetailItem v-for="item in strategyList" 
+                                  :key="item.strategy_id" 
+                                  :StrategyDetailItemData="item"/>
   
               <div class="hr"></div>
             </div>
@@ -634,14 +636,7 @@ export default {
       }
     },
 
-    toDetail() {
-      this.$router.push({
-        name: 'detail',
-        // params: {
-        //   strategy_id: 
-        // }
-      })
-    }
+    
 
     // handleSizeChange(val) {
     //   this.allPage = val; // 每页
