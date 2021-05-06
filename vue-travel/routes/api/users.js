@@ -18,12 +18,14 @@ router.post('/register', (req, res) => {
 })
 
 // route   GET 请求 api/users/getValidCode  返回的请求为 json 数据
+// 验证码
 router.get('/getValidCode', (req, res) => {
     userController.getUserCode(req, res)
 })
 
 // passport.authenticate('jwt', {session: false}), 
 // route   GET 请求 api/users/getUserInfo  返回的请求为 json 数据
+// 用户信息
 router.post('/getUserInfo', (req, res) => {
     userController.getUserInfo(req, res)
 })

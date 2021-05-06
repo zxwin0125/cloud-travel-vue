@@ -10,7 +10,7 @@ const strategyDAL = {
                    strategy_path from strategy_info`
         dao(sql, [], function (err, results) {
             if (err) {
-                console.log('攻略主列表失败', err.message)
+                console.log('攻略主列表查询失败', err.message)
             } else {
                 cb(null, results)
             }
@@ -19,39 +19,44 @@ const strategyDAL = {
     // 热门攻略列表
     hotStrategy: (cb) => {
         // 升序排列查询前三条
-        const sql = 'select strategy_id,strategy_title,strategy_content,strategy_img,strategy_view  from strategy_info order by strategy_view desc limit 3;'
+        const sql = `select strategy_id,strategy_title,strategy_content,
+                     strategy_img,strategy_view 
+                     from strategy_info order by strategy_view desc limit 3;`
         dao(sql, [], function (err, results) {
             if (err) {
-                console.log('攻略热门列表失败', err.message)
+                console.log('热门攻略列表查询失败', err.message)
             } else {
                 cb(null, results)
             }
         })
     },
-    // 获取攻略列表 
-    //  通过模糊查询定位关键词
-    // strategyCollect: function (cb) {
-    //     var sql = 'select * from strategy_info'
-    //     // 'select strateg_id,user_info.user_headPic_url,user_info.user_name,strategy_title,strategy_content,strategy_date from strategy_info,user_info where   strategy_title LIKE '%丽江%' or strategy_content LIKE '%丽江%' '
-    //     dao(sql, [], function (err, results) {
-    //         if (err) {
-    //             console.log('失败', err.message)
-    //         } else {
-    //             cb(null, results)
-    //         }
-    //     })
-    // },
-    // 获取一篇攻略的详情
-    // strategyDetail: function (getStrategy, cb) {
-    //     var sql = 'select strategy_id,user_info.user_headPic_url,user_info.user_name,strategy_title,strategy_content,strategy_view,strategy_like,strategy_date,strategy_path from strategy_info,user_info where  strategy_id=? and strategy_info.user_id = user_info.user_id'
-    //     dao(sql, [getStrategy], function (err, results) {
-    //         if (err) {
-    //             cb(err, null)
-    //         } else {
-    //             cb(null, results)
-    //         }
-    //     })
-    // },
+    // 模糊查询
+    fuzzyStrategy: (cb) => {
+        const sql = `select strategy_id, strategy_title, strategy_img, strategy_date, 
+                     strategy_like, strategy_path, strategy_view, strategy_content, 
+                     strategy_like, user_id, user_name, user_headPic_url 
+                     from strategy_info where strategy_title LIKE '%丽江%' or strategy_content LIKE '%丽江%' `
+        dao(sql, [], function (err, results) {
+            if (err) {
+                console.log('模糊查询失败', err.message)
+            } else {
+                cb(null, results)
+            }
+        })
+    },
+    // 获取攻略详情
+    detailStrategy: (strategy_id, cb) => {
+        const sql = `select strategy_title, strategy_date,strategy_content,strategy_img,
+                     strategy_view,strategy_like,user_id,user_name,
+                     strategy_path from strategy_info where strategy_id=?`
+        dao(sql, [strategy_id], (err, results) => {
+            if (err) {
+                cb(err, null)
+            } else {
+                cb(null, results)
+            }
+        })
+    },
     // getstComment: function (getStrategy, cb) {   // 3-3 获取攻略评论 
     //     var sql = 'select com_text,com_time from strategy_info,user_info,comments_info where comments_info.strategy_id = ? and strategy_info.strategy_id = comments_info.strategy_id and user_info.user_id = comments_info.user_id order by com_time desc'
     //     dao(sql, [getStrategy], function (err, results) {

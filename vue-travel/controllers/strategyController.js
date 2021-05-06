@@ -10,54 +10,71 @@ const strategyController = {
     mainStrategy: (req, res) => {
         strategyDAL.mainStrategy((err, results) => {
             if (err) {
-                console.log('数据库错误');
+                console.log('mainStrategy -- 系统错误');
             } else {
-                res.json({ code: 200, data: results })
+                res.json({
+                    code: 200,
+                    data: results
+                })
             }
         })
     },
     // 热门攻略列表
     hotStrategy: (req, res) => {
-        // 获取热门攻略
         strategyDAL.hotStrategy((err, results) => {
             if (err) {
-                console.log('数据库错误');
+                console.log('hotStrategy -- 系统错误');
             } else {
-                res.json({ code: 200, data: results })
+                res.json({
+                    code: 200,
+                    data: results
+                })
             }
         })
     },
+    // 模糊查询
+    fuzzyStrategy: (req, res) => {
+        strategyDAL.fuzzyStrategy((err, results) => {
+            if (err) {
+                console.log('fuzzyStrategy -- 系统错误');
+            } else {
+                res.json({
+                    code: 200,
+                    data: results
+                })
+            }
+        })
+    },
+    // 攻略详情
+    detailStrategy: (req, res) => {
+        const strategy_id = req.query.strategy_id
+        strategyDAL.detailStrategy(strategy_id, (err, results) => {
+            if (err) {
+                res.json({
+                    code: 500,
+                    msg: '查询攻略详情失败！'
+                })
+            } else {
+                res.json({
+                    code: 200,
+                    data: results,
+                    msg: '查询攻略详情成功！'
+                })
+            }
+        })
 
-    // strategyCollect: function (req, res) {
-    //     // 获取攻略列表
-    //     strategyDAL.strategyCollect(function (err, results) {
-    //         if (err) {
-    //             console.log('数据库错误');
-    //         } else {
-    //             res.json({ code: 200, data: results })
-    //         }
-    //     })
-    // },
-    // strategyDetail: function (req, res) {                   //3 获取一篇攻略
-    //     // console.log('iid',req.query)
-    //     var getStrategy = req.query.strategy_id
-    //     console.log('444', getStrategy)
-    //     strategyDAL.strategyDetail(getStrategy, function (err, results) {
-    //         if (err) {
-    //             res.json({ code: 500, msg: '查询一篇攻略失败！' })
-    //         } else {
-    //             // res.json({ code: 200, data:results1, msg: '查询一篇游记评论成功！' })
-    //             strategyDAL.getstComment(getStrategy, function (err, results2) {
-    //                 if (err) {
-    //                     res.json({ code: 500, msg: '查询这篇游记评论失败！' })
-    //                 } else {
-    //                     res.json({ code: 200, data: results, msg: '查询一篇游记和游记评论成功！' })
-    //                 }
-    //             })
-    //         }
-    //     })
+    },
 
-    // },
+    // strategyDAL.getstComment(getStrategy, function (err, results2) {
+    //     if (err) {
+    //         res.json({
+    //             code: 500,
+    //             msg: '查询这篇游记评论失败！'
+    //         })
+    //     } else {
+
+    //     }
+    // })
     // publishStrategy: function (req, res) {               //发表一篇攻略
     //     var form = new formidable.IncomingForm()
     //     form.uploadDir = path.join(__dirname, '..', '/public/upload')
@@ -66,7 +83,7 @@ const strategyController = {
     //         if (err) {
     //             res.send('图片上传错误')
     //         }
-            
+
     //         var publishStrategy = {
     //             pbStImg:  fields.strategy_img,
     //             pbStTitle: fields.strategy_title,

@@ -10,6 +10,12 @@ export const getPack = () => axios.get("/api/index/getPack")
 // 攻略数据
 export const getMainStrategy = () => axios.get("/api/strategy/main")
 export const getHotStrategy = () => axios.get("/api/strategy/hot")
+export const getFuzzyStrategy = () => axios.get("/api/strategy/fuzzy")
+export const getDetailStrategy = ( strategy_id ) => axios.get("/api/strategy/detail", {
+    params: {
+        strategy_id: strategy_id
+    }
+})
 
 // 目的地数据
 export const getDes_lj = () => axios.get("/api/desInfo/lj")

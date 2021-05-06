@@ -11,6 +11,7 @@ import des_xgll from '../views/Destination/components/des_xgll.vue'
 import des_xsbn from '../views/Destination/components/des_xsbn.vue'
 
 import Strategy from '../views/Strategy/Strategy.vue'
+import StrategyDetail from '../views/Strategy/StrategyDetail.vue'
 
 import Community from '../views/Community/Community.vue'
 
@@ -84,6 +85,13 @@ const routes = [{
       default: Strategy,
       'header': null
     },
+    children: [
+      {
+        path: '/strategy/detail',
+        name: 'detail',
+        components: StrategyDetail
+      }
+    ],
     meta: {
       isturn: true
     }

@@ -166,7 +166,7 @@ export default {
 
                 this.$store.dispatch("setUserInfo", decode);
 
-                this.$router.push("/").catch(err => {});
+                this.$router.push("/").catch(err => {}); // TODO: 登录后跳转当前页面
               } else {
                 // 1. 错误情况
                 switch (res.data.code) {

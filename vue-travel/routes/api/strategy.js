@@ -15,10 +15,22 @@ router.get('/hot', (req, res) => {
     // 热门攻略列表
     strategyController.hotStrategy(req, res)
 });
-// router.get('/strategyDetail', function(req, res, next) {
-//     // 一篇攻略详情
-//     strategyController.strategyDetail(req, res)
-// });
+
+router.get('/fuzzy', (req, res) => {
+    // 模糊查询
+    strategyController.fuzzyStrategy(req, res)
+});
+
+router.post('/detail', (req, res) => {
+    // 攻略详情
+    strategyController.detailStrategy(req, res)
+});
+router.post('/commit', (req, res) => {
+    // 攻略评论
+    strategyController.commitStrategy(req, res)
+});
+
+
 // router.get('/getstComment', function(req, res, next) {
 //     // 一篇攻略的评论
 //     strategyController.getstComment(req, res)
