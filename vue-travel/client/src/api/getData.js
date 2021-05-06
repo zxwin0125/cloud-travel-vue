@@ -13,7 +13,7 @@ export const getHotStrategy = () => axios.get("/api/strategy/hot")
 export const getFuzzyStrategy = () => axios.get("/api/strategy/fuzzy")
 export const getDetailStrategy = ( strategy_id ) => axios.get("/api/strategy/detail", {
     params: {
-        strategy_id: strategy_id
+        "strategy_id": strategy_id
     }
 })
 

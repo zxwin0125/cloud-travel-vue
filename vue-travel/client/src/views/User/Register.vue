@@ -173,10 +173,6 @@ export default {
         } else {
           this.$message.error("发送验证码失败!");
         }
-        // if (res.data.data !== this.ruleForm.user_code) {
-        //   // 验证码不正确
-          
-        // }
       });
     },
 

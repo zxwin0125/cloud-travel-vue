@@ -21,7 +21,7 @@ router.get('/fuzzy', (req, res) => {
     strategyController.fuzzyStrategy(req, res)
 });
 
-router.post('/detail', (req, res) => {
+router.get('/detail', (req, res) => {
     // 攻略详情
     strategyController.detailStrategy(req, res)
 });
