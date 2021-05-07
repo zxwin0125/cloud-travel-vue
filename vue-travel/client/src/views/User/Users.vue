@@ -41,6 +41,7 @@ export default {
     }
   },
   created() {
+    console.log('1212',this.$store.getters.user_info);
   },
   mounted() {},
   methods: {
