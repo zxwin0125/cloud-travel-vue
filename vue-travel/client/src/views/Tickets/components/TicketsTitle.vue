@@ -1,7 +1,7 @@
 <template>
-  <div id="ticketsTitle">
-      <!-- 热门推荐标题 -->
-  <el-row>
+  <div class="ticketsTitle">
+    <!-- 热门推荐标题 -->
+    <el-row>
       <el-col :span="24">
         <div class="grid-content text-center">
           <h2 class="sets_h2">热门推荐</h2>
@@ -10,8 +10,7 @@
       </el-col>
     </el-row>
     <!-- 热门推荐标题结束 -->
-    </div>
-
+  </div>
 </template>
 
 <script>
@@ -24,33 +23,33 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-#ticketsTitle {
+.ticketsTitle {
   padding-top: 40px;
-}
-/*-------------------热门推荐------------------- */
-.grid-content {
-  border-radius: 4px;
-  min-height: 36px;
-}
-%text{
+
+  .grid-content {
+    border-radius: 4px;
+    min-height: 36px;
+    .sets_h2 {
+      color: #565a5c;
+      font-size: 30px;
+      font-weight: 500;
+      text-transform: capitalize;
+      padding-bottom: 14px;
+      margin-top: 20px;
+      @extend %text;
+    }
+  }
+
+  %text {
     text-align: center;
-     font-family: "Poppins", sans-serif;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .text-center p {
+    color: #aaa;
+    font-size: 16px;
+    margin-bottom: 12px;
+    @extend %text;
+  }
 }
-/*-----------------*热门推荐文字样式设置--------------------- */
-.sets_h2 {
-  color: #565a5c;
-  font-size: 30px;
-  font-weight: 500;
-  text-transform: capitalize;
-  padding-bottom: 14px;
-  margin-top: 20px;
-  @extend %text;
-}
-.text-center p {
-  color: #aaa;
-  font-size: 16px;
-  margin-bottom: 12px;
-   @extend %text;
-}
-/*--------------------*热门推荐文字样式结束------------------ */
 </style>

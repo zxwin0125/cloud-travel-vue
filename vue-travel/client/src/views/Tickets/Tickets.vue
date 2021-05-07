@@ -4,9 +4,7 @@
 
     <TicketsTitle />
 
-    <!-- 热门景区推荐开始 -->
-    <!-- <TicketsMain /> -->
-    <!-- 热门景区推荐结束 -->
+    <TicketsMain />
     
     <!--文本导航开始  -->
     <!-- <TicketsTitle /> -->
@@ -20,7 +18,7 @@
 <script>
 import Swiper from "../../components/Swiper";
 import TicketsTitle from "../Tickets/components/TicketsTitle";
-// import TicketsMain from "../Tickets/components/TicketsMain";
+import TicketsMain from "../Tickets/components/TicketsMain";
 // import TicketsTickets from "../Tickets/components/TicketsTickets";
 // import { getTicket } from "@/api/getData.js";
 
@@ -29,7 +27,7 @@ export default {
   components: {
     Swiper,
     TicketsTitle,
-    // TicketsMain,
+    TicketsMain,
     // TicketsTickets,
   },
   
