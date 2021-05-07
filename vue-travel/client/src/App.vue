@@ -20,7 +20,7 @@
       Nav,
       Footer
     },
-    create() {
+    created() {
       if (localStorage.eleToken) {
         const decode = jwt_decode(localStorage.eleToken);
         this.$store.dispatch("setIsAutnenticated", !this.isEmpty(decode));

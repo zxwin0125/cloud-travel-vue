@@ -19,7 +19,17 @@
         <img v-if="imageUrl" :src="imageUrl" class="avatar" />
         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
       </el-upload>
-      <p></p>
+      <div class="MAvaName">马蜂窝用户</div>
+      <div class="its_tags">
+        <a href="/home/vip_show.php" target="_blank" title="VIP"
+          ><i class="vip"></i
+        ></a>
+        <a href="/rudder/info.php" target="_blank" title="分舵"
+          ><i class="duo"></i> </a
+        ><a href="/qa/expert_apply.php?type=1" target="_blank" title="指路人"
+          ><i class="zhiluren"></i
+        ></a>
+      </div>
     </div>
   </div>
 </template>
@@ -37,11 +47,11 @@ export default {
   },
   computed: {
     userInfo() {
-      return this.$store.getters.user_info
-    }
+      return this.$store.getters.user_info;
+    },
   },
   created() {
-    console.log('1212',this.$store.getters.user_info);
+    console.log("1212", this.$store);
   },
   mounted() {},
   methods: {
@@ -61,7 +71,6 @@ export default {
       return isJPG && isLt2M;
     },
   },
-  
 };
 </script>
 <style lang="scss" scoped>
@@ -113,6 +122,29 @@ export default {
         line-height: 120px;
         text-align: center;
       }
+    }
+    .MAvaName {
+      font-size: 22px;
+      line-height: 24px;
+      margin-top: 16px;
+      text-align: center;
+    }
+    .its_tags {
+      margin: 10px 0;
+      text-align: center;
+    }
+    .its_tags i {
+      background-image: url(/images/home_new2015/twice_ico_sprite_v9.png);
+      background-size: 220px;
+      background-position: 0 -262px;
+    }
+    .its_tags i {
+      width: 40px;
+      height: 20px;
+      display: inline-block;
+      background-image: url(/images/home_new2015/home_sprite_v15.png);
+      background-position: 0 -460px;
+      margin-right: 3px;
     }
   }
 }
