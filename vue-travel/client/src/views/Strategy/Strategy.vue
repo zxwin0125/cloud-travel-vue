@@ -466,7 +466,6 @@
                 data-fid="381117"
                 data-type="3"
                 data-cs-p="位置_1"
-                @click="toDetail"
               >
                   <div class="bar">
                     <span class="stat"
@@ -618,7 +617,6 @@ export default {
         const result = await getMainStrategy();
         console.log("攻略 Main 数据", result);
         this.strategyList = result.data.data;
-        console.log('12',this.strategyList);
       } catch (err) {
         console.log("err", err);
       }

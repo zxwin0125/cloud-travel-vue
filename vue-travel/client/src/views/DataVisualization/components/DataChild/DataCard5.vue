@@ -21,6 +21,9 @@
 <script>
 export default {
   name: "DataCard5",
+  mounted() {
+    this.myEcharts();
+  },
   methods: {
     myEcharts() {
       // 基于准备好的dom，初始化echarts实例
@@ -186,9 +189,7 @@ export default {
       });
     },
   },
-  mounted() {
-    this.myEcharts();
-  },
+  
 };
 </script>
 

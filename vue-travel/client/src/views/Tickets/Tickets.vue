@@ -1,10 +1,8 @@
 <template>
   <div class="tickets">
     <Swiper :imgs="imgs" />
-    <h2>购票</h2>
-    <!--文本导航开始  -->
-    <!-- <TicketsTitle /> -->
-    <!-- 文本导航结束 -->
+
+    <TicketsTitle />
 
     <!-- 热门景区推荐开始 -->
     <!-- <TicketsMain /> -->
@@ -21,7 +19,7 @@
 
 <script>
 import Swiper from "../../components/Swiper";
-// import TicketsTitle from "../Tickets/components/TicketsTitle";
+import TicketsTitle from "../Tickets/components/TicketsTitle";
 // import TicketsMain from "../Tickets/components/TicketsMain";
 // import TicketsTickets from "../Tickets/components/TicketsTickets";
 // import { getTicket } from "@/api/getData.js";
@@ -30,7 +28,7 @@ export default {
   name: "Tickets",
   components: {
     Swiper,
-    // TicketsTitle,
+    TicketsTitle,
     // TicketsMain,
     // TicketsTickets,
   },
