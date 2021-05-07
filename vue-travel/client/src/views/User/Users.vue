@@ -30,6 +30,16 @@
           ><i class="zhiluren"></i
         ></a>
       </div>
+      <div class="MAvaInfo clearfix MAvaMyInfo">
+        <span class="MAvaLevel flt1"
+          >等级：<a href="/rank/lv.php" title="Lv.1" target="_blank"
+            >Lv.1</a
+          ></span
+        >
+        <span class="MAvaSet"
+          ><a title="设置" href="/setting/" target="_blank"></a
+        ></span>
+      </div>
     </div>
   </div>
 </template>
@@ -132,19 +142,65 @@ export default {
     .its_tags {
       margin: 10px 0;
       text-align: center;
+      i {
+        width: 40px;
+        height: 20px;
+        display: inline-block;
+        background-image: url(../../assets/img/icon/home_sprite_v15.png);
+        background-position: 0 -460px;
+        margin-right: 3px;
+      }
+      .duo {
+        width: 30px;
+        background-position: -41px -460px;
+      }
+      .zhiluren {
+        width: 38px;
+        background-position: -72px -460px;
+      }
     }
-    .its_tags i {
-      background-image: url(/images/home_new2015/twice_ico_sprite_v9.png);
-      background-size: 220px;
-      background-position: 0 -262px;
+    .side_bar .MAvaInfo {
+      padding: 0 15px;
     }
-    .its_tags i {
-      width: 40px;
-      height: 20px;
+    .MAvaMyInfo span {
+      padding: 0 10px 0 7px;
+    }
+    .MAvaInfo span {
+      padding: 0 15px 0 12px;
       display: inline-block;
-      background-image: url(/images/home_new2015/home_sprite_v15.png);
-      background-position: 0 -460px;
-      margin-right: 3px;
+      position: relative;
+    }
+    .flt1 {
+      float: left;
+    }
+    .MAvaInfo .MAvaLevel a {
+      color: #ea3c1a;
+      font-size: 16px;
+      font-weight: bold;
+      font-family: Arial;
+    }
+    .MAvaInfo .MAvaLevel:after {
+      content: "";
+      background-color: #d6d6d6;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 1px;
+      height: 16px;
+    }
+    .MAvaMyInfo .MAvaSet {
+      padding: 0 0 0 5px;
+      position: relative;
+      top: -1px;
+      display: inline-block;
+    }
+    .MAvaMyInfo .MAvaSet a {
+      width: 17px;
+      height: 17px;
+      background-image: url(../../assets/img/icon/ico_sprite_v8.png);
+      background-position: -108px -146px;
+      display: inline-block;
+      vertical-align: middle;
     }
   }
 }
