@@ -5,22 +5,22 @@
     <TicketsTitle />
 
     <TicketsMain />
-    
-    <!--文本导航开始  -->
-    <!-- <TicketsTitle /> -->
-    <!-- 文本导航结束 -->
+
+    <TicketsTitle />
 
     <!-- 票单页面开始 -->
-    <!-- <TicketsTickets :ticketList="ticketList" /> -->
+    <TicketsTickets :ticketList="ticketList"/>
   </div>
 </template>
 
 <script>
+import { getMainTicket } from "@/api/getData.js";
+
 import Swiper from "../../components/Swiper";
 import TicketsTitle from "../Tickets/components/TicketsTitle";
 import TicketsMain from "../Tickets/components/TicketsMain";
-// import TicketsTickets from "../Tickets/components/TicketsTickets";
-// import { getTicket } from "@/api/getData.js";
+import TicketsTickets from "../Tickets/components/TicketsTickets";
+
 
 export default {
   name: "Tickets",
@@ -28,7 +28,7 @@ export default {
     Swiper,
     TicketsTitle,
     TicketsMain,
-    // TicketsTickets,
+    TicketsTickets,
   },
   
   data() {
@@ -56,7 +56,8 @@ export default {
     //获取门票信息
     async ticketInfo(){
         try{
-
+          const result = await getMainTicket()
+          this.ticketList = result.data.data;
         }catch(error){
             console.log(error)
         }

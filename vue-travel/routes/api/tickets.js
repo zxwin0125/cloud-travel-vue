@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const ticketController = require('../controllers/ticketController')
+const ticketController = require('../../controllers/ticketController')
 
 /* 设置 ticket 路由 */
-router.get('/', function(req, res, next) {
-  ticketController.ticketUsers(req, res)
+router.get('/main', (req, res, next) => {
+  ticketController.ticketInfo(req, res)
 })
 
 // router.get('/ticketItem', function(req, res, next) {

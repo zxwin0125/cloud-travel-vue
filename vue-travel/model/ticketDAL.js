@@ -4,7 +4,8 @@ const dao = require('../config/dao')
 const ticketDAL = {
     // 获取ticket信息
     ticketInfo: (cb) => {
-        const sql = 'select ticket_id, ticket_title, ticket_price, ticket_travel_time from ticket_info'
+        const sql = `select ticket_id, ticket_title, ticket_price, 
+                     ticket_travel_time from ticket_info`
         dao(sql,[], (err,results) => {
             if(err){
                 console.log('失败', err.message)

@@ -23,6 +23,12 @@ export const getDes_km = () => axios.get("/api/desInfo/km")
 export const getDes_xsbn = () => axios.get("/api/desInfo/xsbn")
 export const getDes_xgll = () => axios.get("/api/desInfo/xgll")
 
+
+// 票务数据
+export const getMainTicket = () => axios.get("/api/tickets/main")
+
+
+
 // 登陆接口
 export const login = ( user_name, user_password ) => axios.post("/api/users/login", {
     user_name,

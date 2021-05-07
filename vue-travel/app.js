@@ -49,11 +49,13 @@ require("./config/passport")(passport)
 const index = require("./routes/api/index")
 const desInfo = require("./routes/api/desInfo")
 const strategy = require("./routes/api/strategy")
+const tickets = require("./routes/api/tickets")
 const users = require("./routes/api/users") // 导入路由模块
 
 app.use("/api/index", index)
 app.use("/api/desInfo", desInfo)
 app.use("/api/strategy", strategy)
+app.use("/api/tickets", tickets)
 app.use("/api/users", users) // 使用routes
 
 

@@ -5,7 +5,7 @@ const ticketController = {
     ticketInfo: (req, res) => {
         ticketDAL.ticketInfo((err,results) => {
             if(err){
-                console.log('数据库错误');
+                console.log('ticketInfo -- 系统错误');
             }else{
                 res.json({code:200, data:results})
             }
