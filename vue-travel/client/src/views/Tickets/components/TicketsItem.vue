@@ -37,7 +37,7 @@
 
 <script>
   export default {
-    name: "TicketsTickets",
+    name: "TicketsItem",
     components: {},
     props: {
       ticketList: {
@@ -52,18 +52,14 @@
     },
     watch: {
       ticketList() {
-        console.log('56556',this.ticketList)
         this.ticketListData = this.ticketList
       }
       
     },
     mounted() {
-      this.ticket()
+
     },
     methods: {
-      ticket() {
-        console.log('9090',this.ticketList)
-      },
       toPay(id,title,price){
         this.$router.push(`/tickets_pay/?id=${id}&title=${title}&price=${price}`)
       }

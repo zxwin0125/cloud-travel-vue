@@ -9,7 +9,7 @@
     <TicketsTitle />
 
     <!-- 票单页面开始 -->
-    <TicketsTickets :ticketList="ticketList"/>
+    <TicketsItem :ticketList="ticketList"/>
   </div>
 </template>
 
@@ -19,7 +19,7 @@ import { getMainTicket } from "@/api/getData.js";
 import Swiper from "../../components/Swiper";
 import TicketsTitle from "../Tickets/components/TicketsTitle";
 import TicketsMain from "../Tickets/components/TicketsMain";
-import TicketsTickets from "../Tickets/components/TicketsTickets";
+import TicketsItem from "../Tickets/components/TicketsItem";
 
 
 export default {
@@ -28,7 +28,7 @@ export default {
     Swiper,
     TicketsTitle,
     TicketsMain,
-    TicketsTickets,
+    TicketsItem,
   },
   
   data() {
