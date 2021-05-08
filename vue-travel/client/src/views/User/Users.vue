@@ -205,6 +205,8 @@
         </div>
       </div>
     </div>
+
+    <div class="users-tips"></div>
   </div>
 </template>
 
@@ -439,6 +441,53 @@ export default {
         }
       }
     }
+    .MUsers {
+      padding: 45px 30px 0;
+      text-align: center;
+      font-size: 14px;
+      .MUsersTitle {
+        font-size: 16px;
+        color: #444;
+      }
+      .MUsersDetail {
+        margin-top: 18px;
+        overflow: hidden;
+        .MUsersAtom {
+          width: 1000px;
+          overflow: hidden;
+          *zoom: 1;
+        }
+        ul {
+          width: 240px;
+          float: left;
+          li {
+            width: 52px;
+            float: left;
+            margin-right: 4px;
+            margin-bottom: 20px;
+            img {
+              border-radius: 48px;
+            }
+            p a {
+              line-height: 16px;
+              height: 16px;
+              display: block;
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              margin-top: 10px;
+              color: #ff7200;
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .users-tips {
+    width: 100%;
+    height: 500px;
+    background-color: #fff;
   }
 }
 </style>
