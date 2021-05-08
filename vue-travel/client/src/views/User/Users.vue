@@ -206,7 +206,98 @@
       </div>
     </div>
 
-    <div class="users-tips"></div>
+    <div class="users-tips">
+      <!-- icon -->
+      <div class="common_block main_links">
+        <ul class="clearfix">
+          <li>
+            <a href="/note/create_index.php" target="_blank"
+              ><i class="write_note"></i><span>写游记</span></a
+            >
+          </li>
+          <li>
+            <a href="/wenda/" target="_blank"
+              ><i class="ask_expert"></i><span>问达人</span></a
+            >
+          </li>
+          <li>
+            <a href="/path/" target="_blank"
+              ><i class="add_footprint"></i><span>添加足迹</span></a
+            >
+          </li>
+          <li class="last">
+            <a href="/together/" target="_blank"
+              ><i class="invite_friends"></i><span>发布结伴</span></a
+            >
+          </li>
+        </ul>
+        <div class="open_corner">
+          <a role="button" id="_j_profile_setting"
+            ><span><i></i></span
+          ></a>
+        </div>
+      </div>
+      <!-- 个人资料 -->
+      <div class="common_block personal_info" id="_j_taskwrap">
+        <div class="personal_tips">
+          <p><strong>马蜂窝用户</strong>，这里是你的【窝】！</p>
+          <p>是记录你的旅行记忆，结交各路豪杰的地盘儿。现在开启马蜂窝旅程！</p>
+        </div>
+        <div class="personal_list clearfix">
+          <ul>
+            <li>
+              <div class="personal_ico"><i class="ico_info"></i></div>
+              <div class="personal_word">
+                <p>做一个有“脸面”的人<br />上传头像，完善资料！<br /></p>
+              </div>
+              <div class="personal_btn">
+                <a role="button" class="_j_task_profile" title="完善个人资料"
+                  >完善个人资料</a
+                >
+              </div>
+            </li>
+            <li>
+              <div class="personal_ico"><i class="ico_stroll"></i></div>
+              <div class="personal_word">
+                <p>这儿潜伏着哪些旅行大神？<br />他们都怎么玩儿？</p>
+              </div>
+              <div class="personal_btn complete">
+                <a title="已完成">已完成</a>
+              </div>
+            </li>
+            <li>
+              <div class="personal_ico"><i class="ico_daka"></i></div>
+              <div class="personal_word">
+                <p>马蜂窝会员升级有礼包。<br />第一步，从打卡开始。</p>
+              </div>
+              <div class="personal_btn">
+                <a role="button" class="_j_task_daka" title="打卡赚取蜂蜜"
+                  >打卡赚取蜂蜜</a
+                >
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- 游记 -->
+      <div class="common_block my_notes">
+        <div class="common_title clearfix">
+          <h2>我的游记</h2>
+        </div>
+        <div class="notes_default_v2">
+          <div class="notes_dcon"></div>
+          <a href="/note/create_index.php" title="写游记" class="btn_write"
+            ><i></i>写游记</a
+          >
+        </div>
+
+        <div class="more_notes">
+          <a class="btn_deleted" href="/u/note/delete.html"
+            ><i></i>已删除游记</a
+          >
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -485,9 +576,284 @@ export default {
     }
   }
   .users-tips {
-    width: 100%;
-    height: 500px;
-    background-color: #fff;
+    width: 70%;
+    height: auto;
+    margin-left: 30%;
+    .main_links {
+      padding: 20px 0 17px;
+      position: relative;
+      li {
+        float: left;
+        width: 25%;
+        position: relative;
+        text-align: center;
+        a {
+          color: #ff9d00;
+          text-decoration: none;
+          cursor: pointer;
+          i {
+            width: 45px;
+            height: 46px;
+            background-image: url(../../assets/img/icon/home_sprite_v15.png);
+            display: inline-block;
+            position: relative;
+          }
+          .write_note {
+            background-position: -210px -425px;
+          }
+          .ask_expert {
+            width: 53px;
+            background-position: -260px -427px;
+          }
+          .add_footprint {
+            width: 56px;
+            height: 49px;
+            background-position: -317px -422px;
+          }
+          .invite_friends {
+            height: 47px;
+            background-position: -379px -424px;
+          }
+          span {
+            color: #999;
+            font-size: 16px;
+            margin-top: 6px;
+            display: block;
+          }
+        }
+        &:after {
+          content: "";
+          width: 1px;
+          position: absolute;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          background-color: #e5e5e5;
+        }
+      }
+    }
+    .common_block {
+      margin-bottom: 18px;
+      background-color: #fff;
+      border: #e2e2e2 1px solid;
+      box-shadow: 0 0 2px rgb(0 0 0 / 5%);
+
+      .open_corner {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        a {
+          width: 100%;
+          height: 100%;
+          background-image: url(../../assets/img/icon/home_sprite_v15.png);
+          background-position: -138px -243px;
+          position: relative;
+          overflow: hidden;
+          display: block;
+          z-index: 2;
+          span {
+            border-left-color: #fff;
+            left: 2px;
+            top: -21px;
+            transform: scale(0.65) skewX(10deg);
+            -webkit-transform: scale(0.65) skewX(10deg);
+            transition: 0.3s ease-out 0s;
+            -webkit-transition: 0.3s ease-out 0s;
+            *display: none;
+            .open_corner i {
+              position: absolute;
+              width: 0;
+              height: 0;
+              left: -14px;
+              top: -14px;
+              border-width: 14px;
+              border-style: dashed dashed dashed solid;
+              border-color: transparent transparent transparent #eee;
+              box-shadow: 0 2px 5px rgb(0 0 0 / 25%),
+                -1px 0 5px rgb(0 0 0 / 10%);
+              &:before {
+                content: "";
+                position: absolute;
+                width: 0;
+                height: 0;
+                left: -14px;
+                top: -14px;
+                border-width: 14px;
+                border-style: dashed dashed dashed solid;
+                border-color: transparent transparent transparent #eee;
+              }
+            }
+            &:before {
+              content: "";
+              position: absolute;
+              width: 0;
+              height: 0;
+              border-style: dashed dashed solid dashed;
+              border-color: transparent transparent #eee transparent;
+              border-bottom-color: #fff;
+              border-width: 30px;
+              left: -30px;
+              top: -30px;
+            }
+          }
+        }
+      }
+    }
+    .personal_info {
+      border: 0;
+      background-color: #f5dc52;
+      box-shadow: 2px 3px 0 #dfca58;
+      padding: 28px 30px 30px;
+      margin-bottom: 30px;
+      .personal_tips {
+        width: 60%;
+        margin-left: 32px;
+        font-size: 14px;
+        color: #333;
+        line-height: 30px;
+        strong {
+          font-size: 18px;
+          color: #ff7200;
+          font-weight: normal;
+        }
+      }
+      .personal_list {
+        margin-top: 22px;
+        overflow: hidden;
+        *zoom: 1;
+        ul {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          li {
+            width: 240px;
+            margin-right: 30px;
+            padding: 0 16px 30px;
+            background-color: #fff;
+            float: left;
+            text-align: center;
+            .personal_ico {
+              height: 105px;
+              line-height: 105px;
+              text-align: center;
+              i {
+                width: 59px;
+                height: 71px;
+                line-height: 0;
+                display: inline-block;
+                background-image: url(../../assets/img/icon/default_sprite_v6.png);
+                background-position: -1px -256px;
+                vertical-align: middle;
+              }
+              .ico_stroll {
+                width: 72px;
+                height: 76px;
+                background-position: -67px -256px;
+              }
+              .ico_daka {
+                width: 71px;
+                height: 81px;
+                background-position: -147px -255px;
+              }
+            }
+            .personal_word {
+              margin-top: 2px;
+              font-size: 14px;
+              line-height: 24px;
+              height: 72px;
+            }
+            .personal_btn {
+              margin-top: 15px;
+              a {
+                width: 124px;
+                background-color: #f1744f;
+                font-size: 14px;
+                display: inline-block;
+                color: #fff;
+                line-height: 36px;
+                border-radius: 36px;
+              }
+              &.complete a {
+                background-color: #4ea88f;
+                position: relative;
+                width: 96px;
+                cursor: default;
+              }
+            }
+          }
+        }
+      }
+    }
+    .my_notes {
+      padding-bottom: 30px;
+      .common_title {
+        padding: 25px 30px;
+        line-height: 30px;
+        position: relative;
+        h2 {
+          position: relative;
+          top: 4px;
+          display: inline;
+          font-size: 20px;
+          color: #444;
+          font-weight: normal;
+        }
+      }
+      .notes_default_v2 {
+        padding-bottom: 40px;
+        position: relative;
+        .notes_dcon {
+          width: 100%;
+          height: 320px;
+          background: url(../../assets/img/User/noyj_v2.jpeg) no-repeat;
+        }
+        .btn_write {
+          display: block;
+          width: 140px;
+          height: 40px;
+          border-radius: 4px;
+          background-color: #ff9e00;
+          position: absolute;
+          right: 30px;
+          top: -61px;
+          font-size: 16px;
+          color: #fff;
+          text-align: center;
+          line-height: 40px;
+          i {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background: url(../../assets/img/icon/home_sprite_v15.png) -228px -325px
+              no-repeat;
+            margin-right: 5px;
+            vertical-align: middle;
+          }
+        }
+      }
+      .more_notes {
+        text-align: center;
+        margin-top: 10px;
+        position: relative;
+        height: 38px;
+        .btn_deleted {
+          position: absolute;
+          left: 34px;
+          top: 15px;
+          font-size: 14px;
+          i {
+            float: left;
+            margin: 2px 5px 0 0;
+            width: 17px;
+            height: 17px;
+            background-image: url(../../assets/img/icon/ico_sprite_v8.png);
+            background-position: -50px -215px;
+          }
+        }
+      }
+    }
   }
 }
 </style>
