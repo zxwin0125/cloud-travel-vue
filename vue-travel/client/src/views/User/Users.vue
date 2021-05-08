@@ -806,8 +806,9 @@ export default {
         position: relative;
         .notes_dcon {
           width: 100%;
-          height: 320px;
+          height: 450px;
           background: url(../../assets/img/User/noyj_v2.jpeg) no-repeat;
+          background-size: 100% 100%;
         }
         .btn_write {
           display: block;
@@ -843,6 +844,7 @@ export default {
           left: 34px;
           top: 15px;
           font-size: 14px;
+          color: #999;
           i {
             float: left;
             margin: 2px 5px 0 0;
