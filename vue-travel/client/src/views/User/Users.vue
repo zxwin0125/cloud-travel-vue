@@ -297,6 +297,32 @@
           >
         </div>
       </div>
+      <!-- 回答 -->
+      <div class="common_block my_notes">
+        <div class="common_title clearfix">
+          <h2>我的回答</h2>
+        </div>
+        <div class="notes_default ask_default">
+          <i class="ico_notes"></i>
+          <div class="notes_default_detail">
+            <p>
+              马蜂窝问答是一个所有人帮所有人的平台，<br />用你的旅行经验，去帮助其他蜂蜂。
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- 点评 -->
+      <div class="common_block my_notes">
+        <div class="common_title clearfix">
+          <h2>我的点评</h2>
+        </div>
+        <div class="notes_default dp_default">
+          <i class="ico_notes"></i>
+          <div class="notes_default_detail">
+            <p>点评，不仅是旅途记忆，<br />更是帮助他人的宝贵财富。</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -853,6 +879,58 @@ export default {
             background-image: url(../../assets/img/icon/ico_sprite_v8.png);
             background-position: -50px -215px;
           }
+        }
+      }
+      .notes_default {
+        padding: 5px 0 50px 130px;
+        position: relative;
+        i {
+          width: 208px;
+          height: 157px;
+          background-image: url(../../assets/img/icon/default_sprite_v6.png);
+          background-position: -5px -68px;
+          display: block;
+        }
+      }
+      .ask_default {
+        padding-left: 365px;
+        i {
+          width: 176px;
+          height: 183px;
+          margin-left: 150px;
+          background-position: -227px -65px;
+        }
+        .notes_default_detail {
+          width: 250px;
+          position: absolute;
+          left: 312px;
+          top: 75px;
+          font-size: 16px;
+          color: #999;
+          line-height: 25px;
+        }
+        .notes_default_detail {
+          left: 200px;
+          width: 220px;
+        }
+      }
+      .dp_default {
+        padding-left: 145px;
+        padding-top: 0;
+        i {
+          width: 199px;
+          height: 177px;
+          margin-left: 50px;
+          background-position: -409px -66px;
+        }
+        .notes_default_detail {
+          left: 450px;
+          top: 90px;
+          width: 250px;
+          position: absolute;
+          font-size: 16px;
+          color: #999;
+          line-height: 25px;
         }
       }
     }
