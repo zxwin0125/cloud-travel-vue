@@ -24,7 +24,7 @@
       </div>
 
       <div class="slide">
-        <Swiper :imgs="imgs" :width="imgWidth" :height="imgHeight"/>
+        <Swiper :imgs="imgs" :width="imgWidth" :height="imgHeight" />
       </div>
     </section>
     <section class="strategy_bottom">
@@ -452,7 +452,7 @@
           </div>
         </div>
         <div class="cont-main _j_feed_list">
-          <div class="hd ">
+          <div class="hd">
             <h3>推荐攻略</h3>
           </div>
           <div class="gl-post">
@@ -467,55 +467,57 @@
                 data-type="3"
                 data-cs-p="位置_1"
               >
-                  <div class="bar">
-                    <span class="stat"
-                      ><span class="num">0</span> 蜂蜂体验过<i
-                        class="icon-cart"
-                      ></i
-                    ></span>
-                    <span class="type"
-                      ><i class="icon-sales"></i>来自
-                      <strong>自由行攻略</strong></span
-                    >
-                  </div>
-                  <div class="title">
-                    拥有12项世界纪录！广东周边游！快去清远古龙峡消暑！
-                  </div>
-                  <div class="txt">
-                    <div class="info"></div>
-                  </div>
-                  <div class="imgs">
-                    <ul class="">
-                      <li>
-                        <img
-                          src="http://n1-q.mafengwo.net/s16/M00/C8/C5/CoUBUl8EFZ2AImzwAAKCA3Ag7go82.jpeg?imageMogr2%2Fthumbnail%2F%21220x130r%2Fgravity%2FCenter%2Fcrop%2F%21220x130%2Fquality%2F100"
-                        />
-                      </li>
-                      <li>
-                        <img
-                          src="http://n1-q.mafengwo.net/s16/M00/C6/E8/CoUBUl8EFIeACdSgAATXKD3MaMA98.jpeg?imageMogr2%2Fthumbnail%2F%21220x130r%2Fgravity%2FCenter%2Fcrop%2F%21220x130%2Fquality%2F100"
-                        />
-                      </li>
-                      <li>
-                        <img
-                          src="http://p1-q.mafengwo.net/s16/M00/C6/E8/CoUBUl8EFIiAIILzAASIrHg4NPs76.jpeg?imageMogr2%2Fthumbnail%2F%21220x130r%2Fgravity%2FCenter%2Fcrop%2F%21220x130%2Fquality%2F100"
-                        />
-                      </li>
-                      <li class="ext-r">26607浏览</li>
-                    </ul>
-                  </div>
+                <div class="bar">
+                  <span class="stat"
+                    ><span class="num">0</span> 蜂蜂体验过<i
+                      class="icon-cart"
+                    ></i
+                  ></span>
+                  <span class="type"
+                    ><i class="icon-sales"></i>来自
+                    <strong>自由行攻略</strong></span
+                  >
+                </div>
+                <div class="title">
+                  拥有12项世界纪录！广东周边游！快去清远古龙峡消暑！
+                </div>
+                <div class="txt">
+                  <div class="info"></div>
+                </div>
+                <div class="imgs">
+                  <ul class="">
+                    <li>
+                      <img
+                        src="http://n1-q.mafengwo.net/s16/M00/C8/C5/CoUBUl8EFZ2AImzwAAKCA3Ag7go82.jpeg?imageMogr2%2Fthumbnail%2F%21220x130r%2Fgravity%2FCenter%2Fcrop%2F%21220x130%2Fquality%2F100"
+                      />
+                    </li>
+                    <li>
+                      <img
+                        src="http://n1-q.mafengwo.net/s16/M00/C6/E8/CoUBUl8EFIeACdSgAATXKD3MaMA98.jpeg?imageMogr2%2Fthumbnail%2F%21220x130r%2Fgravity%2FCenter%2Fcrop%2F%21220x130%2Fquality%2F100"
+                      />
+                    </li>
+                    <li>
+                      <img
+                        src="http://p1-q.mafengwo.net/s16/M00/C6/E8/CoUBUl8EFIiAIILzAASIrHg4NPs76.jpeg?imageMogr2%2Fthumbnail%2F%21220x130r%2Fgravity%2FCenter%2Fcrop%2F%21220x130%2Fquality%2F100"
+                      />
+                    </li>
+                    <li class="ext-r">26607浏览</li>
+                  </ul>
+                </div>
               </div>
-              <StrategyDetailItem v-for="item in strategyList" 
-                                  :key="item.strategy_id" 
-                                  :StrategyDetailItemData="item"/>
-  
+              <StrategyDetailItem
+                v-for="item in strategyList"
+                :key="item.strategy_id"
+                :StrategyDetailItemData="item"
+              />
+
               <div class="hr"></div>
             </div>
             <div
               data-cs-t="gonglve_feed"
               class="_j_feed_data"
               data-feed='[{"fid":"231842","type":"1"},{"fid":"438886","type":"3"},{"fid":"32764","type":"2"},{"fid":"107390","type":"3"},{"fid":"10952","type":"4"}]'
-            >   
+            >
               <div class="hr"></div>
               <a
                 rel="nofollow"
@@ -527,24 +529,21 @@
             </div>
           </div>
         </div>
-
       </div>
     </section>
-
-
   </section>
 </template>
 <script>
 // 导入接口API
 import { getMainStrategy, getHotStrategy } from "@/api/getData.js";
-import navSelect from "../Strategy/components/navSelect"
-import navRecommend from "../Strategy/components/navRecommend"
-import navIsland from "../Strategy/components/navIsland"
-import navTheme from "../Strategy/components/navTheme"
+import navSelect from "../Strategy/components/navSelect";
+import navRecommend from "../Strategy/components/navRecommend";
+import navIsland from "../Strategy/components/navIsland";
+import navTheme from "../Strategy/components/navTheme";
 
 import Swiper from "../../components/Swiper";
 
-import StrategyDetailItem from "../Strategy/common/StrategyDetailItem"
+import StrategyDetailItem from "../Strategy/common/StrategyDetailItem";
 // import StrategyNav from "./components/StrategyNav";
 // import StrategyPuba from "../Strategy/components/StrategyPuba";
 export default {
@@ -555,7 +554,7 @@ export default {
     navIsland,
     navTheme,
     Swiper,
-    StrategyDetailItem
+    StrategyDetailItem,
     // StrategyNav,
   },
   data() {
@@ -585,7 +584,6 @@ export default {
       currentPage4: 4,
 
       allPage: 4,
-
     };
   },
   computed: {
@@ -634,8 +632,6 @@ export default {
       }
     },
 
-    
-
     // handleSizeChange(val) {
     //   this.allPage = val; // 每页
     // },
@@ -670,7 +666,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .strategy_top {
   display: flex;
   flex-direction: row;
@@ -715,7 +711,6 @@ export default {
   margin-left: 8px;
 }
 
-
 .input_like input {
   line-height: normal;
 }
@@ -736,7 +731,6 @@ export default {
   _font-family: Tahoma, Arial, Helvetica, STHeiti;
 }
 
-
 .search_resu {
   border: 1px #ffa800 solid;
   width: 518px;
@@ -750,62 +744,63 @@ export default {
 }
 
 .gonglve_wrap {
-    margin-top: 15px;
-    padding-bottom: 20px;
-    display: flex;
+  margin-top: 15px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .cont-main {
-    float: right;
-    width: 790px;
-    margin-bottom: 20px;
+  float: right;
+  width: 790px;
+  margin-bottom: 20px;
 }
 
 .cont-main .hd {
-    height: 50px;
-    border-bottom: 1px solid #eee;
-    line-height: 48px;
+  height: 50px;
+  border-bottom: 1px solid #eee;
+  line-height: 48px;
 }
 
 .cont-main .hd h3 {
-    float: left;
-    font-weight: normal;
-    font-size: 20px;
-    color: #333;
+  float: left;
+  font-weight: normal;
+  font-size: 20px;
+  color: #333;
 }
 
 .feed-item {
-    padding: 20px 0;
-    font-size: 14px;
-    line-height: 24px;
+  padding: 20px 0;
+  font-size: 14px;
+  line-height: 24px;
 }
 
 .feed-item a {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .feed-item a .bar {
-  height: 36px
+  height: 36px;
 }
 
 .feed-item a .art {
-  display: flex
+  display: flex;
 }
 
 .feed-item .stat {
-    float: right;
-    padding: 0 15px;
-    line-height: 30px;
-    border: 1px solid #ff9d00;
-    border-radius: 15px;
-    font-size: 14px;
-    background-color: #fff;
-    color: #666;
+  float: right;
+  padding: 0 15px;
+  line-height: 30px;
+  border: 1px solid #ff9d00;
+  border-radius: 15px;
+  font-size: 14px;
+  background-color: #fff;
+  color: #666;
 }
 
 .feed-item .stat .num {
-    color: #ff9d00;
+  color: #ff9d00;
 }
 
 .imgs ul {
@@ -813,107 +808,159 @@ export default {
   flex-direction: row;
 }
 
-
-
-
-
 .cont-main {
-    float: right;
-    width: 790px;
-    margin-bottom: 20px;
+  float: right;
+  width: 790px;
+  margin-bottom: 20px;
 }
 
 .cont-main .hd {
-    height: 50px;
-    border-bottom: 1px solid #eee;
-    line-height: 48px;
+  height: 50px;
+  border-bottom: 1px solid #eee;
+  line-height: 48px;
 }
 
 .cont-main .hd h3 {
-    float: left;
-    font-weight: normal;
-    font-size: 20px;
-    color: #333;
+  float: left;
+  font-weight: normal;
+  font-size: 20px;
+  color: #333;
 }
 
 .feed-item {
-    padding: 20px 0;
-    font-size: 14px;
-    line-height: 24px;
+  padding: 20px 0;
+  font-size: 14px;
+  line-height: 24px;
 }
 
 .feed-item a {
-    display: block;
+  display: block;
 }
 
 .feed-item .title {
-    margin-bottom: 15px;
-    font-size: 20px;
-    color: #333;
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #333;
 }
 
 .feed-item .stat {
-    float: right;
-    padding: 0 15px;
-    line-height: 30px;
-    border: 1px solid #ff9d00;
-    border-radius: 15px;
-    font-size: 14px;
-    background-color: #fff;
-    color: #666;
+  float: right;
+  padding: 0 15px;
+  line-height: 30px;
+  border: 1px solid #ff9d00;
+  border-radius: 15px;
+  font-size: 14px;
+  background-color: #fff;
+  color: #666;
 }
 
 .feed-item .stat .num {
-    color: #ff9d00;
+  color: #ff9d00;
 }
 
-.feed-item .icon-hand, .feed-item .icon-cart {
-    display: inline-block;
-    margin-left: 10px;
-    width: 15px;
-    height: 15px;
-    background: url(../../assets/img/icon/new-gl-icon6@2x.png) no-repeat -40px -40px;
-    overflow: hidden;
-    vertical-align: -2px;
-    *vertical-align: middle;
+.feed-item .icon-hand,
+.feed-item .icon-cart {
+  display: inline-block;
+  margin-left: 10px;
+  width: 15px;
+  height: 15px;
+  background: url(../../assets/img/icon/new-gl-icon6@2x.png) no-repeat -40px -40px;
+  overflow: hidden;
+  vertical-align: -2px;
+  *vertical-align: middle;
 }
 
 .cont-main .type {
-    float: left;
-    display: inline-block;
-    line-height: 20px;
-    font-size: 12px;
-    color: #666;
+  float: left;
+  display: inline-block;
+  line-height: 20px;
+  font-size: 12px;
+  color: #666;
 }
 
 .cont-main .type .icon-line {
-    background-position: 0 -40px;
+  background-position: 0 -40px;
 }
 
 .cont-main .type i {
-    float: left;
-    margin-right: 10px;
-    width: 20px;
-    height: 20px;
-    background: url(../../assets/img/icon/new-gl-icon6@2x.png) no-repeat 0 0;
-    overflow: hidden;
+  float: left;
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  background: url(../../assets/img/icon/new-gl-icon6@2x.png) no-repeat 0 0;
+  overflow: hidden;
 }
 
 .cont-main .type strong {
-    font-weight: normal;
-    color: #ff9d00;
+  font-weight: normal;
+  color: #ff9d00;
 }
 
-.sidebar{
-    float: left;
-    width: 160px;
+.sidebar {
+  float: left;
+  width: 160px;
+  .side-hd {
+    height: 50px;
+    font-size: 16px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    line-height: 48px;
+  }
+  .nav-drop {
+    margin-bottom: 10px;
+    height: 45px;
+    line-height: 25px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    .drop-item {
+      float: left;
+      width: 40px;
+      font-size: 14px;
+      .trigger {
+        padding: 10px 0;
+        height: 22px;
+        cursor: pointer;
+        i {
+          float: right;
+          margin-top: 10px;
+          border-top: 4px solid #999;
+          border-left: 4px dashed transparent;
+          border-right: 4px dashed transparent;
+          font-size: 0;
+          overflow: hidden;
+        }
+      }
+      .drop-pop {
+        position: absolute;
+        margin-top: 10px;
+        width: 410px;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        line-height: 30px;
+        display: none;
+        .inner {
+          overflow: hidden;
+          ul {
+            margin-left: -15px;
+            li {
+              float: left;
+              margin: 0 15px;
+              a {
+                color: #333;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
-
-
-.feed-item .icon-hand, .cont-main .type i, .input_like span {
-    background-image: url(../../assets/img/icon/new-gl-icon6@2x.png);
-    background-size: 60px auto;
+.feed-item .icon-hand,
+.cont-main .type i,
+.input_like span {
+  background-image: url(../../assets/img/icon/new-gl-icon6@2x.png);
+  background-size: 60px auto;
 }
-
 </style>
