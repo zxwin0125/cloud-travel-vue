@@ -80,6 +80,130 @@
           <p>蜂蜜</p>
         </div>
       </div>
+      <!-- 我的关注 -->
+      <div class="MUsers">
+        <div class="MUsersTitle">我的关注</div>
+        <div class="MUsersDetail" id="_j_followcnt">
+          <div class="MUsersAtom">
+            <ul class="clearfix _j_followlist">
+              <li>
+                <a href="/u/66033691.html" target="_blank">
+                  <img
+                    src="http://b1-q.mafengwo.net/s12/M00/B8/4B/wKgED1wXVBOAUKOoAAEV3wx0umw93.jpeg?imageMogr2%2Fthumbnail%2F%2148x48r%2Fgravity%2FCenter%2Fcrop%2F%2148x48%2Fquality%2F90"
+                    height="48"
+                    width="48"
+                    alt="马蜂窝问答君"
+                    title="马蜂窝问答君"
+                  />
+                </a>
+                <p>
+                  <a
+                    href="/u/66033691.html"
+                    target="_blank"
+                    title="马蜂窝问答君"
+                    >马蜂窝问答君</a
+                  >
+                </p>
+              </li>
+              <li>
+                <a href="/u/63316712.html" target="_blank">
+                  <img
+                    src="http://n1-q.mafengwo.net/s12/M00/0D/B6/wKgED1w2wTGACDWuAACV7G0pZBM93.jpeg?imageMogr2%2Fthumbnail%2F%2148x48r%2Fgravity%2FCenter%2Fcrop%2F%2148x48%2Fquality%2F90"
+                    height="48"
+                    width="48"
+                    alt="马蜂窝视频君"
+                    title="马蜂窝视频君"
+                  />
+                </a>
+                <p>
+                  <a
+                    href="/u/63316712.html"
+                    target="_blank"
+                    title="马蜂窝视频君"
+                    >马蜂窝视频君</a
+                  >
+                </p>
+              </li>
+              <li>
+                <a href="/u/388631.html" target="_blank">
+                  <img
+                    src="http://p1-q.mafengwo.net/s11/M00/E6/B5/wKgBEFsWUTmAexhvAANf5Uux-cw10.jpeg?imageMogr2%2Fthumbnail%2F%2148x48r%2Fgravity%2FCenter%2Fcrop%2F%2148x48%2Fquality%2F90"
+                    height="48"
+                    width="48"
+                    alt="马蜂窝大管家"
+                    title="马蜂窝大管家"
+                  />
+                </a>
+                <p>
+                  <a href="/u/388631.html" target="_blank" title="马蜂窝大管家"
+                    >马蜂窝大管家</a
+                  >
+                </p>
+              </li>
+              <li>
+                <a href="/u/90102427.html" target="_blank">
+                  <img
+                    src="http://b1-q.mafengwo.net/s10/M00/E8/CD/wKgBZ1iZk2SAGbKsAAME0TWzCHE45.jpeg?imageMogr2%2Fthumbnail%2F%2148x48r%2Fgravity%2FCenter%2Fcrop%2F%2148x48%2Fquality%2F90"
+                    height="48"
+                    width="48"
+                    alt="马小蜂"
+                    title="马小蜂"
+                  />
+                </a>
+                <p>
+                  <a href="/u/90102427.html" target="_blank" title="马小蜂"
+                    >马小蜂</a
+                  >
+                </p>
+              </li>
+              <li>
+                <a href="/u/10024.html" target="_blank">
+                  <img
+                    src="http://b1-q.mafengwo.net/s12/M00/A2/BC/wKgED1v83YqAKP_tAARgGAR8q2059.jpeg?imageMogr2%2Fthumbnail%2F%2148x48r%2Fgravity%2FCenter%2Fcrop%2F%2148x48%2Fquality%2F90"
+                    height="48"
+                    width="48"
+                    alt="小蜂"
+                    title="小蜂"
+                  />
+                </a>
+                <p>
+                  <a href="/u/10024.html" target="_blank" title="小蜂">小蜂</a>
+                </p>
+              </li>
+              <li>
+                <a href="/u/461006.html" target="_blank">
+                  <img
+                    src="http://p1-q.mafengwo.net/s12/M00/9C/59/wKgED1v7pZ6AIlXKAAOM2KwjrY870.jpeg?imageMogr2%2Fthumbnail%2F%2148x48r%2Fgravity%2FCenter%2Fcrop%2F%2148x48%2Fquality%2F90"
+                    height="48"
+                    width="48"
+                    alt="小蚂"
+                    title="小蚂"
+                  />
+                </a>
+                <p>
+                  <a href="/u/461006.html" target="_blank" title="小蚂">小蚂</a>
+                </p>
+              </li>
+              <li>
+                <a href="/u/114259.html" target="_blank">
+                  <img
+                    src="http://n1-q.mafengwo.net/s9/M00/0D/F5/wKgBs1hPb8WAEruUAAGXKCGfy4U06.jpeg?imageMogr2%2Fthumbnail%2F%2148x48r%2Fgravity%2FCenter%2Fcrop%2F%2148x48%2Fquality%2F90"
+                    height="48"
+                    width="48"
+                    alt="蜂窝机器人"
+                    title="蜂窝机器人"
+                  />
+                </a>
+                <p>
+                  <a href="/u/114259.html" target="_blank" title="蜂窝机器人"
+                    >蜂窝机器人</a
+                  >
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -283,38 +407,38 @@ export default {
       }
     }
     .MAvaMore {
-    margin-top: 20px;
-    border-top: #e2e2e2 1px solid;
-    border-bottom: #e2e2e2 1px solid;
-}
-.MAvaMore .MAvaNums {
-    position: relative;
-    width: 33%;
-    float: left;
-    padding: 10px 0;
-    text-align: center;
-    line-height: 20px;
-}
-.MAvaMore .MAvaNums strong {
-    font-size: 20px;
-    color: #444;
-    font-family: Arial;
-}
-.MAvaMore .MAvaNums p {
-    font-size: 14px;
-}
-.MAvaMore .MAvaNums:after {
-    content: '';
-    width: 1px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background-color: #e2e2e2;
-}
-.MAvaMore .MAvaNums strong a {
-    color: #444;
-}
+      margin-top: 20px;
+      border-top: #e2e2e2 1px solid;
+      border-bottom: #e2e2e2 1px solid;
+      .MAvaNums {
+        position: relative;
+        width: 33%;
+        float: left;
+        padding: 10px 0;
+        text-align: center;
+        line-height: 20px;
+        strong {
+          font-size: 20px;
+          color: #444;
+          font-family: Arial;
+          a {
+            color: #444;
+          }
+        }
+        p {
+          font-size: 14px;
+        }
+        &:after {
+          content: "";
+          width: 1px;
+          position: absolute;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          background-color: #e2e2e2;
+        }
+      }
+    }
   }
 }
 </style>
