@@ -47,15 +47,17 @@ const ticketController = {
 
     // 提交订单
     ticketOrder: (req, res) => {
+        console.log('7845',req.query);
+        console.log('78',req.query.ticket_id, req.query.ticket_title, req.query.ticket_price);
         const orderInfo = {
-            order_name: req.body.order_name,
-            order_cardId: req.body.order_cardId,
-            order_phone: req.body.order_phone,
-            order_time: req.body.order_time,
-            order_rule: req.body.order_rule,
-            ticket_id: req.body.ticket_id,
-            ticket_title: req.body.ticket_title,
-            ticket_price: req.body.ticket_price
+            order_name: req.query.order_name,
+            order_cardId: req.query.order_cardId,
+            order_phone: req.query.order_phone,
+            order_time: req.query.order_time,
+            order_rule: req.query.order_rule,
+            ticket_id: req.query.ticket_id,
+            ticket_title: req.query.ticket_title,
+            ticket_price: req.query.ticket_price
         }
 
         async function pay() {
@@ -68,10 +70,11 @@ const ticketController = {
             formData.addField('bizContent', {
                 outTradeNo: '1582976759901',
                 productCode: 'FAST_INSTANT_TRADE_PAY',
-                totalAmount: 'ticket_price',
+                totalAmount: orderInfo.ticket_price,
                 subject: '商品',
                 body: '商品详情',
             });
+            console.log('67',formData.fields);
             // 请求接口
             const result = await alipaySdk.exec(
                 'alipay.trade.page.pay', {}, {
