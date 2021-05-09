@@ -16,16 +16,16 @@ const ticketDAL = {
     },
 
     // 获取单个ticket信息
-    // ticketItemInfo: (ticket_id,cb) => {
-    //     const sql = 'select ticket_title, ticket_price, ticket_travel_time from ticket_info where ticket_id=?'
-    //     dao(sql,[ticket_id], (err,results) => {
-    //         if(err){
-    //             console.log('失败', err.message)
-    //         }else{
-    //             cb(null,results)
-    //         }
-    //     })
-    // }
+    ticketItemInfo: (ticket_id,cb) => {
+        const sql = 'select ticket_title, ticket_price, ticket_travel_time from ticket_info where ticket_id=?'
+        dao(sql,[ticket_id], (err,results) => {
+            if(err){
+                console.log('失败', err.message)
+            }else{
+                cb(null,results)
+            }
+        })
+    },
 
     // 提交订单
     ticketInfo: (cb) => {

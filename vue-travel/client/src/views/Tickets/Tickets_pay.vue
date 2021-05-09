@@ -11,7 +11,7 @@
       <!-- 表单 -->
       <el-main>
         <div class="content02">
-          <h1>[玉龙雪山]</h1>
+          <h1>{{ticketItem[1]}}¥{{ticketItem[2]}}</h1>
           <el-form
             :model="ruleForm"
             :rules="rules"
@@ -174,8 +174,6 @@ export default {
     };
 
     return {
-      
-
       // 表单信息
       ruleForm: {
         order_name: "",
@@ -214,11 +212,12 @@ export default {
     };
   },
   created() {
-    // this.ticketItem.push(
-    //   this.$route.query.id,
-    //   this.$route.query.title,
-    //   this.$route.query.price
-    // )
+    this.ticketItem.push(
+      this.$route.query.ticket_id,
+      this.$route.query.ticket_title,
+      this.$route.query.ticket_price
+    )
+    console.log('1212',this.ticketItem);
   },
   methods: {
     // 提交订单
@@ -226,7 +225,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           // 调用下单接口
-          
+
         } else {
           console.log('error submit!!');
           return false;

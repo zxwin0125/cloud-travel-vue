@@ -58,7 +58,6 @@ export default {
         try{
           const result = await getMainTicket()
           this.ticketList = result.data.data;
-          console.log('1212',this.ticketList);
         }catch(error){
             console.log(error)
         }
