@@ -65,9 +65,6 @@
               <el-button>取消</el-button>
             </el-form-item>
           </el-form>
-
-          <!-- 表单结束 -->
-          <!-- 购票须知开始 -->
         </div>
       </el-main>
 
@@ -163,6 +160,8 @@ export default {
     const order_time = (rule, value, callback) => {
       if (!value) {
         return callback(new Error("日期不能为空!"));
+      } else {
+        callback();
       }
     };
 
@@ -170,6 +169,8 @@ export default {
     const order_rule = (rule, value, callback) => {
       if (!value) {
         return callback(new Error("请同意用户协议!"));
+      } else {
+        callback();
       }
     };
 
@@ -179,7 +180,7 @@ export default {
         order_name: "张鑫",
         order_cardId: "320684199901257678",
         order_phone: "18862223315",
-        order_time: "2021-08-22",
+        order_time: "",
         order_rule: true,
       },
 
@@ -217,17 +218,12 @@ export default {
       this.$route.query.ticket_title,
       this.$route.query.ticket_price
     );
-    console.log("1212", this.ticketItem);
   },
   methods: {
     // 提交订单
     submitForm(formName) {
-      alert(777)
       this.$refs[formName].validate((valid) => {
-        alert(888)
         if (valid) {
-          alert(999)
-          // 调用下单接口
           orderTicket(
             this.ruleForm.order_name,
             this.ruleForm.order_cardId,
@@ -242,40 +238,18 @@ export default {
             console.log("register", res);
             if (res.data.code == 200) {
               // 购买成功
-              this.$message.success("下单成功!");
-              location.href = res.data.data;
+              this.$message.success("购买成功!");
+              // location.href = res.data.data;
             } else {
-              this.$message.error("下单失败!");
+              this.$message.error("购买失败!");
             }
-          });
+          })
         } else {
-          alert(888)
           console.log("error submit!!");
           return false;
         }
       });
-      // try {
-      //   // 购票接口
-      //   this.$axios.get('/api/pay',
-      //   {
-      //     params: {
-      //       "ticket_price":this.ticketItem[2]
-      //     }
-      //   })
-      //     .then((res) => {
-      //       console.log(res);
-      //       if (res.data.code == 200) {
-      //         // 购买成功
-      //         this.$message.success('下单成功!');
-      //         location.href=res.data.data
-      //       } else {
-      //         this.$message.error('下单失败!');
-      //       }
-      //     })
-      // } catch (error) {
-      //   console.log('错误', error);
-      // }
-    },
+    }
   },
 };
 </script>

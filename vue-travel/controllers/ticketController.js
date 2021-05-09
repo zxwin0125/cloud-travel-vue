@@ -59,7 +59,7 @@ const ticketController = {
         }
 
         async function pay() {
-            const fromData = new AlipayFormData()
+            const formData = new AlipayFormData()
             // 调用 setMethod 并传入 get，会返回可以跳转到支付页面的 url
             formData.setMethod('get')
             // 配置回调接口
@@ -79,7 +79,7 @@ const ticketController = {
                 },
             );
             // result 为可以跳转到支付链接的 url
-            console.log('333',result);
+            console.log('333', result);
             res.json({
                 code: 200,
                 msg: 'ok',
