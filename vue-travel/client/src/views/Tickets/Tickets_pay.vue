@@ -11,7 +11,7 @@
       <!-- 表单 -->
       <el-main>
         <div class="content02">
-          <!-- <h1>{{ ticketItem[1] }}¥{{ ticketItem[2] }}</h1> -->
+          <h1>{{ ticketItem.ticket_title }}¥{{ ticketItem.ticket_price }}</h1>
           <el-form
             :model="ruleForm"
             :rules="rules"
@@ -215,11 +215,10 @@ export default {
   created() {
     this.ticketItem.ticket_id = this.$route.query.ticket_id
     this.ticketItem.ticket_title = this.$route.query.ticket_title
-    this.ticketItem.ticket_price = this.$route.query.ticket_price
-    
+    this.ticketItem.ticket_price = this.$route.query.ticket_price 
   },
   mounted() {
-    console.log('12'.this.ruleForm);
+    
   },
   methods: {
     // 提交订单
@@ -232,18 +231,15 @@ export default {
             this.ruleForm.order_phone,
             this.ruleForm.order_time,
             this.ruleForm.order_rule,
-            this.ruleForm.order_phone,
-            '1004',
-            '玉龙雪山【双人】【成人票】',
-            '2200'
-            // this.ticketItem[1],
-            // this.ticketItem[2]
+            this.ticketItem.ticket_id,
+            this.ticketItem.ticket_title,
+            this.ticketItem.ticket_price
           ).then((res) => {
             console.log("register", res);
             if (res.data.code == 200) {
               // 购买成功
               this.$message.success("购买成功!");
-              // window.location.href = res.data.data;
+              window.location.href = res.data.data;
             } else {
               this.$message.error("购买失败!");
             }

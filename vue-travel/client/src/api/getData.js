@@ -36,9 +36,6 @@ export const orderTicket = (order_name, order_cardId, order_phone, order_time, o
         "ticket_id": ticket_id,
         "ticket_title": ticket_title,
         "ticket_price": ticket_price
-        // "ticket_id": '1004',
-        // "ticket_title": '玉龙雪山【双人】【成人票】',
-        // "ticket_price": '2200'
     }
 
 })
