@@ -26,15 +26,18 @@ export const getDes_xgll = () => axios.get("/api/desInfo/xgll")
 
 // 票务数据
 export const getMainTicket = () => axios.get("/api/tickets/main")
-export const orderTicket = (order_name, order_cardId, order_phone, order_time, order_rule, ticket_id, ticket_title, ticket_price) => axios.post("/api/tickets/order", {
-    order_name,
-    order_cardId,
-    order_phone,
-    order_time,
-    order_rule,
-    ticket_id,
-    ticket_title,
-    ticket_price
+export const orderTicket = (order_name, order_cardId, order_phone, order_time, order_rule, ticket_id, ticket_title, ticket_price) => axios.get("/api/tickets/order", {
+    params: {
+        "order_name": order_name,
+        "order_cardId": order_cardId,
+        "order_phone": order_phone,
+        "order_time": order_time,
+        "order_rule": order_rule,
+        "ticket_id": ticket_id,
+        "ticket_title": ticket_title,
+        "ticket_price": ticket_price
+    }
+
 })
 
 
