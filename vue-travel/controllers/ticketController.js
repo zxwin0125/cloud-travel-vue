@@ -61,7 +61,6 @@ const ticketController = {
         }
 
         async function pay() {
-            // console.log('90',orderInfo);
             const formData = new AlipayFormData()
             // 调用 setMethod 并传入 get，会返回可以跳转到支付页面的 url
             formData.setMethod('get')
@@ -75,7 +74,6 @@ const ticketController = {
                 subject: orderInfo.ticket_title,
                 body: orderInfo.ticket_title,
             });
-            // console.log('67',formData.fields);
             // 请求接口
             const result = await alipaySdk.exec(
                 'alipay.trade.page.pay', {}, {
@@ -83,7 +81,6 @@ const ticketController = {
                 },
             );
             // result 为可以跳转到支付链接的 url
-            console.log('333', result);
             res.json({
                 code: 200,
                 msg: 'ok',

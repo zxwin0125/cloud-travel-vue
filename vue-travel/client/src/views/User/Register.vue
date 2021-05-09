@@ -91,6 +91,8 @@ export default {
     const check_user_name = (rule, value, callback) => {
       if (!value) {
         return callback(new Error("用户名不能为空!"));
+      } else {
+        callback()
       }
     };
 
@@ -133,11 +135,14 @@ export default {
 
     // 校验验证码
     const check_user_code = (rule, value, callback) => {
-      if (!value) {
-        callback(new Error("验证码不能为空!"));
-      } else if (this.user_code !== value) {
-        this.$message.error("验证码不正确!");
-      }
+      // if (!value) {
+      //   callback(new Error("验证码不能为空!"));
+      // } else if (this.user_code !== value) {
+      //   this.$message.error("验证码不正确!");
+      // } else {
+      //   callback()
+      // }
+      callback()
     };
 
     return {
@@ -156,7 +161,7 @@ export default {
           { validator: confirm_user_password, trigger: "blur" },
         ],
         user_phone: [{ validator: check_user_phone, trigger: "blur" }],
-        user_code: [{ validator: check_user_code, trigger: "blur" }],
+        user_code: [{ validator: check_user_code }],
       },
       userCode: ''
     };
@@ -166,14 +171,14 @@ export default {
   methods: {
     // 1. 获取验证码方法
     getUserCode() {
-      getCode(this.ruleForm.user_phone).then((res) => {
-        if (res.data.code == '200') {
-          this.$message.success("发送验证码成功!");
-          this.user_code = res.data.data
-        } else {
-          this.$message.error("发送验证码失败!");
-        }
-      });
+      // getCode(this.ruleForm.user_phone).then((res) => {
+      //   if (res.data.code == '200') {
+      //     this.$message.success("发送验证码成功!");
+      //     this.user_code = res.data.data
+      //   } else {
+      //     this.$message.error("发送验证码失败!");
+      //   }
+      // });
     },
 
     // 注册方法
@@ -192,7 +197,7 @@ export default {
               this.$message.error("用户名或手机号已存在!");
             } else if (res.data.code == '200') {
               // 注册成功，跳转到登陆
-              this.$message.success("登录成功！");
+              this.$message.success("注册成功！");
               this.$router.push("/login").catch(err => {});
             }
           });

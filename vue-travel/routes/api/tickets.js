@@ -14,7 +14,6 @@ router.get('/item', (req, res, next) => {
 })
 
 router.get('/order', (req, res, next) => {
-  // console.log('123',req.query);
   ticketController.ticketOrder(req, res)
 })
 
