@@ -52,19 +52,13 @@ const ticketController = {
             order_cardId: req.body.order_cardId,
             order_phone: req.body.order_phone,
             order_time: req.body.order_time,
-            order_rule: req.body.order_rule
+            order_rule: req.body.order_rule,
+            ticket_id: req.body.ticket_id,
+            ticket_title: req.body.ticket_title,
+            ticket_price: req.body.ticket_price
         }
 
-        ticketDAL.ticketItem(ticket_id, function (err, results) {
-            if (err) {
-                console.log('数据库错误');
-            } else {
-                res.json({
-                    code: 200,
-                    data: results
-                })
-            }
-        })
+        
     }
 
 
