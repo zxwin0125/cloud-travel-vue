@@ -58,12 +58,36 @@ const ticketController = {
             ticket_price: req.body.ticket_price
         }
 
-        
+        async function pay() {
+            const fromData = new AlipayFormData()
+            // 调用 setMethod 并传入 get，会返回可以跳转到支付页面的 url
+            formData.setMethod('get')
+            // 配置回调接口
+            formData.addField('notifyUrl', 'http://www.zzes1314.cn')
+            // 设置参数
+            formData.addField('bizContent', {
+                outTradeNo: '1582976759901',
+                productCode: 'FAST_INSTANT_TRADE_PAY',
+                totalAmount: 'ticket_price',
+                subject: '商品',
+                body: '商品详情',
+            });
+            // 请求接口
+            const result = await alipaySdk.exec(
+                'alipay.trade.page.pay', {}, {
+                    formData: formData
+                },
+            );
+            // result 为可以跳转到支付链接的 url
+            console.log('333',result);
+            res.json({
+                code: 200,
+                msg: 'ok',
+                data: result
+            })
+        }
+        pay()
     }
-
-
-
-
 }
 
 module.exports = ticketController

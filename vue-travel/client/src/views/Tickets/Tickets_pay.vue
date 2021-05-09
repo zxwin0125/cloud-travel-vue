@@ -11,7 +11,7 @@
       <!-- 表单 -->
       <el-main>
         <div class="content02">
-          <h1>{{ticketItem[1]}}¥{{ticketItem[2]}}</h1>
+          <h1>{{ ticketItem[1] }}¥{{ ticketItem[2] }}</h1>
           <el-form
             :model="ruleForm"
             :rules="rules"
@@ -110,7 +110,7 @@
 
 <script>
 import Swiper from "../../components/Swiper";
-import { getPay } from "@/api/getData.js"
+import { orderTicket } from "@/api/getData.js";
 export default {
   components: {
     Swiper,
@@ -122,7 +122,7 @@ export default {
       if (!value) {
         return callback(new Error("姓名不能为空!"));
       } else {
-        const reg = /^[\u4e00-\u9fa5]{0,}$/
+        const reg = /^[\u4e00-\u9fa5]{0,}$/;
         if (reg.test(value)) {
           callback();
         } else {
@@ -176,11 +176,11 @@ export default {
     return {
       // 表单信息
       ruleForm: {
-        order_name: "",
-        order_cardId: "",
-        order_phone: "",
-        order_time: "",
-        order_rule: false,
+        order_name: "张鑫",
+        order_cardId: "320684199901257678",
+        order_phone: "18862223315",
+        order_time: "2021-08-22",
+        order_rule: true,
       },
 
       // 使用校验规则
@@ -216,18 +216,41 @@ export default {
       this.$route.query.ticket_id,
       this.$route.query.ticket_title,
       this.$route.query.ticket_price
-    )
-    console.log('1212',this.ticketItem);
+    );
+    console.log("1212", this.ticketItem);
   },
   methods: {
     // 提交订单
     submitForm(formName) {
+      alert(777)
       this.$refs[formName].validate((valid) => {
+        alert(888)
         if (valid) {
+          alert(999)
           // 调用下单接口
-
+          orderTicket(
+            this.ruleForm.order_name,
+            this.ruleForm.order_cardId,
+            this.ruleForm.order_phone,
+            this.ruleForm.order_time,
+            this.ruleForm.order_rule,
+            this.ruleForm.order_phone,
+            this.ticketItem[0],
+            this.ticketItem[1],
+            this.ticketItem[2]
+          ).then((res) => {
+            console.log("register", res);
+            if (res.data.code == 200) {
+              // 购买成功
+              this.$message.success("下单成功!");
+              location.href = res.data.data;
+            } else {
+              this.$message.error("下单失败!");
+            }
+          });
         } else {
-          console.log('error submit!!');
+          alert(888)
+          console.log("error submit!!");
           return false;
         }
       });
