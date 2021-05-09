@@ -1,6 +1,9 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
+const passport = require('passport')
 const ticketController = require('../../controllers/ticketController')
+const AlipaySdk = require('alipay-sdk').default
+const AlipayFormData = require('alipay-sdk/lib/form').default
 
 /* 设置 ticket 路由 */
 router.get('/main', (req, res, next) => {

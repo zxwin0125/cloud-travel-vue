@@ -28,8 +28,14 @@ const ticketController = {
 
     // 提交订单
     ticketOrder: (req, res) => {
-        const orderInfo = req.query.ticket_id
-        // des
+        const orderInfo = {
+            order_name: req.body.order_name,
+            order_cardId: req.body.order_cardId,
+            order_phone: req.body.order_phone,
+            order_time: req.body.order_time,
+            order_rule: req.body.order_rule
+        }
+
         ticketDAL.ticketItem(ticket_id,function(err,results){
             if(err){
                 console.log('数据库错误');
