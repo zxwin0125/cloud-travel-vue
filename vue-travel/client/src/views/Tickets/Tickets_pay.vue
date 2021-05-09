@@ -231,27 +231,27 @@ export default {
           return false;
         }
       });
-      try {
-        // 购票接口
-        this.$axios.get('/api/pay',
-        {
-          params: {
-            "ticket_price":this.ticketItem[2]
-          }
-        })
-          .then((res) => {
-            console.log(res);
-            if (res.data.code == 200) {
-              // 购买成功
-              this.$message.success('下单成功!');
-              location.href=res.data.data
-            } else {
-              this.$message.error('下单失败!');
-            }
-          })
-      } catch (error) {
-        console.log('错误', error);
-      }
+      // try {
+      //   // 购票接口
+      //   this.$axios.get('/api/pay',
+      //   {
+      //     params: {
+      //       "ticket_price":this.ticketItem[2]
+      //     }
+      //   })
+      //     .then((res) => {
+      //       console.log(res);
+      //       if (res.data.code == 200) {
+      //         // 购买成功
+      //         this.$message.success('下单成功!');
+      //         location.href=res.data.data
+      //       } else {
+      //         this.$message.error('下单失败!');
+      //       }
+      //     })
+      // } catch (error) {
+      //   console.log('错误', error);
+      // }
     },
   },
 };
