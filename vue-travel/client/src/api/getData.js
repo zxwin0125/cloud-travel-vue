@@ -26,6 +26,7 @@ export const getDes_xgll = () => axios.get("/api/desInfo/xgll")
 
 // 票务数据
 export const getMainTicket = () => axios.get("/api/tickets/main")
+export const orderTicket = () => axios.post("/api/tickets/order")
 
 
 

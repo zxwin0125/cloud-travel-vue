@@ -47,6 +47,7 @@
                   placeholder="选择日期"
                   v-model="ruleForm.order_time"
                   :picker-options="pickerOptions"
+                  suffix=""
                 >
                 </el-date-picker>
               </el-col>
@@ -109,8 +110,7 @@
 
 <script>
 import Swiper from "../../components/Swiper";
-// 注册接口
-// import { getPay } from "@/api/getData.js"
+import { getPay } from "@/api/getData.js"
 export default {
   components: {
     Swiper,
@@ -121,6 +121,13 @@ export default {
     const order_name = (rule, value, callback) => {
       if (!value) {
         return callback(new Error("姓名不能为空!"));
+      } else {
+        const reg = /^[\u4e00-\u9fa5]{0,}$/
+        if (reg.test(value)) {
+          callback();
+        } else {
+          return callback(new Error("请输入正确的姓名!"));
+        }
       }
     };
 
@@ -152,10 +159,10 @@ export default {
       }
     };
 
-    // 时间校验
+    // 日期校验
     const order_time = (rule, value, callback) => {
       if (!value) {
-        return callback(new Error("时间不能为空!"));
+        return callback(new Error("日期不能为空!"));
       }
     };
 
@@ -167,32 +174,31 @@ export default {
     };
 
     return {
+      
+
+      // 表单信息
+      ruleForm: {
+        order_name: "",
+        order_cardId: "",
+        order_phone: "",
+        order_time: "",
+        order_rule: false,
+      },
+
+      // 使用校验规则
+      rules: {
+        order_name: [{ validator: order_name, trigger: "blur" }],
+        order_cardId: [{ validator: order_cardId, trigger: "blur" }],
+        order_phone: [{ validator: order_phone, trigger: "blur" }],
+        order_time: [{ validator: order_time, trigger: "blur" }],
+        order_rule: [{ validator: order_rule, trigger: "blur" }],
+      },
+
       // 日期配置项
       pickerOptions: {
         disabledDate(time) {
           return time.getTime() < Date.now();
         },
-      },
-      // 表单信息
-      ruleForm: {
-        username: "",
-        idcard: "",
-        phone: "",
-        time: "",
-        read: false,
-      },
-    };
-
-    return {
-      
-
-      // 使用校验规则
-      rules: {
-        username: [{ validator: username, trigger: "blur" }],
-        idcard: [{ validator: idcard, trigger: "blur" }],
-        phone: [{ validator: phone, trigger: "blur" }],
-        time: [{ validator: time, trigger: "blur" }],
-        read: [{ validator: read, trigger: "blur" }],
       },
 
       // 图片地址数组
@@ -203,6 +209,7 @@ export default {
         require("../../assets/img/Swiper/swiper04.png"),
         require("../../assets/img/Swiper/swiper05.png"),
       ],
+
       ticketItem: [],
     };
   },
@@ -215,37 +222,38 @@ export default {
   },
   methods: {
     // 提交订单
-    // async submitForm(formName) {
-    //   this.$refs[formName].validate((valid) => {
-    //     if (valid) {
-    //       alert('submit!');
-    //     } else {
-    //       console.log('error submit!!');
-    //       return false;
-    //     }
-    //   });
-    //   try {
-    //     // 购票接口
-    //     this.$axios.get('/api/pay',
-    //     {
-    //       params: {
-    //         "ticket_price":this.ticketItem[2]
-    //       }
-    //     })
-    //       .then((res) => {
-    //         console.log(res);
-    //         if (res.data.code == 200) {
-    //           // 购买成功
-    //           this.$message.success('下单成功!');
-    //           location.href=res.data.data
-    //         } else {
-    //           this.$message.error('下单失败!');
-    //         }
-    //       })
-    //   } catch (error) {
-    //     console.log('错误', error);
-    //   }
-    // },
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          // 调用下单接口
+
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+      });
+      try {
+        // 购票接口
+        this.$axios.get('/api/pay',
+        {
+          params: {
+            "ticket_price":this.ticketItem[2]
+          }
+        })
+          .then((res) => {
+            console.log(res);
+            if (res.data.code == 200) {
+              // 购买成功
+              this.$message.success('下单成功!');
+              location.href=res.data.data
+            } else {
+              this.$message.error('下单失败!');
+            }
+          })
+      } catch (error) {
+        console.log('错误', error);
+      }
+    },
   },
 };
 </script>

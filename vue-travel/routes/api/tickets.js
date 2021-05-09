@@ -7,8 +7,8 @@ router.get('/main', (req, res, next) => {
   ticketController.ticketInfo(req, res)
 })
 
-// router.get('/ticketItem', function(req, res, next) {
-//   ticketController.ticketItem(req, res)
-// })
+router.post('/ticketItem', function(req, res, next) {
+  ticketController.ticketItem(req, res)
+})
 
 module.exports = router;
