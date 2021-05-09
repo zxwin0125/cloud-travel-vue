@@ -88,7 +88,7 @@
 <script>
   import Swiper from "../../components/Swiper";
   // 注册接口
-  import { getPay } from "@/api/getData.js"
+  // import { getPay } from "@/api/getData.js"
   export default {
     components: {
       Swiper,
@@ -180,52 +180,51 @@
         ticketItem: []
       }
     },
+    created() {
+      // this.ticketItem.push(
+      //   this.$route.query.id,
+      //   this.$route.query.title,
+      //   this.$route.query.price
+      // )
+    },
     methods: {
       // 提交订单
-      async submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            alert('submit!');
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
+      // async submitForm(formName) {
+      //   this.$refs[formName].validate((valid) => {
+      //     if (valid) {
+      //       alert('submit!');
+      //     } else {
+      //       console.log('error submit!!');
+      //       return false;
+      //     }
+      //   });
 
-        try {
-          // 购票接口
-          this.$axios.get('/api/pay',
-          {
-            params: {
-              "ticket_price":this.ticketItem[2]
-            }
-          })
-            .then((res) => {
-              console.log(res);
-              if (res.data.code == 200) {
-                // 购买成功
-                this.$message.success('下单成功!');
-                location.href=res.data.data
-              } else {
-                this.$message.error('下单失败!');
-              }
-            })
-        } catch (error) {
-          console.log('错误', error);
-        }
-      },
+      //   try {
+      //     // 购票接口
+      //     this.$axios.get('/api/pay',
+      //     {
+      //       params: {
+      //         "ticket_price":this.ticketItem[2]
+      //       }
+      //     })
+      //       .then((res) => {
+      //         console.log(res);
+      //         if (res.data.code == 200) {
+      //           // 购买成功
+      //           this.$message.success('下单成功!');
+      //           location.href=res.data.data
+      //         } else {
+      //           this.$message.error('下单失败!');
+      //         }
+      //       })
+      //   } catch (error) {
+      //     console.log('错误', error);
+      //   }
+      // },
 
 
     },
-    created() {
-      this.ticketItem.push(
-        this.$route.query.id,
-        this.$route.query.title,
-        this.$route.query.price
-      )
-
-
-    }
+    
 
   };
 </script>

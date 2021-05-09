@@ -16,6 +16,7 @@ import StrategyDetail from '../views/Strategy/StrategyDetail.vue'
 import Community from '../views/Community/Community.vue'
 
 import Tickets from '../views/Tickets/Tickets.vue'
+import Tickets_pay from '../views/Tickets/Tickets_pay.vue'
 
 import DataVisualization from '../views/DataVisualization/DataVisualization.vue'
 
@@ -42,7 +43,7 @@ const routes = [{
     },
     children: [
       {
-        path: '/destination/lj',
+        path: 'lj',
         name: 'des_lj',
         component: des_lj,
         meta: {
@@ -50,7 +51,7 @@ const routes = [{
         }
       },
       {
-        path: '/destination/km',
+        path: 'km',
         name: 'des_km',
         component: des_km,
         meta: {
@@ -58,7 +59,7 @@ const routes = [{
         }
       },
       {
-        path: '/destination/xgll',
+        path: 'xgll',
         name: 'des_xgll',
         component: des_xgll,
         meta: {
@@ -66,7 +67,7 @@ const routes = [{
         }
       },
       {
-        path: '/destination/xsbn',
+        path: 'xsbn',
         name: 'des_xsbn',
         component: des_xsbn,
         meta: {
@@ -87,7 +88,7 @@ const routes = [{
     },
     children: [
       {
-        path: '/strategy/detail',
+        path: 'detail',
         name: 'detail',
         components: StrategyDetail
       }
@@ -112,6 +113,18 @@ const routes = [{
     name: 'Tickets',
     components: {
       default: Tickets,
+      'header': null
+    },
+    meta: {
+      isturn: true, // 表示这个路由需要导航和底部
+      isLogin: true // 表示进入这个路由需要登录
+    }
+  },
+  {
+    path: '/tickets/tickets_pay',
+    name: 'Tickets_pay',
+    components: {
+      default: Tickets_pay,
       'header': null
     },
     meta: {
