@@ -2,7 +2,7 @@
 const dao = require('../config/dao')
 
 const ticketDAL = {
-    // 获取ticket信息
+    // 获取ticket门票信息
     ticketInfo: (cb) => {
         const sql = `select ticket_id, ticket_title, ticket_price, 
                      ticket_travel_time from ticket_info`

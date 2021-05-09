@@ -226,7 +226,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           // 调用下单接口
-
+          
         } else {
           console.log('error submit!!');
           return false;
