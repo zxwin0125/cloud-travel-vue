@@ -10,7 +10,7 @@
     </header>
     <div id="contentContainer">
       <!-- 面包屑导航 -->
-      <StrategyNav />
+      <!-- <StrategyNav /> -->
       <h2 class="grey-large">Have A Nice Day :)</h2>
       <!-- 设置攻略头图 -->
       <el-row>
@@ -89,7 +89,6 @@
 </template>
 
 <script>
-import StrategyNav from "../Strategy/components/StrategyNav";
 import { quillEditor } from "vue-quill-editor";
 // 引入token身份认证？
 // import jwt_decode from "jwt-decode";
@@ -97,7 +96,7 @@ import { quillEditor } from "vue-quill-editor";
 export default {
   name: "StrategyWrite",
   components: {
-    StrategyNav,
+    // StrategyNav,
   },
   computed: {
     editor() {
@@ -211,13 +210,14 @@ export default {
   },
 };
 </script>
-<style  scoped>
+<style scoped>
 /* 头图 */
 .avatar {
   width: 100%;
   height: 500px;
   display: block;
 }
+
 #menu {
   width: 600px;
   padding-top: 20px;
@@ -237,12 +237,12 @@ export default {
 #header {
   display: table;
   width: 100%;
-  height: 700px;
-  position: fixed;
+  height: 100%;
+  position: absolute;
   top: 0;
   left: 0;
   background: #4bb8d2;
-  /* background: url(../../assets/str_header.jpg) no-repeat center; */
+  background: url(../../assets/img/Strategy/str_header.jpg) no-repeat center;
   z-index: 1;
 }
 #logo {
@@ -251,7 +251,7 @@ export default {
   position: absolute;
   left: 50%;
   margin-left: -117.5px;
-  /* background: url(../../assets/str_logo.png) no-repeat; */
+  background: url(../../assets/img/Strategy/str_logo.png) no-repeat;
   background-size: 100%;
   text-indent: 100%;
   white-space: nowrap;
@@ -259,7 +259,7 @@ export default {
 }
 #contentContainer {
   width: 100%;
-  margin-top: 700px;
+  margin-top: 100vh;
   background: #fff;
   position: relative;
   z-index: 3;
@@ -307,8 +307,8 @@ h1 {
 }
 /* 按钮 */
 a.btn {
-  margin-top: 20px !important;
-  margin-bottom: 20px !important;
+  margin-top: 100px !important;
+  margin-bottom: 70px !important;
   font-weight: 700;
   text-decoration: none;
   /* background: #8cff32;
@@ -358,27 +358,21 @@ strong {
 a {
   color: black;
 }
-</style>
-<style>
 /* 内容标题背景大图 */
-.title input {
+.title {
   border: none;
   outline: medium;
   margin-bottom: 10px;
-}
-.title input.el-input__inner {
-  border-bottom: 3px solid #5cb3cc;
-  font-size: 30px;
+  font-size: 20px;
   line-height: 50px;
   height: 50px;
   margin-top: 50px;
   border-radius: 0px;
   color: #5cb3cc;
-  padding-left: 40px;
 }
 
 /* 攻略头图 */
-.avatar-uploader .el-upload {
+.el-upload {
   border-bottom: 3px dashed #5cb3cc;
   /* border-radius: 0px; */
   cursor: pointer;
@@ -386,9 +380,10 @@ a {
   overflow: hidden;
   width: 100%;
 }
-.avatar-uploader .el-upload:hover {
+.el-upload:hover {
   border-color: #409eff;
 }
+
 .avatar-uploader-icon {
   font-size: 30px;
   color: #5cb3cc;
@@ -399,32 +394,15 @@ a {
   margin-bottom: 10px;
   text-align: left;
 }
-.avatar {
-  width: 100%;
-  height: 50px;
-  display: block;
-}
+
+
 .avatar-uploader .el-upload:hover {
   border: 3px solid #5cb3cc;
 }
 /* 富文本框样式 */
-.AddEditor .ql-toolbar.ql-snow {
-  border: none !important;
-  margin-top: 20px;
-  color: #5cb3cc;
+.AddEditor .quill-editor {
+  height: 300px;
 }
-.AddEditor .ql-cotainer.ql-snow {
-  border: none !important;
-}
-.AddEditor .ql-container.ql-snow {
-  /* border: 1px #5cb3cc solid !important; */
-  border: none !important;
-  border-top: 2px solid #5cb3cc !important;
-  height: 280px;
-  font-size: 16px;
-}
-/* div{
-  background:#D0D0D0;
-} */
 </style>
+
 

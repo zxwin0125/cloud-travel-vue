@@ -110,7 +110,7 @@ const routes = [{
       'header': null
     },
     meta: {
-      isturn: true
+      isturn: false
     }
   },
   {
