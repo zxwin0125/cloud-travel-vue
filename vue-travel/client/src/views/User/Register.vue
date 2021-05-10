@@ -135,14 +135,13 @@ export default {
 
     // 校验验证码
     const check_user_code = (rule, value, callback) => {
-      // if (!value) {
-      //   callback(new Error("验证码不能为空!"));
-      // } else if (this.user_code !== value) {
-      //   this.$message.error("验证码不正确!");
-      // } else {
-      //   callback()
-      // }
-      callback()
+      if (!value) {
+        callback(new Error("验证码不能为空!"));
+      } else if (this.user_code !== value) {
+        this.$message.error("验证码不正确!");
+      } else {
+        callback()
+      }
     };
 
     return {
@@ -171,14 +170,14 @@ export default {
   methods: {
     // 1. 获取验证码方法
     getUserCode() {
-      // getCode(this.ruleForm.user_phone).then((res) => {
-      //   if (res.data.code == '200') {
-      //     this.$message.success("发送验证码成功!");
-      //     this.user_code = res.data.data
-      //   } else {
-      //     this.$message.error("发送验证码失败!");
-      //   }
-      // });
+      getCode(this.ruleForm.user_phone).then((res) => {
+        if (res.data.code == '200') {
+          this.$message.success("发送验证码成功!");
+          this.user_code = res.data.data
+        } else {
+          this.$message.error("发送验证码失败!");
+        }
+      });
     },
 
     // 注册方法
