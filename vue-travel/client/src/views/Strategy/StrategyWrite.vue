@@ -90,7 +90,7 @@
 
 <script>
 import StrategyNav from "../Strategy/components/StrategyNav";
-// import { quillEditor } from "vue-quill-editor";
+import { quillEditor } from "vue-quill-editor";
 // 引入token身份认证？
 // import jwt_decode from "jwt-decode";
 

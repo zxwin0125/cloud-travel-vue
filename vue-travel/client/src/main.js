@@ -10,7 +10,12 @@ Vue.prototype.$axios = axios
 Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
 
-
+//引入富文本编译器
+import  VueQuillEditor from 'vue-quill-editor'
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
+Vue.use(VueQuillEditor)
 
 
 // 引入 element-ui
