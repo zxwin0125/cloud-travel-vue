@@ -211,23 +211,23 @@
       <div class="common_block main_links">
         <ul class="clearfix">
           <li>
-            <a href="/note/create_index.php" target="_blank"
-              ><i class="write_note"></i><span>写游记</span></a
+            <div class="main_links_icon" @click="toWrite"
+              ><i class="write_note"></i><span>写游记</span></div
             >
           </li>
           <li>
-            <a href="/wenda/" target="_blank"
-              ><i class="ask_expert"></i><span>问达人</span></a
+            <div class="main_links_icon"
+              ><i class="ask_expert"></i><span>问达人</span></div
             >
           </li>
           <li>
-            <a href="/path/" target="_blank"
-              ><i class="add_footprint"></i><span>添加足迹</span></a
+            <div class="main_links_icon"
+              ><i class="add_footprint"></i><span>添加足迹</span></div
             >
           </li>
           <li class="last">
-            <a href="/together/" target="_blank"
-              ><i class="invite_friends"></i><span>发布结伴</span></a
+            <div class="main_links_icon"
+              ><i class="invite_friends"></i><span>发布结伴</span></div
             >
           </li>
         </ul>
@@ -286,8 +286,8 @@
         </div>
         <div class="notes_default_v2">
           <div class="notes_dcon"></div>
-          <a href="/note/create_index.php" title="写游记" class="btn_write"
-            ><i></i>写游记</a
+          <div title="写游记" class="btn_write" @click="toWrite"
+            ><i></i>写游记</div>
           >
         </div>
 
@@ -348,6 +348,9 @@ export default {
   },
   mounted() {},
   methods: {
+    toWrite() {
+      alert(999)
+    },
     handleAvatarSuccess(res, file) {
       this.imageUrl = URL.createObjectURL(file.raw);
     },
@@ -613,7 +616,7 @@ export default {
         width: 25%;
         position: relative;
         text-align: center;
-        a {
+        .main_links_icon {
           color: #ff9d00;
           text-decoration: none;
           cursor: pointer;
