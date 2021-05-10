@@ -344,12 +344,13 @@ export default {
     },
   },
   created() {
-    console.log("1212", this.$store);
+    console.log("1212", this.$store.getters.user_info);
+    console.log("14545", this.userInfo);
   },
   mounted() {},
   methods: {
-    toWrite() {
-      alert(999)
+    toWrite(user_id) {
+      this.$router.push(`/strategy/write/?user_id=${user_id}`);
     },
     handleAvatarSuccess(res, file) {
       this.imageUrl = URL.createObjectURL(file.raw);
