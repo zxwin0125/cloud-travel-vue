@@ -19,9 +19,9 @@
             ref="upload"
             action=""
             accept="image/jpeg,image/gif,image/png"
-             :show-file-list="false"
+            :show-file-list="false"
             :before-upload="beforeupload"
-            :on-change="handlePictureCardPreview"
+            :on-success="handlePictureCardPreview"
             :auto-upload="false"
           >
             <img v-if="imageUrl" :src="imageUrl" class="avatar" />
@@ -161,13 +161,12 @@ export default {
         });
       } else {
         this.$refs.upload.submit();
-        this.param.append("strategy_img", _this.imageUrl)
+        this.param.append("strategy_img", _this.imageUrl);
         this.param.append("strategy_title", _this.stform.title);
         this.param.append("strategy_content", _this.stform.content);
-        this.param.append("user_id",localStorage.getItem("userid"));
-        this.param.append("user_name",localStorage.getItem("username"));
-        
-     
+        this.param.append("user_id", localStorage.getItem("userid"));
+        this.param.append("user_name", localStorage.getItem("username"));
+
         let config = {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -181,7 +180,7 @@ export default {
             config
           )
           .then(function (result) {
-            console.log('有没有拿到数据',result);
+            console.log("有没有拿到数据", result);
             _this.open();
           });
       }
@@ -204,7 +203,7 @@ export default {
       // 准备表单上传需要的参数对象
       this.param = new FormData();
       this.param.append("pbStPic", file);
-      
+
       return false;
     },
   },
@@ -394,7 +393,6 @@ a {
   margin-bottom: 10px;
   text-align: left;
 }
-
 
 .avatar-uploader .el-upload:hover {
   border: 3px solid #5cb3cc;
