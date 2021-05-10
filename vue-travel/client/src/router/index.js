@@ -12,6 +12,7 @@ import des_xsbn from '../views/Destination/components/des_xsbn.vue'
 
 import Strategy from '../views/Strategy/Strategy.vue'
 import StrategyDetail from '../views/Strategy/StrategyDetail.vue'
+import StrategyWrite from '../views/Strategy/StrategyWrite.vue'
 
 import Community from '../views/Community/Community.vue'
 
@@ -86,13 +87,28 @@ const routes = [{
       default: Strategy,
       'header': null
     },
-    children: [
-      {
-        path: 'detail',
-        name: 'detail',
-        components: StrategyDetail
-      }
-    ],
+    meta: {
+      isturn: true
+    }
+  },
+  {
+    path: '/strategy/detail',
+    name: 'StrategyDetail',
+    components: {
+      default: StrategyDetail,
+      'header': null
+    },
+    meta: {
+      isturn: true
+    }
+  },
+  {
+    path: '/strategy/write',
+    name: 'StrategyWrite',
+    components: {
+      default: StrategyWrite,
+      'header': null
+    },
     meta: {
       isturn: true
     }
