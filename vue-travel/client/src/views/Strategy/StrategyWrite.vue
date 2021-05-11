@@ -20,8 +20,7 @@
             action=""
             accept="image/jpeg,image/gif,image/png"
             :show-file-list="false"
-            :before-upload="beforeupload"
-            :on-success="handlePictureCardPreview"
+            :on-change="handlePictureCardPreview"
             :auto-upload="false"
           >
             <img v-if="imageUrl" :src="imageUrl" class="avatar" />
@@ -34,14 +33,14 @@
           </el-upload>
         </el-col>
       </el-row>
-      <el-form ref="stform" :model="stform">
+      <el-form ref="ruleForm" :rules="rules" :model="ruleForm">
         <!-- 输入标题 图片-->
         <el-row>
           <el-col :span="16" :offset="4">
             <!-- <i class="el-icon-edit"></i> -->
             <el-input
               class="title"
-              v-model="stform.title"
+              v-model="ruleForm.strategy_title"
               placeholder="请输入攻略标题"
               maxlength="40"
               minlength="1"
@@ -56,7 +55,7 @@
             <div class="AddEditor">
                   <quill-editor
                 class="editor"
-                v-model="stform.content"
+                v-model="ruleForm.strategy_content"
                 ref="myQuillEditor"
                 :options="editorOption"
                 @blur="onEditorBlur($event)"
@@ -105,12 +104,40 @@ export default {
   },
   data() {
     return {
-      editorOption: {},
-      stform: {
-        title: "",
-        content: ``,
-      },
       imageUrl: "",
+
+      ruleForm: {
+        strategy_title: "",
+        strategy_content: "",
+      },
+
+      rules: {
+        strategy_title: [
+          {
+            required: true,
+            message: "攻略标题不能为空!",
+            trigger: "blur",
+          },
+        ],
+        strategy_content: [
+          {
+            required: true,
+            message: "攻略内容不能为空!",
+            trigger: "blur",
+          },
+
+        ],
+      },
+
+
+
+
+
+      editorOption: {},
+      
+
+
+
       param: "",
       editorOption: {
         placeholder: "从这里开始记录你的旅程...",
@@ -128,22 +155,30 @@ export default {
   },
   methods: {
     handlePictureCardPreview(file, fileList) {
-      this.imageUrl = URL.createObjectURL(file.raw);
-    },
-    beforeAvatarUpload(res, file) {
-      this.imageUrl = URL.createObjectURL(file.raw);
-    },
-    //  upload: function() {},
-    onEditorReady(editor) {
-      // 准备编辑器
+      console.log("34", file);
+      const isType = file.raw.type;
+      const isLt2M = file.size / 1024 / 1024 < 2;
+
+      console.log("9090", isType);
+
+      if (
+        isType !== "image/jpeg" &&
+        isType !== "image/png" &&
+        isType !== "image/gif"
+      ) {
+        this.$message.error("上传头像图片只能是 JPG 格式!");
+      }
+      if (!isLt2M) {
+        this.$message.error("上传头像图片大小不能超过 2MB!");
+      }
+
+      if (isType && isLt2M) {
+        this.imageUrl = URL.createObjectURL(file.raw);
+      }
     },
     onEditorBlur() {},
-    onEditorFocus() {
-      //获得焦点事件
-    },
-    onEditorChange() {
-      //内容改变事件
-    },
+    onEditorFocus() {},
+    onEditorChange() {},
 
     saveHtml() {
       let _this = this;
@@ -151,19 +186,19 @@ export default {
         this.$alert("您还没有上传游记头图", "", {
           confirmButtonText: "确定",
         });
-      } else if (_this.stform.title == "") {
+      } else if (_this.ruleForm.title == "") {
         this.$alert("攻略标题不能为空", "", {
           confirmButtonText: "确定",
         });
-      } else if (_this.stform.content == `<p></p>`) {
+      } else if (_this.ruleForm.content == `<p></p>`) {
         this.$alert("攻略内容不能为空", "", {
           confirmButtonText: "确定",
         });
       } else {
         this.$refs.upload.submit();
         this.param.append("strategy_img", _this.imageUrl);
-        this.param.append("strategy_title", _this.stform.title);
-        this.param.append("strategy_content", _this.stform.content);
+        this.param.append("strategy_title", _this.ruleForm.title);
+        this.param.append("strategy_content", _this.ruleForm.content);
         this.param.append("user_id", localStorage.getItem("userid"));
         this.param.append("user_name", localStorage.getItem("username"));
 
