@@ -10,7 +10,7 @@
     </header>
     <div id="contentContainer">
       <!-- 面包屑导航 -->
-      <!-- <StrategyNav /> -->
+      <StrategyNav />
       <h2 class="grey-large">Have A Nice Day :)</h2>
       <!-- 设置攻略头图 -->
       <el-row>
@@ -34,14 +34,14 @@
           </el-upload>
         </el-col>
       </el-row>
-      <el-form ref="ruleForm" :rules="rules" :model="ruleForm">
+      <el-form ref="stform" :model="stform">
         <!-- 输入标题 图片-->
         <el-row>
           <el-col :span="16" :offset="4">
             <!-- <i class="el-icon-edit"></i> -->
             <el-input
               class="title"
-              v-model="ruleForm.strategy_title"
+              v-model="stform.title"
               placeholder="请输入攻略标题"
               maxlength="40"
               minlength="1"
@@ -54,16 +54,17 @@
         <el-row>
           <el-col :span="16" :offset="4">
             <div class="AddEditor">
-              <quill-editor
+                  <quill-editor
                 class="editor"
-                v-model="ruleForm.strategy_content"
+                v-model="stform.content"
                 ref="myQuillEditor"
                 :options="editorOption"
                 @blur="onEditorBlur($event)"
                 @focus="onEditorFocus($event)"
                 @change="onEditorChange($event)"
               >
-              </quill-editor>
+                       </quill-editor
+              >
             </div>
           </el-col>
         </el-row>
@@ -76,10 +77,7 @@
           </el-col>
           <el-col :span="5">
             <p style="text-align: center">
-              <a
-                class="btn ensure"
-                href=""
-                @click.prevent="submitForm('ruleForm')"
+              <a class="btn ensure" href="" @click.prevent="saveHtml"
                 ><strong>确认发布</strong></a
               >
             </p>
@@ -91,18 +89,15 @@
 </template>
 
 <script>
-import 'quill/dist/quill.core.css'
-import 'quill/dist/quill.snow.css'
-import 'quill/dist/quill.bubble.css'
-import { quillEditor } from 'vue-quill-editor';
+import StrategyNav from "../Strategy/components/StrategyNav";
+import { quillEditor } from "vue-quill-editor";
 // 引入token身份认证？
 // import jwt_decode from "jwt-decode";
 
 export default {
-  name: "StrategyWrite",
+  name: "Strategy_add",
   components: {
-    quillEditor
-    // StrategyNav,
+    StrategyNav,
   },
   computed: {
     editor() {
@@ -111,109 +106,66 @@ export default {
   },
   data() {
     return {
+      editorOption: {},
+      stform: {
+        title: "",
+        content: ``,
+      },
       imageUrl: "",
-
-      ruleForm: {
-        strategy_title: "",
-        strategy_content: "",
-      },
-
-      rules: {
-        strategy_title: [
-          {
-            required: true,
-            message: "攻略标题不能为空!",
-            trigger: "blur",
-          },
-        ],
-        strategy_content: [
-          {
-            required: true,
-            message: "攻略内容不能为空!",
-            trigger: "blur",
-          },
-        ],
-      },
-
+      param: "",
       editorOption: {
         placeholder: "从这里开始记录你的旅程...",
+        theme: "snow",
         modules: {
           toolbar: [
-            ["bold", "italic", "underline", "strike"], // 加粗、倾斜、下划线、删除线
+            ["bold", "underline", "strike"], // 加粗、倾斜、下划线、删除线
+            [{ header: 1 }, { header: 2 }], // 标题一、标题二
             [{ list: "ordered" }, { list: "bullet" }], // 列表
-            [{ indent: "-1" }, { indent: "+1" }], // 缩进
-            [{ size: ["small", false, "large", "huge"] }], // 字体大小
-            [{ header: [1, 2, 3, 4, 5, 6, false] }], //几级标题
-            [{ color: [] }, { background: [] }], // 字体颜色，字体背景颜色
-            [{ font: [] }], //字体
-            [{ align: [] }], //对齐方式
-            ["clean"], //清除字体样式
-            ["image", "video"], //上传图片、上传视频
+            ["image"],
           ],
         },
       },
-
-      formData: {},
     };
   },
   methods: {
-    // 当上传文件组件submit之前触发执行
-    beforeupload(file) {
-      console.log("准备上传。。。。");
-      // 准备表单上传需要的参数对象
-      this.formData = new FormData();
-      this.formData.append("imageUrl", file);
-
-      return false;
+    handlePictureCardPreview(file, fileList) {
+      this.imageUrl = URL.createObjectURL(file.raw);
     },
-    handlePictureCardPreview(file, fileList) { // 处理图片格式
-      const isType = file.raw.type;
-      const isLt2M = file.size / 1024 / 1024 < 2;
-
-      if (
-        isType !== "image/jpeg" &&
-        isType !== "image/png" &&
-        isType !== "image/gif"
-      ) {
-        this.$message.error("上传头像图片只能是 JPG 格式!");
-      }
-      if (!isLt2M) {
-        this.$message.error("上传头像图片大小不能超过 2MB!");
-      }
-
-      if (isType && isLt2M) {
-        this.imageUrl = URL.createObjectURL(file.raw);
-      }
+    beforeAvatarUpload(res, file) {
+      this.imageUrl = URL.createObjectURL(file.raw);
+    },
+    //  upload: function() {},
+    onEditorReady(editor) {
+      // 准备编辑器
     },
     onEditorBlur() {},
-    onEditorFocus() {},
-    onEditorChange() {},
-    // 转码
+    onEditorFocus() {
+      //获得焦点事件
+    },
+    onEditorChange() {
+      //内容改变事件
+    },
 
-
-    submitForm(formName) {
-      if (!this.imageUrl) {
+    saveHtml() {
+      let _this = this;
+      if (_this.imageUrl == "") {
         this.$alert("您还没有上传游记头图", "", {
           confirmButtonText: "确定",
         });
-      } else if (!this.ruleForm.strategy_title) {
+      } else if (_this.stform.title == "") {
         this.$alert("攻略标题不能为空", "", {
           confirmButtonText: "确定",
         });
-      } else if (!this.ruleForm.strategy_content) {
+      } else if (_this.stform.content == `<p></p>`) {
         this.$alert("攻略内容不能为空", "", {
           confirmButtonText: "确定",
         });
       } else {
         this.$refs.upload.submit();
-        this.formData.append("strategy_img", this.imageUrl);
-        this.formData.append("strategy_title", this.ruleForm.strategy_title);
-        this.formData.append("strategy_content", this.ruleForm.strategy_content);
-        this.formData.append("user_id");
-      }
-    },
-    saveHtml() {
-      {
+        this.param.append("strategy_img", _this.imageUrl);
+        this.param.append("strategy_title", _this.stform.title);
+        this.param.append("strategy_content", _this.stform.content);
+        this.param.append("user_id", localStorage.getItem("userid"));
         this.param.append("user_name", localStorage.getItem("username"));
 
         let config = {
@@ -245,18 +197,26 @@ export default {
           this.$router.push("/strategy");
         },
       });
-    }
+    },
+    // 当上传文件组件submit之前触发执行
+    beforeupload(file) {
+      console.log("准备上传。。。。");
+      // 准备表单上传需要的参数对象
+      this.param = new FormData();
+      this.param.append("pbStPic", file);
+
+      return false;
+    },
   },
 };
 </script>
-<style scoped>
+<style  scoped>
 /* 头图 */
 .avatar {
   width: 100%;
   height: 500px;
   display: block;
 }
-
 #menu {
   width: 600px;
   padding-top: 20px;
@@ -276,8 +236,8 @@ export default {
 #header {
   display: table;
   width: 100%;
-  height: 100%;
-  position: absolute;
+  height: 700px;
+  position: fixed;
   top: 0;
   left: 0;
   background: #4bb8d2;
@@ -298,7 +258,7 @@ export default {
 }
 #contentContainer {
   width: 100%;
-  margin-top: 100vh;
+  margin-top: 700px;
   background: #fff;
   position: relative;
   z-index: 3;
@@ -346,8 +306,8 @@ h1 {
 }
 /* 按钮 */
 a.btn {
-  margin-top: 100px !important;
-  margin-bottom: 70px !important;
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
   font-weight: 700;
   text-decoration: none;
   /* background: #8cff32;
@@ -397,21 +357,27 @@ strong {
 a {
   color: black;
 }
+</style>
+<style>
 /* 内容标题背景大图 */
-.title {
+.title input {
   border: none;
   outline: medium;
   margin-bottom: 10px;
-  font-size: 20px;
+}
+.title input.el-input__inner {
+  border-bottom: 3px solid #5cb3cc;
+  font-size: 30px;
   line-height: 50px;
   height: 50px;
   margin-top: 50px;
   border-radius: 0px;
   color: #5cb3cc;
+  padding-left: 40px;
 }
 
 /* 攻略头图 */
-.el-upload {
+.avatar-uploader .el-upload {
   border-bottom: 3px dashed #5cb3cc;
   /* border-radius: 0px; */
   cursor: pointer;
@@ -419,10 +385,9 @@ a {
   overflow: hidden;
   width: 100%;
 }
-.el-upload:hover {
+.avatar-uploader .el-upload:hover {
   border-color: #409eff;
 }
-
 .avatar-uploader-icon {
   font-size: 30px;
   color: #5cb3cc;
@@ -433,14 +398,32 @@ a {
   margin-bottom: 10px;
   text-align: left;
 }
-
+.avatar {
+  width: 100%;
+  height: 50px;
+  display: block;
+}
 .avatar-uploader .el-upload:hover {
   border: 3px solid #5cb3cc;
 }
 /* 富文本框样式 */
-.AddEditor .quill-editor {
-  height: 300px;
+.AddEditor .ql-toolbar.ql-snow {
+  border: none !important;
+  margin-top: 20px;
+  color: #5cb3cc;
 }
+.AddEditor .ql-cotainer.ql-snow {
+  border: none !important;
+}
+.AddEditor .ql-container.ql-snow {
+  /* border: 1px #5cb3cc solid !important; */
+  border: none !important;
+  border-top: 2px solid #5cb3cc !important;
+  height: 280px;
+  font-size: 16px;
+}
+/* div{
+  background:#D0D0D0;
+} */
 </style>
-
 

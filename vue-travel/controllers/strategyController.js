@@ -64,6 +64,33 @@ const strategyController = {
         })
 
     },
+    publishStrategy: function (req, res) {               //发表一篇攻略
+        var form = new formidable.IncomingForm()
+        form.uploadDir = path.join(__dirname, '..', '/public/upload')
+        form.keepExtensions = true
+        form.parse(req, function (err, fields, files) {
+            if (err) {
+                res.send('图片上传错误')
+            }
+
+            var publishStrategy = {
+                pbStImg:  fields.strategy_img,
+                pbStTitle: fields.strategy_title,
+                pbStContent: fields.strategy_content.replace(/<.+?>/g,''), 
+                pbStPic: path.parse(files.pbStPic.path).base,
+                userId: fields.user_id,
+                userName: fields.user_name
+            }
+            // var headPic = path.parse(files.headPic.path).base
+            strategyDAL.publishStrategy(publishStrategy, function (err, results) {
+                if (err) {
+                    res.json({ code: 500, results: 0, msg: '发表失败！' })
+                } else {
+                    res.json({ code: 200, results: 1, msg: '发表游记成功！' })
+                }
+            })
+        })
+    },
 
     // strategyDAL.getstComment(getStrategy, function (err, results2) {
     //     if (err) {
@@ -75,33 +102,7 @@ const strategyController = {
 
     //     }
     // })
-    // publishStrategy: function (req, res) {               //发表一篇攻略
-    //     var form = new formidable.IncomingForm()
-    //     form.uploadDir = path.join(__dirname, '..', '/public/upload')
-    //     form.keepExtensions = true
-    //     form.parse(req, function (err, fields, files) {
-    //         if (err) {
-    //             res.send('图片上传错误')
-    //         }
-
-    //         var publishStrategy = {
-    //             pbStImg:  fields.strategy_img,
-    //             pbStTitle: fields.strategy_title,
-    //             pbStContent: fields.strategy_content.replace(/<.+?>/g,''), 
-    //             pbStPic: path.parse(files.pbStPic.path).base,
-    //             userId: fields.user_id,
-    //             userName: fields.user_name
-    //         }
-    //         // var headPic = path.parse(files.headPic.path).base
-    //         strategyDAL.publishStrategy(publishStrategy, function (err, results) {
-    //             if (err) {
-    //                 res.json({ code: 500, results: 0, msg: '发表失败！' })
-    //             } else {
-    //                 res.json({ code: 200, results: 1, msg: '发表游记成功！' })
-    //             }
-    //         })
-    //     })
-    // },
+    
 
     // 发评论
     // strategypinglu: function (req, res) {

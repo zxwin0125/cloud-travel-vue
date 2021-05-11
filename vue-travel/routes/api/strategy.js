@@ -25,11 +25,16 @@ router.get('/detail', (req, res) => {
     // 攻略详情
     strategyController.detailStrategy(req, res)
 });
+
+router.post('/publish', function(req, res, next) {
+    // 攻略列表
+    strategyController.publishStrategy(req, res)
+});
+
 router.post('/commit', (req, res) => {
     // 攻略评论
     strategyController.commitStrategy(req, res)
 });
-
 
 // router.get('/getstComment', function(req, res, next) {
 //     // 一篇攻略的评论
@@ -39,10 +44,7 @@ router.post('/commit', (req, res) => {
 //     // 攻略列表
 //     strategyController.strategyCollect(req, res)
 // });
-// router.post('/publishStrategy', function(req, res, next) {
-//     // 攻略列表
-//     strategyController.publishStrategy(req, res)
-// });
+
 // router.get('/strategypinglu', function(req, res, next) {
 //     // 攻略列表
 //     strategyController.strategypinglu(req, res)

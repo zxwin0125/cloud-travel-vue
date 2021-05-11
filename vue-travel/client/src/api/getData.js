@@ -16,6 +16,11 @@ export const getDetailStrategy = (strategy_id) => axios.get("/api/strategy/detai
         "strategy_id": strategy_id
     }
 })
+export const pushStrategy = (strategy_id) => axios.get("/api/strategy/detail", {
+    params: {
+        "strategy_id": strategy_id
+    }
+})
 
 // 目的地数据
 export const getDes_lj = () => axios.get("/api/desInfo/lj")
