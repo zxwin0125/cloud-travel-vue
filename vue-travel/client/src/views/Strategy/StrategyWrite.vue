@@ -20,6 +20,7 @@
             action=""
             accept="image/jpeg,image/gif,image/png"
             :show-file-list="false"
+            :before-upload="beforeupload"
             :on-change="handlePictureCardPreview"
             :auto-upload="false"
           >
@@ -53,7 +54,7 @@
         <el-row>
           <el-col :span="16" :offset="4">
             <div class="AddEditor">
-                  <quill-editor
+              <quill-editor
                 class="editor"
                 v-model="ruleForm.strategy_content"
                 ref="myQuillEditor"
@@ -62,8 +63,7 @@
                 @focus="onEditorFocus($event)"
                 @change="onEditorChange($event)"
               >
-                       </quill-editor
-              >
+              </quill-editor>
             </div>
           </el-col>
         </el-row>
@@ -91,13 +91,17 @@
 </template>
 
 <script>
-import { quillEditor } from "vue-quill-editor";
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
+import { quillEditor } from 'vue-quill-editor';
 // 引入token身份认证？
 // import jwt_decode from "jwt-decode";
 
 export default {
   name: "StrategyWrite",
   components: {
+    quillEditor
     // StrategyNav,
   },
   computed: {
@@ -149,11 +153,20 @@ export default {
         },
       },
 
-      param: "",
+      formData: {},
     };
   },
   methods: {
-    handlePictureCardPreview(file, fileList) {
+    // 当上传文件组件submit之前触发执行
+    beforeupload(file) {
+      console.log("准备上传。。。。");
+      // 准备表单上传需要的参数对象
+      this.formData = new FormData();
+      this.formData.append("imageUrl", file);
+
+      return false;
+    },
+    handlePictureCardPreview(file, fileList) { // 处理图片格式
       const isType = file.raw.type;
       const isLt2M = file.size / 1024 / 1024 < 2;
 
@@ -175,26 +188,28 @@ export default {
     onEditorBlur() {},
     onEditorFocus() {},
     onEditorChange() {},
+    // 转码
+
 
     submitForm(formName) {
-      if (this.imageUrl) {
+      if (!this.imageUrl) {
         this.$alert("您还没有上传游记头图", "", {
           confirmButtonText: "确定",
         });
-      } else if (this.ruleForm.strategy_title) {
+      } else if (!this.ruleForm.strategy_title) {
         this.$alert("攻略标题不能为空", "", {
           confirmButtonText: "确定",
         });
-      } else if (this.ruleForm.strategy_content) {
+      } else if (!this.ruleForm.strategy_content) {
         this.$alert("攻略内容不能为空", "", {
           confirmButtonText: "确定",
         });
       } else {
         this.$refs.upload.submit();
-        this.param.append("strategy_img", this.imageUrl);
-        this.param.append("strategy_title", this.ruleForm.strategy_title);
-        this.param.append("strategy_content", this.ruleForm.strategy_content);
-        this.param.append("user_id");
+        this.formData.append("strategy_img", this.imageUrl);
+        this.formData.append("strategy_title", this.ruleForm.strategy_title);
+        this.formData.append("strategy_content", this.ruleForm.strategy_content);
+        this.formData.append("user_id");
       }
     },
     saveHtml() {
@@ -230,16 +245,7 @@ export default {
           this.$router.push("/strategy");
         },
       });
-    },
-    // 当上传文件组件submit之前触发执行
-    beforeupload(file) {
-      console.log("准备上传。。。。");
-      // 准备表单上传需要的参数对象
-      this.param = new FormData();
-      this.param.append("pbStPic", file);
-
-      return false;
-    },
+    }
   },
 };
 </script>
