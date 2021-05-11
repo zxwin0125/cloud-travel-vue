@@ -65,25 +65,25 @@ const strategyController = {
 
     },
     // 发表攻略
-    publishStrategy: function (req, res) {   
-        let form = new formidable.IncomingForm()
+    publishStrategy: (req, res) => {
+        var form = new formidable.IncomingForm()
         form.uploadDir = path.join(__dirname, '..', '/public/upload')
         form.keepExtensions = true
-        form.parse(req, function (err, fields, files) {
+        form.parse(req, (err, fields, files) => {
             if (err) {
                 res.send('图片上传错误')
             }
-
+            console.log('1212',fields);
             var publishStrategy = {
                 pbStImg:  fields.strategy_img,
                 pbStTitle: fields.strategy_title,
-                pbStContent: fields.strategy_content, 
+                pbStContent: fields.strategy_content.replace(/<.+?>/g,''), 
                 pbStPic: path.parse(files.pbStPic.path).base,
                 userId: fields.user_id,
                 userName: fields.user_name
             }
             // var headPic = path.parse(files.headPic.path).base
-            strategyDAL.publishStrategy(publishStrategy, function (err, results) {
+            strategyDAL.publishStrategy(publishStrategy, (err, results) => {
                 if (err) {
                     res.json({ code: 500, results: 0, msg: '发表失败！' })
                 } else {

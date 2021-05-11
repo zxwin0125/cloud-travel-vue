@@ -2,7 +2,6 @@
 const express = require('express');
 const router = express.Router();
 
-
 const strategyController = require('../../controllers/strategyController')
 
 /* 设置 strategy 路由 */
