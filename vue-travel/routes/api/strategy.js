@@ -31,10 +31,10 @@ router.post('/publish', function(req, res, next) {
     strategyController.publishStrategy(req, res)
 });
 
-router.post('/commit', (req, res) => {
-    // 攻略评论
-    strategyController.commitStrategy(req, res)
-});
+// router.post('/commit', (req, res) => {
+//     // 攻略评论
+//     strategyController.commitStrategy(req, res)
+// });
 
 // router.get('/getstComment', function(req, res, next) {
 //     // 一篇攻略的评论

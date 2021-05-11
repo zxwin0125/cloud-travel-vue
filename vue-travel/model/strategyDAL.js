@@ -57,6 +57,21 @@ const strategyDAL = {
             }
         })
     },
+    // 发表攻略
+    publishStrategy:function(publishStrategy,cb){  
+        var sql ='insert into strategy_info (strategy_title,strategy_content,strategy_img,user_id,user_name,strategy_path,strategy_date) values ( ?,?,?,?,?,?, now())'
+        dao(sql,[publishStrategy.pbStTitle , publishStrategy.pbStContent , publishStrategy.pbStImg , publishStrategy.userId , publishStrategy.userName, publishStrategy.pbStPic] ,
+            // publishStrategy.pbStPic ,strategy_path
+        function(err,results){
+            if(err){
+                console.log('publishStrategy报错啦')
+                cb(err,null)
+            }else{
+                console.log(publishStrategy.strategy_title)
+                cb(null,results)
+            }
+        })
+    },
     // getstComment: function (getStrategy, cb) {   // 3-3 获取攻略评论 
     //     var sql = 'select com_text,com_time from strategy_info,user_info,comments_info where comments_info.strategy_id = ? and strategy_info.strategy_id = comments_info.strategy_id and user_info.user_id = comments_info.user_id order by com_time desc'
     //     dao(sql, [getStrategy], function (err, results) {
@@ -69,21 +84,7 @@ const strategyDAL = {
     // },
     // 
     // 
-    // publishStrategy:function(publishStrategy,cb){  //  发表一篇攻略
-     
-    //     var sql ='insert into strategy_info (strategy_title,strategy_content,strategy_img,user_id,user_name,strategy_path,strategy_date) values ( ?,?,?,?,?,?, now())'
-    //     dao(sql,[publishStrategy.pbStTitle , publishStrategy.pbStContent , publishStrategy.pbStImg , publishStrategy.userId , publishStrategy.userName, publishStrategy.pbStPic] ,
-    //         // publishStrategy.pbStPic ,strategy_path
-    //     function(err,results){
-    //         if(err){
-    //             console.log('publishStrategy报错啦')
-    //             cb(err,null)
-    //         }else{
-    //             // console.log(publishStrategy.strategy_title)
-    //             cb(null,results)
-    //         }
-    //     })
-    // },
+    
     //评论
     // strategypinglu: function (newArr, cb) {
     //     console.log('ertyu', [newArr.value, newArr.wenid, newArr.getId])

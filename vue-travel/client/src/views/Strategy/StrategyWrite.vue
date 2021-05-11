@@ -89,6 +89,7 @@
 </template>
 
 <script>
+import { publishStrategy } from "@/api/getData.js";
 import StrategyNav from "../Strategy/components/StrategyNav";
 import { quillEditor } from "vue-quill-editor";
 // 引入token身份认证？
@@ -98,6 +99,7 @@ export default {
   name: "Strategy_add",
   components: {
     StrategyNav,
+    quillEditor
   },
   computed: {
     editor() {
@@ -174,16 +176,19 @@ export default {
           },
         };
         // 调用接口，执行上传所有数据的操作
-        this.$axios
-          .post(
-            "http://localhost:3000/strategy/publishStrategy",
-            this.param,
-            config
-          )
-          .then(function (result) {
-            console.log("有没有拿到数据", result);
-            _this.open();
-          });
+        publishStrategy(this.param, config).then((res) => {
+
+        })
+        // this.$axios
+        //   .post(
+        //     "http://localhost:3000/strategy/publishStrategy",
+        //     this.param,
+        //     config
+        //   )
+        //   .then(function (result) {
+        //     console.log("有没有拿到数据", result);
+        //     _this.open();
+        //   });
       }
     },
     // 清空表单

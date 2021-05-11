@@ -1,8 +1,8 @@
 // 攻略 strategy 逻辑控制层
 const strategyDAL = require('../model/strategyDAL')
 
-// const formidable = require('formidable')
-// const path = require('path')
+const formidable = require('formidable')
+const path = require('path')
 
 
 const strategyController = {
@@ -64,8 +64,9 @@ const strategyController = {
         })
 
     },
-    publishStrategy: function (req, res) {               //发表一篇攻略
-        var form = new formidable.IncomingForm()
+    // 发表攻略
+    publishStrategy: function (req, res) {   
+        let form = new formidable.IncomingForm()
         form.uploadDir = path.join(__dirname, '..', '/public/upload')
         form.keepExtensions = true
         form.parse(req, function (err, fields, files) {
@@ -76,7 +77,7 @@ const strategyController = {
             var publishStrategy = {
                 pbStImg:  fields.strategy_img,
                 pbStTitle: fields.strategy_title,
-                pbStContent: fields.strategy_content.replace(/<.+?>/g,''), 
+                pbStContent: fields.strategy_content, 
                 pbStPic: path.parse(files.pbStPic.path).base,
                 userId: fields.user_id,
                 userName: fields.user_name
