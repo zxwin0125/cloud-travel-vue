@@ -76,7 +76,10 @@
           </el-col>
           <el-col :span="5">
             <p style="text-align: center">
-              <a class="btn ensure" href="" @click.prevent="saveHtml"
+              <a
+                class="btn ensure"
+                href=""
+                @click.prevent="submitForm('ruleForm')"
                 ><strong>确认发布</strong></a
               >
             </p>
@@ -125,41 +128,34 @@ export default {
             message: "攻略内容不能为空!",
             trigger: "blur",
           },
-
         ],
       },
 
-
-
-
-
-      editorOption: {},
-      
-
-
-
-      param: "",
       editorOption: {
         placeholder: "从这里开始记录你的旅程...",
-        theme: "snow",
         modules: {
           toolbar: [
-            ["bold", "underline", "strike"], // 加粗、倾斜、下划线、删除线
-            [{ header: 1 }, { header: 2 }], // 标题一、标题二
+            ["bold", "italic", "underline", "strike"], // 加粗、倾斜、下划线、删除线
             [{ list: "ordered" }, { list: "bullet" }], // 列表
-            ["image"],
+            [{ indent: "-1" }, { indent: "+1" }], // 缩进
+            [{ size: ["small", false, "large", "huge"] }], // 字体大小
+            [{ header: [1, 2, 3, 4, 5, 6, false] }], //几级标题
+            [{ color: [] }, { background: [] }], // 字体颜色，字体背景颜色
+            [{ font: [] }], //字体
+            [{ align: [] }], //对齐方式
+            ["clean"], //清除字体样式
+            ["image", "video"], //上传图片、上传视频
           ],
         },
       },
+
+      param: "",
     };
   },
   methods: {
     handlePictureCardPreview(file, fileList) {
-      console.log("34", file);
       const isType = file.raw.type;
       const isLt2M = file.size / 1024 / 1024 < 2;
-
-      console.log("9090", isType);
 
       if (
         isType !== "image/jpeg" &&
@@ -180,26 +176,29 @@ export default {
     onEditorFocus() {},
     onEditorChange() {},
 
-    saveHtml() {
-      let _this = this;
-      if (_this.imageUrl == "") {
+    submitForm(formName) {
+      if (this.imageUrl) {
         this.$alert("您还没有上传游记头图", "", {
           confirmButtonText: "确定",
         });
-      } else if (_this.ruleForm.title == "") {
+      } else if (this.ruleForm.strategy_title) {
         this.$alert("攻略标题不能为空", "", {
           confirmButtonText: "确定",
         });
-      } else if (_this.ruleForm.content == `<p></p>`) {
+      } else if (this.ruleForm.strategy_content) {
         this.$alert("攻略内容不能为空", "", {
           confirmButtonText: "确定",
         });
       } else {
         this.$refs.upload.submit();
-        this.param.append("strategy_img", _this.imageUrl);
-        this.param.append("strategy_title", _this.ruleForm.title);
-        this.param.append("strategy_content", _this.ruleForm.content);
-        this.param.append("user_id", localStorage.getItem("userid"));
+        this.param.append("strategy_img", this.imageUrl);
+        this.param.append("strategy_title", this.ruleForm.strategy_title);
+        this.param.append("strategy_content", this.ruleForm.strategy_content);
+        this.param.append("user_id");
+      }
+    },
+    saveHtml() {
+      {
         this.param.append("user_name", localStorage.getItem("username"));
 
         let config = {
