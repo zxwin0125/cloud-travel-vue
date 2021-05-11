@@ -34,7 +34,7 @@
           </el-upload>
         </el-col>
       </el-row>
-      <el-form ref="stform" :model="stform">
+      <el-form ref="stform" :model="stform" enctype="multipart/form-data">
         <!-- 输入标题 图片-->
         <el-row>
           <el-col :span="16" :offset="4">
@@ -105,6 +105,9 @@ export default {
     editor() {
       return this.$refs.myQuillEditor.quill;
     },
+    userInfo() {
+      return this.$store.getters.user_info;
+    },
   },
   data() {
     return {
@@ -114,7 +117,8 @@ export default {
         content: ``,
       },
       imageUrl: "",
-      param: "",
+      param: {},
+      params: {},
       editorOption: {
         placeholder: "从这里开始记录你的旅程...",
         theme: "snow",
@@ -167,8 +171,15 @@ export default {
         this.param.append("strategy_img", _this.imageUrl);
         this.param.append("strategy_title", _this.stform.title);
         this.param.append("strategy_content", _this.stform.content);
-        this.param.append("user_id", localStorage.getItem("userid"));
-        this.param.append("user_name", localStorage.getItem("username"));
+        this.param.append("user_id", _this.userInfo.user_id);
+
+        this.params.pbStPic = this.param.get("pbStPic")
+        this.params.strategy_img = this.param.get("strategy_img")
+        this.params.strategy_title = this.param.get("strategy_title")
+        this.params.strategy_content = this.param.get("strategy_content")
+        this.params.user_id = this.param.get("user_id")
+        console.log('1212',this.params);
+        
 
         let config = {
           headers: {
@@ -176,8 +187,8 @@ export default {
           },
         };
         // 调用接口，执行上传所有数据的操作
-        publishStrategy(this.param, config).then((res) => {
-
+        publishStrategy().then((res) => {
+          console.log('4567',res);
         })
         // this.$axios
         //   .post(
