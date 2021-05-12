@@ -1,8 +1,7 @@
 // 攻略 strategy 逻辑控制层
 const strategyDAL = require('../model/strategyDAL')
 
-const formidable = require('formidable')
-const multiparty = require('multiparty')
+const formidable = require('formidable');
 const path = require('path')
 
 
@@ -67,18 +66,18 @@ const strategyController = {
     },
     // 发表攻略
     publishStrategy: (req, res) => {
-        console.log(121232,req.body);
-        var form = new multiparty.Form()
+        console.log('1212',req.body);
+        console.log(111);
+        const form = formidable({ multiples: true });
+        console.log('45675',form);
         form.uploadDir = path.join(__dirname, '..', '/public/upload')
         form.keepExtensions = true
         form.parse(req, (err, fields, files) => {
             if (err) {
                 res.send('图片上传错误')
             }
-            console.log('1212',req);
-            console.log('1212',err);
-            console.log('1212',fields);
-            console.log('1212',files);
+            
+            console.log('1256',err,fields,files);
             var publishStrategy = {
                 pbStImg:  fields.strategy_img,
                 pbStTitle: fields.strategy_title,

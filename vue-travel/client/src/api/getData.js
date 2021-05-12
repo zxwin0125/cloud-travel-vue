@@ -16,10 +16,10 @@ export const getDetailStrategy = (strategy_id) => axios.get("/api/strategy/detai
         "strategy_id": strategy_id
     }
 })
-export const publishStrategy = () => axios.post("/api/strategy/publish", {
-    // param, 
-    // config
-})
+export const publishStrategy = (param, config) => axios.post("/api/strategy/publish", 
+    param,
+    config
+)
 
 // 目的地数据
 export const getDes_lj = () => axios.get("/api/desInfo/lj")

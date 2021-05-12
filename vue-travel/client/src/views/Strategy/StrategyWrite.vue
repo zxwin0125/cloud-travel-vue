@@ -167,6 +167,7 @@ export default {
           confirmButtonText: "确定",
         });
       } else {
+        console.log('3434');
         this.$refs.upload.submit();
         this.param.append("strategy_img", _this.imageUrl);
         this.param.append("strategy_title", _this.stform.title);
@@ -187,12 +188,12 @@ export default {
           },
         };
         // 调用接口，执行上传所有数据的操作
-        publishStrategy().then((res) => {
+        publishStrategy(this.param, config).then((res) => {
           console.log('4567',res);
         })
         // this.$axios
         //   .post(
-        //     "http://localhost:3000/strategy/publishStrategy",
+        //     "http://localhost:3000/strategy/publish",
         //     this.param,
         //     config
         //   )
@@ -220,7 +221,8 @@ export default {
       // 准备表单上传需要的参数对象
       this.param = new FormData();
       this.param.append("pbStPic", file);
-
+      
+      console.log('23',this.param,file,this.param.get("pbStPic"));
       return false;
     },
   },

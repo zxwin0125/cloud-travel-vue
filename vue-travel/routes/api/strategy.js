@@ -1,8 +1,6 @@
 // strategy 攻略路由
 const express = require('express');
 const router = express.Router();
-const multiparty = require('multiparty');
-const formidable = require('formidable')
 
 const strategyController = require('../../controllers/strategyController')
 
@@ -28,19 +26,9 @@ router.get('/detail', (req, res) => {
 });
 
 router.post('/publish', function(req, res, next) {
-    console.log('31', req.body);
-    // let form = new multiparty.Form()
-    // form.parse(req,(err, fields, files) => {
-    //     console.log('1234',fields, files)
-    // })
-    var form = new formidable.IncomingForm();
-	    form.parse(req, function(err, fields, files) {
-		        console.log('fields',fields);//表单传递的input数据
-                console.log('files',files);//上传文件数据
-				//do somthing......
-		});
+    console.log('6767',req.params,req.body);
     // 攻略列表
-    // strategyController.publishStrategy(req, res)
+    strategyController.publishStrategy(req, res)
 });
 
 // router.post('/commit', (req, res) => {
