@@ -79,7 +79,7 @@
           </el-col>
           <el-col :span="5">
             <p style="text-align: center">
-              <a class="btn ensure" href="" @click.prevent="submit"
+              <a class="btn ensure" href="" @click.prevent="submit('strategyForm')"
                 ><strong>确认发布</strong></a
               >
             </p>
@@ -152,7 +152,7 @@ export default {
     onEditorFocus() {},
     onEditorChange() {},
 
-    submit() {
+    submit(formName) {
       if (!this.imageUrl) {
         this.$alert("您还没有上传游记头图", "", {
           confirmButtonText: "确定",
@@ -180,22 +180,17 @@ export default {
         };
         // 调用接口，执行上传所有数据的操作
         publishStrategy(this.param, config).then((res) => {
-          console.log("4567", res);
+          this.$alert("发表游记成功！", "", {
+            confirmButtonText: "完成",
+            cb: (action) => {
+              this.$router.push("/strategy");
+            },
+          });
         });
+        this.$refs[formName].resetFields();
       }
     },
-    // 清空表单
-    // resetForm(formName) {
-    //   this.$refs[formName].resetFields();
-    // },
-    open() {
-      this.$alert("发表游记成功！", "", {
-        confirmButtonText: "完成",
-        cb: (action) => {
-          this.$router.push("/strategy");
-        },
-      });
-    },
+    
   },
 };
 </script>
