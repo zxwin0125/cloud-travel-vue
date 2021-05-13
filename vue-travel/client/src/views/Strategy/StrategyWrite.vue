@@ -9,15 +9,12 @@
       <br />
     </header>
     <div id="contentContainer">
-      <!-- 面包屑导航 -->
-      <StrategyNav />
       <h2 class="grey-large">Have A Nice Day :)</h2>
       <!-- 设置攻略头图 -->
       <el-row>
         <el-col :span="16" :offset="4">
           <el-upload
             ref="upload"
-            action=""
             accept="image/jpeg,image/gif,image/png"
             :show-file-list="false"
             :before-upload="beforeupload"
@@ -90,7 +87,6 @@
 
 <script>
 import { publishStrategy } from "@/api/getData.js";
-import StrategyNav from "../Strategy/components/StrategyNav";
 import { quillEditor } from "vue-quill-editor";
 // 引入token身份认证？
 // import jwt_decode from "jwt-decode";
@@ -98,8 +94,7 @@ import { quillEditor } from "vue-quill-editor";
 export default {
   name: "Strategy_add",
   components: {
-    StrategyNav,
-    quillEditor
+    quillEditor,
   },
   computed: {
     editor() {
@@ -167,20 +162,19 @@ export default {
           confirmButtonText: "确定",
         });
       } else {
-        console.log('3434');
+        console.log("3434");
         this.$refs.upload.submit();
         this.param.append("strategy_img", _this.imageUrl);
         this.param.append("strategy_title", _this.stform.title);
         this.param.append("strategy_content", _this.stform.content);
         this.param.append("user_id", _this.userInfo.user_id);
 
-        this.params.pbStPic = this.param.get("pbStPic")
-        this.params.strategy_img = this.param.get("strategy_img")
-        this.params.strategy_title = this.param.get("strategy_title")
-        this.params.strategy_content = this.param.get("strategy_content")
-        this.params.user_id = this.param.get("user_id")
-        console.log('1212',this.params);
-        
+        this.params.pbStPic = this.param.get("pbStPic");
+        this.params.strategy_img = this.param.get("strategy_img");
+        this.params.strategy_title = this.param.get("strategy_title");
+        this.params.strategy_content = this.param.get("strategy_content");
+        this.params.user_id = this.param.get("user_id");
+        console.log("1212", this.params);
 
         let config = {
           headers: {
@@ -189,8 +183,8 @@ export default {
         };
         // 调用接口，执行上传所有数据的操作
         publishStrategy(this.param, config).then((res) => {
-          console.log('4567',res);
-        })
+          console.log("4567", res);
+        });
         // this.$axios
         //   .post(
         //     "http://localhost:3000/strategy/publish",
@@ -221,8 +215,8 @@ export default {
       // 准备表单上传需要的参数对象
       this.param = new FormData();
       this.param.append("pbStPic", file);
-      
-      console.log('23',this.param,file,this.param.get("pbStPic"));
+
+      console.log("23", this.param, file, this.param.get("pbStPic"));
       return false;
     },
   },
@@ -254,12 +248,13 @@ export default {
 #header {
   display: table;
   width: 100%;
-  height: 700px;
+  height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
   background: #4bb8d2;
-  background: url(../../assets/img/Strategy/str_header.jpg) no-repeat center;
+  background: url(../../assets/img/Strategy/str_header.jpg) no-repeat;
+  background-size: 100% 100%;
   z-index: 1;
 }
 #logo {
@@ -276,7 +271,7 @@ export default {
 }
 #contentContainer {
   width: 100%;
-  margin-top: 700px;
+  margin-top: 100vh;
   background: #fff;
   position: relative;
   z-index: 3;
