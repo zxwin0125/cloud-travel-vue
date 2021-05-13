@@ -30,7 +30,7 @@ function db(sql, params, cb) {
                     })
                 );
             } else {
-                connection.query(sql, params, function(err, results) {
+                connection.query(sql, params, function (err, results) {
                     if (err) {
                         cb(err, null) // 执行回调函数，并且把参数返回
                     } else {

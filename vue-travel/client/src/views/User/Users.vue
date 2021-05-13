@@ -19,7 +19,7 @@
         <img v-if="imageUrl" :src="imageUrl" class="avatar" />
         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
       </el-upload>
-      <div class="MAvaName">马蜂窝用户</div>
+      <div class="MAvaName">云游记用户</div>
       <!-- 图标 -->
       <div class="its_tags">
         <a href="/home/vip_show.php" target="_blank" title="VIP"
@@ -92,16 +92,16 @@
                     src="http://b1-q.mafengwo.net/s12/M00/B8/4B/wKgED1wXVBOAUKOoAAEV3wx0umw93.jpeg?imageMogr2%2Fthumbnail%2F%2148x48r%2Fgravity%2FCenter%2Fcrop%2F%2148x48%2Fquality%2F90"
                     height="48"
                     width="48"
-                    alt="马蜂窝问答君"
-                    title="马蜂窝问答君"
+                    alt="云游记问答君"
+                    title="云游记问答君"
                   />
                 </a>
                 <p>
                   <a
                     href="/u/66033691.html"
                     target="_blank"
-                    title="马蜂窝问答君"
-                    >马蜂窝问答君</a
+                    title="云游记问答君"
+                    >云游记问答君</a
                   >
                 </p>
               </li>
@@ -111,16 +111,16 @@
                     src="http://n1-q.mafengwo.net/s12/M00/0D/B6/wKgED1w2wTGACDWuAACV7G0pZBM93.jpeg?imageMogr2%2Fthumbnail%2F%2148x48r%2Fgravity%2FCenter%2Fcrop%2F%2148x48%2Fquality%2F90"
                     height="48"
                     width="48"
-                    alt="马蜂窝视频君"
-                    title="马蜂窝视频君"
+                    alt="云游记视频君"
+                    title="云游记视频君"
                   />
                 </a>
                 <p>
                   <a
                     href="/u/63316712.html"
                     target="_blank"
-                    title="马蜂窝视频君"
-                    >马蜂窝视频君</a
+                    title="云游记视频君"
+                    >云游记视频君</a
                   >
                 </p>
               </li>
@@ -130,13 +130,13 @@
                     src="http://p1-q.mafengwo.net/s11/M00/E6/B5/wKgBEFsWUTmAexhvAANf5Uux-cw10.jpeg?imageMogr2%2Fthumbnail%2F%2148x48r%2Fgravity%2FCenter%2Fcrop%2F%2148x48%2Fquality%2F90"
                     height="48"
                     width="48"
-                    alt="马蜂窝大管家"
-                    title="马蜂窝大管家"
+                    alt="云游记大管家"
+                    title="云游记大管家"
                   />
                 </a>
                 <p>
-                  <a href="/u/388631.html" target="_blank" title="马蜂窝大管家"
-                    >马蜂窝大管家</a
+                  <a href="/u/388631.html" target="_blank" title="云游记大管家"
+                    >云游记大管家</a
                   >
                 </p>
               </li>
@@ -240,8 +240,8 @@
       <!-- 个人资料 -->
       <div class="common_block personal_info" id="_j_taskwrap">
         <div class="personal_tips">
-          <p><strong>马蜂窝用户</strong>，这里是你的【窝】！</p>
-          <p>是记录你的旅行记忆，结交各路豪杰的地盘儿。现在开启马蜂窝旅程！</p>
+          <p><strong>云游记用户</strong>，这里是你的【窝】！</p>
+          <p>是记录你的旅行记忆，结交各路豪杰的地盘儿。现在开启云游记旅程！</p>
         </div>
         <div class="personal_list clearfix">
           <ul>
@@ -268,7 +268,7 @@
             <li>
               <div class="personal_ico"><i class="ico_daka"></i></div>
               <div class="personal_word">
-                <p>马蜂窝会员升级有礼包。<br />第一步，从打卡开始。</p>
+                <p>云游记会员升级有礼包。<br />第一步，从打卡开始。</p>
               </div>
               <div class="personal_btn">
                 <a role="button" class="_j_task_daka" title="打卡赚取蜂蜜"
@@ -306,7 +306,7 @@
           <i class="ico_notes"></i>
           <div class="notes_default_detail">
             <p>
-              马蜂窝问答是一个所有人帮所有人的平台，<br />用你的旅行经验，去帮助其他蜂蜂。
+              云游记问答是一个所有人帮所有人的平台，<br />用你的旅行经验，去帮助其他蜂蜂。
             </p>
           </div>
         </div>
