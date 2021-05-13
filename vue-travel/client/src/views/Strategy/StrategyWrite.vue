@@ -15,9 +15,10 @@
         <el-col :span="16" :offset="4">
           <el-upload
             ref="upload"
+            action=""
             accept="image/jpeg,image/gif,image/png"
             :show-file-list="false"
-            :before-upload="beforeupload"
+            :before-upload="beforeUpload"
             :on-change="handlePictureCardPreview"
             :auto-upload="false"
           >
@@ -31,14 +32,18 @@
           </el-upload>
         </el-col>
       </el-row>
-      <el-form ref="stform" :model="stform" enctype="multipart/form-data">
+      <el-form
+        ref="strategyForm"
+        :model="strategyForm"
+        enctype="multipart/form-data"
+      >
         <!-- 输入标题 图片-->
         <el-row>
           <el-col :span="16" :offset="4">
             <!-- <i class="el-icon-edit"></i> -->
             <el-input
               class="title"
-              v-model="stform.title"
+              v-model="strategyForm.title"
               placeholder="请输入攻略标题"
               maxlength="40"
               minlength="1"
@@ -53,7 +58,7 @@
             <div class="AddEditor">
                   <quill-editor
                 class="editor"
-                v-model="stform.content"
+                v-model="strategyForm.content"
                 ref="myQuillEditor"
                 :options="editorOption"
                 @blur="onEditorBlur($event)"
@@ -74,7 +79,7 @@
           </el-col>
           <el-col :span="5">
             <p style="text-align: center">
-              <a class="btn ensure" href="" @click.prevent="saveHtml"
+              <a class="btn ensure" href="" @click.prevent="submit"
                 ><strong>确认发布</strong></a
               >
             </p>
@@ -88,8 +93,6 @@
 <script>
 import { publishStrategy } from "@/api/getData.js";
 import { quillEditor } from "vue-quill-editor";
-// 引入token身份认证？
-// import jwt_decode from "jwt-decode";
 
 export default {
   name: "Strategy_add",
@@ -106,22 +109,24 @@ export default {
   },
   data() {
     return {
-      editorOption: {},
-      stform: {
-        title: "",
-        content: ``,
-      },
       imageUrl: "",
-      param: {},
-      params: {},
+      strategyForm: {
+        title: "",
+        content: "",
+      },
+      param: {}, // 文件内容
       editorOption: {
+        // 富文本配置项
         placeholder: "从这里开始记录你的旅程...",
         theme: "snow",
         modules: {
           toolbar: [
-            ["bold", "underline", "strike"], // 加粗、倾斜、下划线、删除线
+            ["bold", "italic", "underline", "strike"], // 加粗、倾斜、下划线、删除线
             [{ header: 1 }, { header: 2 }], // 标题一、标题二
             [{ list: "ordered" }, { list: "bullet" }], // 列表
+            [{ indent: "-1" }, { indent: "+1" }], // 缩进
+            [{ color: [] }, { background: [] }], // 字体颜色，字体背景颜色
+            [{ font: [] }], //字体
             ["image"],
           ],
         },
@@ -129,52 +134,44 @@ export default {
     };
   },
   methods: {
+    // 当上传文件组件submit之前触发执行
+    beforeUpload(file) {
+      console.log("准备上传。。。。");
+      // 准备表单上传需要的参数对象
+      this.param = new FormData();
+      this.param.append("strategy_file", file);
+      return false;
+    },
+
     handlePictureCardPreview(file, fileList) {
       this.imageUrl = URL.createObjectURL(file.raw);
     },
-    beforeAvatarUpload(res, file) {
-      this.imageUrl = URL.createObjectURL(file.raw);
-    },
-    //  upload: function() {},
-    onEditorReady(editor) {
-      // 准备编辑器
-    },
-    onEditorBlur() {},
-    onEditorFocus() {
-      //获得焦点事件
-    },
-    onEditorChange() {
-      //内容改变事件
-    },
 
-    saveHtml() {
-      let _this = this;
-      if (_this.imageUrl == "") {
+    onEditorReady(editor) {},
+    onEditorBlur() {},
+    onEditorFocus() {},
+    onEditorChange() {},
+
+    submit() {
+      if (!this.imageUrl) {
         this.$alert("您还没有上传游记头图", "", {
           confirmButtonText: "确定",
         });
-      } else if (_this.stform.title == "") {
+      } else if (!this.strategyForm.title) {
         this.$alert("攻略标题不能为空", "", {
           confirmButtonText: "确定",
         });
-      } else if (_this.stform.content == `<p></p>`) {
+      } else if (!this.strategyForm.content) {
         this.$alert("攻略内容不能为空", "", {
           confirmButtonText: "确定",
         });
       } else {
-        console.log("3434");
         this.$refs.upload.submit();
-        this.param.append("strategy_img", _this.imageUrl);
-        this.param.append("strategy_title", _this.stform.title);
-        this.param.append("strategy_content", _this.stform.content);
-        this.param.append("user_id", _this.userInfo.user_id);
-
-        this.params.pbStPic = this.param.get("pbStPic");
-        this.params.strategy_img = this.param.get("strategy_img");
-        this.params.strategy_title = this.param.get("strategy_title");
-        this.params.strategy_content = this.param.get("strategy_content");
-        this.params.user_id = this.param.get("user_id");
-        console.log("1212", this.params);
+        this.param.append("strategy_img", this.imageUrl);
+        this.param.append("strategy_title", this.strategyForm.title);
+        this.param.append("strategy_content", this.strategyForm.content);
+        this.param.append("user_id", this.userInfo.user_id);
+        this.param.append("user_name", this.userInfo.user_name);
 
         let config = {
           headers: {
@@ -185,16 +182,6 @@ export default {
         publishStrategy(this.param, config).then((res) => {
           console.log("4567", res);
         });
-        // this.$axios
-        //   .post(
-        //     "http://localhost:3000/strategy/publish",
-        //     this.param,
-        //     config
-        //   )
-        //   .then(function (result) {
-        //     console.log("有没有拿到数据", result);
-        //     _this.open();
-        //   });
       }
     },
     // 清空表单
@@ -208,16 +195,6 @@ export default {
           this.$router.push("/strategy");
         },
       });
-    },
-    // 当上传文件组件submit之前触发执行
-    beforeupload(file) {
-      console.log("准备上传。。。。");
-      // 准备表单上传需要的参数对象
-      this.param = new FormData();
-      this.param.append("pbStPic", file);
-
-      console.log("23", this.param, file, this.param.get("pbStPic"));
-      return false;
     },
   },
 };

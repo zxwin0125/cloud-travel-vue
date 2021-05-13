@@ -58,16 +58,14 @@ const strategyDAL = {
         })
     },
     // 发表攻略
-    publishStrategy:function(publishStrategy,cb){  
-        var sql ='insert into strategy_info (strategy_title,strategy_content,strategy_img,user_id,user_name,strategy_path,strategy_date) values ( ?,?,?,?,?,?, now())'
-        dao(sql,[publishStrategy.pbStTitle , publishStrategy.pbStContent , publishStrategy.pbStImg , publishStrategy.userId , publishStrategy.userName, publishStrategy.pbStPic] ,
-            // publishStrategy.pbStPic ,strategy_path
-        function(err,results){
+    publishStrategy: (publishStrategy,cb) => {  
+        const sql ='insert into strategy_info (strategy_title,strategy_content,strategy_img,user_id,user_name,strategy_path,strategy_date) values ( ?,?,?,?,?,?, now())'
+        dao(sql,[publishStrategy.strategy_title , publishStrategy.strategy_content , publishStrategy.strategy_img , publishStrategy.user_id , publishStrategy.user_name, publishStrategy.strategy_file],
+        (err,results) => {
             if(err){
-                console.log('publishStrategy报错啦')
+                console.log('publishStrategy -- 系统错误')
                 cb(err,null)
             }else{
-                console.log(publishStrategy.strategy_title)
                 cb(null,results)
             }
         })

@@ -66,25 +66,20 @@ const strategyController = {
     },
     // 发表攻略
     publishStrategy: (req, res) => {
-        console.log('1212',req.body);
-        console.log(111);
         const form = formidable({ multiples: true });
-        console.log('45675',form);
         form.uploadDir = path.join(__dirname, '..', '/public/upload')
         form.keepExtensions = true
         form.parse(req, (err, fields, files) => {
             if (err) {
                 res.send('图片上传错误')
             }
-            
-            console.log('1256',err,fields,files);
-            var publishStrategy = {
-                pbStImg:  fields.strategy_img,
-                pbStTitle: fields.strategy_title,
-                pbStContent: fields.strategy_content.replace(/<.+?>/g,''), 
-                pbStPic: path.parse(files.pbStPic.path).base,
-                userId: fields.user_id,
-                userName: fields.user_name
+            const publishStrategy = {
+                strategy_img:  fields.strategy_img,
+                strategy_title: fields.strategy_title,
+                strategy_content: fields.strategy_content.replace(/<.+?>/g,''), 
+                strategy_file: path.parse(files.strategy_file.path).base,
+                user_id: fields.user_id,
+                user_name: fields.user_name,
             }
             // var headPic = path.parse(files.headPic.path).base
             strategyDAL.publishStrategy(publishStrategy, (err, results) => {
