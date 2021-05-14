@@ -79,7 +79,10 @@
           </el-col>
           <el-col :span="5">
             <p style="text-align: center">
-              <a class="btn ensure" href="" @click.prevent="submit('strategyForm')"
+              <a
+                class="btn ensure"
+                href=""
+                @click.prevent="submit('strategyForm')"
                 ><strong>确认发布</strong></a
               >
             </p>
@@ -180,17 +183,14 @@ export default {
         };
         // 调用接口，执行上传所有数据的操作
         publishStrategy(this.param, config).then((res) => {
-          this.$alert("发表游记成功！", "", {
-            confirmButtonText: "完成",
-            cb: (action) => {
-              this.$router.push("/strategy");
-            },
-          });
+          if (res) {
+            this.$message.success("发布成功！");
+            this.$refs[formName].resetFields();
+            this.$router.push("/strategy");
+          }
         });
-        this.$refs[formName].resetFields();
       }
     },
-    
   },
 };
 </script>
