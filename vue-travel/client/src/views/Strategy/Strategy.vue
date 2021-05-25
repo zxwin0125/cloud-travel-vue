@@ -787,6 +787,10 @@ export default {
         li {
           padding: 15px 0;
         }
+        li + li {
+          border-top: 1px solid #f7f7f7;
+          line-height: 24px;
+        }
         .gl_list {
           width: 130px;
           margin-right: 40px;
@@ -831,6 +835,16 @@ export default {
               font-size: 12px;
             }
           }
+        }
+        .num {
+          float: left;
+          margin-right: 10px;
+          font-size: 18px;
+          color: #ff9d00;
+        }
+        a {
+          color: #333;
+          font-size: 14px;
         }
       }
     }
