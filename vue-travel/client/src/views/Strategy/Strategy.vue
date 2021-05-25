@@ -862,6 +862,54 @@ export default {
           color: #333;
         }
       }
+      .feed-item {
+        padding: 20px 0;
+        font-size: 14px;
+        line-height: 24px;
+        .stat {
+          float: right;
+          padding: 0 15px;
+          line-height: 30px;
+          border: 1px solid #ff9d00;
+          border-radius: 15px;
+          font-size: 14px;
+          background-color: #fff;
+          color: #666;
+        }
+        .icon-cart {
+          display: inline-block;
+          margin-left: 10px;
+          width: 15px;
+          height: 15px;
+          background: url(../../assets/img/icon/new-gl-icon6@2x.png) no-repeat;
+          background-size: 60px auto;
+          background-position: -40px -40px;
+          overflow: hidden;
+          vertical-align: -2px;
+          *vertical-align: middle;
+        }
+        .title {
+          margin-top: 40px;
+          margin-bottom: 15px;
+          font-size: 20px;
+          color: #333;
+        }
+        .imgs {
+          li {
+            float: left;
+            width: 220px;
+            display: inline;
+            margin-right: 15px;
+          }
+          .ext-r {
+            float: right;
+            margin: 0;
+            width: auto;
+            line-height: 130px;
+          }
+        }
+      }
+      
     }
   }
 }
@@ -919,7 +967,6 @@ export default {
   margin-top: 2px;
   outline: none;
   font-family: "Microsoft Yahei", Tahoma, Arial, Helvetica, STHeiti;
-  _font-family: Tahoma, Arial, Helvetica, STHeiti;
 }
 
 .search_resu {
@@ -932,12 +979,6 @@ export default {
   background: #fff;
   padding-bottom: 30px;
   display: none;
-}
-
-.feed-item {
-  padding: 20px 0;
-  font-size: 14px;
-  line-height: 24px;
 }
 
 .feed-item a {
@@ -953,86 +994,13 @@ export default {
   display: flex;
 }
 
-.feed-item .stat {
-  float: right;
-  padding: 0 15px;
-  line-height: 30px;
-  border: 1px solid #ff9d00;
-  border-radius: 15px;
-  font-size: 14px;
-  background-color: #fff;
-  color: #666;
-}
-
-.feed-item .stat .num {
-  color: #ff9d00;
-}
-
 .imgs ul {
   display: flex;
   flex-direction: row;
 }
 
-.cont-main {
-  float: right;
-  width: 790px;
-  margin-bottom: 20px;
-}
-
-.cont-main .hd {
-  height: 50px;
-  border-bottom: 1px solid #eee;
-  line-height: 48px;
-}
-
-.cont-main .hd h3 {
-  float: left;
-  font-weight: normal;
-  font-size: 20px;
-  color: #333;
-}
-
-.feed-item {
-  padding: 20px 0;
-  font-size: 14px;
-  line-height: 24px;
-}
-
 .feed-item a {
   display: block;
-}
-
-.feed-item .title {
-  margin-bottom: 15px;
-  font-size: 20px;
-  color: #333;
-}
-
-.feed-item .stat {
-  float: right;
-  padding: 0 15px;
-  line-height: 30px;
-  border: 1px solid #ff9d00;
-  border-radius: 15px;
-  font-size: 14px;
-  background-color: #fff;
-  color: #666;
-}
-
-.feed-item .stat .num {
-  color: #ff9d00;
-}
-
-.feed-item .icon-hand,
-.feed-item .icon-cart {
-  display: inline-block;
-  margin-left: 10px;
-  width: 15px;
-  height: 15px;
-  background: url(../../assets/img/icon/new-gl-icon6@2x.png) no-repeat -40px -40px;
-  overflow: hidden;
-  vertical-align: -2px;
-  *vertical-align: middle;
 }
 
 .cont-main .type {
