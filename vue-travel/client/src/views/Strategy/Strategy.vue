@@ -32,7 +32,9 @@
           <div class="side-hd">旅游攻略导航</div>
           <div class="nav-drop">
             <div class="drop-item" @click="showDomestic">
-              <div class="trigger"><i></i>国内</div>
+              <div class="trigger" :class="{ dropOpen: isDomestic }">
+                <i></i>国内
+              </div>
               <div class="drop-pop" v-if="isDomestic">
                 <div class="inner">
                   <ul>
@@ -214,9 +216,11 @@
                 </div>
               </div>
             </div>
-            <div class="drop-item">
-              <div class="trigger"><i></i>国外</div>
-              <div class="drop-pop">
+            <div class="drop-item" @click="showForeign">
+              <div class="trigger" :class="{ dropOpen: isForeign }">
+                <i></i>国外
+              </div>
+              <div class="drop-pop" v-if="isForeign">
                 <div class="inner">
                   <ul>
                     <li>
@@ -273,9 +277,11 @@
                 </div>
               </div>
             </div>
-            <div class="drop-item">
-              <div class="trigger"><i></i>主题</div>
-              <div class="drop-pop">
+            <div class="drop-item" @click="showTheme">
+              <div class="trigger" :class="{ dropOpen: isTheme }">
+                <i></i>主题
+              </div>
+              <div class="drop-pop" v-if="isTheme">
                 <div class="inner">
                   <ul>
                     <li>
@@ -584,7 +590,9 @@ export default {
 
       allPage: 4,
 
-      isDomestic: false
+      isDomestic: false,
+      isForeign: false,
+      isTheme: false,
     };
   },
   computed: {
@@ -635,7 +643,21 @@ export default {
 
     showDomestic() {
       this.isDomestic = !this.isDomestic;
-    }
+      this.isForeign = false;
+      this.isTheme = false;
+    },
+
+    showForeign() {
+      this.isForeign = !this.isForeign;
+      this.isDomestic = false;
+      this.isTheme = false;
+    },
+
+    showTheme() {
+      this.isTheme = !this.isTheme;
+      this.isDomestic = false;
+      this.isForeign = false;
+    },
 
     // handleSizeChange(val) {
     //   this.allPage = val; // 每页
@@ -680,6 +702,156 @@ export default {
   padding: 15px 100px 0;
 }
 
+.strategy_bottom {
+  margin-bottom: 10px;
+  padding: 15px 100px 0;
+  .gonglve_wrap {
+    margin-top: 15px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    .sidebar {
+      width: 160px;
+      margin-right: 50px;
+      .side-hd {
+        height: 50px;
+        font-size: 16px;
+        color: #333;
+        border-bottom: 1px solid #eee;
+        line-height: 48px;
+      }
+      .nav-drop {
+        margin-bottom: 10px;
+        height: 45px;
+        line-height: 25px;
+        color: #333;
+        border-bottom: 1px solid #eee;
+        .drop-item {
+          float: left;
+          width: 40px;
+          font-size: 14px;
+          .trigger {
+            padding: 10px 0;
+            height: 22px;
+            cursor: pointer;
+            i {
+              float: right;
+              margin-top: 10px;
+              border-top: 4px solid #999;
+              border-left: 4px dashed transparent;
+              border-right: 4px dashed transparent;
+              font-size: 0;
+              overflow: hidden;
+            }
+          }
+          .drop-pop {
+            position: absolute;
+            margin-top: 10px;
+            width: 410px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #e5e5e5;
+            line-height: 30px;
+            .inner {
+              overflow: hidden;
+              ul {
+                margin-left: -15px;
+                li {
+                  float: left;
+                  margin: 0 15px;
+                  a {
+                    color: #333;
+                  }
+                }
+              }
+            }
+          }
+          .dropOpen {
+            color: #ff9d00;
+            border-bottom: 3px solid #ff9d00;
+          }
+        }
+        .drop-item + .drop-item {
+          margin-left: 20px;
+        }
+        .drop-item + .drop-item:before {
+          content: "";
+          position: absolute;
+          margin: 16px 0 0 -10px;
+          width: 1px;
+          height: 13px;
+          background-color: #eee;
+        }
+      }
+      .rank {
+        li {
+          padding: 15px 0;
+        }
+        .gl_list {
+          width: 130px;
+          margin-right: 40px;
+          a {
+            display: block;
+            height: 184px;
+            width: 130px;
+            overflow: hidden;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+          .time {
+            margin: 5px 0;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+          }
+          .down_cout {
+            height: 24px;
+            width: 130px;
+            background: #ebebeb;
+            border-radius: 30px;
+            margin-top: 5px;
+            position: relative;
+            span {
+              display: block;
+              position: absolute;
+              top: 0px;
+              left: 0px;
+              height: 24px;
+              width: 24px;
+              background: url(../../assets/img/icon/new-gl-icon6@2x.png) -20px -90px
+                no-repeat;
+              background-size: 60px auto;
+            }
+            p {
+              line-height: 24px;
+              color: #666;
+              padding-left: 30px;
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+    .cont-main {
+      width: 790px;
+      margin-bottom: 20px;
+      .hd {
+        height: 50px;
+        border-bottom: 1px solid #eee;
+        line-height: 48px;
+        h3 {
+          float: left;
+          font-weight: normal;
+          font-size: 20px;
+          color: #333;
+        }
+      }
+    }
+  }
+}
+
 .mdd_nav {
   width: 260px;
 }
@@ -687,66 +859,6 @@ export default {
 .slide {
   width: 700px;
   height: 340px;
-}
-
-.sidebar {
-  width: 160px;
-  .side-hd {
-    height: 50px;
-    font-size: 16px;
-    color: #333;
-    border-bottom: 1px solid #eee;
-    line-height: 48px;
-  }
-  .nav-drop {
-    margin-bottom: 10px;
-    height: 45px;
-    line-height: 25px;
-    color: #333;
-    border-bottom: 1px solid #eee;
-    .drop-item {
-      float: left;
-      width: 40px;
-      font-size: 14px;
-      .trigger {
-        padding: 10px 0;
-        height: 22px;
-        cursor: pointer;
-        i {
-          float: right;
-          margin-top: 10px;
-          border-top: 4px solid #999;
-          border-left: 4px dashed transparent;
-          border-right: 4px dashed transparent;
-          font-size: 0;
-          overflow: hidden;
-        }
-      }
-      .drop-pop {
-        position: absolute;
-        margin-top: 10px;
-        width: 410px;
-        padding: 20px;
-        background-color: #fff;
-        border: 1px solid #e5e5e5;
-        line-height: 30px;
-        // display: none;
-        .inner {
-          overflow: hidden;
-          ul {
-            margin-left: -15px;
-            li {
-              float: left;
-              margin: 0 15px;
-              a {
-                color: #333;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
 }
 
 .gonglve-nav {
@@ -806,32 +918,6 @@ export default {
   background: #fff;
   padding-bottom: 30px;
   display: none;
-}
-
-.gonglve_wrap {
-  margin-top: 15px;
-  padding-bottom: 20px;
-  display: flex;
-  justify-content: center;
-}
-
-.cont-main {
-  float: right;
-  width: 790px;
-  margin-bottom: 20px;
-}
-
-.cont-main .hd {
-  height: 50px;
-  border-bottom: 1px solid #eee;
-  line-height: 48px;
-}
-
-.cont-main .hd h3 {
-  float: left;
-  font-weight: normal;
-  font-size: 20px;
-  color: #333;
 }
 
 .feed-item {
@@ -960,8 +1046,6 @@ export default {
   font-weight: normal;
   color: #ff9d00;
 }
-
-
 
 .feed-item .icon-hand,
 .cont-main .type i,
