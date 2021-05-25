@@ -518,23 +518,11 @@
 
               <div class="hr"></div>
             </div>
-            <div
-              data-cs-t="gonglve_feed"
-              class="_j_feed_data"
-              data-feed='[{"fid":"231842","type":"1"},{"fid":"438886","type":"3"},{"fid":"32764","type":"2"},{"fid":"107390","type":"3"},{"fid":"10952","type":"4"}]'
-            >
-              <div class="hr"></div>
-              <a
-                rel="nofollow"
-                data-page="2"
-                class="_j_page_loader"
-                data-cs-p="加载更多_1"
-                ><span>加载更多</span><i></i
-              ></a>
-            </div>
+            
           </div>
         </div>
       </div>
+      <el-pagination layout="prev, pager, next" :total="50"> </el-pagination>
     </section>
   </section>
 </template>
@@ -909,7 +897,6 @@ export default {
           }
         }
       }
-      
     }
   }
 }

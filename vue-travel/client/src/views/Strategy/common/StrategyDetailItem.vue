@@ -57,12 +57,12 @@ export default {
   components: {},
   data() {
     return {
-        strategy_id: ''
+      strategy_id: "",
     };
   },
   computed: {},
   created() {
-      this.strategy_id = this.StrategyDetailItemData.strategy_id
+    this.strategy_id = this.StrategyDetailItemData.strategy_id;
   },
   mounted() {},
   methods: {
@@ -79,5 +79,104 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.hr {
+  margin-top: 20px;
+  height: 1px;
+  background-color: #e5e5e5;
+  overflow: hidden;
+}
+.feed-item {
+  padding: 20px 0;
+  font-size: 14px;
+  line-height: 24px;
+  .stat {
+    float: right;
+    padding: 0 15px;
+    line-height: 30px;
+    border: 1px solid #ff9d00;
+    border-radius: 15px;
+    font-size: 14px;
+    background-color: #fff;
+    color: #666;
+  }
+  .icon-line {
+    background-position: 0 -40px;
+  }
+
+  .type i {
+    float: left;
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    background: url(../../../assets/img/icon/new-gl-icon6@2x.png) no-repeat 0 0;
+    background-size: 60px auto;
+    overflow: hidden;
+  }
+  .icon-hand {
+    display: inline-block;
+    margin-left: 10px;
+    width: 15px;
+    height: 15px;
+    background: url(../../../assets/img/icon/new-gl-icon6@2x.png) no-repeat;
+    background-size: 60px auto;
+    background-position: -40px -40px;
+    overflow: hidden;
+    vertical-align: -2px;
+    *vertical-align: middle;
+  }
+  .title {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #333;
+  }
+  .imgs {
+    li {
+      float: left;
+      width: 220px;
+      display: inline;
+      margin-right: 15px;
+    }
+    .ext-r {
+      float: right;
+      margin: 0;
+      width: auto;
+      line-height: 130px;
+    }
+  }
+  .art {
+    display: flex;
+    dd {
+      display: block;
+      margin-left: 20px;
+    }
+    .info {
+      height: 102px;
+      padding-top: 10px;
+      margin-bottom: 16px;
+      color: #666;
+    }
+    .ext-r {
+      float: right;
+      color: #999;
+      line-height: 22px;
+      font-size: 12px;
+      .author {
+        display: inline-block;
+        margin-right: 10px;
+        font-size: 12px;
+        color: #ff9d00;
+        img {
+          margin-right: 5px;
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          overflow: hidden;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}
 </style>
