@@ -1,6 +1,5 @@
 <template>
   <section class="strategy">
-    <!-- 攻略导航 -->
     <section class="strategy_top">
       <div class="mdd_nav">
         <div class="gonglve-nav" data-cs-t="攻略导航">
@@ -32,9 +31,9 @@
         <div class="sidebar">
           <div class="side-hd">旅游攻略导航</div>
           <div class="nav-drop">
-            <div class="drop-item">
+            <div class="drop-item" @click="showDomestic">
               <div class="trigger"><i></i>国内</div>
-              <div class="drop-pop">
+              <div class="drop-pop" v-if="isDomestic">
                 <div class="inner">
                   <ul>
                     <li>
@@ -584,6 +583,8 @@ export default {
       currentPage4: 4,
 
       allPage: 4,
+
+      isDomestic: false
     };
   },
   computed: {
@@ -632,6 +633,10 @@ export default {
       }
     },
 
+    showDomestic() {
+      this.isDomestic = !this.isDomestic;
+    }
+
     // handleSizeChange(val) {
     //   this.allPage = val; // 每页
     // },
@@ -671,8 +676,8 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin-top: 15px;
   margin-bottom: 10px;
+  padding: 15px 100px 0;
 }
 
 .mdd_nav {
@@ -680,8 +685,68 @@ export default {
 }
 
 .slide {
-  width: 960px;
+  width: 700px;
   height: 340px;
+}
+
+.sidebar {
+  width: 160px;
+  .side-hd {
+    height: 50px;
+    font-size: 16px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    line-height: 48px;
+  }
+  .nav-drop {
+    margin-bottom: 10px;
+    height: 45px;
+    line-height: 25px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    .drop-item {
+      float: left;
+      width: 40px;
+      font-size: 14px;
+      .trigger {
+        padding: 10px 0;
+        height: 22px;
+        cursor: pointer;
+        i {
+          float: right;
+          margin-top: 10px;
+          border-top: 4px solid #999;
+          border-left: 4px dashed transparent;
+          border-right: 4px dashed transparent;
+          font-size: 0;
+          overflow: hidden;
+        }
+      }
+      .drop-pop {
+        position: absolute;
+        margin-top: 10px;
+        width: 410px;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        line-height: 30px;
+        // display: none;
+        .inner {
+          overflow: hidden;
+          ul {
+            margin-left: -15px;
+            li {
+              float: left;
+              margin: 0 15px;
+              a {
+                color: #333;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .gonglve-nav {
@@ -896,66 +961,7 @@ export default {
   color: #ff9d00;
 }
 
-.sidebar {
-  float: left;
-  width: 160px;
-  .side-hd {
-    height: 50px;
-    font-size: 16px;
-    color: #333;
-    border-bottom: 1px solid #eee;
-    line-height: 48px;
-  }
-  .nav-drop {
-    margin-bottom: 10px;
-    height: 45px;
-    line-height: 25px;
-    color: #333;
-    border-bottom: 1px solid #eee;
-    .drop-item {
-      float: left;
-      width: 40px;
-      font-size: 14px;
-      .trigger {
-        padding: 10px 0;
-        height: 22px;
-        cursor: pointer;
-        i {
-          float: right;
-          margin-top: 10px;
-          border-top: 4px solid #999;
-          border-left: 4px dashed transparent;
-          border-right: 4px dashed transparent;
-          font-size: 0;
-          overflow: hidden;
-        }
-      }
-      .drop-pop {
-        position: absolute;
-        margin-top: 10px;
-        width: 410px;
-        padding: 20px;
-        background-color: #fff;
-        border: 1px solid #e5e5e5;
-        line-height: 30px;
-        display: none;
-        .inner {
-          overflow: hidden;
-          ul {
-            margin-left: -15px;
-            li {
-              float: left;
-              margin: 0 15px;
-              a {
-                color: #333;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
+
 
 .feed-item .icon-hand,
 .cont-main .type i,

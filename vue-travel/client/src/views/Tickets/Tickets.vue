@@ -4,7 +4,7 @@
 
     <TicketsTitle />
 
-    <TicketsMain />
+    <TicketsMain :ticketList="ticketList"/>
 
     <TicketsTitle />
 

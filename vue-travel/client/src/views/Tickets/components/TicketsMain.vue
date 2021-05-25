@@ -16,7 +16,7 @@
               开园中；08:00-17:00开放（16:00停止入园）
               <br />
               <strong>官方电话： </strong>
-              0888-5131068,0888-5161501,0888-5162140...
+              0888-5131068
               <br />
             </p>
             <div>
@@ -82,7 +82,7 @@
           <div class="text-element01">
             <h2>
               玉龙雪山: 5A<br />
-              <strong>¥199</strong>
+              <strong>¥{{}}</strong>
             </h2>
             <p>
               <strong>景点地址： </strong>
@@ -121,9 +121,18 @@
 export default {
   name: "TicketsMain",
   components: {},
+  props: {
+    ticketList: {
+      type: Array,
+      default: [],
+    },
+  },
   data() {
     return {};
   },
+  created() {
+    console.log('qw',this.ticketList);
+  }
 };
 </script>
 <style lang="scss" scoped>
