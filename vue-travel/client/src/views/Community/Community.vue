@@ -3181,6 +3181,82 @@ export default {
       .newcate-bd {
         clear: both;
         margin-bottom: 20px;
+        li {
+          padding: 15px 0;
+          border-bottom: 1px solid #e5e5e5;
+          cursor: pointer;
+          .title {
+            font-size: 18px;
+            line-height: 30px;
+            color: #333;
+            margin-bottom: 12px;
+            a {
+              color: #333;
+            }
+          }
+          .container {
+            padding-left: 60px;
+            position: relative;
+            .avatar {
+              width: 48px;
+              height: 48px;
+              border-radius: 50%;
+              border: 1px solid #e5e5e5;
+              overflow: hidden;
+              position: absolute;
+              left: 0;
+              top: 0;
+              a {
+                color: #ff9d00;
+                text-decoration: none;
+                cursor: pointer;
+                img {
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 50%;
+                }
+              }
+            }
+            .user-info {
+              width: 100%;
+              height: 18px;
+              line-height: 18px;
+              margin-bottom: 6px;
+              .name {
+                margin-right: 5px;
+              }
+              a {
+                color: #ff9d00;
+                text-decoration: none;
+                cursor: pointer;
+              }
+              .level {
+                color: #d20000 !important;
+                font-size: 10px;
+                font-family: Verdana;
+                font-weight: bold;
+              }
+            }
+            .desc {
+              line-height: 24px;
+              color: #666;
+            }
+            .tags {
+              height: 22px;
+              margin-top: 14px;
+            }
+            .operate {
+              width: 100%;
+              height: 16px;
+              margin-top: 16px;
+              position: relative;
+              font-size: 12px;
+              line-height: 16px;
+              text-align: right;
+              color: #999;
+            }
+          }
+        }
       }
     }
   }
