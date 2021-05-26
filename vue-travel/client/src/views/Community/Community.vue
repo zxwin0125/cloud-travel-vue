@@ -3014,6 +3014,18 @@ export default {
           .drop-hd {
             position: relative;
             padding-right: 17px;
+            i {
+              position: absolute;
+              right: 3px;
+              top: 12px;
+              width: 0;
+              height: 0;
+              border-top: 4px solid #ffc65a;
+              border-left: 4px dashed transparent;
+              border-right: 4px dashed transparent;
+              font-size: 0;
+              overflow: hidden;
+            }
           }
           a {
             float: none;
@@ -3027,6 +3039,15 @@ export default {
             border: 1px solid #d7d7d7;
             background-color: #fff;
             overflow: hidden;
+            li {
+              margin: -1px 10px 0;
+              line-height: 34px;
+              border-top: 1px solid #efefef;
+            }
+            a {
+              font-size: 12px;
+              color: #666;
+            }
           }
         }
         .title {
@@ -3034,15 +3055,133 @@ export default {
           font-size: 30px;
           color: #333;
           float: right;
+          .mobile-wd {
+            position: relative;
+            cursor: default;
+            i {
+              background: url(../../assets/img/Community/wenda-logo.png);
+              display: inline-block;
+              float: left;
+              margin-right: 4px;
+              margin-top: 6px;
+              width: 17px;
+              height: 17px;
+              vertical-align: middle;
+            }
+            .h5_ask {
+              width: 665px;
+              height: 412px;
+              display: none;
+              position: absolute;
+              top: 30px;
+              right: -138px;
+              z-index: 99;
+              background-image: url(../../assets/img/Community/down6.png);
+            }
+          }
+          i {
+            display: inline-block;
+            float: left;
+            margin-right: 4px;
+            margin-top: 6px;
+            width: 17px;
+            height: 17px;
+            background: url(../../assets/img/Community/mfw-ask-sprite19.png)
+              no-repeat -210px -30px;
+            vertical-align: middle;
+          }
+        }
+        .ask_hot_ico {
+          position: absolute;
+          width: 24px;
+          height: 12px;
+          background: url(../../assets/img/Community/icon_hot2.gif) no-repeat;
+          overflow: hidden;
         }
       }
       .search-box {
         height: 60px;
+        .search-panel {
+          width: 685px;
+          position: absolute;
+          background-color: #fff;
+          z-index: 2;
+          .sp-input {
+            float: left;
+            width: 580px;
+            height: 24px;
+            padding: 10px 20px;
+            border: 1px solid #ff9d00;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            input {
+              float: left;
+              width: 420px;
+              height: 24px;
+              border: 0;
+              padding: 0;
+              margin: 0;
+              background: none;
+              font-size: 14px;
+              line-height: 24px;
+              color: #999;
+            }
+          }
+          .sp-button {
+            position: static;
+            right: 15px;
+            top: 12px;
+            float: right;
+            display: block;
+            width: 56px;
+            height: 46px;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            background: #ff9d00
+              url(../../assets/img/Community/mfwask-2016sprite_v6.png) no-repeat;
+            background-position: 14px -539px;
+            border-radius: 4px;
+          }
+          .bd {
+            margin-top: 6px;
+            padding: 0 20px;
+            border: 1px solid #e5e5e5;
+            box-shadow: 0 2px 0 rgb(0 0 0 / 6%);
+            border-radius: 4px;
+            z-index: 20;
+          }
+        }
       }
     }
     .newcate-wrap {
       font-size: 14px;
       margin-bottom: 100px;
+      .hd {
+        margin-bottom: 10px;
+        height: 32px;
+        line-height: 32px;
+        ul {
+          float: left;
+          li {
+            float: left;
+            display: inline;
+            a {
+              background-color: #ffa800;
+              color: #fff;
+              display: block;
+              font-size: 16px;
+              padding: 0 20px;
+              border-radius: 3px;
+            }
+          }
+        }
+      }
+      .newcate-bd {
+        clear: both;
+        margin-bottom: 20px;
+      }
     }
   }
   .col-side {
