@@ -10,30 +10,28 @@
     >
       <div class="bar">
         <span class="stat"
-          ><span class="num">{{StrategyDetailItemData.strategy_like}}</span>蜂蜂顶<i class="icon-hand"></i
+          ><span class="num">{{ StrategyDetailItemData.strategy_like }}</span
+          >蜂蜂顶<i class="icon-hand"></i
         ></span>
         <span class="type"
           ><i class="icon-line"></i>来自 <strong>游记</strong></span
         >
       </div>
-      <div class="title">{{StrategyDetailItemData.strategy_title}}</div>
+      <div class="title">{{ StrategyDetailItemData.strategy_title }}</div>
       <dl class="art">
         <dt>
-          <img
-            :src="imgsUrl"
-            style="width: 220px"
-          />
+          <img :src="imgsUrl" />
         </dt>
         <dd>
           <div class="info">
-            {{StrategyDetailItemData.strategy_content}}
+            {{ StrategyDetailItemData.strategy_content }}
           </div>
           <div class="ext-r">
             <span class="author"
               ><img
                 src="http://b1-q.mafengwo.net/s12/M00/F4/68/wKgED1v76FuAddNXAACQa4g1tFA44.jpeg?imageMogr2%2Fthumbnail%2F%2148x48r%2Fgravity%2FCenter%2Fcrop%2F%2148x48%2Fquality%2F90"
-              />一把小刀</span
-            ><span class="nums">12490浏览，8评论</span>
+              />{{ StrategyDetailItemData.user_name }}</span
+            ><span class="nums">{{ StrategyDetailItemData.strategy_view }}浏览，{{ StrategyDetailItemData.strategy_date }}</span>
           </div>
         </dd>
       </dl>
@@ -59,16 +57,16 @@ export default {
       imgsUrl: "",
     };
   },
-  computed: {
-  },
+  computed: {},
   created() {
-    this.imgsUrl = require("@/assets/img/Strategy/" + this.StrategyDetailItemData.strategy_img + ".jpg")
+    this.imgsUrl = require("@/assets/img/Strategy/" +
+      this.StrategyDetailItemData.strategy_img +
+      ".jpg");
 
-    console.log('23',this.StrategyDetailItemData);
+    console.log("23", this.StrategyDetailItemData);
     // this.strategy_id = this.StrategyDetailItemData.strategy_id;
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     toDetail() {
       // this.$router.push({
@@ -154,6 +152,12 @@ export default {
   }
   .art {
     display: flex;
+    dt {
+      img {
+        width: 220px;
+        height: 150px;
+      }
+    }
     dd {
       display: block;
       margin-left: 20px;
