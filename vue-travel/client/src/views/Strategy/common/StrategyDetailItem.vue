@@ -10,25 +10,23 @@
     >
       <div class="bar">
         <span class="stat"
-          ><span class="num">127</span> 蜂蜂顶<i class="icon-hand"></i
+          ><span class="num">{{StrategyDetailItemData.strategy_like}}</span>蜂蜂顶<i class="icon-hand"></i
         ></span>
         <span class="type"
           ><i class="icon-line"></i>来自 <strong>游记</strong></span
         >
       </div>
-      <div class="title">踏沙西行，梦寐以求的敦煌之旅</div>
+      <div class="title">{{StrategyDetailItemData.strategy_title}}</div>
       <dl class="art">
         <dt>
           <img
-            src="http://p1-q.mafengwo.net/s15/M00/E4/48/CoUBGV2s2fWAaoLNAASn1IeP4_E341.jpg?imageMogr2%2Fthumbnail%2F%21220x150r%2Fgravity%2FCenter%2Fcrop%2F%21220x150%2Fquality%2F100"
+            :src="imgsUrl"
             style="width: 220px"
           />
         </dt>
         <dd>
           <div class="info">
-            写在前面
-            不知从什么时候起，心里便对敦煌，这座隐于荒漠的西域之城有了一种想象，前几日和好友闲谈，又说起敦煌，想去敦煌的执念又一次充斥了大脑，于是决定前往西域边陲，一探当年盛大之城的究竟。
-            带着记忆中的些许印象看完纪录片《敦煌》终于能把故事...
+            {{StrategyDetailItemData.strategy_content}}
           </div>
           <div class="ext-r">
             <span class="author"
@@ -40,23 +38,6 @@
         </dd>
       </dl>
     </div>
-    <!-- <el-row>
-      <el-col :span="24">
-        <div class="pagination">
-          <el-pagination
-            v-if="paginations.total > 0"
-            :page-sizes="paginations.page_sizes"
-            :page-size="paginations.page_size"
-            :layout="paginations.layout"
-            :total="paginations.total"
-            :current-page.sync="paginations.page_index"
-            @current-change="handleCurrentChange"
-            @size-change="handleSizeChange"
-          >
-          </el-pagination>
-        </div>
-      </el-col>
-    </el-row> -->
   </section>
 </template>
 <script>
@@ -75,67 +56,27 @@ export default {
   data() {
     return {
       strategy_id: "",
-      paginations: {
-        page_index: 1, // 当前位于哪页
-        total: 0, // 总数
-        page_size: 5, // 1页显示多少条
-        page_sizes: [5, 10, 15, 20], //每页显示多少条
-        layout: "total, sizes, prev, pager, next, jumper", // 翻页属性
-      },
-      tableData: [],
-      allTableData: [],
+      imgsUrl: "",
     };
   },
-  computed: {},
+  computed: {
+  },
   created() {
-    this.strategy_id = this.StrategyDetailItemData.strategy_id;
+    this.imgsUrl = require("@/assets/img/Strategy/" + this.StrategyDetailItemData.strategy_img + ".jpg")
+
+    console.log('23',this.StrategyDetailItemData);
+    // this.strategy_id = this.StrategyDetailItemData.strategy_id;
   },
   mounted() {
-    this.allTableData = this.StrategyDetailItemData;
-    console.log('111', this.allTableData);
-    // 设置分页数据
-    // this.setPaginations();
   },
   methods: {
     toDetail() {
-      this.$router.push({
-        name: "detail",
-        // params: {
-        //   strategy_id: this.strategy_id,
-        // },
-      });
-    },
-
-    handleCurrentChange(page) {
-      // 当前页
-      let sortnum = this.paginations.page_size * (page - 1);
-      let table = this.allTableData.filter((item, index) => {
-        return index >= sortnum;
-      });
-      // 设置默认分页数据
-      this.tableData = table.filter((item, index) => {
-        return index < this.paginations.page_size;
-      });
-    },
-
-    handleSizeChange(page_size) {
-      // 切换size
-      this.paginations.page_index = 1;
-      this.paginations.page_size = page_size;
-      this.tableData = this.allTableData.filter((item, index) => {
-        return index < page_size;
-      });
-    },
-
-    setPaginations() {
-      // 总页数
-      this.paginations.total = this.allTableData.length;
-      this.paginations.page_index = 1;
-      this.paginations.page_size = 5;
-      // 设置默认分页数据
-      this.tableData = this.allTableData.filter((item, index) => {
-        return index < this.paginations.page_size;
-      });
+      // this.$router.push({
+      //   name: "detail",
+      //   // params: {
+      //   //   strategy_id: this.strategy_id,
+      //   // },
+      // });
     },
   },
 };
@@ -222,6 +163,8 @@ export default {
       padding-top: 10px;
       margin-bottom: 16px;
       color: #666;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .ext-r {
       float: right;

@@ -511,33 +511,30 @@
                 </div>
               </div>
               <StrategyDetailItem
-                v-for="item in strategyList"
+                v-for="item in resultPage"
                 :key="item.strategy_id"
                 :StrategyDetailItemData="item"
               />
-
-              <div class="hr"></div>
-              <el-row>
-                <el-col :span="24">
-                  <div class="pagination">
-                    <el-pagination
-                      v-if="paginations.total > 0"
-                      :page-sizes="paginations.page_sizes"
-                      :page-size="paginations.page_size"
-                      :layout="paginations.layout"
-                      :total="paginations.total"
-                      :current-page.sync="paginations.page_index"
-                      @current-change="handleCurrentChange"
-                      @size-change="handleSizeChange"
-                    >
-                    </el-pagination>
-                  </div>
-                </el-col>
-              </el-row>
             </div>
           </div>
         </div>
       </div>
+      <el-row type="flex" class="row-bg" justify="space-around">
+        <el-col :span="12">
+          <div>
+            <el-pagination
+              @size-change="handleSizeChange"
+              @current-change="handleCurrentChange"
+              :current-page="currentPage1"
+              :page-sizes="[4, 8, 12]"
+              :page-size="4"
+              layout="total, sizes, prev, pager, next, jumper"
+              :total="strategyList.length"
+            >
+            </el-pagination>
+          </div>
+        </el-col>
+      </el-row>
     </section>
   </section>
 </template>
@@ -548,12 +545,9 @@ import navSelect from "../Strategy/components/navSelect";
 import navRecommend from "../Strategy/components/navRecommend";
 import navIsland from "../Strategy/components/navIsland";
 import navTheme from "../Strategy/components/navTheme";
-
 import Swiper from "../../components/Swiper";
-
 import StrategyDetailItem from "../Strategy/common/StrategyDetailItem";
-// import StrategyNav from "./components/StrategyNav";
-// import StrategyPuba from "../Strategy/components/StrategyPuba";
+
 export default {
   name: "Strategy",
   components: {
@@ -563,7 +557,6 @@ export default {
     navTheme,
     Swiper,
     StrategyDetailItem,
-    // StrategyNav,
   },
   data() {
     return {
@@ -585,23 +578,46 @@ export default {
       isForeign: false,
       isTheme: false,
 
-      paginations: {
-        page_index: 1, // 当前位于哪页
-        total: 0, // 总数
-        page_size: 5, // 1页显示多少条
-        page_sizes: [5, 10, 15, 20], //每页显示多少条
-        layout: "total, sizes, prev, pager, next, jumper", // 翻页属性
-      },
-      tableData: [],
-      allTableData: [],
+      // 图片父容器高度
+      bannerHeight: 1000,
+      // 浏览器宽度
+      screenWidth: 0,
+
+      currentPage1: 5,
+      currentPage2: 5,
+      currentPage3: 5,
+      currentPage4: 4,
+
+      allPage: 4,
     };
   },
-  computed: {},
+  computed: {
+    resultPage() {
+      const page = [];
+      for (
+        let i = (this.currentPage - 1) * this.allPage;
+        i < this.currentPage * this.allPage;
+        i++
+      ) {
+        page.push(this.strategyList[i]);
+      }
+      return page;
+    },
+  },
   created() {},
   mounted() {
     //当页面渲染完成时调用方法获取数据
     this.getMainData();
     this.getHotData();
+
+    // 首次加载时,需要调用一次
+    this.screenWidth = window.innerWidth;
+    this.setSize();
+    // 窗口大小发生改变时,调用一次
+    window.onresize = () => {
+      this.screenWidth = window.innerWidth;
+      this.setSize();
+    };
   },
   methods: {
     // 异步调用 strategy 接口
@@ -615,7 +631,7 @@ export default {
         this.strategyList = result.data.data;
         this.allTableData = result.data.data;
         // 设置分页数据
-        this.setPaginations();
+        // this.setPaginations();
       } catch (err) {
         console.log("err", err);
       }
@@ -651,33 +667,18 @@ export default {
       this.isForeign = false;
     },
 
-    handleCurrentChange(page) {
-      // 当前页
-      let sortnum = this.paginations.page_size * (page - 1);
-      let table = this.allTableData.filter((item, index) => {
-        return index >= sortnum;
-      });
-      // 设置默认分页数据
-      this.tableData = table.filter((item, index) => {
-        return index < this.paginations.page_size;
-      });
-    },
-    handleSizeChange(page_size) {
-      // 切换size
-      this.paginations.page_index = 1;
-      this.paginations.page_size = page_size;
-      this.tableData = this.allTableData.filter((item, index) => {
-        return index < page_size;
-      });
+    handleSizeChange(val) {
+      this.allPage = val; // 每页
     },
 
-    // details(index) {
-    //   this.$router.push({
-    //     name: "stdetails",
-    //     params: { strategy_id: index },
-    //   });
-    //   console.log(index);
-    // },
+    handleCurrentChange(val) {
+      this.currentPage = val; // 当前页
+    },
+
+    setSize() {
+      // 通过浏览器宽度(图片宽度)计算高度
+      this.bannerHeight = (400 / 1920) * this.screenWidth;
+    },
   },
 };
 </script>
