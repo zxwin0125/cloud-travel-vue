@@ -173,7 +173,7 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click">分享</a>
+                      <a class="_js_showShare _j_filter_click" @mouseenter="toShare">分享</a>
                       <div
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="旅途中，如何给爸妈拍出“新潮有趣”的照片？"
@@ -3240,10 +3240,29 @@ export default {
             .desc {
               line-height: 24px;
               color: #666;
+              img {
+                width: 150px;
+                height: 100px;
+                float: left;
+                margin-right: 16px;
+              }
             }
             .tags {
               height: 22px;
               margin-top: 14px;
+              a {
+                display: block;
+                float: left;
+                margin-right: 10px;
+                padding: 0 15px;
+                background-color: #f6f6f6;
+                border: 1px solid #e5e5e5;
+                border-radius: 10px;
+                font-size: 12px;
+                line-height: 20px;
+                color: #666;
+                white-space: nowrap;
+              }
             }
             .operate {
               width: 100%;
@@ -3254,6 +3273,91 @@ export default {
               line-height: 16px;
               text-align: right;
               color: #999;
+              .zan {
+                float: left;
+                i {
+                  float: left;
+                  display: inline-block;
+                  width: 30px;
+                  height: 26px;
+                  background: url(../../assets/img/Community/like30x26@2x.png)
+                    no-repeat;
+                  background-size: 30px auto;
+                  overflow: hidden;
+                  margin-right: 9px;
+                  margin-top: -5px;
+                  margin-bottom: -5px;
+                }
+              }
+              .mdd {
+                display: inline-block;
+                padding-right: 7px;
+                color: #ff9d00;
+                a {
+                  color: #ff9d00;
+                  i {
+                    width: 10px;
+                    height: 12px;
+                    background: url(../../assets/img/Community/icon-mdd-2x.png)
+                      no-repeat;
+                    background-size: 100% 100%;
+                    display: inline-block;
+                    margin-right: 6px;
+                    vertical-align: middle;
+                    position: relative;
+                    top: -1px;
+                  }
+                }
+              }
+              .cate-share {
+                display: inline-block;
+                padding: 0 10px;
+                position: relative;
+                border-left: 1px solid #e5e5e5;
+                .cate-share-pop {
+                  width: 132px;
+                  padding: 8px 10px;
+                  background-color: #fff;
+                  border: 1px solid #e5e5e5;
+                  border-radius: 6px;
+                  position: absolute;
+                  left: 100%;
+                  top: -20px;
+                  z-index: 10;
+                  a {
+                    width: 36px;
+                    height: 36px;
+                    display: inline-block;
+                    margin: 0 12px 0 0;
+                    background: #d84c4c url(../../assets/img/Community/sprite_v31.png) -295px -569px
+                      no-repeat;
+                    line-height: 200px;
+                    overflow: hidden;
+                    float: left;
+                    border-radius: 5px;
+                  }
+                  .zone {
+                    background-color: #3f8bc0;
+                    background-position: -331px -569px;
+                  }
+                  .weixin {
+                    margin-right: 0;
+                    background-color: #73a64f;
+                    background-position: -367px -569px;
+                  }
+                }
+              }
+              a {
+                color: #999;
+              }
+              .date {
+                padding-right: 0;
+              }
+              span {
+                display: inline-block;
+                border-left: 1px solid #e5e5e5;
+                padding: 0 7px 0 10px;
+              }
             }
           }
         }
