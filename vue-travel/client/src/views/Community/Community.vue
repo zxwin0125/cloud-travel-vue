@@ -173,8 +173,9 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click" @mouseenter="toShare">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
                       <div
+                        v-if="toShare"
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="旅途中，如何给爸妈拍出“新潮有趣”的照片？"
                         data-qid="10418633"
@@ -2959,16 +2960,25 @@
 </template>
 
 <script>
-// import Communitysearch from "../Community/components/Commitysearch";
-// import Commityleft from "../Community/components/Commityleft";
-// import Commityright from "../Community/components/Commityright";
+
 export default {
   name: "Community",
   components: {
-    // Communitysearch,
-    // Commityleft,
-    // Commityright,
+
   },
+  data() {
+    return {
+      toShare: false
+    }
+    
+  },
+  created() {
+  },
+  methods: {
+    share() {
+      this.toShare = !this.toShare;
+    }
+  }
 };
 </script>
 
@@ -3336,6 +3346,7 @@ export default {
                     float: left;
                     border-radius: 5px;
                   }
+
                   .zone {
                     background-color: #3f8bc0;
                     background-position: -331px -569px;
