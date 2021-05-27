@@ -173,7 +173,9 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share"
+                        >分享</a
+                      >
                       <div
                         v-if="toShare"
                         class="cate-share-pop _j_share_pop hide clearfix"
@@ -283,7 +285,7 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
                       <div
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="一个吃货的旅行，是怎样的？"
@@ -392,7 +394,7 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
                       <div
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="旅行中，你会犯哪些好玩的“职业病”？"
@@ -528,7 +530,7 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
                       <div
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="作为购物天堂，去香港必买东西是什么？"
@@ -644,7 +646,7 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
                       <div
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="你经历过最穷的旅行，到底有多穷？"
@@ -764,7 +766,7 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
                       <div
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="哪些地方适合一个人旅行？"
@@ -880,7 +882,7 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
                       <div
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="在旅途中，有哪些超出你预期的住宿体验？"
@@ -1009,7 +1011,7 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
                       <div
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="如何在旅途中，选到一个热情有趣的房东和民宿？"
@@ -1136,7 +1138,7 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
                       <div
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="旅行中，如何指导不会拍照的朋友给自己拍出一张满意的照片？"
@@ -1245,7 +1247,7 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
                       <div
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="旅途中你买过最得意（成功）的东西是什么？"
@@ -1348,7 +1350,7 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
                       <div
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="长期生活在国外是一种怎样的体验？"
@@ -1456,7 +1458,7 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
                       <div
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="你有哪些无法自控的疯狂购物经历？"
@@ -1576,7 +1578,7 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
                       <div
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="来聊聊你在机场免税店，买过哪些超实惠超推荐的好物？"
@@ -1705,7 +1707,7 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
                       <div
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="女生在外当沙发客是怎样的体验？安全可行吗？"
@@ -1839,7 +1841,7 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
                       <div
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="旅途中，男生怎样拍出帅气照片？"
@@ -1959,7 +1961,7 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
                       <div
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="必吃榜|上海城隍庙的正宗上海小吃有哪些？"
@@ -2085,7 +2087,7 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
                       <div
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="你吃过最好吃or最难吃的飞机餐，是怎样的？"
@@ -2217,7 +2219,7 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
                       <div
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="樱花季去日本应该吃些什么？"
@@ -2341,7 +2343,7 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
                       <div
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="女生经常独自出游是种怎样的体验？"
@@ -2473,7 +2475,7 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
                       <div
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="女生在外当沙发客是怎样的体验？安全可行吗？"
@@ -2960,25 +2962,20 @@
 </template>
 
 <script>
-
 export default {
   name: "Community",
-  components: {
-
-  },
+  components: {},
   data() {
     return {
-      toShare: false
-    }
-    
+      toShare: false,
+    };
   },
-  created() {
-  },
+  created() {},
   methods: {
     share() {
       this.toShare = !this.toShare;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -3339,7 +3336,8 @@ export default {
                     height: 36px;
                     display: inline-block;
                     margin: 0 12px 0 0;
-                    background: #d84c4c url(../../assets/img/Community/sprite_v31.png) -295px -569px
+                    background: #d84c4c
+                      url(../../assets/img/Community/sprite_v31.png) -295px -569px
                       no-repeat;
                     line-height: 200px;
                     overflow: hidden;
@@ -3371,6 +3369,38 @@ export default {
               }
             }
           }
+        }
+      }
+      ._j_pager {
+        .ft {
+          margin: 20px 0;
+          .answer-more {
+            width: 100%;
+            height: 40px;
+            border-radius: 4px;
+            line-height: 40px;
+            text-align: center;
+            a {
+              display: block;
+              width: 100%;
+              height: 100%;
+              background-color: #efefef;
+              color: #666;
+              i {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                background: url(../../assets/img/Community/mfwask-2016sprite-2x_v3.png)
+                  no-repeat;
+                background-size: 50px 400px;
+                background-position: 0 -329px;
+                margin-left: 6px;
+              }
+            }
+          }
+        }
+        .hide {
+          display: none;
         }
       }
     }
