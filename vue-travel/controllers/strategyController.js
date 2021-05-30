@@ -124,7 +124,6 @@ const strategyController = {
 
     // 发评论
     strategypinglu: function (req, res) {
-        console.log('7878');
         var value = req.query.key
         var getId = req.query.useid
         var wenid = req.query.wenid

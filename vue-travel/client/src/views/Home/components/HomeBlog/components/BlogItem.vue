@@ -1,5 +1,5 @@
 <template>
-  <section class="blogItem">
+  <section class="blogItem" @click="toStrategy(BlogItemData.blog_id)">
     <el-col :span="8">
       <div class="col-sm-4 blog-post">
         <img :src="imgs" alt="" />
@@ -27,6 +27,12 @@ export default {
         ".jpg"),
     };
   },
+  create() {},
+  methods: {
+    toStrategy(id) {
+      this.$router.push(`/strategy/detail/?strategy_id=${id}`);
+    }
+  }
 };
 </script>
 

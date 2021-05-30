@@ -28,8 +28,7 @@ export default {
   mounted() {},
   methods: {
     toTourDetail() {
-      alert(999) // FIXME:
-      console.log('111',this.tourItemData); // FIXME:
+      this.$router.push('/destination_des')
     }
   }
 };

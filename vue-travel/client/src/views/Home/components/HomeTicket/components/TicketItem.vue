@@ -42,7 +42,7 @@
           </div>
 
           <div class="about-btn">
-            <button class="about-view packages-btn" @click="toTicket()">
+            <button class="about-view packages-btn" @click="toPay(TicketItemData.pack_id,TicketItemData.pack_address,TicketItemData.pack_price)">
               bug now
             </button>
           </div>
@@ -68,8 +68,8 @@ export default {
     };
   },
   methods: {
-    toTicket() {
-      this.$router.push("/ticket").catch(err => {});
+    toPay(ticket_id, ticket_title, ticket_price) {
+      this.$router.push(`/tickets/tickets_pay/?ticket_id=${ticket_id}&ticket_title=${ticket_title}&ticket_price=${ticket_price}`);
     },
   },
 };

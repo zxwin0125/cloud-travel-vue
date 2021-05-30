@@ -344,8 +344,7 @@ export default {
     },
   },
   created() {
-    console.log("1212", this.$store.getters.user_info);
-    console.log("14545", this.userInfo);
+
   },
   mounted() {},
   methods: {

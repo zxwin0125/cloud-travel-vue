@@ -131,7 +131,7 @@ export default {
     return {};
   },
   created() {
-    console.log('qw',this.ticketList);
+    console.log('票务列表',this.ticketList);
   }
 };
 </script>
