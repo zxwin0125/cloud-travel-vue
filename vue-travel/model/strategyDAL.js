@@ -47,7 +47,7 @@ const strategyDAL = {
     // 获取攻略详情
     detailStrategy: (strategy_id, cb) => {
         const sql = `select strategy_title, strategy_date,strategy_content,strategy_img,
-                     strategy_view,strategy_like,user_id,user_name,
+                     strategy_view,strategy_like,user_id,user_name,user_headPic_url,
                      strategy_path from strategy_info where strategy_id=?`
         dao(sql, [strategy_id], (err, results) => {
             if (err) {
