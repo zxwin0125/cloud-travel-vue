@@ -7,7 +7,7 @@
         <el-col :span="24">
           <div class="ban">
             <!-- 背景头图 -->
-            <!-- <img :src="getstimg(form.stdetail[0].strategy_path)" alt="" /> -->
+            <img :src="getstimg(form.stdetail[0].strategy_path)" alt="" />
           </div>
         </el-col>
       </el-row>
@@ -204,8 +204,7 @@ export default {
     this.useid = this.$store.getters.user_info.user_id;
     this.username = this.$store.getters.user_info.user_name;
 
-    this.form.query = this.$route.params.strategy_id;
-    console.log('999',this.form.query);
+    this.form.query = this.$route.query.strategy_id;
 
     // this.$axios
     //   .get("/api/strategy/strategyDetail", {
@@ -252,8 +251,8 @@ export default {
       // // 捕获异常
       try {
         // 等待异步方法执行完成
-        const result = await getDetailStrategy();
-        console.log("攻略 Main 数据", result);
+        const result = await getDetailStrategy(this.form.query);
+        console.log("攻略 detail 数据", result);
         // this.arts = result.data.data;
       } catch (err) {
         console.log("err", err);

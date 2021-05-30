@@ -69,9 +69,7 @@ export default {
   mounted() {},
   methods: {
     toDetail(id) {
-      this.$router.push({
-        path: 'detail/' + strategy_id
-      });
+      this.$router.push(`/strategy/detail/?strategy_id=${id}`);
     },
   },
 };
