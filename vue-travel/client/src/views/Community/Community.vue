@@ -3606,6 +3606,48 @@ export default {
           border: 1px solid #ff9d00;
           line-height: 30px;
           width: 258px;
+          li {
+            float: left;
+            margin-left: -1px;
+            display: inline;
+            text-align: center;
+            cursor: pointer;
+            height: 30px;
+            border-left: 1px solid #ff9d00;
+            font-size: 14px;
+            padding: 0;
+            width: 86px;
+            background: #ff9d00;
+            color: #fff;
+          }
+        }
+        .rank-list {
+          li {
+            margin: 20px 0;
+            em.num {
+              float: left;
+              margin-right: 10px;
+              font-family: "Times New Roman";
+              font-style: normal;
+              font-size: 14px;
+              color: #999;
+              text-align: center;
+              margin-top: 12px;
+              display: inline-block;
+              width: 18px;
+              height: 25px;
+              background: url(../../assets/img/Community/jinpai@2x.png)
+                no-repeat;
+              background-size: 18px 25px;
+            }
+          }
+          li:nth-child(1) em.num,
+          .col-side .rank-list li:nth-child(2) em.num,
+          .col-side .rank-list li:nth-child(3) em.num {
+            border-radius: 0;
+            line-height: 200px;
+            overflow: hidden;
+          }
         }
       }
     }
