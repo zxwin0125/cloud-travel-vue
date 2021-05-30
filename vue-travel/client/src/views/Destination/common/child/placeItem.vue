@@ -1,13 +1,11 @@
 <template>
-  <section class="all">
-    <a href="#">
+  <section class="all" @click="toPlace">
       <div class="tupian">
         <img :src="imgsUrl" alt="" class="rounded" />
       </div>
       <h4>{{ des_place_title }}</h4>
       <span>评分：{{ des_place_score }}</span>
       <p>{{ des_place_content }}...</p>
-    </a>
   </section>
 </template>
 
@@ -67,6 +65,11 @@ export default {
         this.imgsUrl = require("@/assets/img/Destination/desPlace/" + this.des_place_img + ".jpg")
       }
     },
+    toPlace() {
+      this.$router.push({
+        path: '/destination/destination_des'
+      })
+    }
   },
 };
 </script>

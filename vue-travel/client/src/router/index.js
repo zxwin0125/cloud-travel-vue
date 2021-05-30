@@ -81,7 +81,7 @@ const routes = [{
     }
   },
   {
-    path: '/destination/destination_des',
+    path: '/destination_des',
     name: 'Destination_des',
     component: {
       default: Destination_des,

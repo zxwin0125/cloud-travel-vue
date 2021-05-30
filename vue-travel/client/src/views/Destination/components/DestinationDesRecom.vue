@@ -7,28 +7,28 @@
       <el-col :span="5">
         <div class="grid-content bg-purple-light">
           <div class="scenic02">
-            <img src="../../../assets/14.webp" alt="" />
+            <img src="../../../assets/img/Destination/14.webp" alt="" />
           </div>
         </div>
       </el-col>
       <el-col :span="5">
         <div class="grid-content bg-purple">
           <div class="scenic02">
-            <img src="../../../assets/c.jpg" alt="" />
+            <img src="../../../assets/img/Destination/c.jpg" alt="" />
           </div>
         </div>
       </el-col>
       <el-col :span="5">
         <div class="grid-content bg-purple-light">
           <div class="scenic02">
-            <img src="../../../assets/e.jpg" alt="" />
+            <img src="../../../assets/img/Destination/e.jpg" alt="" />
           </div>
         </div>
       </el-col>
       <el-col :span="5">
         <div class="grid-content bg-purple">
           <div class="scenic02">
-            <img src="../../../assets/LI_18.jpg" alt="" />
+            <img src="../../../assets/img/Destination/LI_18.jpg" alt="" />
           </div>
         </div>
       </el-col>
