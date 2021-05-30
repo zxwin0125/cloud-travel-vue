@@ -285,8 +285,11 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share"
+                        >分享</a
+                      >
                       <div
+                        v-if="toShare"
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="一个吃货的旅行，是怎样的？"
                         data-qid="11144852"
@@ -394,8 +397,11 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share"
+                        >分享</a
+                      >
                       <div
+                        v-if="toShare"
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="旅行中，你会犯哪些好玩的“职业病”？"
                         data-qid="10266899"
@@ -530,8 +536,11 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share"
+                        >分享</a
+                      >
                       <div
+                        v-if="toShare"
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="作为购物天堂，去香港必买东西是什么？"
                         data-qid="7064939"
@@ -646,8 +655,11 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share"
+                        >分享</a
+                      >
                       <div
+                        v-if="toShare"
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="你经历过最穷的旅行，到底有多穷？"
                         data-qid="11144855"
@@ -766,8 +778,11 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share"
+                        >分享</a
+                      >
                       <div
+                        v-if="toShare"
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="哪些地方适合一个人旅行？"
                         data-qid="5329987"
@@ -882,8 +897,11 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share"
+                        >分享</a
+                      >
                       <div
+                        v-if="toShare"
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="在旅途中，有哪些超出你预期的住宿体验？"
                         data-qid="11144840"
@@ -1011,8 +1029,11 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share"
+                        >分享</a
+                      >
                       <div
+                        v-if="toShare"
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="如何在旅途中，选到一个热情有趣的房东和民宿？"
                         data-qid="10692210"
@@ -1138,8 +1159,11 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share"
+                        >分享</a
+                      >
                       <div
+                        v-if="toShare"
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="旅行中，如何指导不会拍照的朋友给自己拍出一张满意的照片？"
                         data-qid="7197815"
@@ -1247,8 +1271,11 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share"
+                        >分享</a
+                      >
                       <div
+                        v-if="toShare"
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="旅途中你买过最得意（成功）的东西是什么？"
                         data-qid="11144851"
@@ -1350,8 +1377,11 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share"
+                        >分享</a
+                      >
                       <div
+                        v-if="toShare"
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="长期生活在国外是一种怎样的体验？"
                         data-qid="7539214"
@@ -1458,8 +1488,11 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share"
+                        >分享</a
+                      >
                       <div
+                        v-if="toShare"
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="你有哪些无法自控的疯狂购物经历？"
                         data-qid="11144846"
@@ -1578,8 +1611,11 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share"
+                        >分享</a
+                      >
                       <div
+                        v-if="toShare"
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="来聊聊你在机场免税店，买过哪些超实惠超推荐的好物？"
                         data-qid="10217383"
@@ -1707,8 +1743,11 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share"
+                        >分享</a
+                      >
                       <div
+                        v-if="toShare"
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="女生在外当沙发客是怎样的体验？安全可行吗？"
                         data-qid="6989017"
@@ -1841,8 +1880,11 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share"
+                        >分享</a
+                      >
                       <div
+                        v-if="toShare"
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="旅途中，男生怎样拍出帅气照片？"
                         data-qid="7804035"
@@ -1961,8 +2003,11 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share"
+                        >分享</a
+                      >
                       <div
+                        v-if="toShare"
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="必吃榜|上海城隍庙的正宗上海小吃有哪些？"
                         data-qid="11783132"
@@ -2087,8 +2132,11 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share"
+                        >分享</a
+                      >
                       <div
+                        v-if="toShare"
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="你吃过最好吃or最难吃的飞机餐，是怎样的？"
                         data-qid="11144845"
@@ -2219,8 +2267,11 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share"
+                        >分享</a
+                      >
                       <div
+                        v-if="toShare"
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="樱花季去日本应该吃些什么？"
                         data-qid="11023038"
@@ -2343,8 +2394,11 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share"
+                        >分享</a
+                      >
                       <div
+                        v-if="toShare"
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="女生经常独自出游是种怎样的体验？"
                         data-qid="10224819"
@@ -2475,8 +2529,11 @@
                       >
                     </div>
                     <div class="cate-share">
-                      <a class="_js_showShare _j_filter_click" @click="share">分享</a>
+                      <a class="_js_showShare _j_filter_click" @click="share"
+                        >分享</a
+                      >
                       <div
+                        v-if="toShare"
                         class="cate-share-pop _j_share_pop hide clearfix"
                         data-title="女生在外当沙发客是怎样的体验？安全可行吗？"
                         data-qid="6989017"
@@ -3407,6 +3464,19 @@ export default {
   }
   .col-side {
     width: 260px;
+    .i-ask {
+      margin-bottom: 30px;
+    }
+    .i_total {
+      margin-bottom: 30px;
+    }
+    .i-tags {
+      margin: 0px 0 35px 0;
+      line-height: 20px;
+    }
+    .rank {
+      margin-bottom: 50px;
+    }
   }
 }
 </style>
