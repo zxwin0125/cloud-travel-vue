@@ -1,6 +1,41 @@
 <template>
   <section class="strategyDetail">
-    <h2>攻略详情</h2>
+    <!-- 背景图片 -->
+    <!-- 此背景图应获取为用户发布中的第一个图片 -->
+    <div>
+      <el-row>
+        <el-col :span="24">
+          <div class="ban">
+            <!-- 背景头图 -->
+            <img :src="getstimg(form.stdetail[0].strategy_path)" alt="" />
+          </div>
+        </el-col>
+      </el-row>
+      <div class="con_nav">
+        <p class="title">{{ form.stdetail[0].strategy_title }}</p>
+        <!-- 数据库获取-->
+        <img
+          :src="getstimg(form.stdetail[0].user_headPic_url)"
+          class="user_headPic_url"
+          alt=""
+        />
+        <!--获取用户头像-->
+        <p>
+          {{ form.stdetail[0].user_name }}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 发布时间:{{
+            form.stdetail[0].strategy_date
+          }}
+          浏览量:{{ form.stdetail[0].strategy_view }}
+        </p>
+        <div class="collect">
+          <ul>
+            <li>收藏量</li>
+            <li>转发量</li>
+            <li>点赞量</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 <script>
@@ -9,17 +44,12 @@
 
 export default {
   name: "StrategyDetail",
-  components: {
-  },
+  components: {},
   data() {
-    return {
-    };
+    return {};
   },
-  computed: {
-  },
-  created() {
-      
-  },
+  computed: {},
+  created() {},
   mounted() {
     //当页面渲染完成时调用方法获取数据
     // this.getStrategyDetailData()
@@ -27,7 +57,7 @@ export default {
   methods: {
     // 异步调用 StrategyDetail 接口
     async getStrategyDetailData() {
-      alert(888)
+      alert(888);
       // // 捕获异常
       try {
         // 等待异步方法执行完成
@@ -37,7 +67,7 @@ export default {
       } catch (err) {
         console.log("err", err);
       }
-    }
+    },
   },
 };
 </script>
