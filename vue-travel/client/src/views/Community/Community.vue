@@ -3607,13 +3607,14 @@ export default {
           border: 1px solid #ff9d00;
           line-height: 30px;
           width: 258px;
+          height: 32px;
           li {
             float: left;
             margin-left: -1px;
             display: inline;
             text-align: center;
             cursor: pointer;
-            height: 30px;
+            height: 100%;
             border-left: 1px solid #ff9d00;
             font-size: 14px;
             padding: 0;
@@ -3636,12 +3637,10 @@ export default {
               margin-top: 12px;
               display: inline-block;
               width: 18px;
-              height: 25px;
-              background: url(../../assets/img/Community/jinpai@2x.png)
-                no-repeat;
-              background-size: 18px 25px;
+              height: 18px;
             }
           }
+
           li:nth-child(1) em.num,
           .col-side .rank-list li:nth-child(2) em.num,
           .col-side .rank-list li:nth-child(3) em.num {
@@ -3663,6 +3662,28 @@ export default {
               border-radius: 50%;
               overflow: hidden;
             }
+            span {
+              display: block;
+              height: 16px;
+              overflow: hidden;
+            }
+            .name {
+              margin-top: 10px;
+              position: relative;
+              top: -2px;
+              font-size: 12px;
+              a {
+                color: #ff9d00;
+              }
+            }
+            .level {
+              font-weight: normal;
+              a {
+                font-size: 10px;
+                color: #ec634f;
+                font-family: Verdana;
+              }
+            }
           }
           span.num {
             float: right;
@@ -3672,6 +3693,29 @@ export default {
             color: #ec634f;
             font-family: Verdana;
             line-height: 42px;
+          }
+          .r-top1 em.num {
+            background: url(../../assets/img/Community/jinpai@2x.png) no-repeat;
+            background-size: 18px 25px;
+          }
+          .r-top2 em.num {
+            background: url(../../assets/img/Community/yinpai@2x.png) no-repeat;
+            background-size: 18px 25px;
+          }
+          .r-top3 em.num {
+            background: url(../../assets/img/Community/tongpai@2x.png) no-repeat;
+            background-size: 18px 25px;
+          }
+          em.num {
+            width: 20px;
+            height: 20px;
+            background: #eaeaea;
+            border-radius: 50%;
+            font-size: 14px;
+            color: #999;
+            line-height: 20px;
+            text-align: center;
+            margin-top: 12px;
           }
         }
       }
