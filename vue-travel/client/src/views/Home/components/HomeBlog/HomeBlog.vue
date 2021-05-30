@@ -2,7 +2,7 @@
   <section class="homeBlog">
     <el-container>
       <el-header>
-        <div class="btn">
+        <div class="btn" @click="toStrategyList">
           {{ message }}
         </div>
         <h1>精选游记</h1>
@@ -39,8 +39,11 @@ export default {
     };
   },
   methods: {
-    getData: function () {
+    getData() {
     },
+    toStrategyList() {
+      this.$router.push('/strategy')
+    }
   },
   mounted() {
     // this.getData()

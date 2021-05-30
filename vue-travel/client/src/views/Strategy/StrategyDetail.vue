@@ -7,8 +7,7 @@
         <el-col :span="24">
           <div class="ban">
             <!-- 背景头图 -->
-            <!-- <img :src="getstimg(form.stdetail[0].strategy_path)" alt="" /> -->
-            <img :src="imgsUrl" alt="" />
+            <img :src="imgsUrl" alt="" />            
           </div>
         </el-col>
       </el-row>
@@ -16,10 +15,12 @@
         <p class="title">{{ form.stdetail[0].strategy_title }}</p>
         <!-- 数据库获取-->
         <img
-          :src="getstimg(form.stdetail[0].user_headPic_url)"
+          :src="imgsHeadUrl"
           class="user_headPic_url"
           alt=""
         />
+        <!-- <img src="../../../public/upload/tou1.jpg" class="user_headPic_url" alt="" /> -->
+
         <!--获取用户头像-->
         <p>
           {{ form.stdetail[0].user_name }}
@@ -54,11 +55,12 @@
             <div class="coments">
               <div class="write_coments">
                 <!-- 获取当前用户头像 -->
-                <img
+                <!-- <img
                   :src="'http://localhost:3000/upload/' + userImg"
                   class="user_headPic_url"
                   alt=""
-                />
+                /> -->
+                <!-- <img src="../../../public/upload/tou1.jpg" alt="" /> -->
 
                 <div id="message">
                   <textarea
@@ -94,10 +96,11 @@
                 :key="pinglun.com_id"
               >
                 <li>
-                  <img
+                  <!-- <img
                     :src="'http://localhost:3000/upload/' + userImg"
                     class="user_headPic_url"
-                  />
+                  /> -->
+                  <img src="../../../public/upload/tou1.jpg" class="user_headPic_url" alt="" />
                   <div>
                     <h4>{{ pinglun.user_name }}</h4>
                     <p>{{ formateDate(pinglun.com_time) }}</p>
@@ -201,7 +204,8 @@ export default {
       username: "",
       userImg: "",
       nowTime: new Date(),
-      imgsUrl: ""
+      imgsUrl: "",
+      imgsHeadUrl: ""
     };
   },
   computed: {},
@@ -212,6 +216,10 @@ export default {
     this.userImg = this.$store.getters.user_info.user_headPic_url;
 
     this.form.query = this.$route.query.strategy_id;
+    
+
+    // this.imgsUrl = require("../../../../public/upload/" + this.form.stdetail[0].strategy_path + ".jpg")
+    
 
 
     // //评论列表
@@ -220,7 +228,6 @@ export default {
     //     params: { id: this.form.query },
     //   })
     //   .then((res) => {
-    //     console.log("456678", res);
     //     this.pingluns = res.data.data;
     //     console.log("pinglun", this.pingluns);
     //   })
@@ -241,7 +248,7 @@ export default {
     //当页面渲染完成时调用方法获取数据
     this.getStrategyDetailData();
     this.getStrategyPinglunData();
-    // this.imgsUrl = '../../assets/img/upload/' + this.form.stdetail[0].strategy_path + '.jpg'
+    
   },
   methods: {
     // 异步调用 StrategyDetail 接口
@@ -252,6 +259,8 @@ export default {
         await getDetailStrategy(this.form.query).then((res) => {
           console.log("攻略 detail 数据", res);
           this.form.stdetail = res.data.data;
+          this.imgsUrl = require("../../../../public/upload/"+this.form.stdetail[0].strategy_path)
+          this.imgsHeadUrl = require("../../../../public/upload/"+this.form.stdetail[0].user_headPic_url)
         })
       } catch (err) {
         console.log("err", err);
@@ -272,7 +281,7 @@ export default {
     },
 
     getstimg(strategy_img) {
-      return "/assets/upload/" + strategy_img;
+      return "public/upload/" + strategy_img + ".jpg";
     },
     formateDate1(nowTime) {
       var moment = require("moment");

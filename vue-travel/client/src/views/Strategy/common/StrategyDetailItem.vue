@@ -63,7 +63,6 @@ export default {
       this.StrategyDetailItemData.strategy_img +
       ".jpg");
 
-    console.log("23", this.StrategyDetailItemData);
     // this.strategy_id = this.StrategyDetailItemData.strategy_id;
   },
   mounted() {},
