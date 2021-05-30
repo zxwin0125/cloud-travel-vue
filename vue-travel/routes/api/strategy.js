@@ -21,15 +21,25 @@ router.get('/fuzzy', (req, res) => {
 });
 
 router.get('/detail', (req, res) => {
+    console.log('3434');
     // 攻略详情
     strategyController.detailStrategy(req, res)
 });
 
 router.post('/publish', function(req, res, next) {
-    console.log('6767',req.params,req.body);
     // 攻略列表
     strategyController.publishStrategy(req, res)
 });
+
+//评论列表
+router.get('/pinglun', function(req, res, next) {
+    // 攻略列表
+    strategyController.pinglun(req, res)
+});
+
+
+
+
 
 // router.post('/commit', (req, res) => {
 //     // 攻略评论
@@ -49,11 +59,7 @@ router.post('/publish', function(req, res, next) {
 //     // 攻略列表
 //     strategyController.strategypinglu(req, res)
 // });
-// //评论列表
-// router.get('/pinglun', function(req, res, next) {
-//     // 攻略列表
-//     strategyController.pinglun(req, res)
-// });
+
 
 
 module.exports = router;

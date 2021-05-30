@@ -6,7 +6,7 @@
       data-fid="292353"
       data-type="1"
       data-cs-p="位置_2"
-      @click="toDetail"
+      @click="toDetail(StrategyDetailItemData.strategy_id)"
     >
       <div class="bar">
         <span class="stat"
@@ -68,13 +68,10 @@ export default {
   },
   mounted() {},
   methods: {
-    toDetail() {
-      // this.$router.push({
-      //   name: "detail",
-      //   // params: {
-      //   //   strategy_id: this.strategy_id,
-      //   // },
-      // });
+    toDetail(id) {
+      this.$router.push({
+        path: 'detail/' + strategy_id
+      });
     },
   },
 };

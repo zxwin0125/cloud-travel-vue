@@ -7,26 +7,26 @@
         <el-col :span="24">
           <div class="ban">
             <!-- 背景头图 -->
-            <img :src="getstimg(form.stdetail[0].strategy_path)" alt="" />
+            <!-- <img :src="getstimg(form.stdetail[0].strategy_path)" alt="" /> -->
           </div>
         </el-col>
       </el-row>
       <div class="con_nav">
-        <p class="title">{{ form.stdetail[0].strategy_title }}</p>
+        <!-- <p class="title">{{ form.stdetail[0].strategy_title }}</p> -->
         <!-- 数据库获取-->
-        <img
+        <!-- <img
           :src="getstimg(form.stdetail[0].user_headPic_url)"
           class="user_headPic_url"
           alt=""
-        />
+        /> -->
         <!--获取用户头像-->
-        <p>
+        <!-- <p>
           {{ form.stdetail[0].user_name }}
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 发布时间:{{
             form.stdetail[0].strategy_date
           }}
           浏览量:{{ form.stdetail[0].strategy_view }}
-        </p>
+        </p> -->
         <div class="collect">
           <ul>
             <li>收藏量</li>
@@ -44,10 +44,10 @@
         <!-- 文章内容 -->
         <el-col :xs="24" :sm="24" :md="14" :lg="14">
           <div class="content">
-            <div
+            <!-- <div
               class="content_info"
               v-html="form.stdetail[0].strategy_content"
-            ></div>
+            ></div> -->
             <!-- 文章评论 -->
             <!-- 评论 -->
             <div class="coments">
@@ -199,15 +199,56 @@ export default {
     };
   },
   computed: {},
-  created() {},
+  created() {
+    // 发布
+    this.useid = this.$store.getters.user_info.user_id;
+    this.username = this.$store.getters.user_info.user_name;
+
+    this.form.query = this.$route.params.strategy_id;
+    console.log('999',this.form.query);
+
+    // this.$axios
+    //   .get("/api/strategy/strategyDetail", {
+    //     params: { strategy_id: this.form.query },
+    //   })
+    //   .then((res) => {
+    //     console.log("111", res);
+    //     this.form.stdetail = res.data.data;
+    //     console.log("stdetail", this.form.stdetail);
+    //   })
+    //   .catch((err) => {
+    //     console.log("错误信息是：", err);
+    //   });
+    // //评论列表
+    // this.$axios
+    //   .get("/api/strategy/pinglun", {
+    //     params: { id: this.form.query },
+    //   })
+    //   .then((res) => {
+    //     console.log("456678", res);
+    //     this.pingluns = res.data.data;
+    //     console.log("pinglun", this.pingluns);
+    //   })
+    //   .catch((err) => {
+    //     console.log("错误信息是：", err);
+    //   });
+    
+    // this.$axios
+    //   .put(
+    //     "http://localhost:3000/youji/updateYoujivisit?yjPublishId=" +
+    //       this.$route.query.yjPublishId
+    //   )
+    //   .catch(err => {
+    //     console.log("错误信息：" + err);
+    //   });
+  },
   mounted() {
     //当页面渲染完成时调用方法获取数据
-    // this.getStrategyDetailData()
+    this.getStrategyDetailData()
   },
   methods: {
     // 异步调用 StrategyDetail 接口
     async getStrategyDetailData() {
-      alert(888);
       // // 捕获异常
       try {
         // 等待异步方法执行完成
@@ -217,6 +258,56 @@ export default {
       } catch (err) {
         console.log("err", err);
       }
+    },
+
+    getstimg(strategy_img) {
+      return "/api/upload/" + strategy_img;
+    },
+    formateDate1(nowTime) {
+      var moment = require("moment");
+      return moment(nowTime).format("YYYY-MM-DD");
+    },
+    formateDate: function (datetime) {
+      function addDateZero(num) {
+        return num < 10 ? "0" + num : num;
+      }
+      let d = new Date(datetime);
+      let formatdatetime =
+        d.getFullYear() +
+        "-" +
+        addDateZero(d.getMonth() + 1) +
+        "-" +
+        addDateZero(d.getDate()) +
+        " " +
+        d.getHours() +
+        ":" +
+        d.getMinutes() +
+        ":" +
+        d.getSeconds();
+      return formatdatetime;
+    },
+    fb() {
+      this.$axios
+        .get("/api/strategy/strategypinglu", {
+          params: {
+            wenid: this.form.query,
+            useid: this.useid,
+            key: this.getstComment,
+          },
+        })
+        .then((res) => {
+          console.log("resssss:", res.data.data);
+          this.pingluns.push({
+            com_time: this.nowTime,
+            com_text: this.getstComment,
+            com_like: 0,
+            user_name: this.username,
+          });
+          this.getstComment = "";
+        })
+        .catch((err) => {
+          console.log("err:", err);
+        });
     },
   },
 };

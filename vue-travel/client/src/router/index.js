@@ -92,7 +92,7 @@ const routes = [{
     }
   },
   {
-    path: '/strategy/detail',
+    path: '/strategy/detail:id',
     name: 'StrategyDetail',
     components: {
       default: StrategyDetail,
