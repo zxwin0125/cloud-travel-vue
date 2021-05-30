@@ -21,7 +21,6 @@ router.get('/fuzzy', (req, res) => {
 });
 
 router.get('/detail', (req, res) => {
-    console.log('3434');
     // 攻略详情
     strategyController.detailStrategy(req, res)
 });

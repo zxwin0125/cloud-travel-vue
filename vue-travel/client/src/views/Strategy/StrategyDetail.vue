@@ -168,7 +168,7 @@
 </template>
 <script>
 // 导入接口API
-// import { getDetailStrategy } from "@/api/getData.js";
+import { getDetailStrategy } from "@/api/getData.js";
 import StrDetailsThumbup from "../Strategy/components/StrDetailsThumbup";
 
 export default {
@@ -194,7 +194,7 @@ export default {
       pingluns: [],
       useid: "",
       username: "",
-      userImg: localStorage.getItem("userImg"),
+      userImg: "",
       nowTime: new Date(),
     };
   },
@@ -203,6 +203,7 @@ export default {
     // 发布
     this.useid = this.$store.getters.user_info.user_id;
     this.username = this.$store.getters.user_info.user_name;
+    this.userImg = this.$store.getters.user_info.user_headPic_url;
 
     this.form.query = this.$route.query.strategy_id;
 
@@ -253,7 +254,7 @@ export default {
         // 等待异步方法执行完成
         const result = await getDetailStrategy(this.form.query);
         console.log("攻略 detail 数据", result);
-        // this.arts = result.data.data;
+        this.form.stdetail = result.data.data
       } catch (err) {
         console.log("err", err);
       }
