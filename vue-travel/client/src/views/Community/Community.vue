@@ -3464,6 +3464,7 @@ export default {
   }
   .col-side {
     width: 260px;
+    margin-left: 60px;
     .i-ask {
       margin-bottom: 30px;
       .btn-ask {
@@ -3647,6 +3648,30 @@ export default {
             border-radius: 0;
             line-height: 200px;
             overflow: hidden;
+          }
+          .user {
+            float: left;
+            width: 160px;
+            height: 48px;
+            overflow: hidden;
+            line-height: 16px;
+            .avatar {
+              float: left;
+              width: 48px;
+              margin-right: 10px;
+              height: 48px;
+              border-radius: 50%;
+              overflow: hidden;
+            }
+          }
+          span.num {
+            float: right;
+            width: 60px;
+            text-align: center;
+            font-size: 18px;
+            color: #ec634f;
+            font-family: Verdana;
+            line-height: 42px;
           }
         }
       }
