@@ -44,8 +44,6 @@ export const orderTicket = (order_name, order_cardId, order_phone, order_time, o
 
 })
 
-
-
 // 登陆接口
 export const login = (user_name, user_password) => axios.post("/api/users/login", {
     user_name,
@@ -71,4 +69,19 @@ export const getUserInfo = (token) => axios.get("/api/users/getUserInfo", {
     params: {
         token
     }
+})
+
+// 评论
+export const getStrategyPinglun = (strategy_id) => axios.get("/api/strategy/pinglun", {
+    params: {
+        "strategy_id": strategy_id
+    }
+})
+
+// 发布评论信息接口
+export const postComment = (user_id,user_name,user_headImg,user_pl) => axios.post("/api/strategy/strategypinglu", {
+    user_id,
+    user_name,
+    user_headImg,
+    user_pl
 })

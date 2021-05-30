@@ -70,6 +70,33 @@ const strategyDAL = {
             }
         })
     },
+
+    //评论列表
+    pinglun: (getId1, cb) => {
+        const sql = 'select a.com_text,com_like,com_time,a.user_id,user_headPic_url,user_name FROM comments_info a,user_info u WHERE strategy_id = ? and a.user_id = u.user_id'
+        dao(sql, [getId1], function (err, results) {
+            if (err) {
+                cb(err, null)
+            } else {
+                cb(null, results)
+            }
+        })
+    },
+
+    //发表评论
+    strategypinglu: (newArr, cb) => {
+        console.log('ertyu', [newArr.value, newArr.wenid, newArr.getId])
+        const sql = 'insert into comments_info (com_text,com_like,com_time,strategy_id,user_id) VALUES(?,0,Now(),?,?)'
+
+        dao(sql, [newArr.value, newArr.wenid, newArr.getId], (err, results) => {
+            if (err) {
+                cb(err, null)
+            } else {
+                cb(null, results)
+            }
+        })
+    },
+
     // getstComment: function (getStrategy, cb) {   // 3-3 获取攻略评论 
     //     var sql = 'select com_text,com_time from strategy_info,user_info,comments_info where comments_info.strategy_id = ? and strategy_info.strategy_id = comments_info.strategy_id and user_info.user_id = comments_info.user_id order by com_time desc'
     //     dao(sql, [getStrategy], function (err, results) {
@@ -83,32 +110,8 @@ const strategyDAL = {
     // 
     // 
     
-    //评论
-    // strategypinglu: function (newArr, cb) {
-    //     console.log('ertyu', [newArr.value, newArr.wenid, newArr.getId])
-    //     var sql = 'insert into comments_info (com_text,com_like,com_time,strategy_id,user_id) VALUES(?,0,Now(),?,?)'
-
-    //     dao(sql, [newArr.value, newArr.wenid, newArr.getId], function (err, results) {
-    //         if (err) {
-    //             cb(err, null)
-    //         } else {
-    //             cb(null, results)
-    //         }
-    //     })
-
-    // },
-    //评论列表
-    // pinglun: function (getId1, cb) {
-    //     var sql = 'select a.com_text,com_like,com_time,a.user_id,user_headPic_url,user_name FROM comments_info a,user_info u WHERE strategy_id = ? and a.user_id = u.user_id'
-    //     dao(sql, [getId1], function (err, results) {
-    //         if (err) {
-    //             cb(err, null)
-    //         } else {
-    //             cb(null, results)
-    //         }
-    //     })
-
-    // },
+    
+    
 }
 
 module.exports = strategyDAL

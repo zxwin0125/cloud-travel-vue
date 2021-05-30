@@ -7,27 +7,27 @@
         <el-col :span="24">
           <div class="ban">
             <!-- 背景头图 -->
-            <img :src="getstimg(form.stdetail[0].strategy_path)" alt="" />
-            <img src="../../assets/img/upload/str_1.jpg" alt="" />
+            <!-- <img :src="getstimg(form.stdetail[0].strategy_path)" alt="" /> -->
+            <img :src="imgsUrl" alt="" />
           </div>
         </el-col>
       </el-row>
       <div class="con_nav">
-        <!-- <p class="title">{{ form.stdetail[0].strategy_title }}</p> -->
+        <p class="title">{{ form.stdetail[0].strategy_title }}</p>
         <!-- 数据库获取-->
-        <!-- <img
+        <img
           :src="getstimg(form.stdetail[0].user_headPic_url)"
           class="user_headPic_url"
           alt=""
-        /> -->
+        />
         <!--获取用户头像-->
-        <!-- <p>
+        <p>
           {{ form.stdetail[0].user_name }}
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 发布时间:{{
             form.stdetail[0].strategy_date
           }}
           浏览量:{{ form.stdetail[0].strategy_view }}
-        </p> -->
+        </p>
         <div class="collect">
           <ul>
             <li>收藏量</li>
@@ -45,10 +45,10 @@
         <!-- 文章内容 -->
         <el-col :xs="24" :sm="24" :md="14" :lg="14">
           <div class="content">
-            <!-- <div
+            <div
               class="content_info"
               v-html="form.stdetail[0].strategy_content"
-            ></div> -->
+            ></div>
             <!-- 文章评论 -->
             <!-- 评论 -->
             <div class="coments">
@@ -78,10 +78,14 @@
                     >
                   </div>
                 </div>
-                <!-- <div class="conments_button" >  
-                                <button type="button" class="coments_submit btn btn-success"><span>发布</span></button>
-                                <button type="button" class="coments_console btn"><span>取消</span></button>
-                        </div> -->
+                <div class="conments_button">
+                  <button type="button" class="coments_submit btn btn-success">
+                    <span>发布</span>
+                  </button>
+                  <button type="button" class="coments_console btn">
+                    <span>取消</span>
+                  </button>
+                </div>
               </div>
               <!-- 评论列表 -->
               <ul
@@ -169,7 +173,7 @@
 </template>
 <script>
 // 导入接口API
-import { getDetailStrategy } from "@/api/getData.js";
+import { getDetailStrategy, getStrategyPinglun, postComment } from "@/api/getData.js";
 import StrDetailsThumbup from "../Strategy/components/StrDetailsThumbup";
 
 export default {
@@ -197,6 +201,7 @@ export default {
       username: "",
       userImg: "",
       nowTime: new Date(),
+      imgsUrl: ""
     };
   },
   computed: {},
@@ -208,18 +213,7 @@ export default {
 
     this.form.query = this.$route.query.strategy_id;
 
-    // this.$axios
-    //   .get("/api/strategy/strategyDetail", {
-    //     params: { strategy_id: this.form.query },
-    //   })
-    //   .then((res) => {
-    //     console.log("111", res);
-    //     this.form.stdetail = res.data.data;
-    //     console.log("stdetail", this.form.stdetail);
-    //   })
-    //   .catch((err) => {
-    //     console.log("错误信息是：", err);
-    //   });
+
     // //评论列表
     // this.$axios
     //   .get("/api/strategy/pinglun", {
@@ -233,7 +227,7 @@ export default {
     //   .catch((err) => {
     //     console.log("错误信息是：", err);
     //   });
-    
+
     // this.$axios
     //   .put(
     //     "http://localhost:3000/youji/updateYoujivisit?yjPublishId=" +
@@ -245,7 +239,9 @@ export default {
   },
   mounted() {
     //当页面渲染完成时调用方法获取数据
-    this.getStrategyDetailData()
+    this.getStrategyDetailData();
+    this.getStrategyPinglunData();
+    // this.imgsUrl = '../../assets/img/upload/' + this.form.stdetail[0].strategy_path + '.jpg'
   },
   methods: {
     // 异步调用 StrategyDetail 接口
@@ -253,16 +249,30 @@ export default {
       // // 捕获异常
       try {
         // 等待异步方法执行完成
-        const result = await getDetailStrategy(this.form.query);
-        console.log("攻略 detail 数据", result);
-        this.form.stdetail = result.data.data
+        await getDetailStrategy(this.form.query).then((res) => {
+          console.log("攻略 detail 数据", res);
+          this.form.stdetail = res.data.data;
+        })
+      } catch (err) {
+        console.log("err", err);
+      }
+    },
+
+    async getStrategyPinglunData() {
+      // // 捕获异常
+      try {
+        // 等待异步方法执行完成
+        await getStrategyPinglun(this.form.query).then((res) => {
+          console.log("攻略评论数据", res);
+          this.pingluns = res.data.data;
+        })
       } catch (err) {
         console.log("err", err);
       }
     },
 
     getstimg(strategy_img) {
-      return "../../assets/img/upload/" + strategy_img + ".jpg";
+      return "/assets/upload/" + strategy_img;
     },
     formateDate1(nowTime) {
       var moment = require("moment");
@@ -288,16 +298,8 @@ export default {
       return formatdatetime;
     },
     fb() {
-      this.$axios
-        .get("/api/strategy/strategypinglu", {
-          params: {
-            wenid: this.form.query,
-            useid: this.useid,
-            key: this.getstComment,
-          },
-        })
-        .then((res) => {
-          console.log("resssss:", res.data.data);
+      postComment(this.useid,this.username,this.userImg,this.getstComment).then((res) => {
+        console.log("resssss:", res.data.data);
           this.pingluns.push({
             com_time: this.nowTime,
             com_text: this.getstComment,
@@ -305,10 +307,31 @@ export default {
             user_name: this.username,
           });
           this.getstComment = "";
-        })
-        .catch((err) => {
+      })
+      .catch((err) => {
           console.log("err:", err);
         });
+      // this.$axios
+      //   .get("/api/strategy/strategypinglu", {
+      //     params: {
+      //       wenid: this.form.query,
+      //       useid: this.useid,
+      //       key: this.getstComment,
+      //     },
+      //   })
+      //   .then((res) => {
+      //     console.log("resssss:", res.data.data);
+      //     this.pingluns.push({
+      //       com_time: this.nowTime,
+      //       com_text: this.getstComment,
+      //       com_like: 0,
+      //       user_name: this.username,
+      //     });
+      //     this.getstComment = "";
+      //   })
+      //   .catch((err) => {
+      //     console.log("err:", err);
+      //   });
     },
   },
 };

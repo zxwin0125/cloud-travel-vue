@@ -25,17 +25,22 @@ router.get('/detail', (req, res) => {
     strategyController.detailStrategy(req, res)
 });
 
-router.post('/publish', function(req, res, next) {
-    // 攻略列表
+// 发布攻略
+router.post('/publish', (req, res, next) => {
     strategyController.publishStrategy(req, res)
 });
 
 //评论列表
-router.get('/pinglun', function(req, res, next) {
-    // 攻略列表
+router.get('/pinglun', (req, res, next) => {
     strategyController.pinglun(req, res)
 });
 
+// 发布评论
+router.get('/strategypinglu', (req, res, next) => {
+    console.log('0909');
+    // 攻略列表
+    strategyController.strategypinglu(req, res)
+});
 
 
 
@@ -54,10 +59,7 @@ router.get('/pinglun', function(req, res, next) {
 //     strategyController.strategyCollect(req, res)
 // });
 
-// router.get('/strategypinglu', function(req, res, next) {
-//     // 攻略列表
-//     strategyController.strategypinglu(req, res)
-// });
+
 
 
 

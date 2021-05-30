@@ -66,7 +66,9 @@ const strategyController = {
     },
     // 发表攻略
     publishStrategy: (req, res) => {
-        const form = formidable({ multiples: true });
+        const form = formidable({
+            multiples: true
+        });
         form.uploadDir = path.join(__dirname, '..', '/public/upload')
         form.keepExtensions = true
         form.parse(req, (err, fields, files) => {
@@ -74,9 +76,9 @@ const strategyController = {
                 res.send('图片上传错误')
             }
             const publishStrategy = {
-                strategy_img:  fields.strategy_img,
+                strategy_img: fields.strategy_img,
                 strategy_title: fields.strategy_title,
-                strategy_content: fields.strategy_content.replace(/<.+?>/g,''), 
+                strategy_content: fields.strategy_content.replace(/<.+?>/g, ''),
                 strategy_file: path.parse(files.strategy_file.path).base,
                 user_id: fields.user_id,
                 user_name: fields.user_name,
@@ -84,11 +86,65 @@ const strategyController = {
             // var headPic = path.parse(files.headPic.path).base
             strategyDAL.publishStrategy(publishStrategy, (err, results) => {
                 if (err) {
-                    res.json({ code: 500, results: 0, msg: '发表失败！' })
+                    res.json({
+                        code: 500,
+                        results: 0,
+                        msg: '发表失败！'
+                    })
                 } else {
-                    res.json({ code: 200, results: 1, msg: '发表游记成功！' })
+                    res.json({
+                        code: 200,
+                        results: 1,
+                        msg: '发表游记成功！'
+                    })
                 }
             })
+        })
+    },
+    // 评论
+    pinglun: (req, res) => {
+        // var getId = req.query.key
+        var getId1 = req.query.id
+        strategyDAL.pinglun(getId1, (err, results) => {
+            if (err) {
+                res.json({
+                    code: 500,
+                    msg: '数据获取错误'
+                })
+
+            } else {
+                res.json({
+                    code: 500,
+                    msg: '数据获取成功',
+                    data: results
+                })
+            }
+        })
+    },
+
+    // 发评论
+    strategypinglu: function (req, res) {
+        console.log('7878');
+        var value = req.query.key
+        var getId = req.query.useid
+        var wenid = req.query.wenid
+        var newArr = { value: value, getId: getId, wenid: wenid }
+        // console.log(getId, value, wenid)
+        strategyDAL.strategypinglu(newArr, function (err, results) {
+            if (err) {
+                res.json({
+                    code: 500,
+                    msg: '数据获取错误'
+                })
+
+            } else {
+                res.json({
+                    code: 500,
+                    msg: '数据获取成功',
+                    data: results
+                })
+
+            }
         })
     },
 
@@ -102,53 +158,10 @@ const strategyController = {
 
     //     }
     // })
+
+
     
 
-    // 发评论
-    // strategypinglu: function (req, res) {
-    //     var value = req.query.key
-    //     var getId = req.query.useid
-    //     var wenid = req.query.wenid
-    //     var newArr = { value: value, getId: getId, wenid: wenid }
-    //     // console.log(getId, value, wenid)
-    //     strategyDAL.strategypinglu(newArr, function (err, results) {
-    //         if (err) {
-    //             res.json({
-    //                 code: 500,
-    //                 msg: '数据获取错误'
-    //             })
 
-    //         } else {
-    //             res.json({
-    //                 code: 500,
-    //                 msg: '数据获取成功',
-    //                 data: results
-    //             })
-
-    //         }
-    //     })
-    // },
-
-    // pinglun: function (req, res) {
-    //     // var getId = req.query.key
-    //     var getId1 = req.query.id
-    //     strategyDAL.pinglun(getId1, function (err, results) {
-    //         if (err) {
-    //             res.json({
-    //                 code: 500,
-    //                 msg: '数据获取错误'
-    //             })
-
-    //         } else {
-    //             res.json({
-    //                 code: 500,
-    //                 msg: '数据获取成功',
-    //                 data: results
-    //             })
-
-    //         }
-    //     })
-
-    // }
 }
 module.exports = strategyController
