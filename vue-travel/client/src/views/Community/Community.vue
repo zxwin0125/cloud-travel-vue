@@ -3503,6 +3503,34 @@ export default {
         height: 164px;
         position: relative;
         overflow: hidden;
+        .slide-img {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 1000px;
+          height: 160px;
+          li {
+            float: left;
+            width: 260px;
+            height: 160px;
+            overflow: hidden;
+          }
+        }
+        .slide-trigger {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          height: 4px;
+          width: 265px;
+          span {
+            float: left;
+            width: 86px;
+            height: 4px;
+            background-color: #e7e7e7;
+            margin-right: 1px;
+            cursor: pointer;
+          }
+        }
       }
       .i_num {
         margin-top: 23px;
@@ -3513,14 +3541,73 @@ export default {
         height: 50px;
         line-height: 50px;
         text-align: center;
+        span {
+          margin: 0 5px;
+        }
       }
     }
     .i-tags {
       margin: 0px 0 35px 0;
       line-height: 20px;
+      dt {
+        background: url(../../assets/img/Community/mfw-ask-sprite19.png) -340px -450px
+          no-repeat;
+        padding-left: 28px;
+        font-size: 14px;
+        color: #666;
+        line-height: 19px;
+        padding-bottom: 15px;
+        border-bottom: solid 2px #e1e1e1;
+      }
+      dd {
+        padding: 25px 0 10px 0;
+        .label {
+          line-height: 14px;
+          font-size: 14px;
+          color: #ff8a00;
+          white-space: nowrap;
+          border-left: solid 2px #ff8a00;
+          padding-left: 5px;
+          margin-bottom: 7px;
+        }
+      }
     }
     .rank {
       margin-bottom: 50px;
+      .hd {
+        margin-bottom: 5px;
+        font-size: 16px;
+        height: 34px;
+        line-height: 34px;
+        position: relative;
+        background: 0 none;
+        padding-left: 0;
+        .tab-time {
+          position: absolute;
+          right: 0;
+          top: 6px;
+          line-height: 20px;
+          font-size: 12px;
+          color: #666;
+          li {
+            float: left;
+            height: 20px;
+            display: inline;
+            margin-left: 5px;
+            padding: 0 4px;
+            cursor: pointer;
+          }
+        }
+      }
+      .bd {
+        position: relative;
+        .tab-num {
+          border-radius: 3px;
+          border: 1px solid #ff9d00;
+          line-height: 30px;
+          width: 258px;
+        }
+      }
     }
   }
 }
