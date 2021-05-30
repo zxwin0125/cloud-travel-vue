@@ -36,7 +36,6 @@ export default {
   watch: {
   },
   created() {
-    console.log('12129898',this.placeInfo);
   },
   methods: {
     

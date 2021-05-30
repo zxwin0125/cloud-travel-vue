@@ -67,7 +67,7 @@ export default {
     },
     toPlace() {
       this.$router.push({
-        path: '/destination/destination_des'
+        path: '/destination_des'
       })
     }
   },

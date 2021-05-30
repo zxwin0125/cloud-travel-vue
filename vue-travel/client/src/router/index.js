@@ -83,10 +83,7 @@ const routes = [{
   {
     path: '/destination_des',
     name: 'Destination_des',
-    component: {
-      default: Destination_des,
-      'header': null
-    },
+    component: Destination_des,
     meta: {
       isturn: true
     }
