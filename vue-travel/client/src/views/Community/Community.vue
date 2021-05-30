@@ -3466,9 +3466,54 @@ export default {
     width: 260px;
     .i-ask {
       margin-bottom: 30px;
+      .btn-ask {
+        display: block;
+        border-radius: 4px;
+        margin-top: 73px;
+        height: 46px;
+        line-height: 46px;
+        font-size: 16px;
+        text-align: center;
+        overflow: hidden;
+        i {
+          display: inline-block;
+          margin: 0 9px 0 0;
+          width: 15px;
+          height: 15px;
+          background: url(../../assets/img/Community/mfw-ask-sprite19.png)
+            no-repeat -30px -15px;
+          overflow: hidden;
+          vertical-align: -2px;
+        }
+      }
+      .btn-ask:hover,
+      .btn-ask2 {
+        background-color: #ffa800;
+        text-decoration: none;
+        color: #fff;
+        i {
+          background-position: -30px 0;
+        }
+      }
     }
     .i_total {
       margin-bottom: 30px;
+      .mod-slide {
+        width: 260px;
+        height: 164px;
+        position: relative;
+        overflow: hidden;
+      }
+      .i_num {
+        margin-top: 23px;
+        background-color: #f0f0f0;
+        color: #333;
+        font-size: 14px;
+        font-weight: bold;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+      }
     }
     .i-tags {
       margin: 0px 0 35px 0;
