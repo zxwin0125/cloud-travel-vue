@@ -8,6 +8,7 @@
           <div class="ban">
             <!-- 背景头图 -->
             <img :src="getstimg(form.stdetail[0].strategy_path)" alt="" />
+            <img src="../../assets/img/upload/str_1.jpg" alt="" />
           </div>
         </el-col>
       </el-row>
@@ -261,7 +262,7 @@ export default {
     },
 
     getstimg(strategy_img) {
-      return "/api/upload/" + strategy_img;
+      return "../../assets/img/upload/" + strategy_img + ".jpg";
     },
     formateDate1(nowTime) {
       var moment = require("moment");
