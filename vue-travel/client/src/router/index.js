@@ -9,6 +9,7 @@ import des_lj from '../views/Destination/components/des_lj.vue'
 import des_km from '../views/Destination/components/des_km.vue'
 import des_xgll from '../views/Destination/components/des_xgll.vue'
 import des_xsbn from '../views/Destination/components/des_xsbn.vue'
+import Destination_des from '../views/Destination/Destination_des.vue'
 
 import Strategy from '../views/Strategy/Strategy.vue'
 import StrategyDetail from '../views/Strategy/StrategyDetail.vue'
@@ -42,8 +43,7 @@ const routes = [{
       default: Destination,
       'header': null
     },
-    children: [
-      {
+    children: [{
         path: 'lj',
         name: 'des_lj',
         component: des_lj,
@@ -76,6 +76,17 @@ const routes = [{
         }
       }
     ],
+    meta: {
+      isturn: true
+    }
+  },
+  {
+    path: '/destination/destination_des',
+    name: 'Destination_des',
+    component: {
+      default: Destination_des,
+      'header': null
+    },
     meta: {
       isturn: true
     }
