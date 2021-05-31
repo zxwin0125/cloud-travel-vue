@@ -72,9 +72,9 @@ const strategyDAL = {
     },
 
     //评论列表
-    pinglun: (getId1, cb) => {
+    pinglun: (strategy_id, cb) => {
         const sql = 'select a.com_text,com_like,com_time,a.user_id,user_headPic_url,user_name FROM comments_info a,user_info u WHERE strategy_id = ? and a.user_id = u.user_id'
-        dao(sql, [getId1], (err, results) => {
+        dao(sql, [strategy_id], (err, results) => {
             if (err) {
                 cb(err, null)
             } else {

@@ -103,9 +103,8 @@ const strategyController = {
     },
     // 评论
     pinglun: (req, res) => {
-        // var getId = req.query.key
-        var getId1 = req.query.id
-        strategyDAL.pinglun(getId1, (err, results) => {
+        var strategy_id = req.query.strategy_id
+        strategyDAL.pinglun(strategy_id, (err, results) => {
             if (err) {
                 res.json({
                     code: 500,

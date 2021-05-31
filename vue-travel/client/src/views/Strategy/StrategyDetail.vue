@@ -83,7 +83,7 @@
                     class="user_headPic_url"
                   /> -->
                   <img
-                    :src="imgsUserUrl"
+                    :src="pinglunImg"
                     class="user_headPic_url"
                     alt=""
                   />
@@ -196,7 +196,8 @@ export default {
       nowTime: new Date(),
       imgsUrl: "",
       imgsHeadUrl: "",
-      imgsUserUrl: ""
+      imgsUserUrl: "",
+      pinglunImg: ""
     };
   },
   computed: {
@@ -270,6 +271,8 @@ export default {
         await getStrategyPinglun(this.form.query).then((res) => {
           console.log("攻略评论数据", res);
           this.pingluns = res.data.data;
+          this.pinglunImg = require("../../../../public/upload/" +
+            this.pingluns.user_headPic_url);
         });
       } catch (err) {
         console.log("err", err);
