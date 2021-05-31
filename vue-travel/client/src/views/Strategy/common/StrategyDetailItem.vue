@@ -59,7 +59,7 @@ export default {
   },
   computed: {},
   created() {
-    this.imgsUrl = require("@/assets/img/Strategy/" +
+    this.imgsUrl = require("../../../../../public/upload/" +
       this.StrategyDetailItemData.strategy_img +
       ".jpg");
 
