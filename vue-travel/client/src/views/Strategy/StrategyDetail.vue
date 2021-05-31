@@ -100,7 +100,7 @@
                     :src="'http://localhost:3000/upload/' + userImg"
                     class="user_headPic_url"
                   /> -->
-                  <img src="../../../public/upload/tou1.jpg" class="user_headPic_url" alt="" />
+                  <!-- <img src="../../../public/upload/tou1.jpg" class="user_headPic_url" alt="" /> -->
                   <div>
                     <h4>{{ pinglun.user_name }}</h4>
                     <p>{{ formateDate(pinglun.com_time) }}</p>

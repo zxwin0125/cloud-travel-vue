@@ -19,7 +19,7 @@
         <img v-if="imageUrl" :src="imageUrl" class="avatar" />
         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
       </el-upload>
-      <div class="MAvaName">云游记用户</div>
+      <div class="MAvaName">{{userInfo.user_name}}</div>
       <!-- 图标 -->
       <div class="its_tags">
         <a href="/home/vip_show.php" target="_blank" title="VIP"
@@ -344,9 +344,13 @@ export default {
     },
   },
   created() {
-
+    
+    
   },
-  mounted() {},
+  mounted() {
+    this.imageUrl = require("../../../../public/upload/"+this.userInfo.user_headPic_url)
+    console.log('12',this.imageUrl);
+  },
   methods: {
     toWrite(user_id) {
       this.$router.push(`/strategy/write/?user_id=${user_id}`);
