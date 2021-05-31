@@ -349,7 +349,6 @@ export default {
   },
   mounted() {
     this.imageUrl = require("../../../../public/upload/"+this.userInfo.user_headPic_url)
-    console.log('12',this.imageUrl);
   },
   methods: {
     toWrite(user_id) {
@@ -410,8 +409,8 @@ export default {
         border-color: #409eff;
       }
       .avatar {
-        width: 100%;
-        height: 100%;
+        width: 122px;
+        height: 122px;
         display: block;
       }
       .avatar-uploader-icon {
