@@ -50,4 +50,9 @@ export default {};
   display: flex;
   align-items: center;
 }
+
+._2VdqdF img {
+  width: 50%;
+  height: 50%;
+}
 </style>

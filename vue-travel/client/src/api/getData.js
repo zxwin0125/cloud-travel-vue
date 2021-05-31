@@ -71,7 +71,7 @@ export const getUserInfo = (token) => axios.get("/api/users/getUserInfo", {
     }
 })
 
-// 评论
+// 评论列表
 export const getStrategyPinglun = (strategy_id) => axios.get("/api/strategy/pinglun", {
     params: {
         "strategy_id": strategy_id
@@ -79,9 +79,10 @@ export const getStrategyPinglun = (strategy_id) => axios.get("/api/strategy/ping
 })
 
 // 发布评论信息接口
-export const postComment = (user_id,user_name,user_headImg,user_pl) => axios.post("/api/strategy/strategypinglu", {
+export const postComment = (user_id,user_name,user_headImg,user_pl,strategy_id) => axios.post("/api/strategy/strategypinglu", {
     user_id,
     user_name,
     user_headImg,
-    user_pl
+    user_pl,
+    strategy_id
 })

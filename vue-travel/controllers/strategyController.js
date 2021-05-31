@@ -123,13 +123,13 @@ const strategyController = {
     },
 
     // 发评论
-    strategypinglu: function (req, res) {
-        var value = req.query.key
-        var getId = req.query.useid
-        var wenid = req.query.wenid
-        var newArr = { value: value, getId: getId, wenid: wenid }
-        // console.log(getId, value, wenid)
-        strategyDAL.strategypinglu(newArr, function (err, results) {
+    strategypinglu: (req, res) => {
+        console.log('666',req.body);
+        var use_id = req.body.user_id
+        var strategy_id = req.body.strategy_id
+        var value = req.body.user_pl
+        var newArr = { value: value, use_id: use_id, strategy_id: strategy_id }
+        strategyDAL.strategypinglu(newArr, (err, results) => {
             if (err) {
                 res.json({
                     code: 500,

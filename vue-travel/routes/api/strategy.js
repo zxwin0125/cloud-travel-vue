@@ -36,7 +36,7 @@ router.get('/pinglun', (req, res, next) => {
 });
 
 // 发布评论
-router.get('/strategypinglu', (req, res, next) => {
+router.post('/strategypinglu', (req, res, next) => {
     // 攻略列表
     strategyController.strategypinglu(req, res)
 });

@@ -29,7 +29,7 @@
           <div class="ext-r">
             <span class="author"
               ><img
-                src="http://b1-q.mafengwo.net/s12/M00/F4/68/wKgED1v76FuAddNXAACQa4g1tFA44.jpeg?imageMogr2%2Fthumbnail%2F%2148x48r%2Fgravity%2FCenter%2Fcrop%2F%2148x48%2Fquality%2F90"
+                :src="imgsHeadUrl"
               />{{ StrategyDetailItemData.user_name }}</span
             ><span class="nums">{{ StrategyDetailItemData.strategy_view }}浏览，{{ StrategyDetailItemData.strategy_date }}</span>
           </div>
@@ -55,15 +55,20 @@ export default {
     return {
       strategy_id: "",
       imgsUrl: "",
+      imgsHeadUrl: ""
     };
   },
-  computed: {},
+  computed: {
+    userInfo() {
+      return this.$store.getters.user_info;
+    },
+  },
   created() {
     this.imgsUrl = require("../../../../../public/upload/" +
       this.StrategyDetailItemData.strategy_img +
       ".jpg");
 
-    // this.strategy_id = this.StrategyDetailItemData.strategy_id;
+    this.imgsHeadUrl = require("../../../../../public/upload/"+this.StrategyDetailItemData.user_headPic_url)
   },
   mounted() {},
   methods: {

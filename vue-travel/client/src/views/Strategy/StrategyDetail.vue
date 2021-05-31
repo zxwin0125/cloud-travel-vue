@@ -7,19 +7,14 @@
         <el-col :span="24">
           <div class="ban">
             <!-- 背景头图 -->
-            <img :src="imgsUrl" alt="" />            
+            <img :src="imgsUrl" alt="" />
           </div>
         </el-col>
       </el-row>
       <div class="con_nav">
         <p class="title">{{ form.stdetail[0].strategy_title }}</p>
         <!-- 数据库获取-->
-        <img
-          :src="imgsHeadUrl"
-          class="user_headPic_url"
-          alt=""
-        />
-        <!-- <img src="../../../public/upload/tou1.jpg" class="user_headPic_url" alt="" /> -->
+        <img :src="imgsHeadUrl" class="user_headPic_url" alt="" />
 
         <!--获取用户头像-->
         <p>
@@ -55,12 +50,7 @@
             <div class="coments">
               <div class="write_coments">
                 <!-- 获取当前用户头像 -->
-                <!-- <img
-                  :src="'http://localhost:3000/upload/' + userImg"
-                  class="user_headPic_url"
-                  alt=""
-                /> -->
-                <!-- <img src="../../../public/upload/tou1.jpg" alt="" /> -->
+                <img :src="imgsUserUrl" class="user_headPic_url" alt="" />
 
                 <div id="message">
                   <textarea
@@ -80,14 +70,6 @@
                     >
                   </div>
                 </div>
-                <div class="conments_button">
-                  <button type="button" class="coments_submit btn btn-success">
-                    <span>发布</span>
-                  </button>
-                  <button type="button" class="coments_console btn">
-                    <span>取消</span>
-                  </button>
-                </div>
               </div>
               <!-- 评论列表 -->
               <ul
@@ -100,7 +82,11 @@
                     :src="'http://localhost:3000/upload/' + userImg"
                     class="user_headPic_url"
                   /> -->
-                  <!-- <img src="../../../public/upload/tou1.jpg" class="user_headPic_url" alt="" /> -->
+                  <img
+                    :src="imgsUserUrl"
+                    class="user_headPic_url"
+                    alt=""
+                  />
                   <div>
                     <h4>{{ pinglun.user_name }}</h4>
                     <p>{{ formateDate(pinglun.com_time) }}</p>
@@ -176,7 +162,11 @@
 </template>
 <script>
 // 导入接口API
-import { getDetailStrategy, getStrategyPinglun, postComment } from "@/api/getData.js";
+import {
+  getDetailStrategy,
+  getStrategyPinglun,
+  postComment,
+} from "@/api/getData.js";
 import StrDetailsThumbup from "../Strategy/components/StrDetailsThumbup";
 
 export default {
@@ -205,10 +195,15 @@ export default {
       userImg: "",
       nowTime: new Date(),
       imgsUrl: "",
-      imgsHeadUrl: ""
+      imgsHeadUrl: "",
+      imgsUserUrl: ""
     };
   },
-  computed: {},
+  computed: {
+    userInfo() {
+      return this.$store.getters.user_info;
+    },
+  },
   created() {
     // 发布
     this.useid = this.$store.getters.user_info.user_id;
@@ -216,10 +211,6 @@ export default {
     this.userImg = this.$store.getters.user_info.user_headPic_url;
 
     this.form.query = this.$route.query.strategy_id;
-    
-
-    // this.imgsUrl = require("../../../../public/upload/" + this.form.stdetail[0].strategy_path + ".jpg")
-    
 
 
     // //评论列表
@@ -248,6 +239,7 @@ export default {
     //当页面渲染完成时调用方法获取数据
     this.getStrategyDetailData();
     this.getStrategyPinglunData();
+
     
   },
   methods: {
@@ -259,9 +251,13 @@ export default {
         await getDetailStrategy(this.form.query).then((res) => {
           console.log("攻略 detail 数据", res);
           this.form.stdetail = res.data.data;
-          this.imgsUrl = require("../../../../public/upload/"+this.form.stdetail[0].strategy_path)
-          this.imgsHeadUrl = require("../../../../public/upload/"+this.form.stdetail[0].user_headPic_url)
-        })
+          this.imgsUrl = require("../../../../public/upload/" +
+            this.form.stdetail[0].strategy_path);
+          this.imgsHeadUrl = require("../../../../public/upload/" +
+            this.form.stdetail[0].user_headPic_url);
+          this.imgsUserUrl = require("../../../../public/upload/" +
+            this.userImg);
+        });
       } catch (err) {
         console.log("err", err);
       }
@@ -274,7 +270,7 @@ export default {
         await getStrategyPinglun(this.form.query).then((res) => {
           console.log("攻略评论数据", res);
           this.pingluns = res.data.data;
-        })
+        });
       } catch (err) {
         console.log("err", err);
       }
@@ -307,8 +303,9 @@ export default {
       return formatdatetime;
     },
     fb() {
-      postComment(this.useid,this.username,this.userImg,this.getstComment).then((res) => {
-        console.log("resssss:", res.data.data);
+      postComment(this.useid, this.username, this.userImg, this.getstComment, this.form.query)
+        .then((res) => {
+          console.log("resssss:", res.data.data);
           this.pingluns.push({
             com_time: this.nowTime,
             com_text: this.getstComment,
@@ -316,8 +313,8 @@ export default {
             user_name: this.username,
           });
           this.getstComment = "";
-      })
-      .catch((err) => {
+        })
+        .catch((err) => {
           console.log("err:", err);
         });
       // this.$axios
@@ -494,7 +491,6 @@ export default {
   height: 150px;
   resize: none;
   margin-left: 160px;
-  margin-top: -120px;
   border-radius: 9px;
   border: 3px solid #5cb3cc;
   width: 70%;
@@ -522,7 +518,6 @@ export default {
 
 .coments_info {
   padding: 20px;
-  margin-top: 80px;
 }
 
 .coments_info li {
@@ -542,7 +537,7 @@ export default {
   width: 95%;
   display: block;
   margin-bottom: 15px;
-  height: 200px;
+  height: 100px;
   line-height: 25px;
 }
 
@@ -604,5 +599,10 @@ export default {
 .refer span {
   color: #ccc;
   font-size: 10px;
+}
+
+#message {
+  display: flex;
+  flex-direction: column;
 }
 </style>

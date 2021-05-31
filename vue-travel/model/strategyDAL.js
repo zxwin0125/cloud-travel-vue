@@ -6,7 +6,7 @@ const strategyDAL = {
     mainStrategy: (cb) => {
         const sql = `select strategy_id,strategy_title,
                    strategy_date,strategy_content,strategy_img,
-                   strategy_view,strategy_like,user_id,user_name,
+                   strategy_view,strategy_like,user_id,user_name,user_headPic_url,
                    strategy_path from strategy_info`
         dao(sql, [], function (err, results) {
             if (err) {
@@ -74,7 +74,7 @@ const strategyDAL = {
     //评论列表
     pinglun: (getId1, cb) => {
         const sql = 'select a.com_text,com_like,com_time,a.user_id,user_headPic_url,user_name FROM comments_info a,user_info u WHERE strategy_id = ? and a.user_id = u.user_id'
-        dao(sql, [getId1], function (err, results) {
+        dao(sql, [getId1], (err, results) => {
             if (err) {
                 cb(err, null)
             } else {
@@ -85,10 +85,10 @@ const strategyDAL = {
 
     //发表评论
     strategypinglu: (newArr, cb) => {
-        console.log('ertyu', [newArr.value, newArr.wenid, newArr.getId])
-        const sql = 'insert into comments_info (com_text,com_like,com_time,strategy_id,user_id) VALUES(?,0,Now(),?,?)'
+        console.log('ertyu', [newArr.value, newArr.use_id, newArr.strategy_id])
+        const sql = 'insert into comments_info (com_text,com_like,com_time,user_id,strategy_id) VALUES(?,0,Now(),?,?)'
 
-        dao(sql, [newArr.value, newArr.wenid, newArr.getId], (err, results) => {
+        dao(sql, [newArr.value, newArr.use_id, newArr.strategy_id], (err, results) => {
             if (err) {
                 cb(err, null)
             } else {
